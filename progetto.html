@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheda Dettaglio Progetto | UniTo Crowd — Funds TOgether</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stili specifici potenziati per la Scheda Progetto V2 */
+    .project-hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+    .project-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .project-kpi-panel {
+      background: var(--bg-subtle);
+      padding: 22px 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      margin-top: 20px;
+    }
+    .kpi-numbers-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    /* Barra Grafica Impilata del Budget (Tab 2) */
+    .budget-visual-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+    .budget-stacked-bar {
+      height: 26px;
+      width: 100%;
+      background: #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      margin: 12px 0;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .b-seg {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      transition: width 0.4s ease;
+    }
+    .b-seg-1 { background-color: var(--unito-navy); }
+    .b-seg-2 { background-color: var(--match-teal); }
+    .b-seg-3 { background-color: var(--accent-orange); }
+    .budget-legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    /* Anteprima live raddoppio nel form Fai Tu */
+    .match-preview-pill {
+      background-color: #f0fdf4;
+      border: 1px solid #86efac;
+      color: var(--success-green);
+      font-size: 0.82rem;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      margin-top: 10px;
+      line-height: 1.35;
+    }
+    .match-preview-pill.disabled-pill {
+      background-color: #f1f5f9;
+      border-color: #cbd5e1;
+      color: #64748b;
+    }
+    /* Avatar e Card Team (Euristica 6) */
+    .team-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--unito-navy);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+    .team-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .csr-report-box {
+      background: #f0f9ff;
+      border: 1.5px solid #7dd3fc;
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      margin-bottom: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip-link per accessibilità da tastiera (WCAG 2.1) -->
+  <a href="#main-content" class="skip-link" data-it="Salta al dettaglio del progetto" data-en="Skip to project details">Salta al dettaglio del progetto</a>
+
+  <!-- 1. HEADER UNIFICATO STICKY (Risolve H4, H7, H8) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home">
+        <span class="brand-badge">🏛️ UniTo</span>
+        <div>
+          Funds TOgether!
+          <span class="brand-sub" data-it="Crowdfunding Ricerca & Innovazione" data-en="Research & Innovation Crowdfunding">Crowdfunding Ricerca & Innovazione</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu Principale">
+        <ul>
+          <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+          <li><a href="catalogo.html" class="active" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+          <li><a href="proponi.html" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
+          <li><a href="partner.html" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form id="header-search-form" class="header-search" role="search">
+          <input type="search" id="header-search-input"
+                 placeholder="Cerca progetti..."
+                 data-placeholder-it="Cerca progetti..."
+                 data-placeholder-en="Search projects..."
+                 aria-label="Cerca progetti">
+          <button type="submit" aria-label="Avvia ricerca">🔍</button>
+        </form>
+
+        <div class="lang-switch" role="group" aria-label="Selettore lingua IT / EN">
+          <button type="button" class="lang-btn active" data-lang="it">IT</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <button type="button" class="btn btn-secondary" data-open-login
+                data-it="👤 Accedi" data-en="👤 Sign In">👤 Accedi</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. BREADCRUMBS IN SOLO TESTO STANDARDIZZATE (Risolve H4 Pag. 31-32 Assignment 1) -->
+  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
+    <div class="container breadcrumbs-inner">
+      <ol class="breadcrumbs-list">
+        <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+        <li><a href="catalogo.html" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+        <li><a href="catalogo.html" id="proj-breadcrumb-cat" data-it="Salute & Medicina" data-en="Health & Medicine">Salute & Medicina</a></li>
+        <li class="current" id="proj-breadcrumb-name" aria-current="page">MILK-ACT</li>
+      </ol>
+      <a href="catalogo.html" style="font-size:0.84rem; font-weight:700; color:var(--unito-navy-light);"
+         data-it="← Torna al Catalogo (filtri mantenuti)" data-en="← Back to Catalog (filters preserved)">
+        ← Torna al Catalogo (filtri mantenuti)
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content" class="section">
+    <div class="container" id="project-detail-page">
+
+      <!-- 3. BARRA DI VERIFICA PROTOTIPO (Permette di testare i 3 progetti delle Personas e il blocco H4 Gravità 4) -->
+      <div class="demo-switcher-bar" role="region" aria-label="Selettore rapido progetto per valutazione prototipo">
+        <div>
+          <strong data-it="🧪 Barra di Verifica Prototipo (Task 3):" data-en="🧪 Prototype Verification Bar (Task 3):">
+            🧪 Barra di Verifica Prototipo (Task 3):
+          </strong>
+          <span data-it="Commuta istantaneamente tra le campagne attive (Elena e Lorenzo) e la campagna conclusa (Marc) per verificare la disabilitazione dei form (Euristica 4, Gravità 4):"
+                data-en="Switch instantly between active campaigns (Elena & Lorenzo) and the completed campaign (Marc) to verify form disabling (Heuristic 4, Severity 4):">
+            Commuta istantaneamente tra le campagne attive (Elena e Lorenzo) e la campagna conclusa (Marc) per verificare la disabilitazione dei form (Euristica 4, Gravità 4):
+          </span>
+        </div>
+        <div class="filter-pills">
+          <button type="button" class="pill-btn active" data-switch-project="milk-act"
+                  data-it="🍼 1. MILK-ACT (Attivo • Elena)" data-en="🍼 1. MILK-ACT (Active • Elena)">
+            🍼 1. MILK-ACT (Attivo • Elena)
+          </button>
+          <button type="button" class="pill-btn" data-switch-project="speechmate"
+                  data-it="🎙️ 2. SpeechMatE (Attivo • Lorenzo)" data-en="🎙️ 2. SpeechMatE (Active • Lorenzo)">
+            🎙️ 2. SpeechMatE (Attivo • Lorenzo)
+          </button>
+          <button type="button" class="pill-btn" data-switch-project="bright"
+                  data-it="🔒 3. BRIGHT (Concluso • Marc)" data-en="🔒 3. BRIGHT (Completed • Marc)">
+            🔒 3. BRIGHT (Concluso • Marc)
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. HEADER SCHEDA PROGETTO CON BARRA DUAL-COLOR E TOOLTIP -->
+      <section class="project-hero-card" aria-labelledby="proj-title">
+        <div class="project-meta-top">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span id="proj-status-badge" class="badge badge-active">● Campagna Attiva — Sostenibile Ora</span>
+            <span id="proj-dept-badge" class="badge" style="background:#dbeafe; color:var(--unito-navy);">VIRMOLAB • Dip. Scienze Cliniche e Biologiche</span>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--text-muted);">
+            <span data-it="Formula di raccolta: " data-en="Funding rule: ">Formula di raccolta: </span>
+            <span class="term-tooltip" tabindex="0"
+                  data-tooltip="Regola 'O tutto o niente': la campagna riceve i fondi (e sblocca il raddoppio UniTo) solo se raggiunge almeno il 100% dell'obiettivo entro la scadenza; altrimenti ogni donatore viene rimborsato integralmente.">
+              <span data-it="O tutto o niente!" data-en="All-or-Nothing!">O tutto o niente!</span>
+              <i class="info-badge">i</i>
+            </span>
+          </div>
+        </div>
+
+        <h1 id="proj-title" style="color:var(--unito-navy); font-size:1.9rem; line-height:1.22; margin-bottom:8px;">
+          MILK-ACT: Proteggere i più piccoli dai virus di domani attraverso il latte materno
+        </h1>
+        <p id="proj-dept" style="color:var(--text-muted); font-weight:600; font-size:0.98rem;">
+          Responsabile Scientifico: Prof.ssa Valeria Rossi — Laboratorio di Virologia Molecolare UniTo
+        </p>
+
+        <!-- Pannello Avanzamento Raccolta + Quota Match-Funding UniTo -->
+        <div class="project-kpi-panel">
+          <div class="kpi-numbers-row">
+            <div>
+              <span id="proj-raised" style="font-size:2rem; font-weight:800; color:var(--unito-navy);">14.200 €</span>
+              <span id="proj-goal" style="font-size:0.96rem; color:var(--text-muted); margin-left:6px; font-weight:600;">
+                raccolti su 16.000 € (8.000 € Community + 8.000 € Raddoppio UniTo)
+              </span>
+            </div>
+            <div style="display:flex; gap:20px; align-items:center; font-weight:700;">
+              <span id="proj-pct-badge" class="badge badge-active" style="font-size:0.9rem; padding:6px 12px;">88% Raggiunto</span>
+              <span id="proj-donors" style="color:var(--unito-navy);">👥 198 sostenitori</span>
+              <span id="proj-days" style="color:var(--accent-orange);">⏳ Scade il 17/11/2026</span>
+            </div>
+          </div>
+
+          <div class="progress-bar-bg" style="height:14px; margin:14px 0;">
+            <div id="proj-bar-fill" class="progress-bar-fill" style="width:48%;" title="Quota Donatori Community"></div>
+            <div id="proj-bar-match" class="progress-bar-match" style="width:40%;" title="Quota Cofinanziamento Match-Funding UniTo"></div>
+          </div>
+
+          <div class="progress-legend" style="font-size:0.84rem;">
+            <span>
+              <i class="dot dot-comm"></i>
+              <strong id="proj-comm-detail">Quota Donatori: 7.200 € / 8.000 €</strong>
+            </span>
+            <span>
+              <i class="dot dot-match"></i>
+              <strong id="proj-match-detail">Cofinanziamento Match-Funding UniTo: +7.000 € (fino a 8.000 € al 100%)</strong>
+            </span>
+            <span data-it="🛡️ 0,00 € costi di transazione per il donatore" data-en="🛡️ €0.00 transaction fees for backers">
+              🛡️ 0,00 € costi di transazione per il donatore
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. LAYOUT A 2 COLONNE: 4 TAB APPROFONDITI (SINISTRA) + SIDEBAR RICOMPENSE/VINCOLI (DESTRA) -->
+      <div class="project-layout">
+
+        <!-- COLONNA SINISTRA: CONTENUTI ORGANIZZATI CON PROGRESSIVE DISCLOSURE -->
+        <div>
+          <div class="tabs-nav" role="tablist" aria-label="Dettagli della campagna di ricerca">
+            <button type="button" class="tab-btn active" data-tab="tab-obiettivi" role="tab"
+                    data-it="1. Obiettivi & Impatto" data-en="1. Goals & Impact">1. Obiettivi & Impatto</button>
+            <button type="button" class="tab-btn" data-tab="tab-budget" role="tab"
+                    data-it="2. Come Useremo i Fondi (Budget)" data-en="2. How We Use Funds (Budget)">2. Come Useremo i Fondi (Budget)</button>
+            <button type="button" class="tab-btn" data-tab="tab-aggiornamenti" role="tab"
+                    data-it="3. Timeline Aggiornamenti (3)" data-en="3. Updates Timeline (3)">3. Timeline Aggiornamenti (3)</button>
+            <button type="button" class="tab-btn" data-tab="tab-team" role="tab"
+                    data-it="4. Team di Ricerca UniTo" data-en="4. UniTo Research Team">4. Team di Ricerca UniTo</button>
+          </div>
+
+          <!-- TAB 1: OBIETTIVI SCIENTIFICI E RICADUTA CONCRETA -->
+          <section id="tab-obiettivi" class="tab-panel active" role="tabpanel">
+            <h2 id="story-heading" style="color:var(--unito-navy); margin-bottom:12px;">
+              Il Progetto: Proteggere i neonati prematuri grazie alla ricerca sul latte umano
+            </h2>
+            <p id="story-p1" style="margin-bottom:14px;">
+              Il latte materno rappresenta il primo scudo immunitario per i neonati, in particolare per i bambini nati prematuri ricoverati nelle Terapie Intensive Neonatali (TIN). Con il progetto <strong>MILK-ACT</strong>, il laboratorio VIRMOLAB dell'Università di Torino studia come preservare intatte le vescicole extracellulari e le proteine antivirali durante i processi di pastorizzazione delle Banche del Latte Umano Donato.
+            </p>
+            <p id="story-p2" style="margin-bottom:18px;">
+              Attraverso test virologici non invasivi su virus respiratori ed enterici emergenti, il nostro obiettivo è ottimizzare i protocolli ospedalieri torinesi e pubblicare una microguida scientifica aperta a tutte le famiglie e al personale sanitario.
+            </p>
+
+            <h3 style="color:var(--unito-navy); font-size:1.12rem; margin-bottom:10px;"
+                data-it="🎯 I 3 Obiettivi Concreti della Campagna" data-en="🎯 The 3 Concrete Campaign Milestones">
+              🎯 I 3 Obiettivi Concreti della Campagna
+            </h3>
+            <ul id="story-goals-list" style="padding-left:20px; display:flex; flex-direction:column; gap:8px; margin-bottom:20px;">
+              <li><strong>Obiettivo 1 (Mesi 1–3):</strong> Acquisizione di kit reagenti ad alta sensibilità per l'analisi antivirale di 120 campioni donati alla Banca del Latte di Torino.</li>
+              <li><strong>Obiettivo 2 (Mesi 4–6):</strong> Cofinanziamento di una borsa di ricerca semestrale per una giovane ricercatrice precaria dedicata agli esperimenti in laboratorio.</li>
+              <li><strong>Obiettivo 3 (Mesi 7–8):</strong> Stampa e distribuzione gratuita della <em>Microguida MILK-ACT</em> nei reparti pediatrici e pubblicazione open-access dei risultati.</li>
+            </ul>
+
+            <div style="background:#eef2f6; padding:16px 20px; border-radius:var(--radius-sm); border-left:4px solid var(--accent-orange);">
+              <strong style="color:var(--unito-navy);"
+                      data-it="🏛️ Perché la tua donazione vale doppio (Match-Funding UniTo):"
+                      data-en="🏛️ Why your donation counts double (UniTo Match-Funding):">
+                🏛️ Perché la tua donazione vale doppio (Match-Funding UniTo):
+              </strong>
+              <p style="font-size:0.9rem; margin-top:4px;"
+                 data-it="Grazie al fondo per la Terza Missione dell'Università di Torino, al raggiungimento del 100% della quota community l'Ateneo raddoppia l'importo raccolto fino a 10.000 €. Ogni contributo, anche da 10 €, accelera lo sblocco dei fondi istituzionali!"
+                 data-en="Thanks to the University of Turin's Third Mission fund, upon reaching 100% of the community target, the University doubles the amount raised up to €10,000. Every contribution, even €10, accelerates unlocking institutional funds!">
+                Grazie al fondo per la Terza Missione dell'Università di Torino, al raggiungimento del 100% della quota community l'Ateneo raddoppia l'importo raccolto fino a 10.000 €. Ogni contributo, anche da 10 €, accelera lo sblocco dei fondi istituzionali!
+              </p>
+            </div>
+          </section>
+
+          <!-- TAB 2: BUDGET VISUALE E TABELLA DI RENDICONTAZIONE (Per Elena e Marc) -->
+          <section id="tab-budget" class="tab-panel" role="tabpanel">
+            <h2 style="color:var(--unito-navy); margin-bottom:8px;"
+                data-it="Trasparenza Finanziaria: Come useremo i fondi raccolti"
+                data-en="Financial Transparency: How we will use the funds raised">
+              Trasparenza Finanziaria: Come useremo i fondi raccolti
+            </h2>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;"
+               data-it="Ogni euro raccolto viene gestito direttamente dal Dipartimento universitario proponente senza intermediari privati. Ecco la ripartizione visiva e analitica delle voci di spesa:"
+               data-en="Every euro raised is managed directly by the proposing University Department. Here is the visual and analytical breakdown of expenditure items:">
+              Ogni euro raccolto viene gestito direttamente dal Dipartimento universitario proponente senza intermediari privati. Ecco la ripartizione visiva e analitica delle voci di spesa:
+            </p>
+
+            <!-- Barra Grafica Impilata del Budget -->
+            <div class="budget-visual-box">
+              <strong style="font-size:0.9rem; color:var(--unito-navy);"
+                      data-it="📊 Ripartizione Percentuale del Budget di Progetto:"
+                      data-en="📊 Percentage Breakdown of Project Budget:">
+                📊 Ripartizione Percentuale del Budget di Progetto:
+              </strong>
+              <div class="budget-stacked-bar" role="img" aria-label="Grafico ripartizione budget">
+                <div id="b-bar-1" class="b-seg b-seg-1" style="width:45%;">45%</div>
+                <div id="b-bar-2" class="b-seg b-seg-2" style="width:40%;">40%</div>
+                <div id="b-bar-3" class="b-seg b-seg-3" style="width:15%;">15%</div>
+              </div>
+              <div class="budget-legend-row">
+                <span><i class="dot" style="background:var(--unito-navy);"></i> <span id="b-leg-1">Strumentazione & Reagenti (45%)</span></span>
+                <span><i class="dot" style="background:var(--match-teal);"></i> <span id="b-leg-2">Borse Giovani Ricercatori (40%)</span></span>
+                <span><i class="dot" style="background:var(--accent-orange);"></i> <span id="b-leg-3">Divulgazione & Open Science (15%)</span></span>
+              </div>
+            </div>
+
+            <table class="data-table" style="margin-bottom:18px;">
+              <thead>
+                <tr>
+                  <th data-it="Voce di Spesa" data-en="Budget Item">Voce di Spesa</th>
+                  <th data-it="Descrizione Operativa e Laboratorio" data-en="Operational Description & Lab">Descrizione Operativa e Laboratorio</th>
+                  <th data-it="Quota %" data-en="Share %">Quota %</th>
+                  <th data-it="Importo" data-en="Amount">Importo</th>
+                </tr>
+              </thead>
+              <tbody id="budget-table-body">
+                <tr>
+                  <td><strong>🔬 Reagenti e Kit Antivirali</strong></td>
+                  <td>Materiali di consumo sterili, colture cellulari e kit ELISA per l'analisi dei campioni di latte</td>
+                  <td><strong>45%</strong></td>
+                  <td><strong>7.200 €</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>🎓 Borsa di Ricerca Dedicata</strong></td>
+                  <td>Cofinanziamento semestrale per giovane assegnista presso il laboratorio VIRMOLAB UniTo</td>
+                  <td><strong>40%</strong></td>
+                  <td><strong>6.400 €</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>📘 Microguida & Open Access</strong></td>
+                  <td>Stampa brochure divulgativa per le famiglie dei reparti TIN e pubblicazione scientifica aperta</td>
+                  <td><strong>15%</strong></td>
+                  <td><strong>2.400 €</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size:0.85rem; color:var(--text-muted);"
+               data-it="💡 Politica di Overfunding: qualora la raccolta superi il 100% dell'obiettivo (come avvenuto per il progetto BRIGHT al 221%), tutti i fondi extra vengono destinati all'estensione del campione sperimentale e rendicontati nel Tab 'Timeline Aggiornamenti'."
+               data-en="💡 Overfunding Policy: if the campaign exceeds 100% of its goal (as seen in the BRIGHT project at 221%), all extra funds are allocated to expanding the experimental sample and reported in the 'Updates Timeline' tab.">
+              💡 Politica di Overfunding: qualora la raccolta superi il 100% dell'obiettivo (come avvenuto per il progetto BRIGHT al 221%), tutti i fondi extra vengono destinati all'estensione del campione sperimentale e rendicontati nel Tab "Timeline Aggiornamenti".
+            </p>
+          </section>
+
+          <!-- TAB 3: TIMELINE AGGIORNAMENTI STRUTTURATA (Risolve H8 Pag. 47: elimina gli asterischi ***) -->
+          <section id="tab-aggiornamenti" class="tab-panel" role="tabpanel">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+              <h2 style="color:var(--unito-navy);"
+                  data-it="Timeline Cronologica degli Aggiornamenti"
+                  data-en="Chronological Project Updates Timeline">
+                Timeline Cronologica degli Aggiornamenti
+              </h2>
+              <span class="badge badge-active"
+                    data-it="🔔 Componente UI strutturato (Euristica 8)"
+                    data-en="🔔 Structured UI Component (Heuristic 8)">
+                🔔 Componente UI strutturato (Euristica 8)
+              </span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:20px;"
+               data-it="Nessun testo grezzo con asterischi: segui in ordine cronologico tutte le tappe raggiunte dal gruppo di ricerca e l'impiego effettivo dei fondi:"
+               data-en="No raw text asterisks: track in chronological order all milestones achieved by the research team and actual fund usage:">
+              Nessun testo grezzo con asterischi: segui in ordine cronologico tutte le tappe raggiunte dal gruppo di ricerca e l'impiego effettivo dei fondi:
+            </p>
+
+            <div id="timeline-container" class="timeline-list">
+              <article class="update-card">
+                <div class="update-header">
+                  <span class="badge badge-active">Milestone #3 • Avanzamento Sperimentale</span>
+                  <time datetime="2026-10-28" style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">28 Ottobre 2026</time>
+                </div>
+                <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">
+                  Raggiunto l'88% del budget e completata la validazione dei primi 60 campioni!
+                </h3>
+                <p style="font-size:0.92rem;">
+                  Grazie a 198 sostenitori siamo a un passo dallo sblocco del raddoppio UniTo. In laboratorio abbiamo completato la prima serie di test spettrometrici e avviato la stesura grafica della <em>Microguida MILK-ACT</em> che verrà inviata a tutti i donatori.
+                </p>
+              </article>
+
+              <article class="update-card">
+                <div class="update-header">
+                  <span class="badge" style="background:#dbeafe; color:var(--unito-navy);">Milestone #2 • Estensione Aziende Partner</span>
+                  <time datetime="2026-10-14" style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">14 Ottobre 2026</time>
+                </div>
+                <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">
+                  Nuova sinergia con le Banche del Latte del Piemonte e partner CSR
+                </h3>
+                <p style="font-size:0.92rem;">
+                  Alcune imprese e fondazioni del territorio hanno aderito al cofinanziamento della campagna per sostenere l'acquisto dei reagenti antivirali di ultima generazione.
+                </p>
+              </article>
+
+              <article class="update-card">
+                <div class="update-header">
+                  <span class="badge badge-closed">Milestone #1 • Avvio Campagna</span>
+                  <time datetime="2026-10-01" style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">1 Ottobre 2026</time>
+                </div>
+                <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">
+                  Progetto selezionato dal Bando Funds TOgether IV Edizione
+                </h3>
+                <p style="font-size:0.92rem;">
+                  Dopo la validazione della Commissione Scientifica d'Ateneo, la campagna è ufficialmente online con idoneità al Match-Funding UniTo.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- TAB 4: TEAM DI RICERCA UNITO CON LINK RICONOSCIBILI (Risolve H6 Pag. 36 Assignment 1) -->
+          <section id="tab-team" class="tab-panel" role="tabpanel">
+            <h2 style="color:var(--unito-navy); margin-bottom:8px;"
+                data-it="Il Team di Ricerca Proponente (Università di Torino)"
+                data-en="The Proposing Research Team (University of Turin)">
+              Il Team di Ricerca Proponente (Università di Torino)
+            </h2>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:18px;"
+               data-it="Per garantire il riconoscimento immediato delle azioni disponibili (Euristica 6), tutti i collegamenti ai profili accademici istituzionali e LinkedIn dei ricercatori sono resi espliciti tramite colore distintivo, sottolineatura e icona:"
+               data-en="To ensure immediate recognition rather than recall (Heuristic 6), all links to researchers' academic and LinkedIn profiles feature distinct color, underline, and external icons:">
+              Per garantire il riconoscimento immediato delle azioni disponibili (Euristica 6), tutti i collegamenti ai profili accademici istituzionali e LinkedIn dei ricercatori sono resi espliciti tramite colore distintivo, sottolineatura e icona:
+            </p>
+
+            <div id="team-cards-container" class="team-grid">
+              <div class="team-card">
+                <div class="team-card-header">
+                  <div class="team-avatar" aria-hidden="true">VR</div>
+                  <div>
+                    <span class="badge badge-active" style="margin-bottom:4px;">Principal Investigator</span>
+                    <h3 style="color:var(--unito-navy); font-size:1.06rem;">Prof.ssa Valeria Rossi</h3>
+                  </div>
+                </div>
+                <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:10px;">
+                  Professoressa Associata di Virologia Molecolare — Dipartimento di Scienze Cliniche e Biologiche (Ospedale San Luigi Gonzaga, Orbassano - UniTo).
+                </p>
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <a href="https://www.unito.it" target="_blank" rel="noopener" class="team-profile-link">
+                    🔗 Scheda Docente & Pubblicazioni IRIS UniTo <span class="ext-badge">↗ sito esterno</span>
+                  </a>
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-profile-link">
+                    💼 Profilo Ufficiale LinkedIn <span class="ext-badge">↗ sito esterno</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="team-card">
+                <div class="team-card-header">
+                  <div class="team-avatar" style="background:var(--unito-navy-light);" aria-hidden="true">MG</div>
+                  <div>
+                    <span class="badge" style="background:#dbeafe; color:var(--unito-navy); margin-bottom:4px;">Coordinatore Laboratorio</span>
+                    <h3 style="color:var(--unito-navy); font-size:1.06rem;">Dott. Marco Gilardi</h3>
+                  </div>
+                </div>
+                <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:10px;">
+                  Ricercatore RTD-b presso VIRMOLAB UniTo, responsabile dei protocolli di analisi bioattiva e del coordinamento con le Banche del Latte.
+                </p>
+                <div style="display:flex; flex-direction:column; gap:4px;">
+                  <a href="https://www.unito.it" target="_blank" rel="noopener" class="team-profile-link">
+                    🔗 Pagina Laboratorio VIRMOLAB UniTo <span class="ext-badge">↗ sito esterno</span>
+                  </a>
+                  <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="team-profile-link">
+                    💼 Profilo Ufficiale LinkedIn <span class="ext-badge">↗ sito esterno</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- COLONNA DESTRA: SIDEBAR RICOMPENSE, MODULO "FAI TU" CON CALCOLATORE LIVE E VINCOLI DISABLED -->
+        <aside class="sidebar-card" aria-label="Opzioni di sostegno e ricompense">
+          <h2 id="sidebar-heading" style="color:var(--unito-navy); font-size:1.32rem; margin-bottom:6px;"
+              data-it="Sostieni questo Progetto" data-en="Support this Research">
+            Sostieni questo Progetto
+          </h2>
+          <p id="sidebar-sub" style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;"
+             data-it="Scegli un importo libero nel modulo 'Fai tu' oppure seleziona una delle ricompense simboliche pensate dai ricercatori."
+             data-en="Enter a custom amount in the 'Custom Pledge' box or select one of the symbolic rewards created by the research team.">
+            Scegli un importo libero nel modulo "Fai tu" oppure seleziona una delle ricompense simboliche pensate dai ricercatori.
+          </p>
+
+          <!-- AVVISO + BOX RENDICONTAZIONE CSR VISIBILE SOLO SULLA CAMPAGNA CONCLUSA "BRIGHT" (Risolve H4 Gravità 4) -->
+          <div id="closed-project-alert" style="display:none;">
+            <div style="background:var(--warning-bg); border:1.5px solid #f59e0b; color:var(--warning-amber); padding:14px 16px; border-radius:var(--radius-sm); margin-bottom:14px; font-size:0.88rem;">
+              <strong data-it="🔒 Campagna Conclusa (Obiettivo 221%):" data-en="🔒 Completed Campaign (221% Goal Reached):">
+                🔒 Campagna Conclusa (Obiettivo 221%):
+              </strong>
+              <span data-it=" Questa raccolta fondi è terminata con successo. Tutti i campi di input, i bottoni e il tasto Invio sono stati disabilitati (attributo HTML disabled) per prevenire invii o reindirizzamenti imprevisti alla Home Page (Euristica 4, Gravità 4)."
+                    data-en=" This fundraising campaign has successfully ended. All input fields, buttons, and the Enter key are disabled (HTML disabled attribute) to prevent unexpected redirects to the Home Page (Heuristic 4, Severity 4).">
+                Questa raccolta fondi è terminata con successo. Tutti i campi di input, i bottoni e il tasto Invio sono stati disabilitati (attributo HTML disabled) per prevenire invii o reindirizzamenti imprevisti alla Home Page (Euristica 4, Gravità 4).
+              </span>
+            </div>
+
+            <!-- Box dedicato a Marc Dubois (Persona 4) e ad Elena (Persona 2) quando visitano un progetto concluso -->
+            <div class="csr-report-box">
+              <strong style="color:var(--unito-navy); display:block; margin-bottom:6px; font-size:0.92rem;"
+                      data-it="📊 Rendicontazione Pubblica & CSR:" data-en="📊 Public Accountability & CSR Report:">
+                📊 Rendicontazione Pubblica & CSR:
+              </strong>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:10px;"
+                 data-it="Vuoi verificare come sono stati spesi i 22.182 € raccolti o esplorare altri progetti attualmente attivi?"
+                 data-en="Want to check how the €22,182 raised were spent or explore other currently active projects?">
+                Vuoi verificare come sono stati spesi i 22.182 € raccolti o esplorare altri progetti attualmente attivi?
+              </p>
+              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button type="button" id="open-timeline-from-sidebar" class="btn btn-secondary" style="font-size:0.8rem; min-height:36px; padding:6px 12px;"
+                        data-it="📅 Apri Timeline Acquisti" data-en="📅 Open Purchases Timeline">
+                  📅 Apri Timeline Acquisti
+                </button>
+                <a href="catalogo.html" onclick="sessionStorage.setItem('unito_status_filter','active');" class="btn btn-outline" style="font-size:0.8rem; min-height:36px; padding:6px 12px;"
+                   data-it="🚀 Vedi Progetti Attivi →" data-en="🚀 View Active Projects →">
+                  🚀 Vedi Progetti Attivi →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULO "FAI TU" PROTETTO CONTRO IL REDIRECT ALLA HOME + ANTEPRIMA LIVE RADDOPPIO (Risolve H4 e H1) -->
+          <form id="custom-donation-form" style="background:var(--bg-subtle); padding:16px; border-radius:var(--radius-sm); border:1.5px solid var(--border-color); margin-bottom:20px;">
+            <label for="custom-donation-input" style="display:block; font-weight:800; color:var(--unito-navy); margin-bottom:4px;"
+                   data-it="✨ FAI TU — Contributo a importo libero" data-en="✨ CUSTOM PLEDGE — Choose your amount">
+              ✨ FAI TU — Contributo a importo libero
+            </label>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:10px;"
+               data-it="Ogni contributo conta! Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino."
+               data-en="Every contribution counts! You will receive the official University of Turin donation certificate by email.">
+              Ogni contributo conta! Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino.
+            </p>
+            <div style="display:flex; gap:8px;">
+              <input type="number" id="custom-donation-input" class="form-input" min="5" max="10000" step="1" value="25"
+                     placeholder="Importo € (min. 5€)" aria-label="Importo donazione libera in euro">
+              <button type="submit" id="custom-donation-btn" class="btn btn-primary" style="white-space:nowrap;">
+                Dona Ora →
+              </button>
+            </div>
+            <!-- Anteprima Live del Raddoppio UniTo -->
+            <div id="live-match-preview" class="match-preview-pill" role="status" aria-live="polite">
+              ✨ Con <strong>25 €</strong> generi <strong>50 € di impatto reale</strong> per la ricerca (25 € tuoi + 25 € Raddoppio UniTo)!
+            </div>
+          </form>
+
+          <!-- CARD RICOMPENSE SELEZIONABILI (Aggiornate dinamicamente per ciascun progetto) -->
+          <div id="reward-card-1" class="reward-option" data-amount="10" data-reward-title="Hall of Fame Digitale + Attestato Sostenitore (10 €)">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <strong style="font-size:1.15rem; color:var(--unito-navy);">Donazione da 10 €</strong>
+              <span class="badge badge-active" id="r1-badge">Ideale Studenti</span>
+            </div>
+            <h3 id="r1-title" style="font-size:0.98rem; color:var(--accent-orange); margin-bottom:6px;">
+              Il tuo nome nella Hall of Fame Digitale
+            </h3>
+            <p id="r1-desc" style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">
+              Ringraziamento ufficiale con il tuo nome nella pagina pubblica del progetto e attestato digitale personalizzato via email. (84 sostenitori)
+            </p>
+            <button type="button" class="btn btn-outline" style="width:100%;">Scegli questa ricompensa (10 €) →</button>
+          </div>
+
+          <div id="reward-card-2" class="reward-option selected" data-amount="50" data-reward-title="Microguida Scientifica + Hall of Fame (50 €)">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <strong style="font-size:1.15rem; color:var(--unito-navy);">Donazione da 50 €</strong>
+              <span class="badge badge-active" id="r2-badge">Più Scelta</span>
+            </div>
+            <h3 id="r2-title" style="font-size:0.98rem; color:var(--accent-orange); margin-bottom:6px;">
+              Microguida MILK-ACT + Hall of Fame
+            </h3>
+            <p id="r2-desc" style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">
+              Riceverai in anteprima la brochure divulgativa curata dai ricercatori UniTo sulle proprietà antivirali del latte materno + attestato ufficiale. (68 sostenitori)
+            </p>
+            <button type="button" class="btn btn-primary" style="width:100%;">Scegli questa ricompensa (50 €) →</button>
+          </div>
+
+          <div id="reward-card-3" class="reward-option" data-amount="100" data-reward-title="Open Lab Day in Dipartimento UniTo + Report (100 €)">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <strong style="font-size:1.15rem; color:var(--unito-navy);">Donazione da 100 €</strong>
+              <span class="badge" style="background:#dbeafe; color:var(--unito-navy);" id="r3-badge">Visita in Lab</span>
+            </div>
+            <h3 id="r3-title" style="font-size:0.98rem; color:var(--accent-orange); margin-bottom:6px;">
+              Incontro Open Lab con i Ricercatori UniTo
+            </h3>
+            <p id="r3-desc" style="font-size:0.86rem; color:var(--text-muted); margin-bottom:12px;">
+              Invito all'Open Day dedicato ai sostenitori e alle aziende partner nei laboratori dell'Università di Torino per vedere dal vivo la ricerca finanziata. (46 sostenitori)
+            </p>
+            <button type="button" class="btn btn-outline" style="width:100%;">Scegli questa ricompensa (100 €) →</button>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 6. FOOTER ISTITUZIONALE COERENTE -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);">🏛️ UniTo</span>
+            <span>Funds TOgether!</span>
+          </div>
+          <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
+             data-it="Trasparenza scientifica, rendicontazione puntuale del budget e tutela del donatore garantite dall'Università degli Studi di Torino."
+             data-en="Scientific transparency, accurate budget reporting, and backer protection guaranteed by the University of Turin.">
+            Trasparenza scientifica, rendicontazione puntuale del budget e tutela del donatore garantite dall'Università degli Studi di Torino.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h4>
+          <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="catalogo.html">Esplora Catalogo Progetti (9)</a></li>
+            <li><a href="proponi.html">Come Funziona & Bando Ricercatori</a></li>
+            <li><a href="partner.html">I Nostri Partner e Collaboratori</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h4>
+          <ul>
+            <li><a href="proponi.html#faq-section">Domande Frequenti (FAQ)</a></li>
+            <li><a href="#" data-open-privacy>Informativa Privacy & Condizioni (IT/EN)</a></li>
+            <li><a href="#" data-open-login>Accesso Area Progettisti / Partner</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Collegamenti Esterni" data-en="External Links">Collegamenti Esterni</h4>
+          <ul>
+            <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it ↗ (sito esterno)</a></li>
+            <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger ↗ (sito esterno)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Università degli Studi di Torino — Prototipo HCI Gruppo I (Stigliano Antonio, Tumolo Christian)</span>
+        <div>
+          <a href="catalogo.html" style="color:#ffd166; margin-right:16px;"
+             data-it="← Torna al Catalogo (Stato preservato)" data-en="← Back to Catalog (State preserved)">
+            ← Torna al Catalogo (Stato preservato)
+          </a>
+          <a href="#" data-open-privacy style="color:#cbd5e1;">Privacy & Condizioni (IT/EN)</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Motore V2 specifico per progetto.html: gestisce i contenuti completi dei 3 progetti, il grafico Budget, la Timeline e il blocco H4 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const customInput = document.getElementById('custom-donation-input');
+      const matchPreview = document.getElementById('live-match-preview');
+      const openTimelineBtn = document.getElementById('open-timeline-from-sidebar');
+
+      // Database locale completo dei 3 progetti rappresentativi per Lorenzo, Elena e Marc
+      const PROJECTS_DB = {
+        'milk-act': {
+          status: 'active',
+          catBreadcrumb: 'Salute & Medicina',
+          deptBadge: 'VIRMOLAB • Dip. Scienze Cliniche e Biologiche',
+          pctBadge: '88% Raggiunto',
+          barComm: '48%',
+          barMatch: '40%',
+          commDetail: 'Quota Donatori: 7.200 € / 8.000 €',
+          matchDetail: 'Cofinanziamento Match-Funding UniTo: +7.000 € (fino a 8.000 € al 100%)',
+          storyHeading: 'Il Progetto: Proteggere i neonati prematuri grazie alla ricerca sul latte umano',
+          storyP1: 'Il latte materno rappresenta il primo scudo immunitario per i neonati, in particolare per i bambini nati prematuri ricoverati nelle Terapie Intensive Neonatali (TIN). Con il progetto MILK-ACT, il laboratorio VIRMOLAB dell\'Università di Torino studia come preservare intatte le proprietà antivirali naturali durante la pastorizzazione nelle Banche del Latte Umano Donato.',
+          storyP2: 'Attraverso analisi molecolari su virus respiratori ed enterici emergenti, il nostro obiettivo è ottimizzare i protocolli ospedalieri pediatrici e fornire una microguida scientifica gratuita a famiglie e operatori sanitari.',
+          goals: [
+            '<strong>Obiettivo 1 (Mesi 1–3):</strong> Acquisizione di kit reagenti ad alta sensibilità per l\'analisi antivirale di 120 campioni donati alla Banca del Latte di Torino.',
+            '<strong>Obiettivo 2 (Mesi 4–6):</strong> Cofinanziamento di una borsa di ricerca semestrale per una giovane ricercatrice dedicata agli esperimenti in laboratorio.',
+            '<strong>Obiettivo 3 (Mesi 7–8):</strong> Stampa e distribuzione gratuita della <em>Microguida MILK-ACT</em> nei reparti pediatrici e pubblicazione open-access dei risultati.'
+          ],
+          budgetBars: ['45%', '40%', '15%'],
+          budgetLegs: ['Reagenti & Kit Antivirali (45%)', 'Borsa Giovane Ricercatrice (40%)', 'Microguida & Open Science (15%)'],
+          budgetRows: `
+            <tr><td><strong>🔬 Reagenti e Kit Antivirali</strong></td><td>Materiali di consumo sterili, colture cellulari e kit ELISA per l'analisi dei campioni di latte</td><td><strong>45%</strong></td><td><strong>7.200 €</strong></td></tr>
+            <tr><td><strong>🎓 Borsa di Ricerca Dedicata</strong></td><td>Cofinanziamento semestrale per giovane assegnista presso il laboratorio VIRMOLAB UniTo</td><td><strong>40%</strong></td><td><strong>6.400 €</strong></td></tr>
+            <tr><td><strong>📘 Microguida & Open Access</strong></td><td>Stampa brochure divulgativa per le famiglie dei reparti TIN e pubblicazione scientifica aperta</td><td><strong>15%</strong></td><td><strong>2.400 €</strong></td></tr>
+          `,
+          timelineHTML: `
+            <article class="update-card">
+              <div class="update-header"><span class="badge badge-active">Milestone #3 • Avanzamento Sperimentale</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">28 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Raggiunto l'88% del budget e completata la validazione dei primi 60 campioni!</h3>
+              <p style="font-size:0.92rem;">Grazie a 198 sostenitori siamo a un passo dallo sblocco del raddoppio UniTo. In laboratorio abbiamo completato la prima serie di test e avviato l'impaginazione della <em>Microguida MILK-ACT</em>.</p>
+            </article>
+            <article class="update-card">
+              <div class="update-header"><span class="badge" style="background:#dbeafe; color:var(--unito-navy);">Milestone #2 • Sinergia Ospedaliera</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">14 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Adesione delle Banche del Latte del Piemonte e nuovi partner CSR</h3>
+              <p style="font-size:0.92rem;">Nuove realtà del territorio hanno scelto di sostenere l'acquisto dei reagenti antivirali di ultima generazione.</p>
+            </article>
+            <article class="update-card">
+              <div class="update-header"><span class="badge badge-closed">Milestone #1 • Avvio Campagna</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">1 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Progetto selezionato dal Bando Funds TOgether IV Edizione</h3>
+              <p style="font-size:0.92rem;">Campagna validata dalla Commissione Scientifica d'Ateneo e ammessa al raddoppio fondi fino a 8.000 €.</p>
+            </article>
+          `,
+          r1Title: 'Il tuo nome nella Hall of Fame Digitale MILK-ACT',
+          r2Title: 'Microguida Divulgativa MILK-ACT + Hall of Fame',
+          r3Title: 'Visita Open Lab presso il Laboratorio VIRMOLAB UniTo'
+        },
+        'speechmate': {
+          status: 'active',
+          catBreadcrumb: 'Tecnologia & Disabilità',
+          deptBadge: 'Dip. di Matematica "Giuseppe Peano" • Lab Integr-Abile',
+          pctBadge: '84% Raggiunto',
+          barComm: '44%',
+          barMatch: '40%',
+          commDetail: 'Quota Donatori: 4.450 € / 5.000 €',
+          matchDetail: 'Cofinanziamento Match-Funding UniTo: +4.000 € (fino a 5.000 € al 100%)',
+          storyHeading: 'Il Progetto: Scrivere formule matematiche e fare esami usando solo la voce',
+          storyP1: 'SpeechMatE nasce dalla richiesta reale di Jan Berger, giovane studente di Matematica all\'Università di Torino divenuto tetraplegico in seguito a un incidente: quale software permette di scrivere formule algebriche complesse e svolgere esercizi senza poter usare le mani?',
+          storyP2: 'Continuano ad arrivare richieste da scuole e università italiane per studenti con disabilità motorie. Con questa campagna vogliamo realizzare la nuova Web App multipiattaforma di SpeechMatE in lingua italiana, dotata di riconoscimento vocale neurale e gratuita per tutti gli studenti.',
+          goals: [
+            '<strong>Obiettivo 1 (Mesi 1–2):</strong> Sviluppo del motore di dettatura vocale in lingua italiana per simboli matematici, integrali, matrici ed equazioni.',
+            '<strong>Obiettivo 2 (Mesi 3–5):</strong> Creazione dell\'interfaccia web accessibile cloud-based utilizzabile da browser senza installazioni complesse.',
+            '<strong>Obiettivo 3 (Mesi 6–7):</strong> Test di usabilità con studenti con disabilità motorie e rilascio gratuito per scuole e atenei.'
+          ],
+          budgetBars: ['55%', '30%', '15%'],
+          budgetLegs: ['Sviluppo Software & AI Vocale (55%)', 'Borsa Sviluppatore Junior (30%)', 'Server Cloud & Test Accessibilità (15%)'],
+          budgetRows: `
+            <tr><td><strong>💻 Sviluppo Motore Vocale & UI</strong></td><td>Programmazione Web App accessibile e addestramento modello vocale per formule matematiche</td><td><strong>55%</strong></td><td><strong>5.500 €</strong></td></tr>
+            <tr><td><strong>🎓 Borsa Giovane Informatico</strong></td><td>Contratto di collaborazione per laureando/neolaureato magistrale del Dip. di Informatica/Matematica</td><td><strong>30%</strong></td><td><strong>3.000 €</strong></td></tr>
+            <tr><td><strong>☁️ Infrastruttura Cloud & User Test</strong></td><td>Hosting server ad alta disponibilità e sessioni di test assistivo con gli studenti</td><td><strong>15%</strong></td><td><strong>1.500 €</strong></td></tr>
+          `,
+          timelineHTML: `
+            <article class="update-card">
+              <div class="update-header"><span class="badge badge-active">Milestone #3 • Prototipo Vocale</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">26 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Completato il dizionario vocale italiano per l'Analisi Matematica 1!</h3>
+              <p style="font-size:0.92rem;">Grazie ai primi 142 donatori (molti dei quali studenti UniTo che hanno donato 10 €), il prototipo riconosce già derivate, limiti e sommatorie dettate a voce.</p>
+            </article>
+            <article class="update-card">
+              <div class="update-header"><span class="badge" style="background:#dbeafe; color:var(--unito-navy);">Milestone #2 • Hall of Fame</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">10 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Inaugurata la Hall of Fame digitale sulla homepage di SpeechMatE</h3>
+              <p style="font-size:0.92rem;">Tutti i sostenitori sono stati invitati al webinar dimostrativo in cui il team mostrerà gli sviluppi del software in diretta.</p>
+            </article>
+          `,
+          r1Title: 'Il tuo nome nella Hall of Fame digitale di SpeechMatE',
+          r2Title: 'Invito al Webinar Live di sviluppo + Hall of Fame',
+          r3Title: 'Beta-Testing in anteprima + Incontro col Team Integr-Abile'
+        },
+        'bright': {
+          status: 'closed',
+          catBreadcrumb: 'Salute & Psicologia (Concluso)',
+          deptBadge: 'Dipartimento di Psicologia • Neuroscienze Cognitive',
+          pctBadge: '✓ 221% Obiettivo Raggiunto',
+          barComm: '100%',
+          barMatch: '0%',
+          commDetail: 'Totale Finale Raccolto: 22.182 € (Obiettivo iniziale: 10.000 €)',
+          matchDetail: 'Cofinanziamento UniTo + Contributi CSR Aziendali: 100% Erogati e Rendicontati',
+          storyHeading: 'Il Progetto (Campagna Conclusa): Neuroscienze e Gaming Interattivo per la Riabilitazione',
+          storyP1: 'Il progetto BRIGHT (Brain Research in Interactive Gaming & Human Technology) ha superato il 221% dell\'obiettivo iniziale raccogliendo 22.182 € grazie a 111 donatori e imprese partner. I fondi hanno permesso di potenziare la strumentazione di spettroscopia funzionale nel vicino infrarosso (fNIRS) del Dipartimento di Psicologia di UniTo.',
+          storyP2: 'Grazie anche ai 14 giorni di tempo supplementare concessi per permettere alle aziende partner di formalizzare il proprio contributo CSR, il laboratorio ha potuto acquistare componenti aggiuntivi per rendere gli esperimenti ancora più confortevoli e precisi.',
+          goals: [
+            '<strong>✓ Obiettivo Raggiunto 1:</strong> Acquisto di 2 cuffie fNIRS morbide per rendere confortevole l\'esperimento per tutti i soggetti coinvolti.',
+            '<strong>✓ Obiettivo Raggiunto 2 (Overfunding):</strong> Acquisto di 2 optodi speciali chiamati <em>short-channels</em> per ridurre il rumore fisiologico e gli artefatti durante il movimento.',
+            '<strong>✓ Obiettivo Raggiunto 3:</strong> Organizzazione dell\'evento divulgativo pubblico <em>Conference&Dragons</em> a fine campagna.'
+          ],
+          budgetBars: ['60%', '25%', '15%'],
+          budgetLegs: ['Cuffie fNIRS & Optodi Short-Channels (60%)', 'Software Ambienti VR/Gaming (25%)', 'Evento Conference&Dragons (15%)'],
+          budgetRows: `
+            <tr><td><strong>🧠 2 Cuffie fNIRS + Short-Channels</strong></td><td>Acquisto completato e collaudato: cuffie ergonomiche + 2 optodi short-channels anti-artefatti</td><td><strong>60%</strong></td><td><strong>13.300 €</strong></td></tr>
+            <tr><td><strong>🎮 Sviluppo Scenari Interattivi</strong></td><td>Licenze e ambienti di gioco cognitivo per protocolli sperimentali non invasivi</td><td><strong>25%</strong></td><td><strong>5.550 €</strong></td></tr>
+            <tr><td><strong>🎲 Evento Conference&Dragons</strong></td><td>Giornata di divulgazione scientifica aperta a cittadini, donatori e aziende sostenitrici</td><td><strong>15%</strong></td><td><strong>3.332 €</strong></td></tr>
+          `,
+          timelineHTML: `
+            <article class="update-card" style="border-left-color:var(--success-green);">
+              <div class="update-header"><span class="badge badge-active">✓ Rendicontazione Finale • Strumenti in Lab</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">30 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">Acquistate e installate le 2 cuffie fNIRS con canali corti (short-channels)!</h3>
+              <p style="font-size:0.92rem;">Obiettivo superato con 22.182 € raccolti! Abbiamo ordinato e ricevuto in laboratorio le 2 cuffie fNIRS ergonomiche e i 2 optodi speciali <em>short-channels</em> per ridurre il rumore fisiologico. Vi aspettiamo alla <strong>Conference&Dragons</strong>!</p>
+            </article>
+            <article class="update-card">
+              <div class="update-header"><span class="badge" style="background:#dbeafe; color:var(--unito-navy);">Milestone #2 • Adesione Aziende CSR</span><time style="font-size:0.84rem; font-weight:700; color:var(--text-muted);">12 Ottobre 2026</time></div>
+              <h3 style="color:var(--unito-navy); font-size:1.06rem; margin-bottom:6px;">14 giorni di tempo supplementare per accogliere il contributo delle aziende partner</h3>
+              <p style="font-size:0.92rem;">Alcune aziende interessate al progetto avevano bisogno di qualche giorno per organizzarsi amministrativamente: grazie a questa piccola estensione il loro impegno è confluito nel nostro obiettivo di Overfunding.</p>
+            </article>
+          `,
+          r1Title: 'Attestato di Donazione Ufficiale BRIGHT (Non più selezionabile)',
+          r2Title: 'Accesso Evento Conference&Dragons + Hall of Fame (Chiuso)',
+          r3Title: 'Sessione Demo fNIRS in Laboratorio per Partner CSR (Chiuso)'
+        }
+      };
+
+      function updateLiveMatchPreview() {
+        if (!customInput || !matchPreview) return;
+        if (customInput.disabled) {
+          matchPreview.className = 'match-preview-pill disabled-pill';
+          matchPreview.innerHTML = '🔒 <strong>Modulo disabilitato:</strong> La campagna è conclusa. Premere <code>Invio</code> in questo campo non provoca alcun redirect imprevisto (Euristica 4).';
+          return;
+        }
+        const val = Math.max(5, Number(customInput.value) || 0);
+        const doubled = val * 2;
+        matchPreview.className = 'match-preview-pill';
+        matchPreview.innerHTML = `✨ Con <strong>${val} €</strong> generi <strong>${doubled} € di impatto reale</strong> per la ricerca (${val} € tuoi + ${val} € Raddoppio UniTo)!`;
+      }
+
+      function applyExtendedProjectData(projKey) {
+        const data = PROJECTS_DB[projKey] || PROJECTS_DB['milk-act'];
+        document.getElementById('proj-breadcrumb-cat').textContent = data.catBreadcrumb;
+        document.getElementById('proj-dept-badge').textContent = data.deptBadge;
+        document.getElementById('proj-pct-badge').textContent = data.pctBadge;
+        document.getElementById('proj-bar-fill').style.width = data.barComm;
+        document.getElementById('proj-bar-match').style.width = data.barMatch;
+        document.getElementById('proj-comm-detail').textContent = data.commDetail;
+        document.getElementById('proj-match-detail').textContent = data.matchDetail;
+
+        document.getElementById('story-heading').textContent = data.storyHeading;
+        document.getElementById('story-p1').textContent = data.storyP1;
+        document.getElementById('story-p2').textContent = data.storyP2;
+        document.getElementById('story-goals-list').innerHTML = data.goals.map(g => `<li>${g}</li>`).join('');
+
+        // Aggiorna grafico Budget e Tabella
+        document.getElementById('b-bar-1').style.width = data.budgetBars[0];
+        document.getElementById('b-bar-1').textContent = data.budgetBars[0];
+        document.getElementById('b-bar-2').style.width = data.budgetBars[1];
+        document.getElementById('b-bar-2').textContent = data.budgetBars[1];
+        document.getElementById('b-bar-3').style.width = data.budgetBars[2];
+        document.getElementById('b-bar-3').textContent = data.budgetBars[2];
+        document.getElementById('b-leg-1').textContent = data.budgetLegs[0];
+        document.getElementById('b-leg-2').textContent = data.budgetLegs[1];
+        document.getElementById('b-leg-3').textContent = data.budgetLegs[2];
+        document.getElementById('budget-table-body').innerHTML = data.budgetRows;
+
+        // Aggiorna Timeline e Ricompense
+        document.getElementById('timeline-container').innerHTML = data.timelineHTML;
+        document.getElementById('r1-title').textContent = data.r1Title;
+        document.getElementById('r2-title').textContent = data.r2Title;
+        document.getElementById('r3-title').textContent = data.r3Title;
+
+        updateLiveMatchPreview();
+      }
+
+      if (customInput) {
+        customInput.addEventListener('input', updateLiveMatchPreview);
+        // Blocco esplicito del tasto Enter quando il progetto è concluso (Euristica 4, Gravità 4)
+        customInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && customInput.disabled) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+        });
+      }
+
+      document.querySelectorAll('[data-switch-project]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-switch-project');
+          setTimeout(() => applyExtendedProjectData(key), 15);
+        });
+      });
+
+      if (openTimelineBtn) {
+        openTimelineBtn.addEventListener('click', () => {
+          const tabBtn = document.querySelector('[data-tab="tab-aggiornamenti"]');
+          if (tabBtn) tabBtn.click();
+          document.getElementById('tab-aggiornamenti').scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      const params = new URLSearchParams(window.location.search);
+      const initKey = params.get('proj') || sessionStorage.getItem('unito_current_proj') || 'milk-act';
+      setTimeout(() => applyExtendedProjectData(initKey), 20);
+    });
+  </script>
+</body>
+</html>

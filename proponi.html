@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come Funziona & Proponi un Progetto | UniTo Crowd — Funds TOgether</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stili specifici potenziati per l'Area Ricercatori e Proponenti V2 */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 22px;
+    }
+    .roadmap-step-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 22px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .roadmap-step-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .roadmap-step-card.match-highlight {
+      border: 2px solid var(--accent-orange);
+      background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+    }
+    .step-num-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: #dbeafe;
+      color: var(--unito-navy);
+      margin-bottom: 10px;
+      align-self: flex-start;
+    }
+    .step-time-footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--unito-navy-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Selettore Pacchetti Ginger/UniTo (Risoluzione H10 Pag. 51 Assignment 1) */
+    .pkg-selector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .pkg-summary-banner {
+      background-color: var(--unito-navy);
+      color: #ffffff;
+      padding: 18px 22px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-left: 6px solid var(--accent-orange);
+    }
+
+    /* Barra Grafica Live del Simulatore di Match-Funding */
+    .sim-visual-bar-wrap {
+      margin: 18px 0 14px;
+      background: var(--bg-subtle);
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+    }
+    .sim-stacked-bar {
+      height: 28px;
+      width: 100%;
+      background: #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      margin: 8px 0;
+    }
+    .sim-seg-comm {
+      background-color: var(--accent-orange);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.25s ease;
+    }
+    .sim-seg-unito {
+      background-color: var(--success-green);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.25s ease;
+    }
+
+    /* Checklist Interattiva Requisiti Proponenti */
+    .eligibility-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .check-item-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .check-item-card input[type="checkbox"] {
+      margin-top: 3px;
+      width: 17px;
+      height: 17px;
+      accent-color: var(--success-green);
+    }
+
+    /* Stile FAQ Accordion */
+    .faq-item {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      background: #ffffff;
+    }
+    .faq-item summary {
+      font-weight: 700;
+      color: var(--unito-navy);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::after {
+      content: "＋";
+      font-weight: 800;
+      color: var(--accent-orange);
+    }
+    .faq-item[open] summary::after {
+      content: "－";
+    }
+    @media (max-width: 980px) {
+      .roadmap-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip-link per accessibilità da tastiera (WCAG 2.1) -->
+  <a href="#main-content" class="skip-link" data-it="Salta alla guida per i ricercatori" data-en="Skip to researchers guide">Salta alla guida per i ricercatori</a>
+
+  <!-- 1. HEADER UNIFICATO STICKY (Risolve H4 Login sparsi, H7 Barra che scompare allo scroll, H8 Doppia barra) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home">
+        <span class="brand-badge">🏛️ UniTo</span>
+        <div>
+          Funds TOgether!
+          <span class="brand-sub" data-it="Area Ricercatori & Bando Terza Missione" data-en="Researchers Area & Public Engagement Call">Area Ricercatori & Bando Terza Missione</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu Principale">
+        <ul>
+          <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+          <li><a href="catalogo.html" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+          <li><a href="proponi.html" class="active" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
+          <li><a href="partner.html" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form id="header-search-form" class="header-search" role="search">
+          <input type="search" id="header-search-input"
+                 placeholder="Cerca progetti..."
+                 data-placeholder-it="Cerca progetti..."
+                 data-placeholder-en="Search projects..."
+                 aria-label="Cerca progetti">
+          <button type="submit" aria-label="Avvia ricerca">🔍</button>
+        </form>
+
+        <div class="lang-switch" role="group" aria-label="Selettore lingua IT / EN">
+          <button type="button" class="lang-btn active" data-lang="it">IT</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <button type="button" class="btn btn-secondary" data-open-login
+                data-it="👤 Area Progettisti" data-en="👤 Researcher Login">👤 Area Progettisti</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. BREADCRUMBS STANDARDIZZATE IN SOLO TESTO (Risolve H1 e H4) -->
+  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
+    <div class="container breadcrumbs-inner">
+      <ol class="breadcrumbs-list">
+        <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+        <li><span data-it="Direzione Ricerca & Terza Missione" data-en="Research & Third Mission Directorate">Direzione Ricerca & Terza Missione</span></li>
+        <li class="current" aria-current="page" data-it="Come Funziona & Proponi un Progetto (Task 6)" data-en="How It Works & Submit a Project (Task 6)">
+          Come Funziona & Proponi un Progetto (Task 6)
+        </li>
+      </ol>
+      <a href="https://www.unito.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.82rem;">
+        <span data-it="📄 Scarica Bando Ufficiale su UniTo.it" data-en="📄 Official Call PDF on UniTo.it">📄 Scarica Bando Ufficiale su UniTo.it</span>
+        <span class="ext-badge" data-it="↗ sito esterno" data-en="↗ external site">↗ sito esterno</span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- 3. SEZIONE 1: BARRA DI VERIFICA PROTOTIPO + ROADMAP OPERATIVA IN 4 FASI (Ispirata a Pag. 7 Assignment 1) -->
+    <section class="section" style="padding-bottom:32px;">
+      <div class="container">
+
+        <!-- BARRA DI TEST RAPIDO PER LA VALUTAZIONE DEL TASK 6 (Persona 3 Dott.ssa Chiara Ferrero) -->
+        <div class="demo-switcher-bar" role="region" aria-label="Simulatore scenari per l'Area Ricercatori">
+          <div>
+            <strong data-it="🧪 Barra di Verifica Proponenti (Task 6 — Euristiche 1, 3, 4, 5, 10):"
+                    data-en="🧪 Researchers Verification Bar (Task 6 — Heuristics 1, 3, 4, 5, 10):">
+              🧪 Barra di Verifica Proponenti (Task 6 — Euristiche 1, 3, 4, 5, 10):
+            </strong>
+            <span data-it="Simula con un clic lo scenario della Dott.ssa Chiara Ferrero (Persona 3), testa il blocco su email non istituzionali o apri la Dashboard con navbar preservata:"
+                  data-en="Simulate with one click Dr. Chiara Ferrero's scenario (Persona 3), test non-institutional email validation, or open the Researcher Dashboard:">
+              Simula con un clic lo scenario della Dott.ssa Chiara Ferrero (Persona 3), testa il blocco su email non istituzionali o apri la Dashboard con navbar preservata:
+            </span>
+          </div>
+          <div class="filter-pills">
+            <button type="button" id="fill-chiara-scenario-btn" class="pill-btn active"
+                    data-it="👩‍🔬 1. Scenario Dott.ssa Chiara Ferrero (8.000 €)"
+                    data-en="👩‍🔬 1. Dr. Chiara Ferrero Scenario (€8,000)">
+              👩‍🔬 1. Scenario Dott.ssa Chiara Ferrero (8.000 €)
+            </button>
+            <button type="button" id="test-non-unito-email-btn" class="pill-btn" style="border-color:var(--error-red); color:var(--error-red);"
+                    data-it="⚠️ 2. Simula Email non @unito.it (Test H5)"
+                    data-en="⚠️ 2. Simulate non-@unito.it Email (Test H5)">
+              ⚠️ 2. Simula Email non @unito.it (Test H5)
+            </button>
+            <button type="button" id="preview-dashboard-direct-btn" class="pill-btn"
+                    data-it="🏛️ 3. Apri Dashboard con Tasto Home (Test H3/H4)"
+                    data-en="🏛️ 3. Open Dashboard with Home Button (Test H3/H4)">
+              🏛️ 3. Apri Dashboard con Tasto Home (Test H3/H4)
+            </button>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div>
+            <span class="badge badge-active" style="margin-bottom:8px;"
+                  data-it="Bando IV Edizione Aperto • 0 € Costi per i Dipartimenti"
+                  data-en="4th Edition Call Open • €0 Costs for Departments">
+              Bando IV Edizione Aperto • 0 € Costi per i Dipartimenti
+            </span>
+            <h1 class="section-title"
+                data-it="Trasforma la tua ricerca in una campagna condivisa con i cittadini"
+                data-en="Turn Your Research into a Community-Backed Campaign">
+              Trasforma la tua ricerca in una campagna condivisa con i cittadini
+            </h1>
+            <p class="section-criteria">
+              <span class="criteria-pill" data-it="✓ Documentazione Concreta (H10)" data-en="✓ Concrete Documentation (H10)">
+                ✓ Documentazione Concreta (H10)
+              </span>
+              <span data-it="Guida operativa completa su fasi, servizi inclusi nella convenzione d'Ateneo, tempistiche, calcolo del raddoppio fondi e pre-candidatura online."
+                    data-en="Complete operational guide on phases, services included in the University agreement, timelines, match-funding calculation, and online pre-application.">
+                Guida operativa completa su fasi, servizi inclusi nella convenzione d'Ateneo, tempistiche, calcolo del raddoppio fondi e pre-candidatura online.
+              </span>
+            </p>
+          </div>
+          <a href="#candidatura-section" class="btn btn-primary"
+             data-it="✍️ Vai al Form di Pre-Candidatura ↓" data-en="✍️ Jump to Pre-Application Form ↓">
+            ✍️ Vai al Form di Pre-Candidatura ↓
+          </a>
+        </div>
+
+        <!-- LE 4 FASI CRONOLOGICHE DELL'INIZIATIVA (Con tempistiche chiare) -->
+        <div class="roadmap-grid">
+          <article class="roadmap-step-card">
+            <div>
+              <span class="step-num-badge" data-it="Fase 1 • Candidatura" data-en="Phase 1 • Application">Fase 1 • Candidatura</span>
+              <h2 style="color:var(--unito-navy); font-size:1.12rem; margin-bottom:8px;"
+                  data-it="Proponi l'idea progettuale" data-en="Submit Your Project Idea">
+                Proponi l'idea progettuale
+              </h2>
+              <p style="font-size:0.88rem; color:var(--text-muted);"
+                 data-it="Compila il modulo preliminare qui sotto indicando obiettivi scientifici, ricaduta pubblica e budget stimato (tra 4.000 € e 25.000 €). Non serve avere già un video pronto."
+                 data-en="Fill out the preliminary form below stating scientific goals, public impact, and estimated budget (€4,000 to €25,000). No video required yet.">
+                Compila il modulo preliminare qui sotto indicando obiettivi scientifici, ricaduta pubblica e budget stimato (tra 4.000 € e 25.000 €). Non serve avere già un video pronto.
+              </p>
+            </div>
+            <div class="step-time-footer">
+              <span data-it="⏱️ Tempo compilazione: 5 min" data-en="⏱️ Filling time: 5 mins">⏱️ Tempo compilazione: 5 min</span>
+              <span>Step 1/4</span>
+            </div>
+          </article>
+
+          <article class="roadmap-step-card">
+            <div>
+              <span class="step-num-badge" data-it="Fase 2 • Selezione & Academy" data-en="Phase 2 • Selection & Academy">Fase 2 • Selezione & Academy</span>
+              <h2 style="color:var(--unito-navy); font-size:1.12rem; margin-bottom:8px;"
+                  data-it="Formazione Pratica (12 ore)" data-en="Hands-On Training (12 hours)">
+                Formazione Pratica (12 ore)
+              </h2>
+              <p style="font-size:0.88rem; color:var(--text-muted);"
+                 data-it="I team selezionati dalla Commissione Terza Missione partecipano a 3 laboratori operativi su comunicazione scientifica, storytelling e progettazione delle ricompense."
+                 data-en="Teams selected by the Third Mission Committee attend 3 operational workshops on science communication, storytelling, and reward design.">
+                I team selezionati dalla Commissione Terza Missione partecipano a 3 laboratori operativi su comunicazione scientifica, storytelling e progettazione delle ricompense.
+              </p>
+            </div>
+            <div class="step-time-footer">
+              <span data-it="⏱️ Durata: 2 Settimane" data-en="⏱️ Duration: 2 Weeks">⏱️ Durata: 2 Settimane</span>
+              <span>Step 2/4</span>
+            </div>
+          </article>
+
+          <article class="roadmap-step-card">
+            <div>
+              <span class="step-num-badge" data-it="Fase 3 • Accompagnamento" data-en="Phase 3 • Coaching">Fase 3 • Accompagnamento</span>
+              <h2 style="color:var(--unito-navy); font-size:1.12rem; margin-bottom:8px;"
+                  data-it="Campaign Manager Dedicato" data-en="Dedicated Campaign Manager">
+                Campaign Manager Dedicato
+              </h2>
+              <p style="font-size:0.88rem; color:var(--text-muted);"
+                 data-it="Un consulente professionista di Ginger affianca il tuo laboratorio passo dopo passo nella stesura del testo, nello script del video e nel lancio della campagna."
+                 data-en="A professional Ginger consultant guides your lab step-by-step in drafting the pitch, video script, and campaign launch strategy.">
+                Un consulente professionista di Ginger affianca il tuo laboratorio passo dopo passo nella stesura del testo, nello script del video e nel lancio della campagna.
+              </p>
+            </div>
+            <div class="step-time-footer">
+              <span data-it="⏱️ Pre-campagna: 3–4 Settimane" data-en="⏱️ Pre-campaign: 3–4 Weeks">⏱️ Pre-campagna: 3–4 Settimane</span>
+              <span>Step 3/4</span>
+            </div>
+          </article>
+
+          <article class="roadmap-step-card match-highlight">
+            <div>
+              <span class="badge badge-active" style="margin-bottom:10px; align-self:flex-start;"
+                    data-it="Fase 4 • Match-Funding 2x" data-en="Phase 4 • 2x Match-Funding">
+                Fase 4 • Match-Funding 2x
+              </span>
+              <h2 style="color:var(--unito-navy); font-size:1.12rem; margin-bottom:8px;"
+                  data-it="Cofinanziamento fino a 10.000 €" data-en="Match-Funding up to €10,000">
+                Cofinanziamento fino a 10.000 €
+              </h2>
+              <p style="font-size:0.88rem; color:var(--text-main);"
+                 data-it="Quando la raccolta raggiunge il 100% della quota community, l'Università di Torino raddoppia i fondi raccolti fino a un massimo di 10.000 € per progetto!"
+                 data-en="When the campaign reaches 100% of the community target, the University of Turin doubles the funds raised up to €10,000 per project!">
+                Quando la raccolta raggiunge il 100% della quota community, l'Università di Torino raddoppia i fondi raccolti fino a un massimo di 10.000 € per progetto!
+              </p>
+            </div>
+            <div class="step-time-footer" style="color:var(--accent-orange);">
+              <span data-it="⏱️ Online: 40–60 Giorni" data-en="⏱️ Online: 40–60 Days">⏱️ Online: 40–60 Giorni</span>
+              <span>Step 4/4</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SEZIONE 2: PACCHETTI CONVENZIONE E TABELLA SERVIZI, TEMPISTICHE E COSTI (Risolve H10 Pag. 51 Assignment 1) -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="pkg-selector-header">
+          <div>
+            <h2 class="section-title"
+                data-it="Cosa è Incluso: Pacchetti di Supporto, Tempistiche e Costi"
+                data-en="What's Included: Support Packages, Timelines & Costs">
+              Cosa è Incluso: Pacchetti di Supporto, Tempistiche e Costi
+            </h2>
+            <p style="color:var(--text-muted); font-size:0.94rem; margin-top:4px;"
+               data-it="A differenza delle pagine puramente promozionali (Euristica 10), ecco il prospetto analitico dei servizi coperti al 100% dall'Ateneo in base alla fascia del tuo progetto:"
+               data-en="Unlike vague promotional pages (Heuristic 10), here is the analytical breakdown of services 100% covered by the University based on your project tier:">
+              A differenza delle pagine puramente promozionali (Euristica 10), ecco il prospetto analitico dei servizi coperti al 100% dall'Ateneo in base alla fascia del tuo progetto:
+            </p>
+          </div>
+
+          <!-- Selettore Interattivo a 3 Tab ispirato al Mockup di Pag. 51 Assignment 1 -->
+          <div class="filter-pills" role="tablist" aria-label="Seleziona fascia di supporto">
+            <button type="button" class="pill-btn" data-pkg-tab="base"
+                    data-it="📦 1. Fascia Base (4k–6k €)" data-en="📦 1. Base Tier (€4k–6k)">
+              📦 1. Fascia Base (4k–6k €)
+            </button>
+            <button type="button" class="pill-btn active" data-pkg-tab="standard"
+                    data-it="⭐ 2. Fascia Standard (6k–15k €)" data-en="⭐ 2. Standard Tier (€6k–15k)">
+              ⭐ 2. Fascia Standard (6k–15k €)
+            </button>
+            <button type="button" class="pill-btn" data-pkg-tab="premium"
+                    data-it="🚀 3. Fascia Avanzata (15k–25k €)" data-en="🚀 3. Advanced Tier (€15k–25k)">
+              🚀 3. Fascia Avanzata (15k–25k €)
+            </button>
+          </div>
+        </div>
+
+        <!-- Banner dinamico del pacchetto selezionato -->
+        <div id="pkg-dynamic-banner" class="pkg-summary-banner" role="status" aria-live="polite">
+          <div>
+            <span class="badge badge-active" id="pkg-badge" style="margin-bottom:6px;">Fascia Consigliata • Progetti Dipartimentali</span>
+            <h3 id="pkg-title" style="font-size:1.22rem; color:#ffffff; margin-bottom:4px;">
+              Pacchetto Standard UniTo (Ideale per budget da 6.000 € a 15.000 € — es. progetto di Chiara)
+            </h3>
+            <p id="pkg-desc" style="font-size:0.9rem; color:#e2e8f0;">
+              Include 12 ore di formazione pratica, 3 sessioni individuali da 1 ora con Campaign Manager, revisione completa del pitch e supporto montaggio video.
+            </p>
+          </div>
+          <div style="text-align:right; background:rgba(255,255,255,0.1); padding:12px 18px; border-radius:var(--radius-sm); border:1px solid rgba(255,255,255,0.2);">
+            <span style="font-size:0.78rem; color:#cbd5e1; display:block;" data-it="Costo a carico del Dipartimento:" data-en="Cost for the Department:">Costo a carico del Dipartimento:</span>
+            <strong style="font-size:1.45rem; color:var(--accent-gold);">0,00 €</strong>
+            <small id="pkg-market-val" style="display:block; font-size:0.76rem; color:#86efac;">(Valore 800 € coperto da convenzione UniTo)</small>
+          </div>
+        </div>
+
+        <!-- Tabella completa di trasparenza (Risolve H10 Pag. 51 Assignment 1) -->
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-it="Fase / Servizio Incluso" data-en="Phase / Included Service">Fase / Servizio Incluso</th>
+              <th data-it="Deliverables e Supporto Operativo Garantito al Team" data-en="Deliverables & Operational Support Guaranteed">Deliverables e Supporto Operativo Garantito al Team</th>
+              <th data-it="Impegno Richiesto & Tempistiche" data-en="Required Effort & Timeline">Impegno Richiesto & Tempistiche</th>
+              <th data-it="Costo Dipartimento UniTo" data-en="UniTo Department Cost">Costo Dipartimento UniTo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong data-it="1. Formazione & Onboarding" data-en="1. Training & Onboarding">1. Formazione & Onboarding</strong></td>
+              <td id="row-1-deliv" data-it="3 workshop operativi (12h totali) + kit modelli per piano editoriale e ricompense"
+                  data-en="3 operational workshops (12h total) + templates kit for editorial plan and rewards">
+                3 workshop operativi (12h totali) + kit modelli per piano editoriale e ricompense
+              </td>
+              <td data-it="2 Settimane (12 ore complessive)" data-en="2 Weeks (12 hours total)">2 Settimane (12 ore complessive)</td>
+              <td><strong style="color:var(--success-green);" data-it="0,00 € (Coperto da UniTo)" data-en="€0.00 (Covered by UniTo)">0,00 € (Coperto da UniTo)</strong></td>
+            </tr>
+            <tr>
+              <td><strong data-it="2. Progettazione & Video Pitch" data-en="2. Campaign Design & Video Pitch">2. Progettazione & Video Pitch</strong></td>
+              <td id="row-2-deliv" data-it="3 sessioni 1-to-1 con Campaign Manager, editing testo scheda, revisione script video e grafica card"
+                  data-en="3 one-on-one sessions with Campaign Manager, pitch editing, video script review & card graphics">
+                3 sessioni 1-to-1 con Campaign Manager, editing testo scheda, revisione script video e grafica card
+              </td>
+              <td id="row-2-time" data-it="3 – 4 Settimane di Pre-Campagna" data-en="3 – 4 Weeks of Pre-Campaign">3 – 4 Settimane di Pre-Campagna</td>
+              <td><strong style="color:var(--success-green);" data-it="0,00 € (Valore 550 € incluso)" data-en="€0.00 (€550 value included)">0,00 € (Valore 550 € incluso)</strong></td>
+            </tr>
+            <tr>
+              <td><strong data-it="3. Piattaforma, Pagamenti & Ufficio Stampa" data-en="3. Platform, Payments & Press Office">3. Piattaforma, Pagamenti & Ufficio Stampa</strong></td>
+              <td id="row-3-deliv" data-it="Messa online, gateway Carte/PayPal/Bonifici, emissione automatica ricevute fiscali e lancio sui canali UniTo"
+                  data-en="Online hosting, Card/PayPal/IBAN gateway, automatic tax receipts & launch on UniTo channels">
+                Messa online, gateway Carte/PayPal/Bonifici, emissione automatica ricevute fiscali e lancio sui canali UniTo
+              </td>
+              <td data-it="40 – 60 Giorni di Campagna Attiva" data-en="40 – 60 Days of Active Campaign">40 – 60 Giorni di Campagna Attiva</td>
+              <td><strong style="color:var(--success-green);" data-it="0,00 € (Valore 250 € incluso)" data-en="€0.00 (€250 value included)">0,00 € (Valore 250 € incluso)</strong></td>
+            </tr>
+            <tr>
+              <td><strong data-it="4. Erogazione Fondi & Match-Funding" data-en="4. Funds Transfer & Match-Funding">4. Erogazione Fondi & Match-Funding</strong></td>
+              <td data-it="Trasferimento diretto sul fondo di ricerca del Dipartimento + accredito quota raddoppio UniTo (fino a 10.000 €)"
+                  data-en="Direct transfer to Department research fund + UniTo match-funding credit (up to €10,000)">
+                Trasferimento diretto sul fondo di ricerca del Dipartimento + accredito quota raddoppio UniTo (fino a 10.000 €)
+              </td>
+              <td data-it="Entro 30 giorni dalla chiusura" data-en="Within 30 days of closing">Entro 30 giorni dalla chiusura</td>
+              <td><strong style="color:var(--success-green);" data-it="0% Trattenute d'Ateneo" data-en="0% University Deductions">0% Trattenute d'Ateneo</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. SEZIONE 3: SIMULATORE INTERATTIVO MATCH-FUNDING + CHECKLIST + FORM DI PRE-CANDIDATURA (User Journey 3 Chiara) -->
+    <section class="section" id="candidatura-section">
+      <div class="container">
+        <div class="project-layout">
+
+          <!-- COLONNA SINISTRA: SIMULATORE GRAFICO DEL RADDOPPIO UNITO + CHECKLIST REQUISITI + FAQ -->
+          <div>
+
+            <!-- Card 1: Simulatore Interattivo con Barra Grafica Dual-Color -->
+            <div class="sidebar-card" style="margin-bottom:24px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                <span class="badge badge-active" data-it="🧮 Calcolatore Interattivo Match-Funding" data-en="🧮 Interactive Match-Funding Calculator">
+                  🧮 Calcolatore Interattivo Match-Funding
+                </span>
+                <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
+                      data-it="Tetto max Ateneo: 10.000 €" data-en="Max University cap: €10,000">
+                  Tetto max Ateneo: 10.000 €
+                </span>
+              </div>
+
+              <h2 style="color:var(--unito-navy); font-size:1.3rem; margin-bottom:6px;"
+                  data-it="Simula il Budget e la Quota di Raddoppio UniTo"
+                  data-en="Simulate Your Budget & UniTo 2x Match Share">
+                Simula il Budget e la Quota di Raddoppio UniTo
+              </h2>
+              <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;"
+                 data-it="Trascina il cursore per scegliere il budget complessivo del tuo progetto: l'Università copre il 50% a fondo perduto fino a un massimo di 10.000 €."
+                 data-en="Drag the slider to select your total project budget: the University covers 50% as a grant up to a maximum of €10,000.">
+                Trascina il cursore per scegliere il budget complessivo del tuo progetto: l'Università copre il 50% a fondo perduto fino a un massimo di 10.000 €.
+              </p>
+
+              <div class="form-group" style="margin-bottom:10px;">
+                <label for="match-budget-slider" style="display:flex; justify-content:space-between;">
+                  <span data-it="Seleziona il Budget Totale Obiettivo:" data-en="Select Target Total Budget:">Seleziona il Budget Totale Obiettivo:</span>
+                  <strong id="slider-live-label" style="color:var(--accent-orange); font-size:1.05rem;">8.000 €</strong>
+                </label>
+                <input type="range" id="match-budget-slider" min="4000" max="25000" step="1000" value="8000"
+                       style="width:100%; cursor:pointer; accent-color:var(--unito-navy);">
+                <div style="display:flex; justify-content:space-between; font-size:0.76rem; color:var(--text-muted); margin-top:4px;">
+                  <span>Min: 4.000 €</span>
+                  <span>8.000 € (Caso Chiara)</span>
+                  <span>16.000 € (Caso MILK-ACT)</span>
+                  <span>Max: 25.000 €</span>
+                </div>
+              </div>
+
+              <!-- Tre Box Numerici di Output (Compatibili con script.js + estesi per V2) -->
+              <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; text-align:center; margin-top:14px;">
+                <div style="background:var(--bg-subtle); padding:14px 10px; border-radius:var(--radius-sm); border:1.5px solid var(--border-color);">
+                  <span style="font-size:0.76rem; color:var(--text-muted); font-weight:700; display:block;"
+                        data-it="Budget Totale" data-en="Total Budget">Budget Totale</span>
+                  <strong id="calc-total-budget" style="font-size:1.35rem; color:var(--unito-navy);">8.000 €</strong>
+                </div>
+                <div style="background:#fff7ed; padding:14px 10px; border-radius:var(--radius-sm); border:1.5px solid #fdba74;">
+                  <span style="font-size:0.76rem; color:var(--warning-amber); font-weight:700; display:block;"
+                        data-it="Quota Community" data-en="Community Share">Quota Community</span>
+                  <strong id="calc-community-share" style="font-size:1.35rem; color:var(--accent-orange);">4.000 €</strong>
+                </div>
+                <div style="background:var(--success-bg); padding:14px 10px; border-radius:var(--radius-sm); border:1.5px solid #86efac;">
+                  <span style="font-size:0.76rem; color:var(--success-green); font-weight:700; display:block;"
+                        data-it="Raddoppio UniTo" data-en="UniTo Match">Raddoppio UniTo</span>
+                  <strong id="calc-unito-share" style="font-size:1.35rem; color:var(--success-green);">4.000 €</strong>
+                </div>
+              </div>
+
+              <!-- Barra Grafica Proporzionale Live -->
+              <div class="sim-visual-bar-wrap">
+                <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:var(--unito-navy);">
+                  <span data-it="Ripartizione visiva dello sforzo di raccolta:" data-en="Visual breakdown of fundraising effort:">Ripartizione visiva dello sforzo di raccolta:</span>
+                  <span id="sim-cap-note" style="color:var(--success-green);">✓ Raddoppio 50% + 50% attivo</span>
+                </div>
+                <div class="sim-stacked-bar" role="img" aria-label="Proporzione tra quota donatori e quota UniTo">
+                  <div id="sim-bar-comm" class="sim-seg-comm" style="width:50%;">50% Community</div>
+                  <div id="sim-bar-unito" class="sim-seg-unito" style="width:50%;">50% UniTo</div>
+                </div>
+              </div>
+
+              <button type="button" id="apply-sim-budget-btn" class="btn btn-outline" style="width:100%; min-height:40px; font-size:0.88rem;"
+                      data-it="⤵ Trasferisci questo budget (8.000 €) nel Form di Pre-Candidatura →"
+                      data-en="⤵ Transfer this budget (€8,000) to the Pre-Application Form →">
+                ⤵ Trasferisci questo budget (8.000 €) nel Form di Pre-Candidatura →
+              </button>
+            </div>
+
+            <!-- Card 2: Checklist Interattiva di Autoverifica Requisiti (Prevenzione Errori H5) -->
+            <div class="sidebar-card" style="margin-bottom:24px;">
+              <h3 style="color:var(--unito-navy); font-size:1.15rem; margin-bottom:4px;"
+                  data-it="✅ Checklist Requisiti di Ammissibilità (Autoverifica Rapida)"
+                  data-en="✅ Eligibility Requirements Checklist (Quick Self-Check)">
+                ✅ Checklist Requisiti di Ammissibilità (Autoverifica Rapida)
+              </h3>
+              <p style="font-size:0.86rem; color:var(--text-muted);"
+                 data-it="Verifica in 30 secondi che il tuo progetto rispetti i 4 requisiti del bando prima di inviare la scheda:"
+                 data-en="Verify in 30 seconds that your project meets the 4 call requirements before submitting:">
+                Verifica in 30 secondi che il tuo progetto rispetti i 4 requisiti del bando prima di inviare la scheda:
+              </p>
+
+              <div class="eligibility-checklist">
+                <label class="check-item-card">
+                  <input type="checkbox" checked>
+                  <span data-it="1. Il referente scientifico è un docente, ricercatore (RTD), assegnista o dottorando attivo presso un Dipartimento UniTo."
+                        data-en="1. The project lead is a faculty member, researcher (RTD), postdoc, or PhD student active at a UniTo Department.">
+                    1. Il referente scientifico è un docente, ricercatore (RTD), assegnista o dottorando attivo presso un Dipartimento UniTo.
+                  </span>
+                </label>
+                <label class="check-item-card">
+                  <input type="checkbox" checked>
+                  <span data-it="2. Il progetto prevede una chiara ricaduta di Terza Missione (divulgazione, open science, impatto sociale o ambientale)."
+                        data-en="2. The project has a clear Third Mission impact (public engagement, open science, social or environmental benefit).">
+                    2. Il progetto prevede una chiara ricaduta di Terza Missione (divulgazione, open science, impatto sociale o ambientale).
+                  </span>
+                </label>
+                <label class="check-item-card">
+                  <input type="checkbox" checked>
+                  <span data-it="3. Il budget complessivo richiesto è compreso tra 4.000 € e 25.000 € e non copre costi strutturali già finanziati."
+                        data-en="3. The total requested budget is between €4,000 and €25,000 and does not duplicate already funded costs.">
+                    3. Il budget complessivo richiesto è compreso tra 4.000 € e 25.000 € e non copre costi strutturali già finanziati.
+                  </span>
+                </label>
+                <label class="check-item-card">
+                  <input type="checkbox" checked>
+                  <span data-it="4. Il team può individuare almeno 2 referenti operativi per seguire le 12 ore di formazione con il Campaign Manager."
+                        data-en="4. The team can appoint at least 2 members to attend the 12 hours of training with the Campaign Manager.">
+                    4. Il team può individuare almeno 2 referenti operativi per seguire le 12 ore di formazione con il Campaign Manager.
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Card 3: FAQ Proponenti (Progressive Disclosure) -->
+            <div class="sidebar-card" id="faq-section">
+              <h3 style="color:var(--unito-navy); font-size:1.15rem; margin-bottom:12px;"
+                  data-it="❓ Domande Frequenti dei Ricercatori (FAQ)"
+                  data-en="❓ Frequently Asked Questions for Researchers (FAQ)">
+                ❓ Domande Frequenti dei Ricercatori (FAQ)
+              </h3>
+
+              <details class="faq-item" open>
+                <summary data-it="Come vengono gestiti amministrativamente i fondi raccolti?"
+                         data-en="How are the raised funds managed administratively?">
+                  Come vengono gestiti amministrativamente i fondi raccolti?
+                </summary>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;"
+                   data-it="Al raggiungimento del 100%, l'intero importo donato dalla community più la quota di Match-Funding dell'Ateneo vengono trasferiti direttamente sul fondo contabile del Dipartimento proponente, utilizzabile per acquisto strumentazione, reagenti, borse di ricerca o divulgazione."
+                   data-en="Once 100% is reached, the entire community amount plus the University Match-Funding share are transferred directly to the proposing Department's research account for equipment, reagents, fellowships, or outreach.">
+                  Al raggiungimento del 100%, l'intero importo donato dalla community più la quota di Match-Funding dell'Ateneo vengono trasferiti direttamente sul fondo contabile del Dipartimento proponente, utilizzabile per acquisto strumentazione, reagenti, borse di ricerca o divulgazione.
+                </p>
+              </details>
+
+              <details class="faq-item">
+                <summary data-it="Serve avere competenze di video-making o marketing per partecipare?"
+                         data-en="Do we need video-making or marketing skills to apply?">
+                  Serve avere competenze di video-making o marketing per partecipare?
+                </summary>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;"
+                   data-it="Assolutamente no. Il percorso include 12 ore di formazione e l'affiancamento individuale di un Campaign Manager di Ginger che guida il team nella stesura dei testi, nello script del video e nella pianificazione delle ricompense."
+                   data-en="Not at all. The program includes 12 hours of training and 1-on-1 coaching from a Ginger Campaign Manager who guides your team through copywriting, video scripting, and reward planning.">
+                  Assolutamente no. Il percorso include 12 ore di formazione e l'affiancamento individuale di un Campaign Manager di Ginger che guida il team nella stesura dei testi, nello script del video e nella pianificazione delle ricompense.
+                </p>
+              </details>
+
+              <details class="faq-item" style="margin-bottom:0;">
+                <summary data-it="Dove trovo il regolamento ufficiale integrale dell'Ateneo?"
+                         data-en="Where can I find the full official University call regulation?">
+                  Dove trovo il regolamento ufficiale integrale dell'Ateneo?
+                </summary>
+                <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;">
+                  <span data-it="Puoi consultare il decreto rettorale e gli allegati sul portale istituzionale: "
+                        data-en="You can view the rectoral decree and annexes on the institutional portal: ">
+                    Puoi consultare il decreto rettorale e gli allegati sul portale istituzionale:
+                  </span>
+                  <a href="https://www.unito.it" target="_blank" rel="noopener" class="ext-link">
+                    Bando Funds TOgether su UniTo.it <span class="ext-badge">↗ sito esterno</span>
+                  </a>.
+                </p>
+              </details>
+            </div>
+
+          </div>
+
+          <!-- COLONNA DESTRA: MODULO DI PRE-CANDIDATURA CON INLINE VALIDATION E PROTOCOLLO (User Journey 3 Chiara) -->
+          <div class="sidebar-card" style="position:sticky; top:98px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span class="badge badge-active" data-it="Task 6 • Candidatura Simulata" data-en="Task 6 • Simulated Application">
+                Task 6 • Candidatura Simulata
+              </span>
+              <span style="font-size:0.78rem; color:var(--text-muted); font-weight:700;"
+                    data-it="✓ Inline Validation Attiva (H5)" data-en="✓ Inline Validation Active (H5)">
+                ✓ Inline Validation Attiva (H5)
+              </span>
+            </div>
+
+            <h2 style="color:var(--unito-navy); font-size:1.4rem; margin-bottom:6px;"
+                data-it="Invia la Pre-Candidatura del tuo Progetto"
+                data-en="Submit Your Project Pre-Application">
+              Invia la Pre-Candidatura del tuo Progetto
+            </h2>
+            <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:18px;"
+               data-it="Compila i campi per sottoporre la tua proposta alla Commissione Terza Missione UniTo e prenotare il primo colloquio col Campaign Manager."
+               data-en="Complete the fields to submit your proposal to the UniTo Third Mission Committee and book your first meeting with the Campaign Manager.">
+              Compila i campi per sottoporre la tua proposta alla Commissione Terza Missione UniTo e prenotare il primo colloquio col Campaign Manager.
+            </p>
+
+            <form id="proponi-candidatura-form" novalidate>
+              <!-- 1. Nome e Ruolo Accademico -->
+              <div class="form-group">
+                <label for="prop-name" data-it="1. Nome, Cognome e Qualifica Accademica (*)" data-en="1. Full Name & Academic Role (*)">
+                  1. Nome, Cognome e Qualifica Accademica (*)
+                </label>
+                <input type="text" id="prop-name" class="form-input input-valid"
+                       value="Dott.ssa Chiara Ferrero (Ricercatrice RTD-a)" required>
+                <div id="fb-prop-name" class="field-feedback valid">✓ Referente scientifico valido.</div>
+              </div>
+
+              <!-- 2. Email Istituzionale @unito.it con Inline Validation (Euristica 5) -->
+              <div class="form-group">
+                <label for="prop-email" data-it="2. Email Istituzionale @unito.it (*)" data-en="2. Institutional Email @unito.it (*)">
+                  2. Email Istituzionale @unito.it (*)
+                </label>
+                <input type="email" id="prop-email" class="form-input input-valid"
+                       value="chiara.ferrero@unito.it" placeholder="nome.cognome@unito.it" required>
+                <div id="fb-prop-email" class="field-feedback valid">
+                  ✓ Dominio istituzionale @unito.it verificato correttamente.
+                </div>
+              </div>
+
+              <!-- 3. Dipartimento e Area Tematica -->
+              <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label for="prop-dept" data-it="3. Dipartimento UniTo (*)" data-en="3. UniTo Department (*)">3. Dipartimento UniTo (*)</label>
+                  <select id="prop-dept" class="select-control" style="width:100%;" required>
+                    <option value="DISAFA">DISAFA — Scienze Agrarie, Forestali e Alimentari</option>
+                    <option value="DSCB">DSCB — Scienze Cliniche e Biologiche</option>
+                    <option value="DI">DI — Dipartimento di Informatica</option>
+                    <option value="MAT">Matematica "Giuseppe Peano"</option>
+                    <option value="PSI">Dipartimento di Psicologia</option>
+                    <option value="DBIOS">DBIOS — Scienze della Vita e Biologia</option>
+                    <option value="STUDUM">STUDUM — Studi Umanistici</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="prop-budget" data-it="4. Budget Totale € (*)" data-en="4. Total Budget € (*)">4. Budget Totale € (*)</label>
+                  <input type="number" id="prop-budget" class="form-input input-valid"
+                         value="8000" min="4000" max="25000" step="500" required>
+                </div>
+              </div>
+              <div id="fb-prop-budget" class="field-feedback valid" style="margin-top:-12px; margin-bottom:14px;">
+                ✓ Quota Community: 4.000 € + Quota Raddoppio UniTo: 4.000 €.
+              </div>
+
+              <!-- 5. Titolo Provvisorio -->
+              <div class="form-group">
+                <label for="prop-title" data-it="5. Titolo Provvisorio del Progetto di Ricerca (*)" data-en="5. Provisional Project Title (*)">
+                  5. Titolo Provvisorio del Progetto di Ricerca (*)
+                </label>
+                <input type="text" id="prop-title" class="form-input input-valid"
+                       value="PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini"
+                       placeholder="Es. PolliNet: Monitoraggio Impollinatori Alpini" required>
+                <div id="fb-prop-title" class="field-feedback valid">✓ Titolo chiaro e descrittivo.</div>
+              </div>
+
+              <!-- 6. Abstract Scientifico e Ricaduta Pubblica -->
+              <div class="form-group">
+                <label for="prop-abstract" style="display:flex; justify-content:space-between;">
+                  <span data-it="6. Obiettivo Scientifico, Utilizzo Fondi e Impatto (*)" data-en="6. Scientific Goal, Funds Usage & Impact (*)">
+                    6. Obiettivo Scientifico, Utilizzo Fondi e Impatto (*)
+                  </span>
+                  <small id="abstract-char-count" style="color:var(--text-muted); font-weight:600;">218 / 600</small>
+                </label>
+                <textarea id="prop-abstract" class="form-input input-valid" rows="3" maxlength="600" required>Installazione di stazioni bioacustiche smart nelle valli piemontesi per monitorare gli impollinatori selvatici, coinvolgendo scuole e agricoltori locali con dati open-science e linee guida per la biodiversità.</textarea>
+                <div id="fb-prop-abstract" class="field-feedback valid">✓ Abstract completo (minimo 30 caratteri soddisfatto).</div>
+              </div>
+
+              <button type="submit" id="prop-submit-btn" class="btn btn-primary" style="width:100%; padding:14px; font-size:1.02rem;"
+                      data-it="📨 Invia Pre-Candidatura alla Commissione UniTo →"
+                      data-en="📨 Submit Pre-Application to UniTo Committee →">
+                📨 Invia Pre-Candidatura alla Commissione UniTo →
+              </button>
+            </form>
+
+            <!-- BOX DI CONFERMA PRESA IN CARICO + COLLEGAMENTO ALLA DASHBOARD PROGETTISTI (Fase 6 User Journey 3 Chiara) -->
+            <div id="proponi-success-box" style="display:none; background:var(--success-bg); border:2px solid var(--success-green); padding:24px; border-radius:var(--radius-md); text-align:center;">
+              <div style="font-size:2.8rem; margin-bottom:8px;" aria-hidden="true">✅🔬</div>
+              <span class="badge badge-active" style="margin-bottom:8px;">Richiesta Registrata • Direzione Ricerca UniTo</span>
+              <h3 style="color:var(--unito-navy); font-size:1.3rem; margin-bottom:8px;"
+                  data-it="Pre-Candidatura Inviata con Successo!"
+                  data-en="Pre-Application Successfully Submitted!">
+                Pre-Candidatura Inviata con Successo!
+              </h3>
+              <p style="font-size:0.9rem; color:var(--text-main); margin-bottom:14px;">
+                Protocollo Ufficiale: <strong>#CAND-UNITO-2026-DISAFA-19</strong>.<br>
+                Progetto: <strong id="conf-proj-title">PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini</strong><br>
+                Budget Simulato: <strong id="conf-proj-budget">8.000 € (4.000 € Community + 4.000 € Match-Funding UniTo)</strong>.
+              </p>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:18px;">
+                Riceverai entro 48 ore lavorative sulla tua casella istituzionale <strong id="conf-proj-email">chiara.ferrero@unito.it</strong> il calendario delle 3 sessioni formative e il contatto della tua Campaign Manager (Dott.ssa Flavia Dian).
+              </p>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <button type="button" id="open-dashboard-after-submit" class="btn btn-secondary" style="width:100%;"
+                        data-it="🏛️ Apri Ora la tua Dashboard Area Progettisti (con Navbar e Tasto Home)"
+                        data-en="🏛️ Open Your Researcher Dashboard Now (with Navbar & Home Button)">
+                  🏛️ Apri Ora la tua Dashboard Area Progettisti (con Navbar e Tasto Home)
+                </button>
+                <button type="button" id="reset-proponi-form-btn" class="btn btn-outline" style="width:100%;"
+                        data-it="↺ Modifica o invia una nuova simulazione"
+                        data-en="↺ Edit or submit another simulation">
+                  ↺ Modifica o invia una nuova simulazione
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 6. FOOTER ISTITUZIONALE COERENTE -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);">🏛️ UniTo</span>
+            <span>Funds TOgether!</span>
+          </div>
+          <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
+             data-it="Servizio di accompagnamento e cofinanziamento per la Terza Missione dell'Università degli Studi di Torino."
+             data-en="Coaching and match-funding service for the Third Mission of the University of Turin.">
+            Servizio di accompagnamento e cofinanziamento per la Terza Missione dell'Università degli Studi di Torino.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h4>
+          <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="catalogo.html">Esplora Catalogo Progetti (9)</a></li>
+            <li><a href="proponi.html">Come Funziona & Bando Ricercatori</a></li>
+            <li><a href="partner.html">I Nostri Partner e Collaboratori</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h4>
+          <ul>
+            <li><a href="#faq-section">Domande Frequenti (FAQ)</a></li>
+            <li><a href="#" data-open-privacy>Informativa Privacy & Condizioni (IT/EN)</a></li>
+            <li><a href="#" data-open-login>Accesso Area Progettisti / Partner</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Collegamenti Esterni" data-en="External Links">Collegamenti Esterni</h4>
+          <ul>
+            <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it ↗ (sito esterno)</a></li>
+            <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger ↗ (sito esterno)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Università degli Studi di Torino — Prototipo HCI Gruppo I (Stigliano Antonio, Tumolo Christian)</span>
+        <a href="index.html" style="color:#ffd166;" data-it="↑ Torna alla Home Page" data-en="↑ Back to Home Page">↑ Torna alla Home Page</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Motore V2 specifico per proponi.html: gestisce i 3 Pacchetti Servizi (H10), la Barra Grafica Match-Funding e l'Inline Validation @unito.it -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.getElementById('match-budget-slider');
+      const sliderLabel = document.getElementById('slider-live-label');
+      const simBarComm = document.getElementById('sim-bar-comm');
+      const simBarUnito = document.getElementById('sim-bar-unito');
+      const simCapNote = document.getElementById('sim-cap-note');
+      const applySimBtn = document.getElementById('apply-sim-budget-btn');
+
+      const propForm = document.getElementById('proponi-candidatura-form');
+      const propName = document.getElementById('prop-name');
+      const propEmail = document.getElementById('prop-email');
+      const propDept = document.getElementById('prop-dept');
+      const propBudget = document.getElementById('prop-budget');
+      const propTitle = document.getElementById('prop-title');
+      const propAbstract = document.getElementById('prop-abstract');
+      const propSubmitBtn = document.getElementById('prop-submit-btn');
+      const charCount = document.getElementById('abstract-char-count');
+
+      // 1. Selettore Interattivo dei 3 Pacchetti di Supporto (Risolve H10 Pag. 51 Assignment 1)
+      const PKG_DATA = {
+        base: {
+          badge: 'Fascia Base • Progetti Divulgativi & Laboratori Didattici',
+          title: 'Pacchetto Base UniTo (Per budget da 4.000 € a 6.000 €)',
+          desc: 'Include 12 ore di formazione in aula/online, 2 sessioni individuali con Campaign Manager, revisione scheda testuale e kit grafico social.',
+          marketVal: '(Valore 550 € interamente coperto da convenzione UniTo)',
+          r2Deliv: '2 sessioni 1-to-1 con Campaign Manager, editing scheda progetto e kit grafico per i social di Dipartimento',
+          r2Time: '2 – 3 Settimane di Pre-Campagna'
+        },
+        standard: {
+          badge: 'Fascia Consigliata • Progetti di Ricerca Dipartimentali',
+          title: 'Pacchetto Standard UniTo (Per budget da 6.000 € a 15.000 € — Caso Dott.ssa Chiara Ferrero)',
+          desc: 'Include 12 ore di formazione pratica, 3 sessioni individuali da 1 ora con Campaign Manager, revisione completa del pitch e supporto montaggio video.',
+          marketVal: '(Valore 800 € interamente coperto da convenzione UniTo)',
+          r2Deliv: '3 sessioni 1-to-1 con Campaign Manager, editing testo scheda, revisione script video e grafica card',
+          r2Time: '3 – 4 Settimane di Pre-Campagna'
+        },
+        premium: {
+          badge: 'Fascia Avanzata • Progetti Interdipartimentali & Grandi Attrezzature',
+          title: 'Pacchetto Ricerca Avanzata UniTo (Per budget da 15.000 € a 25.000 € — es. MILK-ACT)',
+          desc: 'Include formazione intensiva, 5 sessioni strategiche dedicate, supporto riprese/editing video in laboratorio, ufficio stampa d\'Ateneo e matching con Partner CSR.',
+          marketVal: '(Valore 1.250 € interamente coperto da convenzione UniTo)',
+          r2Deliv: '5 sessioni strategiche con Senior Campaign Manager, supporto video in laboratorio e coinvolgimento Partner CSR',
+          r2Time: '4 – 5 Settimane di Pre-Campagna'
+        }
+      };
+
+      document.querySelectorAll('[data-pkg-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-pkg-tab');
+          const d = PKG_DATA[key];
+          document.querySelectorAll('[data-pkg-tab]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('pkg-badge').textContent = d.badge;
+          document.getElementById('pkg-title').textContent = d.title;
+          document.getElementById('pkg-desc').textContent = d.desc;
+          document.getElementById('pkg-market-val').textContent = d.marketVal;
+          document.getElementById('row-2-deliv').textContent = d.r2Deliv;
+          document.getElementById('row-2-time').textContent = d.r2Time;
+        });
+      });
+
+      // 2. Aggiornamento Barra Grafica del Simulatore di Match-Funding
+      function updateVisualSimulator() {
+        const total = Number(slider.value);
+        const unitoMatch = Math.min(total / 2, 10000);
+        const commNeeded = total - unitoMatch;
+        const commPct = Math.round((commNeeded / total) * 100);
+        const unitoPct = 100 - commPct;
+
+        if (sliderLabel) sliderLabel.textContent = `${total.toLocaleString('it-IT')} €`;
+        if (simBarComm) {
+          simBarComm.style.width = `${commPct}%`;
+          simBarComm.textContent = `${commPct}% Community (${commNeeded.toLocaleString('it-IT')} €)`;
+        }
+        if (simBarUnito) {
+          simBarUnito.style.width = `${unitoPct}%`;
+          simBarUnito.textContent = `${unitoPct}% UniTo (${unitoMatch.toLocaleString('it-IT')} €)`;
+        }
+        if (simCapNote) {
+          simCapNote.textContent = total > 20000
+            ? 'ℹ️ Tetto massimo di 10.000 € UniTo raggiunto'
+            : '✓ Raddoppio 50% + 50% attivo';
+        }
+        if (applySimBtn) {
+          applySimBtn.textContent = `⤵ Trasferisci questo budget (${total.toLocaleString('it-IT')} €) nel Form di Pre-Candidatura →`;
+        }
+      }
+
+      if (slider) {
+        slider.addEventListener('input', updateVisualSimulator);
+        updateVisualSimulator();
+      }
+
+      if (applySimBtn) {
+        applySimBtn.addEventListener('click', () => {
+          propBudget.value = slider.value;
+          propBudget.dispatchEvent(new Event('input'));
+          propBudget.focus();
+        });
+      }
+
+      // 3. Inline Validation del Form di Pre-Candidatura (Euristica 5)
+      function validateProponiForm() {
+        let valid = true;
+
+        // Nome
+        const fbName = document.getElementById('fb-prop-name');
+        if (propName.value.trim().length < 5) {
+          propName.className = 'form-input input-error';
+          fbName.className = 'field-feedback error';
+          fbName.textContent = '⚠️ Inserisci nome, cognome e qualifica del referente UniTo.';
+          valid = false;
+        } else {
+          propName.className = 'form-input input-valid';
+          fbName.className = 'field-feedback valid';
+          fbName.textContent = '✓ Referente scientifico valido.';
+        }
+
+        // Email Istituzionale @unito.it
+        const fbEmail = document.getElementById('fb-prop-email');
+        const emailVal = propEmail.value.trim().toLowerCase();
+        const isUnito = /^[^\s@]+@(unito\.it|edu\.unito\.it)$/.test(emailVal);
+        if (!isUnito) {
+          propEmail.className = 'form-input input-error';
+          fbEmail.className = 'field-feedback error';
+          fbEmail.textContent = '⚠️ È richiesto un indirizzo email istituzionale @unito.it (es. chiara.ferrero@unito.it).';
+          valid = false;
+        } else {
+          propEmail.className = 'form-input input-valid';
+          fbEmail.className = 'field-feedback valid';
+          fbEmail.textContent = '✓ Dominio istituzionale @unito.it verificato correttamente.';
+        }
+
+        // Budget (4.000 - 25.000 €)
+        const fbBud = document.getElementById('fb-prop-budget');
+        const bVal = Number(propBudget.value);
+        if (!bVal || bVal < 4000 || bVal > 25000) {
+          propBudget.className = 'form-input input-error';
+          fbBud.className = 'field-feedback error';
+          fbBud.textContent = '⚠️ Il budget del bando deve essere compreso tra 4.000 € e 25.000 €.';
+          valid = false;
+        } else {
+          const uMatch = Math.min(bVal / 2, 10000);
+          const cShare = bVal - uMatch;
+          propBudget.className = 'form-input input-valid';
+          fbBud.className = 'field-feedback valid';
+          fbBud.textContent = `✓ Quota Community: ${cShare.toLocaleString('it-IT')} € + Quota Raddoppio UniTo: ${uMatch.toLocaleString('it-IT')} €.`;
+        }
+
+        // Titolo
+        const fbTitle = document.getElementById('fb-prop-title');
+        if (propTitle.value.trim().length < 6) {
+          propTitle.className = 'form-input input-error';
+          fbTitle.className = 'field-feedback error';
+          fbTitle.textContent = '⚠️ Inserisci un titolo provvisorio di almeno 6 caratteri.';
+          valid = false;
+        } else {
+          propTitle.className = 'form-input input-valid';
+          fbTitle.className = 'field-feedback valid';
+          fbTitle.textContent = '✓ Titolo chiaro e descrittivo.';
+        }
+
+        // Abstract
+        const fbAbs = document.getElementById('fb-prop-abstract');
+        const absLen = propAbstract.value.trim().length;
+        if (charCount) charCount.textContent = `${absLen} / 600`;
+        if (absLen < 30) {
+          propAbstract.className = 'form-input input-error';
+          fbAbs.className = 'field-feedback error';
+          fbAbs.textContent = `⚠️ Descrivi l'obiettivo scientifico in almeno 30 caratteri (attuali: ${absLen}).`;
+          valid = false;
+        } else {
+          propAbstract.className = 'form-input input-valid';
+          fbAbs.className = 'field-feedback valid';
+          fbAbs.textContent = '✓ Abstract completo (minimo 30 caratteri soddisfatto).';
+        }
+
+        propSubmitBtn.disabled = !valid;
+        return valid;
+      }
+
+      [propName, propEmail, propBudget, propTitle, propAbstract].forEach(el => {
+        if (el) el.addEventListener('input', validateProponiForm);
+      });
+
+      // Popola dati di conferma all'invio del form
+      if (propForm) {
+        propForm.addEventListener('submit', (e) => {
+          if (!validateProponiForm()) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return;
+          }
+          const bVal = Number(propBudget.value) || 8000;
+          const uMatch = Math.min(bVal / 2, 10000);
+          const cShare = bVal - uMatch;
+          document.getElementById('conf-proj-title').textContent = propTitle.value;
+          document.getElementById('conf-proj-budget').textContent = `${bVal.toLocaleString('it-IT')} € (${cShare.toLocaleString('it-IT')} € Community + ${uMatch.toLocaleString('it-IT')} € Match-Funding UniTo)`;
+          document.getElementById('conf-proj-email').textContent = propEmail.value;
+        });
+      }
+
+      // Bottoni della Barra di Verifica Superiore
+      const btnChiara = document.getElementById('fill-chiara-scenario-btn');
+      if (btnChiara) {
+        btnChiara.addEventListener('click', () => {
+          slider.value = 8000;
+          slider.dispatchEvent(new Event('input'));
+          propName.value = 'Dott.ssa Chiara Ferrero (Ricercatrice RTD-a)';
+          propEmail.value = 'chiara.ferrero@unito.it';
+          propDept.value = 'DISAFA';
+          propBudget.value = '8000';
+          propTitle.value = 'PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini';
+          propAbstract.value = 'Installazione di stazioni bioacustiche smart nelle valli piemontesi per monitorare gli impollinatori selvatici, coinvolgendo scuole e agricoltori locali con dati open-science.';
+          validateProponiForm();
+        });
+      }
+
+      const btnInvalidEmail = document.getElementById('test-non-unito-email-btn');
+      if (btnInvalidEmail) {
+        btnInvalidEmail.addEventListener('click', () => {
+          propEmail.value = 'chiara.ferrero@gmail.com';
+          validateProponiForm();
+          propEmail.focus();
+        });
+      }
+
+      // Apertura diretta della vista Dashboard Progettisti con Navbar preservata (H3 & H4)
+      function openDashboardViewDirectly() {
+        const loginModal = document.getElementById('login-modal');
+        const formView = document.getElementById('login-view-form');
+        const dashView = document.getElementById('login-view-dashboard');
+        if (loginModal && formView && dashView) {
+          formView.style.display = 'none';
+          dashView.style.display = 'block';
+          loginModal.classList.add('open');
+        }
+      }
+
+      const btnDashDirect = document.getElementById('preview-dashboard-direct-btn');
+      if (btnDashDirect) btnDashDirect.addEventListener('click', openDashboardViewDirectly);
+
+      const btnDashAfter = document.getElementById('open-dashboard-after-submit');
+      if (btnDashAfter) btnDashAfter.addEventListener('click', openDashboardViewDirectly);
+
+      const btnResetForm = document.getElementById('reset-proponi-form-btn');
+      if (btnResetForm) {
+        btnResetForm.addEventListener('click', () => {
+          document.getElementById('proponi-success-box').style.display = 'none';
+          propForm.style.display = 'block';
+        });
+      }
+
+      validateProponiForm();
+    });
+  </script>
+</body>
+</html>

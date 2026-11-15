@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Nostri Partner e Collaboratori | UniTo Crowd — Funds TOgether</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Stili specifici potenziati per la Vetrina Partner & Collaboratori V2 */
+    .partner-category-section {
+      margin-bottom: 44px;
+    }
+    .category-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 2px solid var(--unito-navy);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .partner-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    /* Monogramma / Emblema Istituzionale SVG al posto del vecchio cerchio col bordo verde fuori brand (Risolve H4 Pag. 33) */
+    .partner-svg-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--unito-navy) 0%, var(--unito-navy-light) 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+      border-bottom: 3px solid var(--accent-orange);
+    }
+    .partner-svg-logo.logo-bank {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    }
+    .partner-svg-logo.logo-pub {
+      background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+    }
+    .partner-svg-logo.logo-csr {
+      background: linear-gradient(135deg, #4338ca 0%, #312e81 100%);
+    }
+
+    /* Badge che certifica la posizione alfabetica fissa (Risolve H3 Pag. 22: fine dell'ordine randomico) */
+    .alpha-index-badge {
+      font-size: 0.73rem;
+      font-weight: 800;
+      background-color: var(--bg-subtle);
+      color: var(--unito-navy);
+      border: 1px solid var(--border-color);
+      padding: 3px 8px;
+      border-radius: 6px;
+      transition: all 0.25s ease;
+    }
+    .alpha-index-badge.highlight-alpha {
+      background-color: var(--warning-bg);
+      border-color: #f59e0b;
+      color: var(--warning-amber);
+      transform: scale(1.08);
+    }
+
+    .partner-impact-pill {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      margin: 12px 0;
+      font-size: 0.8rem;
+      color: var(--text-main);
+    }
+    .partner-card-actions {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .partner-card-actions .btn {
+      min-height: 36px;
+      padding: 6px 11px;
+      font-size: 0.8rem;
+    }
+
+    /* Banner di verifica stabilità ordine A-Z */
+    .stability-proof-banner {
+      background-color: var(--success-bg);
+      border: 1.5px solid var(--success-green);
+      color: var(--success-green);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      margin-bottom: 22px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip-link per accessibilità da tastiera (WCAG 2.1) -->
+  <a href="#main-content" class="skip-link" data-it="Salta alla vetrina Partner e Collaboratori" data-en="Skip to Partners & Collaborators showcase">Salta alla vetrina Partner e Collaboratori</a>
+
+  <!-- 1. HEADER UNIFICATO STICKY (Risolve H4 "menu arcobaleno", H7 Barra che scompare, H8 Doppia barra) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home">
+        <span class="brand-badge">🏛️ UniTo</span>
+        <div>
+          Funds TOgether!
+          <span class="brand-sub" data-it="Network Partner & Rendicontazione CSR" data-en="Partner Network & CSR Accountability">Network Partner & Rendicontazione CSR</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu Principale">
+        <ul>
+          <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+          <li><a href="catalogo.html" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+          <li><a href="proponi.html" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
+          <li><a href="partner.html" class="active" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form id="header-search-form" class="header-search" role="search">
+          <input type="search" id="header-search-input"
+                 placeholder="Cerca progetti..."
+                 data-placeholder-it="Cerca progetti..."
+                 data-placeholder-en="Search projects..."
+                 aria-label="Cerca progetti">
+          <button type="submit" aria-label="Avvia ricerca">🔍</button>
+        </form>
+
+        <div class="lang-switch" role="group" aria-label="Selettore lingua IT / EN">
+          <button type="button" class="lang-btn active" data-lang="it">IT</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <button type="button" class="btn btn-secondary" data-open-login
+                data-it="👤 Accedi" data-en="👤 Sign In">👤 Accedi</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. BREADCRUMBS STANDARDIZZATE IN SOLO TESTO (Risolve H1 e H4) -->
+  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
+    <div class="container breadcrumbs-inner">
+      <ol class="breadcrumbs-list">
+        <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+        <li class="current" aria-current="page"
+            data-it="I Nostri Partner e Collaboratori (Sezione Unificata — Euristica 2)"
+            data-en="Our Partners & Collaborators (Unified Section — Heuristic 2)">
+          I Nostri Partner e Collaboratori (Sezione Unificata — Euristica 2)
+        </li>
+      </ol>
+      <span style="font-size:0.8rem; color:var(--unito-navy); font-weight:700;"
+            data-it="✓ Ordine Alfabetico Fisso A–Z garantito a ogni accesso (Euristica 3)"
+            data-en="✓ Fixed A–Z Alphabetical Order guaranteed on every visit (Heuristic 3)">
+        ✓ Ordine Alfabetico Fisso A–Z garantito a ogni accesso (Euristica 3)
+      </span>
+    </div>
+  </nav>
+
+  <main id="main-content" class="section">
+    <div class="container">
+
+      <!-- 3. BARRA DI VERIFICA PROTOTIPO (Task 5 — Persona 4 Marc Dubois & Euristiche 2, 3, 4, 7) -->
+      <div class="demo-switcher-bar" role="region" aria-label="Simulatore scenari di verifica per la pagina Partner">
+        <div>
+          <strong data-it="🧪 Barra di Verifica Partner & CSR (Task 5 — Euristiche 2, 3, 4, 7):"
+                  data-en="🧪 Partner & CSR Verification Bar (Task 5 — Heuristics 2, 3, 4, 7):">
+            🧪 Barra di Verifica Partner & CSR (Task 5 — Euristiche 2, 3, 4, 7):
+          </strong>
+          <span data-it="Simula con un clic lo scenario di Marc Dubois (CSR Manager in lingua EN), verifica la stabilità dell'ordine A–Z o controlla la Privacy Policy tradotta in inglese:"
+                data-en="Simulate with one click Marc Dubois's scenario (CSR Manager in EN), verify A–Z order stability, or inspect the English Privacy Policy:">
+            Simula con un clic lo scenario di Marc Dubois (CSR Manager in lingua EN), verifica la stabilità dell'ordine A–Z o controlla la Privacy Policy tradotta in inglese:
+          </span>
+        </div>
+        <div class="filter-pills">
+          <button type="button" id="sim-marc-csr-btn" class="pill-btn active"
+                  data-it="🏢 1. Scenario Marc Dubois (EN + Report CSR)"
+                  data-en="🏢 1. Marc Dubois Scenario (EN + CSR Report)">
+            🏢 1. Scenario Marc Dubois (EN + Report CSR)
+          </button>
+          <button type="button" id="verify-alpha-order-btn" class="pill-btn"
+                  data-it="🔤 2. Verifica Ordine Fisso A–Z (Test H3 vs Random)"
+                  data-en="🔤 2. Verify Fixed A–Z Order (Test H3 vs Random)">
+            🔤 2. Verifica Ordine Fisso A–Z (Test H3 vs Random)
+          </button>
+          <button type="button" id="verify-en-privacy-btn" class="pill-btn"
+                  data-it="📄 3. Verifica Privacy Policy in Inglese (Test H2)"
+                  data-en="📄 3. Verify English Privacy Policy (Test H2)">
+            📄 3. Verifica Privacy Policy in Inglese (Test H2)
+          </button>
+        </div>
+      </div>
+
+      <!-- INTESTAZIONE PAGINA UNIFICATA (Risolve H2 Pag. 14 Assignment 1: fine dell'ambiguità tra Partner e Collaborazioni) -->
+      <div class="section-header">
+        <div>
+          <span class="badge badge-active" style="margin-bottom:8px;"
+                data-it="Architettura Unificata • 4 Categorie Logiche • Card Interattive in Brand"
+                data-en="Unified Architecture • 4 Logical Categories • Interactive Branded Cards">
+            Architettura Unificata • 4 Categorie Logiche • Card Interattive in Brand
+          </span>
+          <h1 class="section-title"
+              data-it="I Nostri Partner e Collaboratori Istituzionali"
+              data-en="Our Institutional Partners & CSR Collaborators">
+            I Nostri Partner e Collaboratori Istituzionali
+          </h1>
+          <p class="section-criteria">
+            <span class="criteria-pill" data-it="✓ Risoluzione Euristiche 2, 3, 4, 7" data-en="✓ Heuristics 2, 3, 4, 7 Resolved">
+              ✓ Risoluzione Euristiche 2, 3, 4, 7
+            </span>
+            <span data-it="Unificata l'ambiguità tra 'Partner' e 'Collaborazioni' (H2), eliminato il rimescolamento randomico dei loghi (H3), rimossi i bordi verdi fuori brand (H4) e suddiviso l'elenco in 4 settori (H7)."
+                  data-en="Unified the ambiguity between 'Partners' and 'Collaborations' (H2), eliminated random logo shuffling (H3), removed off-brand green borders (H4), and structured 4 sectors (H7).">
+              Unificata l'ambiguità tra "Partner" e "Collaborazioni" (H2), eliminato il rimescolamento randomico dei loghi (H3), rimossi i bordi verdi fuori brand (H4) e suddiviso l'elenco in 4 settori (H7).
+            </span>
+          </p>
+        </div>
+        <a href="#diventa-partner-box" class="btn btn-primary"
+           data-it="🤝 Diventa Partner CSR d'Ateneo ↓" data-en="🤝 Become a UniTo CSR Partner ↓">
+          🤝 Diventa Partner CSR d'Ateneo ↓
+        </a>
+      </div>
+
+      <!-- Banner di conferma verifica stabilità ordine alfabetico (Risolve H3 Pag. 22 Assignment 1) -->
+      <div id="stability-proof-banner" class="stability-proof-banner" role="status" aria-live="polite">
+        <span data-it="✓ VERIFICA EURISTICA 3 SUPERATA: Tutte le 16 card mantengono una posizione alfabetica deterministica [A → Z] all'interno della propria categoria. Anche ricaricando la pagina, la memoria spaziale dell'utente non viene mai annullata!"
+              data-en="✓ HEURISTIC 3 CHECK PASSED: All 16 partner cards maintain a deterministic alphabetical position [A → Z] within their category. Reloading the page never disrupts user spatial memory!">
+          ✓ VERIFICA EURISTICA 3 SUPERATA: Tutte le 16 card mantengono una posizione alfabetica deterministica [A → Z] all'interno della propria categoria. Anche ricaricando la pagina, la memoria spaziale dell'utente non viene mai annullata!
+        </span>
+        <button type="button" id="close-stability-banner" class="btn btn-outline" style="min-height:32px; padding:4px 10px; font-size:0.78rem;">OK</button>
+      </div>
+
+      <!-- 4. TOOLBAR DI FILTRAGGIO DINAMICO PER LE 4 CATEGORIE E RICERCA ENTE (Risolve H7 Pag. 40-41) -->
+      <section class="catalog-toolbar" aria-label="Filtra e cerca tra i partner e collaboratori">
+        <div class="toolbar-row">
+          <div class="filter-pills" role="group" aria-label="Filtra per macro-categoria di partner">
+            <span class="filter-label" data-it="Filtra Categoria:" data-en="Filter Category:">Filtra Categoria:</span>
+            <button type="button" class="pill-btn active" data-partner-cat="all"
+                    data-it="Tutte le Categorie (16)" data-en="All Categories (16)">Tutte le Categorie (16)</button>
+            <button type="button" class="pill-btn" data-partner-cat="universita"
+                    data-it="🎓 1. Università & Ricerca (4)" data-en="🎓 1. Universities & Research (4)">🎓 1. Università & Ricerca (4)</button>
+            <button type="button" class="pill-btn" data-partner-cat="banche"
+                    data-it="🏦 2. Banche e Fondazioni (4)" data-en="🏦 2. Banks & Foundations (4)">🏦 2. Banche e Fondazioni (4)</button>
+            <button type="button" class="pill-btn" data-partner-cat="enti"
+                    data-it="🏛️ 3. Enti Pubblici & ONU (4)" data-en="🏛️ 3. Public Bodies & UN (4)">🏛️ 3. Enti Pubblici & ONU (4)</button>
+            <button type="button" class="pill-btn" data-partner-cat="aziende"
+                    data-it="🏢 4. Aziende Private & CSR (4)" data-en="🏢 4. Corporate & CSR Partners (4)">🏢 4. Aziende Private & CSR (4)</button>
+          </div>
+        </div>
+
+        <div class="toolbar-row" style="margin-top:14px; padding-top:14px; border-top:1px solid #e2e8f0;">
+          <div class="toolbar-controls" style="flex-grow:1;">
+            <label for="partner-search-input" class="filter-label" data-it="🔍 Cerca Ente:" data-en="🔍 Search Partner:">🔍 Cerca Ente:</label>
+            <input type="search" id="partner-search-input" class="input-control" style="min-width:280px; flex-grow:1;"
+                   placeholder="Digita il nome dell'ente, fondazione o azienda (es. Compagnia di San Paolo, Alpine BioTech, CRT, OIM)..."
+                   data-placeholder-it="Digita il nome dell'ente, fondazione o azienda (es. Compagnia di San Paolo, Alpine BioTech, CRT, OIM)..."
+                   data-placeholder-en="Type the name of the institution, foundation, or company (e.g. Compagnia di San Paolo, Alpine BioTech, CRT)...">
+            <button type="button" id="reset-partner-filters-btn" class="btn btn-outline" style="min-height:38px; padding:6px 14px; font-size:0.84rem;"
+                    data-it="↺ Mostra Tutti (16)" data-en="↺ Show All (16)">
+              ↺ Mostra Tutti (16)
+            </button>
+          </div>
+
+          <div style="font-size:0.86rem; color:var(--unito-navy); font-weight:700;">
+            <span data-it="Enti visualizzati:" data-en="Displayed partners:">Enti visualizzati:</span>
+            <span id="partner-visible-count" class="count-pill" style="background:var(--unito-navy); color:#fff; padding:2px 10px; border-radius:12px; margin:0 4px;">16</span>
+            <span data-it="• Criterio: Ordine Alfabetico Fisso (A–Z)" data-en="• Criterion: Fixed Alphabetical Order (A–Z)">• Criterio: Ordine Alfabetico Fisso (A–Z)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Empty State per la ricerca Partner (Euristica 9) -->
+      <div id="partner-empty-state" class="empty-state-box" style="display:none;" role="status" aria-live="polite">
+        <div class="empty-state-icon" aria-hidden="true">🤝🔍</div>
+        <h3 data-it="Nessun ente partner trovato per la chiave cercata" data-en="No partner institution found matching your search">
+          Nessun ente partner trovato per la chiave cercata
+        </h3>
+        <p style="color:var(--text-muted); margin-bottom:16px;"
+           data-it="Prova a cercare termini come 'Fondazione', 'Banca', 'Torino', 'Alpine' oppure ripristina tutte le 4 categorie."
+           data-en="Try searching terms like 'Foundation', 'Bank', 'Turin', 'Alpine', or reset all 4 categories.">
+          Prova a cercare termini come "Fondazione", "Banca", "Torino", "Alpine" oppure ripristina tutte le 4 categorie.
+        </p>
+        <button type="button" id="partner-empty-reset-btn" class="btn btn-primary"
+                data-it="↺ Ripristina tutti i 16 Partner" data-en="↺ Restore all 16 Partners">
+          ↺ Ripristina tutti i 16 Partner
+        </button>
+      </div>
+
+      <!-- ====================================================================
+           CATEGORIA 1: UNIVERSITÀ E RETE ACCADEMICA (Ordine A–Z Fisso)
+           ==================================================================== -->
+      <section class="partner-category-section" data-partner-section="universita" id="cat-universita">
+        <div class="category-header-bar">
+          <h2 style="color:var(--unito-navy); font-size:1.38rem;"
+              data-it="🎓 1. Università, Atenei ed Enti di Ricerca"
+              data-en="🎓 1. Universities & Academic Research Network">
+            🎓 1. Università, Atenei ed Enti di Ricerca
+          </h2>
+          <span class="badge" style="background:#dbeafe; color:var(--unito-navy);"
+                data-it="4 Enti • Ordine Alfabetico A–Z" data-en="4 Institutions • Fixed A–Z Order">
+            4 Enti • Ordine Alfabetico A–Z
+          </span>
+        </div>
+
+        <div class="partner-grid">
+          <!-- 1.1 BiUniCrowd [B] -->
+          <article class="partner-card" data-p-cat="universita">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo" aria-hidden="true">BU</div>
+                <span class="alpha-index-badge">A–Z: #1 [B]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Rete Universitaria" data-en="Academic Network">Rete Universitaria</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                BiUniCrowd — Università Milano-Bicocca
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Partner accademico della rete interuniversitaria italiana per il crowdfunding scientifico e la Citizen Science."
+                 data-en="Academic partner of the Italian inter-university network for scientific crowdfunding and Citizen Science.">
+                Partner accademico della rete interuniversitaria italiana per il crowdfunding scientifico e la Citizen Science.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🤝 Sinergia:" data-en="🤝 Synergy:">🤝 Sinergia:</strong>
+                <span data-it=" Scambio best practice di Terza Missione" data-en=" Third Mission best-practice exchange"> Scambio best practice di Terza Missione</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="bicocca"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://www.unimib.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                unimib.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 1.2 Ginger Crowdfunding [G] -->
+          <article class="partner-card" data-p-cat="universita">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo" aria-hidden="true">GC</div>
+                <span class="alpha-index-badge">A–Z: #2 [G]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Partner Tecnologico" data-en="Tech & Coaching Partner">Partner Tecnologico</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Ginger Crowdfunding S.r.l. Società Benefit
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Infrastruttura tecnologica di raccolta fondi, formazione di 12h ai ricercatori e accompagnamento con Campaign Manager dedicati."
+                 data-en="Fundraising tech infrastructure, 12h researcher training, and dedicated Campaign Manager coaching.">
+                Infrastruttura tecnologica di raccolta fondi, formazione di 12h ai ricercatori e accompagnamento con Campaign Manager dedicati.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🎓 Supporto:" data-en="🎓 Support:">🎓 Supporto:</strong>
+                <span data-it=" 24 team UniTo formati (100% successo)" data-en=" 24 UniTo teams trained (100% success)"> 24 team UniTo formati (100% successo)</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="ginger"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://www.gingercrowdfunding.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                ginger.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 1.3 Università degli Studi di Firenze [U-Fi] -->
+          <article class="partner-card" data-p-cat="universita">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo" aria-hidden="true">UF</div>
+                <span class="alpha-index-badge">A–Z: #3 [U]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Rete Universitaria" data-en="Academic Network">Rete Universitaria</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Università degli Studi di Firenze (UniFi)
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Ateneo partner nelle iniziative nazionali di public engagement, divulgazione scientifica e valorizzazione del patrimonio."
+                 data-en="Partner university in national public engagement, science communication, and cultural heritage initiatives.">
+                Ateneo partner nelle iniziative nazionali di public engagement, divulgazione scientifica e valorizzazione del patrimonio.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🤝 Sinergia:" data-en="🤝 Synergy:">🤝 Sinergia:</strong>
+                <span data-it=" Rete Public Engagement Atenei" data-en=" University Public Engagement Network"> Rete Public Engagement Atenei</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="unifi"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://www.unifi.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                unifi.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 1.4 Università degli Studi di Torino [U-To] -->
+          <article class="partner-card" data-p-cat="universita" style="border:2px solid var(--unito-navy);">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo" aria-hidden="true">UT</div>
+                <span class="alpha-index-badge">A–Z: #4 [U]</span>
+              </div>
+              <span class="badge badge-active" style="margin-bottom:6px;"
+                    data-it="Ateneo Promotore" data-en="Promoting University">Ateneo Promotore</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Università degli Studi di Torino (UniTo)
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Promotore istituzionale di Funds TOgether attraverso il fondo di Match-Funding (raddoppio al 100% fino a 10.000 € per progetto)."
+                 data-en="Institutional promoter of Funds TOgether via the Match-Funding grant (2x doubling at 100% up to €10,000 per project).">
+                Promotore istituzionale di Funds TOgether attraverso il fondo di Match-Funding (raddoppio al 100% fino a 10.000 € per progetto).
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🏛️ Fondo Ateneo:" data-en="🏛️ UniTo Grant:">🏛️ Fondo Ateneo:</strong>
+                <span data-it=" +180.000 € erogati in 4 edizioni" data-en=" +€180,000 disbursed across 4 editions"> +180.000 € erogati in 4 edizioni</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="unito"
+                      data-it="📊 Report Impatto" data-en="📊 Impact Report">📊 Report Impatto</button>
+              <a href="catalogo.html" class="btn btn-primary"
+                 data-it="Vedi i 9 Progetti →" data-en="View 9 Projects →">Vedi i 9 Progetti →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CATEGORIA 2: BANCHE E FONDAZIONI FILANTROPICHE (Ordine A–Z Fisso)
+           ==================================================================== -->
+      <section class="partner-category-section" data-partner-section="banche" id="cat-banche">
+        <div class="category-header-bar">
+          <h2 style="color:var(--unito-navy); font-size:1.38rem;"
+              data-it="🏦 2. Banche e Fondazioni Filantropiche"
+              data-en="🏦 2. Philanthropic Foundations & Banking Partners">
+            🏦 2. Banche e Fondazioni Filantropiche
+          </h2>
+          <span class="badge" style="background:#dbeafe; color:var(--unito-navy);"
+                data-it="4 Enti • Ordine Alfabetico A–Z" data-en="4 Institutions • Fixed A–Z Order">
+            4 Enti • Ordine Alfabetico A–Z
+          </span>
+        </div>
+
+        <div class="partner-grid">
+          <!-- 2.1 BCC Centropadana & BCC Milano [B] -->
+          <article class="partner-card" data-p-cat="banche">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-bank" aria-hidden="true">BC</div>
+                <span class="alpha-index-badge">A–Z: #1 [B]</span>
+              </div>
+              <span class="badge" style="background:#dbeafe; color:var(--unito-navy); margin-bottom:6px;"
+                    data-it="Credito Cooperativo" data-en="Cooperative Banking">Credito Cooperativo</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                BCC Centropadana & BCC Milano
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Istituti di credito cooperativo impegnati nel sostegno a campagne di sviluppo sostenibile, agraria e inclusione giovanile."
+                 data-en="Cooperative banks committed to supporting sustainable development, agricultural research, and youth inclusion.">
+                Istituti di credito cooperativo impegnati nel sostegno a campagne di sviluppo sostenibile, agraria e inclusione giovanile.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🌱 Ambito:" data-en="🌱 Focus:">🌱 Ambito:</strong>
+                <span data-it=" Sostenibilità & Territorio (BeeAlpine)" data-en=" Sustainability & Territory (BeeAlpine)"> Sostenibilità & Territorio (BeeAlpine)</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="bcc"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="https://www.bccmilano.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                bccmilano.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2.2 CiviBank — Gruppo Sparkasse [C] -->
+          <article class="partner-card" data-p-cat="banche">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-bank" aria-hidden="true">CB</div>
+                <span class="alpha-index-badge">A–Z: #2 [C]</span>
+              </div>
+              <span class="badge" style="background:#dbeafe; color:var(--unito-navy); margin-bottom:6px;"
+                    data-it="Gruppo Bancario" data-en="Banking Group">Gruppo Bancario</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                CiviBank — Gruppo Sparkasse
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Banca Società Benefit attiva nel cofinanziamento di progetti civici, culturali e di ricerca ad alto valore sociale."
+                 data-en="Benefit corporation bank active in co-funding civic, cultural, and high social-value research projects.">
+                Banca Società Benefit attiva nel cofinanziamento di progetti civici, culturali e di ricerca ad alto valore sociale.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🎭 Ambito:" data-en="🎭 Focus:">🎭 Ambito:</strong>
+                <span data-it=" Cultura & Didattica 4.0" data-en=" Culture & Education 4.0"> Cultura & Didattica 4.0</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="civibank"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="https://www.civibank.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                civibank.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 2.3 Fondazione Compagnia di San Paolo [F-CSP] -->
+          <article class="partner-card" data-p-cat="banche">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-bank" aria-hidden="true">SP</div>
+                <span class="alpha-index-badge">A–Z: #3 [F]</span>
+              </div>
+              <span class="badge badge-active" style="margin-bottom:6px;"
+                    data-it="Fondazione Torinese" data-en="Turin Foundation">Fondazione Torinese</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Fondazione Compagnia di San Paolo
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Istituzione filantropica torinese in prima linea nel sostegno alla ricerca biomedica, all'inclusione e agli Obiettivi ONU Agenda 2030."
+                 data-en="Leading Turin philanthropic institution supporting biomedical research, inclusion, and UN Agenda 2030 SDGs.">
+                Istituzione filantropica torinese in prima linea nel sostegno alla ricerca biomedica, all'inclusione e agli Obiettivi ONU Agenda 2030.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🍼 Progetti:" data-en="🍼 Projects:">🍼 Progetti:</strong>
+                <span data-it=" MILK-ACT, SpeechMatE (+35.000 €)" data-en=" MILK-ACT, SpeechMatE (+€35,000)"> MILK-ACT, SpeechMatE (+35.000 €)</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="sanpaolo"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="progetto.html?proj=milk-act" class="btn btn-secondary"
+                 data-it="Vedi MILK-ACT →" data-en="View MILK-ACT →">Vedi MILK-ACT →</a>
+            </div>
+          </article>
+
+          <!-- 2.4 Fondazione CRT [F-CRT] -->
+          <article class="partner-card" data-p-cat="banche">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-bank" aria-hidden="true">CRT</div>
+                <span class="alpha-index-badge">A–Z: #4 [F]</span>
+              </div>
+              <span class="badge badge-active" style="margin-bottom:6px;"
+                    data-it="Fondazione Torinese" data-en="Turin Foundation">Fondazione Torinese</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Fondazione CRT — Cassa di Risparmio di Torino
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Sostegno strutturale ai laboratori universitari piemontesi, alle borse di ricerca per giovani talenti e al trasferimento tecnologico."
+                 data-en="Structural support for Piedmont university labs, young researcher fellowships, and technology transfer.">
+                Sostegno strutturale ai laboratori universitari piemontesi, alle borse di ricerca per giovani talenti e al trasferimento tecnologico.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🔬 Progetti:" data-en="🔬 Projects:">🔬 Progetti:</strong>
+                <span data-it=" CultMeat, Virtual Vet Lab (+30.000 €)" data-en=" CultMeat, Virtual Vet Lab (+€30,000)"> CultMeat, Virtual Vet Lab (+30.000 €)</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="crt"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="https://www.fondazionecrt.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                fondazionecrt.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CATEGORIA 3: ENTI PUBBLICI, ISTITUZIONI E TERZO SETTORE (Ordine A–Z Fisso)
+           ==================================================================== -->
+      <section class="partner-category-section" data-partner-section="enti" id="cat-enti">
+        <div class="category-header-bar">
+          <h2 style="color:var(--unito-navy); font-size:1.38rem;"
+              data-it="🏛️ 3. Enti Pubblici, Istituzioni e Terzo Settore"
+              data-en="🏛️ 3. Public Institutions, UN Agencies & Non-Profits">
+            🏛️ 3. Enti Pubblici, Istituzioni e Terzo Settore
+          </h2>
+          <span class="badge" style="background:#dbeafe; color:var(--unito-navy);"
+                data-it="4 Enti • Ordine Alfabetico A–Z" data-en="4 Institutions • Fixed A–Z Order">
+            4 Enti • Ordine Alfabetico A–Z
+          </span>
+        </div>
+
+        <div class="partner-grid">
+          <!-- 3.1 Città Metropolitana di Torino [C] -->
+          <article class="partner-card" data-p-cat="enti">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-pub" aria-hidden="true">CM</div>
+                <span class="alpha-index-badge">A–Z: #1 [C]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Ente Territoriale" data-en="Metropolitan Authority">Ente Territoriale</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Città Metropolitana di Torino
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Patrocinio istituzionale e diffusione sul territorio metropolitano delle campagne di Citizen Science e sostenibilità ambientale."
+                 data-en="Institutional patronage and metropolitan outreach for Citizen Science and environmental sustainability campaigns.">
+                Patrocinio istituzionale e diffusione sul territorio metropolitano delle campagne di Citizen Science e sostenibilità ambientale.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🌍 Impatto:" data-en="🌍 Impact:">🌍 Impatto:</strong>
+                <span data-it=" Rete scuole e comuni per Citizen Salad" data-en=" Schools & municipalities for Citizen Salad"> Rete scuole e comuni per Citizen Salad</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="torinometropoli"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="http://www.cittametropolitana.torino.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                torino.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3.2 CSV Rete Centri di Servizio per il Volontariato [C] -->
+          <article class="partner-card" data-p-cat="enti">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-pub" aria-hidden="true">CSV</div>
+                <span class="alpha-index-badge">A–Z: #2 [C]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Terzo Settore" data-en="Third Sector Network">Terzo Settore</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                CSV — Rete Centri Servizio Volontariato
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Coordinamento tra i gruppi di ricerca universitari e le associazioni di volontariato per progetti di inclusione e salute pubblica."
+                 data-en="Coordination between university research groups and volunteer associations for inclusion and public health projects.">
+                Coordinamento tra i gruppi di ricerca universitari e le associazioni di volontariato per progetti di inclusione e salute pubblica.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🤝 Rete:" data-en="🤝 Network:">🤝 Rete:</strong>
+                <span data-it=" Oltre 120 ETS coinvolti nelle campagne" data-en=" Over 120 non-profits involved in campaigns"> Oltre 120 ETS coinvolti nelle campagne</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="csv"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://www.csvnet.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                csvnet.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3.3 OIM Italia — UN Migration [O] -->
+          <article class="partner-card" data-p-cat="enti">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-pub" aria-hidden="true">OIM</div>
+                <span class="alpha-index-badge">A–Z: #3 [O]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Agenzia ONU" data-en="UN Agency">Agenzia ONU</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                OIM Italia — UN Migration Agency
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Partner internazionale per i progetti di ricerca dedicati ai diritti umani, all'inclusione sociale e agli Obiettivi di Sviluppo Sostenibile ONU."
+                 data-en="International partner for research projects dedicated to human rights, social inclusion, and UN Sustainable Development Goals.">
+                Partner internazionale per i progetti di ricerca dedicati ai diritti umani, all'inclusione sociale e agli Obiettivi di Sviluppo Sostenibile ONU.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🌐 SDGs ONU:" data-en="🌐 UN SDGs:">🌐 SDGs ONU:</strong>
+                <span data-it=" Obiettivi 4, 10 e 17 Agenda 2030" data-en=" Goals 4, 10 & 17 Agenda 2030"> Obiettivi 4, 10 e 17 Agenda 2030</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="oim"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://italy.iom.int" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                italy.iom.int <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- 3.4 Regione Piemonte [R] -->
+          <article class="partner-card" data-p-cat="enti">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-pub" aria-hidden="true">RP</div>
+                <span class="alpha-index-badge">A–Z: #4 [R]</span>
+              </div>
+              <span class="badge" style="background:#e2e8f0; color:#334155; margin-bottom:6px;"
+                    data-it="Ente Regionale" data-en="Regional Government">Ente Regionale</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Regione Piemonte — Ricerca & Innovazione
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Sinergia istituzionale per la valorizzazione degli ecosistemi alpini, la transizione ecologica e l'innovazione medico-sanitaria regionale."
+                 data-en="Institutional synergy for alpine ecosystem conservation, ecological transition, and regional healthcare innovation.">
+                Sinergia istituzionale per la valorizzazione degli ecosistemi alpini, la transizione ecologica e l'innovazione medico-sanitaria regionale.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🐝 Progetti:" data-en="🐝 Projects:">🐝 Progetti:</strong>
+                <span data-it=" Patrocinio BeeAlpine & MILK-ACT" data-en=" Patronage for BeeAlpine & MILK-ACT"> Patrocinio BeeAlpine & MILK-ACT</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="piemonte"
+                      data-it="📊 Scheda Ente" data-en="📊 Partner Info">📊 Scheda Ente</button>
+              <a href="https://www.regione.piemonte.it" target="_blank" rel="noopener" class="ext-link" style="font-size:0.8rem;">
+                regione.piemonte.it <span class="ext-badge">↗ esterno</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           CATEGORIA 4: AZIENDE PRIVATE E PARTNER CSR / ESG (Target Persona 4 Marc Dubois)
+           ==================================================================== -->
+      <section class="partner-category-section" data-partner-section="aziende" id="cat-aziende">
+        <div class="category-header-bar">
+          <h2 style="color:var(--unito-navy); font-size:1.38rem;"
+              data-it="🏢 4. Aziende Private e Partner Tecnologici CSR / ESG"
+              data-en="🏢 4. Corporate Partners & CSR / ESG Co-Funders">
+            🏢 4. Aziende Private e Partner Tecnologici CSR / ESG
+          </h2>
+          <span class="badge badge-active"
+                data-it="4 Imprese • Ordine Alfabetico A–Z • Rendicontazione ESG"
+                data-en="4 Companies • Fixed A–Z Order • ESG Accountability">
+            4 Imprese • Ordine Alfabetico A–Z • Rendicontazione ESG
+          </span>
+        </div>
+
+        <div class="partner-grid">
+          <!-- 4.1 Alpine BioTech & Digital Solutions [A] — Azienda di Marc Dubois (Persona 4) -->
+          <article class="partner-card" data-p-cat="aziende" style="border:2px solid var(--accent-orange); background:#fffaf5;">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-csr" aria-hidden="true">AB</div>
+                <span class="alpha-index-badge">A–Z: #1 [A]</span>
+              </div>
+              <span class="badge badge-active" style="margin-bottom:6px;"
+                    data-it="Partner CSR • Biotech & IT (Marc Dubois)" data-en="CSR Partner • Biotech & IT (Marc Dubois)">
+                Partner CSR • Biotech & IT (Marc Dubois)
+              </span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Alpine BioTech & Digital Solutions
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Multinazionale tecnologica con sede a Torino; co-finanziatore aziendale dei progetti BRIGHT (cuffie fNIRS) e MILK-ACT per il Bilancio ESG 2026."
+                 data-en="Tech multinational with Turin HQ; corporate co-funder of BRIGHT (fNIRS headsets) and MILK-ACT within its 2026 ESG Sustainability Report.">
+                Multinazionale tecnologica con sede a Torino; co-finanziatore aziendale dei progetti BRIGHT (cuffie fNIRS) e MILK-ACT per il Bilancio ESG 2026.
+              </p>
+              <div class="partner-impact-pill" style="background:#f0fdf4; border-color:#86efac;">
+                <strong style="color:var(--success-green);" data-it="📈 Impatto CSR Certificato:" data-en="📈 Certified CSR Impact:">📈 Impatto CSR Certificato:</strong>
+                <span data-it=" 15.000 € donati • 2 Lab UniTo" data-en=" €15,000 donated • 2 UniTo Labs"> 15.000 € donati • 2 Lab UniTo</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-secondary" data-open-partner-modal="alpine"
+                      data-it="📊 Report ESG (Marc)" data-en="📊 ESG Report (Marc)">📊 Report ESG (Marc)</button>
+              <a href="progetto.html?proj=bright" class="btn btn-primary"
+                 data-it="Vedi BRIGHT →" data-en="View BRIGHT →">Vedi BRIGHT →</a>
+            </div>
+          </article>
+
+          <!-- 4.2 Cogeser Energia [C] -->
+          <article class="partner-card" data-p-cat="aziende">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-csr" aria-hidden="true">CE</div>
+                <span class="alpha-index-badge">A–Z: #2 [C]</span>
+              </div>
+              <span class="badge" style="background:#dbeafe; color:var(--unito-navy); margin-bottom:6px;"
+                    data-it="Partner CSR • Energia" data-en="CSR Partner • Clean Energy">Partner CSR • Energia</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                Cogeser Energia — Sostenibilità
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Azienda partner per i progetti di ricerca dedicati alla transizione energetica, al monitoraggio climatico e alla biodiversità alpina."
+                 data-en="Corporate partner for research projects dedicated to energy transition, climate monitoring, and alpine biodiversity.">
+                Azienda partner per i progetti di ricerca dedicati alla transizione energetica, al monitoraggio climatico e alla biodiversità alpina.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🌿 Progetti:" data-en="🌿 Projects:">🌿 Progetti:</strong>
+                <span data-it=" BeeAlpine & Salviamo il Lemure" data-en=" BeeAlpine & Save the Singing Lemur"> BeeAlpine & Salviamo il Lemure</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="cogeser"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
+                 data-it="Vedi Progetto →" data-en="View Project →">Vedi Progetto →</a>
+            </div>
+          </article>
+
+          <!-- 4.3 S-NODI Innovazione Sociale [S] -->
+          <article class="partner-card" data-p-cat="aziende">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo logo-csr" aria-hidden="true">SN</div>
+                <span class="alpha-index-badge">A–Z: #3 [S]</span>
+              </div>
+              <span class="badge" style="background:#dbeafe; color:var(--unito-navy); margin-bottom:6px;"
+                    data-it="Impresa Sociale" data-en="Social Enterprise">Impresa Sociale</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;">
+                S-NODI — Innovazione contro le Disuguaglianze
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);"
+                 data-it="Partner operativo per i progetti tecnologici e sociali rivolti al superamento delle barriere fisiche, cognitive ed economiche."
+                 data-en="Operational partner for tech and social projects aimed at overcoming physical, cognitive, and economic barriers.">
+                Partner operativo per i progetti tecnologici e sociali rivolti al superamento delle barriere fisiche, cognitive ed economiche.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="🎙️ Progetti:" data-en="🎙️ Projects:">🎙️ Progetti:</strong>
+                <span data-it=" SpeechMatE (Accessibilità Vocale)" data-en=" SpeechMatE (Voice Accessibility)"> SpeechMatE (Accessibilità Vocale)</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-partner-modal="snodi"
+                      data-it="📊 Scheda Impatto" data-en="📊 Impact Card">📊 Scheda Impatto</button>
+              <a href="progetto.html?proj=speechmate" class="btn btn-outline"
+                 data-it="Vedi SpeechMatE →" data-en="View SpeechMatE →">Vedi SpeechMatE →</a>
+            </div>
+          </article>
+
+          <!-- 4.4 Unione Industriale / Nuove Aziende Partner [U] -->
+          <article class="partner-card" data-p-cat="aziende" id="diventa-partner-box" style="border:2px dashed var(--unito-navy); background:#f8fafc;">
+            <div>
+              <div class="partner-card-top">
+                <div class="partner-svg-logo" style="background:var(--accent-orange);" aria-hidden="true">＋</div>
+                <span class="alpha-index-badge">A–Z: #4 [U]</span>
+              </div>
+              <span class="badge badge-active" style="margin-bottom:6px;"
+                    data-it="Corporate Giving & ESG" data-en="Corporate Giving & ESG">Corporate Giving & ESG</span>
+              <h3 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:6px;"
+                  data-it="Ufficio Partnership CSR — Aderisci con la tua Impresa"
+                  data-en="CSR Partnership Office — Join with Your Company">
+                Ufficio Partnership CSR — Aderisci con la tua Impresa
+              </h3>
+              <p style="font-size:0.85rem; color:var(--text-main);"
+                 data-it="Adotta una campagna di ricerca UniTo: ricevi reportistica d'impatto certificata in Italiano e Inglese e deducibilità fiscale integrale per il tuo Bilancio di Sostenibilità."
+                 data-en="Adopt a UniTo research campaign: receive certified impact reporting in Italian and English and full tax deductibility for your Sustainability Report.">
+                Adotta una campagna di ricerca UniTo: ricevi reportistica d'impatto certificata in Italiano e Inglese e deducibilità fiscale integrale per il tuo Bilancio di Sostenibilità.
+              </p>
+              <div class="partner-impact-pill">
+                <strong data-it="📄 Compliance:" data-en="📄 Compliance:">📄 Compliance:</strong>
+                <span data-it=" Documentazione IT/EN & KPI SDGs ONU" data-en=" IT/EN Legal Docs & UN SDGs KPIs"> Documentazione IT/EN & KPI SDGs ONU</span>
+              </div>
+            </div>
+            <div class="partner-card-actions">
+              <button type="button" class="btn btn-outline" data-open-privacy
+                      data-it="📄 Privacy & Terms (IT/EN)" data-en="📄 Privacy & Terms (IT/EN)">📄 Privacy & Terms (IT/EN)</button>
+              <button type="button" class="btn btn-primary" data-open-login
+                      data-it="🏢 Accedi Area Partner →" data-en="🏢 Partner Portal →">🏢 Accedi Area Partner →</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 5. MODALE INTERATTIVA DI RENDICONTAZIONE IMPATTO PARTNER & CSR (Per Marc Dubois — Fase 5 & 6 User Journey 4) -->
+  <div id="partner-csr-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="csr-modal-title">
+    <div class="modal-content" style="max-width:640px;">
+      <button type="button" class="modal-close" id="close-csr-modal-btn" aria-label="Chiudi scheda impatto">✕</button>
+      <span class="badge badge-active" id="csr-modal-badge" style="margin-bottom:8px;">
+        ✓ Rendicontazione Certificata CSR / ESG — Università di Torino
+      </span>
+      <h2 id="csr-modal-title" style="color:var(--unito-navy); font-size:1.45rem; margin-bottom:6px;">
+        Alpine BioTech & Digital Solutions — Scheda Impatto Partner
+      </h2>
+      <p id="csr-modal-desc" style="font-size:0.92rem; color:var(--text-muted); margin-bottom:16px;">
+        Riepilogo ufficiale delle campagne di ricerca dell'Università degli Studi di Torino co-finanziate dall'ente partner, valido per il Bilancio di Sostenibilità (ESG Report).
+      </p>
+
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; text-align:center; margin-bottom:18px;">
+        <div style="background:var(--bg-subtle); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+          <span style="font-size:0.75rem; color:var(--text-muted); display:block;" data-it="Contributo Erogato" data-en="Total Disbursed">Contributo Erogato</span>
+          <strong id="csr-modal-amount" style="font-size:1.25rem; color:var(--unito-navy);">15.000 €</strong>
+        </div>
+        <div style="background:var(--success-bg); padding:12px; border-radius:var(--radius-sm); border:1px solid #86efac;">
+          <span style="font-size:0.75rem; color:var(--success-green); display:block;" data-it="Leva Match-Funding UniTo" data-en="UniTo Match Leverage">Leva Match-Funding UniTo</span>
+          <strong id="csr-modal-leverage" style="font-size:1.25rem; color:var(--success-green);">+15.000 € (2x)</strong>
+        </div>
+        <div style="background:#fff7ed; padding:12px; border-radius:var(--radius-sm); border:1px solid #fdba74;">
+          <span style="font-size:0.75rem; color:var(--warning-amber); display:block;" data-it="Obiettivi ONU (SDGs)" data-en="UN SDGs Supported">Obiettivi ONU (SDGs)</span>
+          <strong id="csr-modal-sdgs" style="font-size:1.1rem; color:var(--accent-orange);">SDG 3, 4, 9</strong>
+        </div>
+      </div>
+
+      <div style="background:var(--bg-subtle); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color); margin-bottom:18px;">
+        <strong style="color:var(--unito-navy); display:block; margin-bottom:8px; font-size:0.92rem;"
+                data-it="🔬 Progetti UniTo Sostenuti e Stato Avanzamento:"
+                data-en="🔬 Supported UniTo Campaigns & Execution Status:">
+          🔬 Progetti UniTo Sostenuti e Stato Avanzamento:
+        </strong>
+        <ul id="csr-modal-projects" style="padding-left:18px; font-size:0.88rem; display:flex; flex-direction:column; gap:6px;">
+          <li><strong>BRIGHT (Dip. Psicologia — Concluso al 221%):</strong> Acquistate e collaudate le 2 cuffie fNIRS con canali corti (<em>short-channels</em>).</li>
+          <li><strong>MILK-ACT (VIRMOLAB Medicina — Attivo all'88%):</strong> Cofinanziamento reagenti antivirali per le Banche del Latte Umano Donato.</li>
+        </ul>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <button type="button" onclick="window.print();" class="btn btn-outline" style="font-size:0.85rem;"
+                data-it="🖨️ Stampa Scheda ESG (PDF)" data-en="🖨️ Print ESG Report Card (PDF)">
+          🖨️ Stampa Scheda ESG (PDF)
+        </button>
+        <div style="display:flex; gap:8px;">
+          <a href="progetto.html?proj=bright" id="csr-modal-proj-link" class="btn btn-primary" style="font-size:0.85rem;"
+             data-it="Apri Timeline Progetto Sostenuto →" data-en="Open Supported Project Timeline →">
+            Apri Timeline Progetto Sostenuto →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. FOOTER ISTITUZIONALE COERENTE -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);">🏛️ UniTo</span>
+            <span>Funds TOgether!</span>
+          </div>
+          <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
+             data-it="Rete di partner istituzionali, fondazioni bancarie e imprese CSR a sostegno della ricerca dell'Università di Torino."
+             data-en="Network of institutional partners, banking foundations, and CSR companies supporting University of Turin research.">
+            Rete di partner istituzionali, fondazioni bancarie e imprese CSR a sostegno della ricerca dell'Università di Torino.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h4>
+          <ul>
+            <li><a href="index.html">Home Page</a></li>
+            <li><a href="catalogo.html">Esplora Catalogo Progetti (9)</a></li>
+            <li><a href="proponi.html">Come Funziona & Bando Ricercatori</a></li>
+            <li><a href="partner.html">I Nostri Partner e Collaboratori</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h4>
+          <ul>
+            <li><a href="proponi.html#faq-section">Domande Frequenti (FAQ)</a></li>
+            <li><a href="#" data-open-privacy>Informativa Privacy & Condizioni (IT/EN)</a></li>
+            <li><a href="#" data-open-login>Accesso Area Progettisti / Partner</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-it="Collegamenti Esterni" data-en="External Links">Collegamenti Esterni</h4>
+          <ul>
+            <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it ↗ (sito esterno)</a></li>
+            <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger ↗ (sito esterno)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Università degli Studi di Torino — Prototipo HCI Gruppo I (Stigliano Antonio, Tumolo Christian)</span>
+        <div>
+          <a href="#" data-open-privacy style="color:#ffd166; margin-right:16px;"
+             data-it="Privacy Policy & Terms of Use (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
+            Privacy Policy & Terms of Use (IT/EN)
+          </a>
+          <a href="index.html" style="color:#cbd5e1;" data-it="↑ Torna alla Home Page" data-en="↑ Back to Home Page">↑ Torna alla Home Page</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Motore V2 specifico per partner.html: gestisce filtro 4 categorie, ricerca live, verifica ordine A-Z (H3) e Modale Impatto CSR -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const catBtns = document.querySelectorAll('[data-partner-cat]');
+      const sections = document.querySelectorAll('[data-partner-section]');
+      const cards = Array.from(document.querySelectorAll('.partner-card'));
+      const searchInput = document.getElementById('partner-search-input');
+      const countEl = document.getElementById('partner-visible-count');
+      const emptyBox = document.getElementById('partner-empty-state');
+      const resetBtn = document.getElementById('reset-partner-filters-btn');
+      const emptyResetBtn = document.getElementById('partner-empty-reset-btn');
+
+      let activeCat = 'all';
+      let activeQuery = '';
+
+      function filterPartners() {
+        let totalVisible = 0;
+
+        sections.forEach(sec => {
+          const secCat = sec.getAttribute('data-partner-section');
+          const catMatch = activeCat === 'all' || activeCat === secCat;
+          const secCards = Array.from(sec.querySelectorAll('.partner-card'));
+          let visibleInSec = 0;
+
+          secCards.forEach(card => {
+            const textMatch = !activeQuery || card.textContent.toLowerCase().includes(activeQuery.toLowerCase());
+            if (catMatch && textMatch) {
+              card.style.display = 'flex';
+              visibleInSec++;
+              totalVisible++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          sec.style.display = visibleInSec > 0 ? 'block' : 'none';
+        });
+
+        if (countEl) countEl.textContent = totalVisible;
+        if (emptyBox) emptyBox.style.display = totalVisible === 0 ? 'block' : 'none';
+      }
+
+      catBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeCat = btn.getAttribute('data-partner-cat');
+          catBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filterPartners();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          activeQuery = searchInput.value.trim();
+          filterPartners();
+        });
+      }
+
+      function resetPartnerView() {
+        activeCat = 'all';
+        activeQuery = '';
+        if (searchInput) searchInput.value = '';
+        catBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-partner-cat') === 'all'));
+        filterPartners();
+      }
+
+      if (resetBtn) resetBtn.addEventListener('click', resetPartnerView);
+      if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetPartnerView);
+
+      // Database Modale Scheda Impatto CSR per i Partner principali
+      const PARTNER_MODAL_DB = {
+        alpine: {
+          title: 'Alpine BioTech & Digital Solutions — Corporate ESG Report (Marc Dubois)',
+          desc: 'Rendicontazione certificata dei contributi CSR erogati da Alpine BioTech a favore dei laboratori dell\'Università degli Studi di Torino (Bilancio di Sostenibilità 2026).',
+          amount: '15.000 €',
+          leverage: '+15.000 € (2x UniTo)',
+          sdgs: 'SDG 3, 4, 9',
+          projLink: 'progetto.html?proj=bright',
+          projects: [
+            '<strong>BRIGHT (Dip. Psicologia — Concluso al 221%):</strong> Co-finanziato l\'acquisto di 2 cuffie fNIRS ergonomiche e 2 optodi <em>short-channels</em> per la riabilitazione cognitiva.',
+            '<strong>MILK-ACT (VIRMOLAB Medicina — Attivo all\'88%):</strong> Sostegno all\'acquisto dei kit antivirali per la Banca del Latte Umano Donato di Torino.'
+          ]
+        },
+        sanpaolo: {
+          title: 'Fondazione Compagnia di San Paolo — Scheda Impatto Filantropico',
+          desc: 'Partnership strategica pluriennale a sostegno della ricerca scientifica, della salute pubblica e dell\'inclusione sociale dell\'Università di Torino.',
+          amount: '35.000 €',
+          leverage: '+30.000 € (UniTo)',
+          sdgs: 'SDG 3, 4, 10, 11',
+          projLink: 'progetto.html?proj=milk-act',
+          projects: [
+            '<strong>MILK-ACT (Scienze Cliniche e Biologiche):</strong> Sostegno alla ricerca neonatale e alla divulgazione sanitaria per le famiglie.',
+            '<strong>SpeechMatE (Dip. Matematica):</strong> Supporto allo sviluppo di tecnologie assistive vocali contro le barriere motorie.'
+          ]
+        },
+        crt: {
+          title: 'Fondazione CRT — Scheda Impatto Ricerca & Territorio',
+          desc: 'Cofinanziamento a favore dell\'innovazione tecnologica, della sostenibilità agroalimentare e della didattica 4.0 in Piemonte.',
+          amount: '30.000 €',
+          leverage: '+20.000 € (UniTo)',
+          sdgs: 'SDG 2, 4, 12, 15',
+          projLink: 'progetto.html?proj=bright',
+          projects: [
+            '<strong>CultMeat (Scienze Veterinarie — Concluso al 620%):</strong> Sostegno alla prima ricerca italiana sull\'agricoltura cellulare sostenibile.',
+            '<strong>Virtual Vet Lab (Didattica 4.0 — Concluso al 210%):</strong> Acquisizione visori VR 3D per la formazione medico-veterinaria.'
+          ]
+        }
+      };
+
+      const csrModal = document.getElementById('partner-csr-modal');
+      const closeCsrBtn = document.getElementById('close-csr-modal-btn');
+
+      function openPartnerModal(key) {
+        const d = PARTNER_MODAL_DB[key] || {
+          title: 'Ente Partner Accreditato — Rete Funds TOgether UniTo',
+          desc: 'Ente partner ufficiale accreditato presso la Direzione Ricerca e Terza Missione dell\'Università degli Studi di Torino.',
+          amount: '10.000 €+',
+          leverage: 'Attivo (2x UniTo)',
+          sdgs: 'SDG 4, 9, 17',
+          projLink: 'catalogo.html',
+          projects: [
+            '<strong>Campagne Funds TOgether IV Edizione:</strong> Supporto alla diffusione territoriale, patrocinio istituzionale e cofinanziamento delle ricerche d\'Ateneo.'
+          ]
+        };
+        document.getElementById('csr-modal-title').textContent = d.title;
+        document.getElementById('csr-modal-desc').textContent = d.desc;
+        document.getElementById('csr-modal-amount').textContent = d.amount;
+        document.getElementById('csr-modal-leverage').textContent = d.leverage;
+        document.getElementById('csr-modal-sdgs').textContent = d.sdgs;
+        document.getElementById('csr-modal-proj-link').href = d.projLink;
+        document.getElementById('csr-modal-projects').innerHTML = d.projects.map(p => `<li>${p}</li>`).join('');
+        csrModal.classList.add('open');
+      }
+
+      document.querySelectorAll('[data-open-partner-modal]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          openPartnerModal(btn.getAttribute('data-open-partner-modal'));
+        });
+      });
+
+      if (closeCsrBtn) {
+        closeCsrBtn.addEventListener('click', () => csrModal.classList.remove('open'));
+      }
+
+      // Bottoni della Barra di Verifica Superiore (Task 5)
+      const simMarcBtn = document.getElementById('sim-marc-csr-btn');
+      if (simMarcBtn) {
+        simMarcBtn.addEventListener('click', () => {
+          // Attiva lingua EN per Marc Dubois, filtra Aziende CSR e apre il Report ESG
+          const enBtn = document.querySelector('.lang-btn[data-lang="en"]');
+          if (enBtn) enBtn.click();
+          const azBtn = document.querySelector('[data-partner-cat="aziende"]');
+          if (azBtn) azBtn.click();
+          openPartnerModal('alpine');
+        });
+      }
+
+      const verifyAlphaBtn = document.getElementById('verify-alpha-order-btn');
+      const stabilityBanner = document.getElementById('stability-proof-banner');
+      if (verifyAlphaBtn && stabilityBanner) {
+        verifyAlphaBtn.addEventListener('click', () => {
+          resetPartnerView();
+          stabilityBanner.style.display = 'flex';
+          document.querySelectorAll('.alpha-index-badge').forEach(b => {
+            b.classList.add('highlight-alpha');
+            setTimeout(() => b.classList.remove('highlight-alpha'), 2600);
+          });
+        });
+      }
+
+      const closeStabBtn = document.getElementById('close-stability-banner');
+      if (closeStabBtn) {
+        closeStabBtn.addEventListener('click', () => {
+          stabilityBanner.style.display = 'none';
+        });
+      }
+
+      const verifyEnPrivacyBtn = document.getElementById('verify-en-privacy-btn');
+      if (verifyEnPrivacyBtn) {
+        verifyEnPrivacyBtn.addEventListener('click', () => {
+          const enBtn = document.querySelector('.lang-btn[data-lang="en"]');
+          if (enBtn) enBtn.click();
+          const privTrigger = document.querySelector('[data-open-privacy]');
+          if (privTrigger) privTrigger.click();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
