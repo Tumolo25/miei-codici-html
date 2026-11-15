@@ -1,7 +1,6 @@
 /* ==========================================================================
-   UniTo Crowd — Funds TOgether | Motore Client-Side Unificato (script.js — V2)
-   Progettato secondo le 10 Euristiche di Nielsen e i Principi di HCI
-   Autori: Gruppo I (Stigliano Antonio, Tumolo Christian) — UniTo Informatica
+   UniTo Crowd — Funds TOgether | Motore Client-Side Unificato (script.js)
+   Conforme a WCAG 2.2 Livello AA e WAI-ARIA 1.2 Authoring Practices (APG)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. SWITCH LINGUA GLOBALE IT | EN (Risolve H2 Pag. 12-16 e H8 Pag. 43)
+   1. SWITCH LINGUA GLOBALE IT | EN
    Sincronizza testi, placeholder, documenti legali Privacy e attributo lang
    -------------------------------------------------------------------------- */
 function initLanguageToggle() {
@@ -52,7 +51,7 @@ function applyLanguage(lang) {
       : input.getAttribute('data-placeholder-it');
   });
 
-  // Traduce eventuali tooltip con attributi bilingui
+  // Traduce i tooltip bilingui
   document.querySelectorAll('[data-tooltip-it][data-tooltip-en]').forEach(tip => {
     tip.setAttribute(
       'data-tooltip',
@@ -60,7 +59,7 @@ function applyLanguage(lang) {
     );
   });
 
-  // Sincronizza in tempo reale la modale Privacy Policy & Terms of Use (Risolve H2 Pag. 12-13)
+  // Sincronizza in tempo reale la modale Privacy Policy & Terms of Use
   const privIt = document.getElementById('privacy-content-it');
   const privEn = document.getElementById('privacy-content-en');
   if (privIt && privEn) {
@@ -70,7 +69,7 @@ function applyLanguage(lang) {
 }
 
 /* --------------------------------------------------------------------------
-   2. RICERCA GLOBALE DALL'HEADER (Azzeramento filtri restrittivi + Redirect)
+   2. RICERCA GLOBALE DALL'HEADER
    -------------------------------------------------------------------------- */
 function initHeaderSearch() {
   const form = document.getElementById('header-search-form');
@@ -81,7 +80,6 @@ function initHeaderSearch() {
     const input = document.getElementById('header-search-input');
     const query = input ? input.value.trim() : '';
 
-    // Salva la query cercata e imposta i filtri su "Tutti" per evitare falsi Empty State
     sessionStorage.setItem('unito_cat_query', query);
     sessionStorage.setItem('unito_cat_filter', 'all');
     sessionStorage.setItem('unito_status_filter', 'all');
@@ -90,23 +88,24 @@ function initHeaderSearch() {
 }
 
 /* --------------------------------------------------------------------------
-   3. MODALE UNIFICATA DI LOGIN + ANTEPRIMA DASHBOARD E MODALE PRIVACY BILINGUE
-   (Risolve H4 Login sparsi Pag. 26-27, H2 Vecchio Username Pag. 19,
-    H3/H4 Navbar e Tasto Home in Dashboard Pag. 23 e 28-29, H2 Privacy Pag. 12-13)
+   3. MODALE UNIFICATA DI LOGIN + AREA RISERVATA E MODALE PRIVACY BILINGUE
+   Gestione completa del focus da tastiera (WCAG 2.4.3) e Autenticazione Accessibile (WCAG 2.2 - 3.3.8)
    -------------------------------------------------------------------------- */
 function initGlobalModals() {
+  let lastModalTrigger = null;
+
   const modalHTML = `
     <!-- MODALE UNIFICATA ACCEDI (Progettista / Partner CSR / Sostenitore) -->
     <div id="login-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
       <div class="modal-content">
-        <button type="button" class="modal-close" data-close-modal="login-modal" aria-label="Chiudi finestra">✕</button>
+        <button type="button" class="modal-close" data-close-modal="login-modal" aria-label="Chiudi finestra di accesso">✕</button>
 
-        <!-- VISTA 1: FORM DI ACCESSO UNIFICATO (Senza avviso criptico sul vecchio username - H2) -->
+        <!-- VISTA 1: FORM DI ACCESSO UNIFICATO -->
         <div id="login-view-form">
           <span class="badge badge-active" style="margin-bottom:8px;"
-                data-it="✓ Accesso Unificato d'Ateneo (Euristica 4)"
-                data-en="✓ Unified University Login (Heuristic 4)">
-            ✓ Accesso Unificato d'Ateneo (Euristica 4)
+                data-it="✓ Autenticazione Istituzionale Unificata UniTo"
+                data-en="✓ Unified Institutional Authentication UniTo">
+            ✓ Autenticazione Istituzionale Unificata UniTo
           </span>
           <h2 id="login-modal-title" style="color:var(--unito-navy); margin-bottom:6px;"
               data-it="Accedi a UniTo Crowd — Funds TOgether"
@@ -114,29 +113,32 @@ function initGlobalModals() {
             Accedi a UniTo Crowd — Funds TOgether
           </h2>
           <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;"
-             data-it="Un unico punto di accesso centralizzato per Ricercatori Proponenti, Enti Partner CSR e Sostenitori (elimina la dispersione tra Header e Footer)."
-             data-en="A single centralized login point for Proposing Researchers, CSR Partners, and Backers (eliminating scattered Header/Footer logins).">
-             Un unico punto di accesso centralizzato per Ricercatori Proponenti, Enti Partner CSR e Sostenitori (elimina la dispersione tra Header e Footer).
+             data-it="Punto di accesso unico al portale per Ricercatori Proponenti, Enti Partner CSR e Sostenitori dell'Università degli Studi di Torino."
+             data-en="Single sign-in portal for Proposing Researchers, CSR Partners, and Backers of the University of Turin.">
+             Punto di accesso unico al portale per Ricercatori Proponenti, Enti Partner CSR e Sostenitori dell'Università degli Studi di Torino.
           </p>
 
-          <div class="filter-pills" style="margin-bottom:18px;" id="login-role-pills" role="group" aria-label="Seleziona il tuo profilo">
-            <button type="button" class="pill-btn active"
+          <div class="filter-pills" style="margin-bottom:18px;" id="login-role-pills" role="group" aria-label="Seleziona il profilo di accesso">
+            <button type="button" class="pill-btn active" aria-pressed="true"
                     data-role-key="researcher"
                     data-role="Ricercatrice / Progettista UniTo"
                     data-demo-email="chiara.ferrero@unito.it">
-              🎓 Progettista UniTo (Chiara)
+              <span aria-hidden="true">🎓</span>
+              <span data-it="Progettista UniTo" data-en="UniTo Researcher">Progettista UniTo</span>
             </button>
-            <button type="button" class="pill-btn"
+            <button type="button" class="pill-btn" aria-pressed="false"
                     data-role-key="partner"
                     data-role="Partner CSR / Sustainability Manager"
                     data-demo-email="m.dubois@alpinebiotech.eu">
-              🏢 Partner CSR (Marc)
+              <span aria-hidden="true">🏢</span>
+              <span data-it="Ente Partner CSR" data-en="CSR Partner">Ente Partner CSR</span>
             </button>
-            <button type="button" class="pill-btn"
+            <button type="button" class="pill-btn" aria-pressed="false"
                     data-role-key="backer"
                     data-role="Sostenitore / Comunità"
                     data-demo-email="elena.rostagno@istruzione.it">
-              ❤️ Sostenitore (Elena)
+              <span aria-hidden="true">❤️</span>
+              <span data-it="Sostenitore" data-en="Backer">Sostenitore</span>
             </button>
           </div>
 
@@ -146,11 +148,17 @@ function initGlobalModals() {
                      data-en="Institutional (@unito.it) or Personal Email (*)">
                 Email Istituzionale (@unito.it) o Personale (*)
               </label>
-              <input type="email" id="login-email" class="form-input input-valid" value="chiara.ferrero@unito.it" required>
+              <input type="email" id="login-email" name="username" autocomplete="username" class="form-input input-valid" value="chiara.ferrero@unito.it" required>
             </div>
             <div class="form-group">
-              <label for="login-pass">Password (*)</label>
-              <input type="password" id="login-pass" class="form-input input-valid" value="••••••••••••" required>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                <label for="login-pass" style="margin-bottom:0;">Password (*)</label>
+                <button type="button" id="toggle-pass-visibility" class="footer-link-btn" style="color:var(--unito-navy-light); font-size:0.8rem; font-weight:700;"
+                        aria-pressed="false" data-it="Mostra password" data-en="Show password">
+                  Mostra password
+                </button>
+              </div>
+              <input type="password" id="login-pass" name="password" autocomplete="current-password" class="form-input input-valid" value="UnitoCrowd2026!" required>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;">
               <span data-it="Accedi come " data-en="Sign in as ">Accedi come </span>
@@ -159,11 +167,11 @@ function initGlobalModals() {
           </form>
         </div>
 
-        <!-- VISTA 2: DASHBOARD RISERVATA CON NAVBAR E TASTO "TORNA ALLA HOME" PRESERVATI (Risolve H3/H4 Pag. 23 e 28-29) -->
+        <!-- VISTA 2: DASHBOARD AREA RISERVATA CON BARRA DI NAVIGAZIONE PERSISTENTE -->
         <div id="login-view-dashboard" style="display:none;">
           <div style="background:var(--unito-navy); color:#ffffff; padding:12px 16px; border-radius:var(--radius-sm); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
             <strong id="dash-header-badge">🏛️ Area Progettisti UniTo</strong>
-            <nav aria-label="Navigazione persistente Area Riservata" style="display:flex; gap:14px; font-size:0.85rem; align-items:center;">
+            <nav aria-label="Navigazione rapida Area Riservata" style="display:flex; gap:14px; font-size:0.85rem; align-items:center;">
               <a href="index.html" style="color:var(--accent-gold); font-weight:800; text-decoration:underline;">🏠 Torna alla Home</a>
               <a href="catalogo.html" style="color:#ffffff;">Esplora Progetti</a>
               <a href="proponi.html#faq-section" style="color:#ffffff;">FAQ & Guida</a>
@@ -171,14 +179,18 @@ function initGlobalModals() {
             </nav>
           </div>
 
-          <span class="badge badge-active" style="margin-bottom:6px;">
-            ✓ Continuità Visiva e Tasto Home Garantiti (Euristiche 3 e 4)
+          <span class="badge badge-active" style="margin-bottom:6px;"
+                data-it="✓ Sessione Istituzionale Attiva"
+                data-en="✓ Active Institutional Session">
+            ✓ Sessione Istituzionale Attiva
           </span>
           <h3 id="dash-welcome-title" style="color:var(--unito-navy); margin-bottom:6px;">
             Benvenuta, Dott.ssa Chiara Ferrero (DISAFA UniTo)
           </h3>
-          <p id="dash-welcome-sub" style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;">
-            A differenza della vecchia piattaforma, l'Area Riservata mantiene sempre visibile la barra di navigazione principale e il link rapido per tornare alla Home Page.
+          <p id="dash-welcome-sub" style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;"
+             data-it="Da questa bacheca puoi monitorare lo stato delle tue proposte, consultare la documentazione fiscale e navigare verso tutte le sezioni del portale."
+             data-en="From this dashboard you can monitor your proposals, download tax documentation, and navigate across all portal sections.">
+            Da questa bacheca puoi monitorare lo stato delle tue proposte, consultare la documentazione fiscale e navigare verso tutte le sezioni del portale.
           </p>
 
           <div id="dash-card-content" style="border:1.5px solid var(--border-color); padding:16px; border-radius:var(--radius-sm); background:var(--bg-subtle); margin-bottom:18px;">
@@ -205,14 +217,14 @@ function initGlobalModals() {
       </div>
     </div>
 
-    <!-- MODALE INFORMATIVA PRIVACY & CONDIZIONI D'USO REALMENTE BILINGUE (Risolve H2 Pag. 12-13) -->
+    <!-- MODALE INFORMATIVA PRIVACY & CONDIZIONI D'USO BILINGUE (IT / EN) -->
     <div id="privacy-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-heading">
       <div class="modal-content">
-        <button type="button" class="modal-close" data-close-modal="privacy-modal" aria-label="Chiudi informativa">✕</button>
+        <button type="button" class="modal-close" data-close-modal="privacy-modal" aria-label="Chiudi informativa privacy">✕</button>
 
-        <!-- Versione Italiana (Mostrata quando la lingua è IT) -->
+        <!-- Versione Italiana -->
         <div id="privacy-content-it">
-          <span class="badge badge-active">✓ Documento Legale in Italiano (Coerente con lingua IT)</span>
+          <span class="badge badge-active">✓ Documento Ufficiale in Lingua Italiana (UE GDPR)</span>
           <h2 id="privacy-modal-heading" style="color:var(--unito-navy); margin:8px 0;">
             Informativa Privacy e Condizioni d'Uso (UE GDPR 2016/679)
           </h2>
@@ -223,13 +235,13 @@ function initGlobalModals() {
             <strong>2. Tutela del Donatore e Regola "O tutto o niente":</strong> I dati inseriti nel Checkout sono trattati esclusivamente per elaborare la transazione liberale, emettere la ricevuta fiscale detraibile e disporre il rimborso automatico integrale (100%) qualora la campagna non raggiunga l'obiettivo entro la scadenza.
           </p>
           <p style="font-size:0.84rem; color:var(--text-muted);">
-            <em>Nota HCI (Euristica 2): Commutando il selettore lingua dell'header su <strong>EN</strong>, questo documento viene integralmente servito in lingua inglese per garantire un reale consenso informato agli utenti internazionali.</em>
+            <strong>3. Diritti degli Interessati e Accessibilità:</strong> Gli utenti possono esercitare in qualsiasi momento i diritti previsti dagli artt. 15–22 del GDPR scrivendo a <em>crowdfunding@unito.it</em>.
           </p>
         </div>
 
-        <!-- Versione Inglese Ufficiale (Mostrata quando la lingua è EN — Risolve H2 Pag. 12-13 Assignment 1) -->
-        <div id="privacy-content-en" style="display:none;">
-          <span class="badge badge-active">✓ Official English Legal Document (Synced with EN Language)</span>
+        <!-- Versione Inglese Ufficiale -->
+        <div id="privacy-content-en" style="display:none;" lang="en">
+          <span class="badge badge-active">✓ Official English Legal Document (EU GDPR)</span>
           <h2 style="color:var(--unito-navy); margin:8px 0;">
             Privacy Policy & Terms of Use (EU GDPR Regulation 2016/679)
           </h2>
@@ -240,7 +252,7 @@ function initGlobalModals() {
             <strong>2. Backer Protection & "All-or-Nothing" Rule:</strong> Personal data provided during Checkout is processed strictly to execute your pledge, issue official tax-deductible receipts for citizens and CSR corporate partners, and guarantee a 100% automatic refund if the campaign does not reach its goal.
           </p>
           <p style="font-size:0.84rem; color:var(--text-muted);">
-            <em>HCI Note (Heuristic 2): Unlike the previous website where English links opened Italian legal texts, this document matches the active language selected by international users.</em>
+            <strong>3. Data Subject Rights:</strong> International backers and corporate partners may exercise their rights under Articles 15–22 of the EU GDPR at any time by contacting <em>crowdfunding@unito.it</em>.
           </p>
         </div>
 
@@ -256,11 +268,28 @@ function initGlobalModals() {
 
   document.body.insertAdjacentHTML('beforeend', modalHTML);
 
+  function openModal(modalId, triggerEl) {
+    lastModalTrigger = triggerEl || document.activeElement;
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.add('open');
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.remove('open');
+    if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+      lastModalTrigger.focus();
+    }
+  }
+
   // Apertura Modale Unificata Login
   document.querySelectorAll('[data-open-login]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('login-modal').classList.add('open');
+      openModal('login-modal', btn);
     });
   });
 
@@ -271,38 +300,78 @@ function initGlobalModals() {
       const currentLang = sessionStorage.getItem('unito_lang') || 'it';
       document.getElementById('privacy-content-it').style.display = currentLang === 'en' ? 'none' : 'block';
       document.getElementById('privacy-content-en').style.display = currentLang === 'en' ? 'block' : 'none';
-      document.getElementById('privacy-modal').classList.add('open');
+      openModal('privacy-modal', btn);
     });
   });
 
-  // Chiusura tramite bottone ✕
+  // Chiusura tramite bottone ✕ o bottone Chiudi
   document.querySelectorAll('[data-close-modal]').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-close-modal');
-      const modal = document.getElementById(target);
-      if (modal) modal.classList.remove('open');
+      closeModal(document.getElementById(target));
     });
   });
 
-  // Chiusura Universale tramite tasto ESC o clic fuori dal box (Euristica 3 — Controllo e Libertà)
+  // Chiusura Universale tramite tasto ESC + Focus Trap dentro la modale aperta (WCAG 2.1.2 / 2.4.3)
   document.addEventListener('keydown', (e) => {
+    const openModalEl = document.querySelector('.modal-backdrop.open');
+    if (!openModalEl) return;
+
     if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open'));
+      closeModal(openModalEl);
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusables = Array.from(
+        openModalEl.querySelectorAll('a[href], button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])')
+      ).filter(el => el.offsetParent !== null);
+
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.classList && e.target.classList.contains('modal-backdrop')) {
-      e.target.classList.remove('open');
+      closeModal(e.target);
     }
   });
 
-  // Selezione Ruolo nella Modale Login (Pre-compila i dati reali di Chiara, Marc o Elena)
+  // Toggle Mostra/Nascondi Password per Autenticazione Accessibile (WCAG 2.2 - 3.3.8)
+  const togglePassBtn = document.getElementById('toggle-pass-visibility');
+  const passInput = document.getElementById('login-pass');
+  if (togglePassBtn && passInput) {
+    togglePassBtn.addEventListener('click', () => {
+      const isHidden = passInput.type === 'password';
+      passInput.type = isHidden ? 'text' : 'password';
+      togglePassBtn.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+      const lang = sessionStorage.getItem('unito_lang') || 'it';
+      togglePassBtn.textContent = isHidden
+        ? (lang === 'en' ? 'Hide password' : 'Nascondi password')
+        : (lang === 'en' ? 'Show password' : 'Mostra password');
+    });
+  }
+
+  // Selezione Ruolo nella Modale Login con aria-pressed aggiornato
   let currentRoleKey = 'researcher';
   document.querySelectorAll('#login-role-pills .pill-btn').forEach(pill => {
     pill.addEventListener('click', () => {
-      document.querySelectorAll('#login-role-pills .pill-btn').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('#login-role-pills .pill-btn').forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-pressed', 'false');
+      });
       pill.classList.add('active');
+      pill.setAttribute('aria-pressed', 'true');
       currentRoleKey = pill.getAttribute('data-role-key') || 'researcher';
       document.getElementById('selected-role-label').textContent = pill.getAttribute('data-role');
       const demoEmail = pill.getAttribute('data-demo-email');
@@ -310,7 +379,7 @@ function initGlobalModals() {
     });
   });
 
-  // Submit Login -> Mostra la Dashboard adattata al profilo con Navbar e Tasto Home sempre visibili
+  // Submit Login -> Mostra la Dashboard
   const loginForm = document.getElementById('unified-login-form');
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
@@ -322,7 +391,7 @@ function initGlobalModals() {
 
       if (currentRoleKey === 'partner') {
         dashBadge.textContent = '🏢 Area Partner & CSR UniTo';
-        dashTitle.textContent = 'Welcome, Marc Dubois (Alpine BioTech CSR)';
+        dashTitle.textContent = 'Welcome, Alpine BioTech CSR Office';
         dashCard.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <span class="badge badge-active">Partner CSR Accreditato • Bilancio ESG 2026</span>
@@ -376,9 +445,7 @@ function initGlobalModals() {
 }
 
 /* --------------------------------------------------------------------------
-   4. LOGICA PAGINA CATALOGO: FILTRI, RICERCA, EMPTY STATE E DOPPIA PERSISTENZA
-   (Risolve H3 Reset Stato Gravità 4 con SessionStorage + URL Params,
-    H7 Filtri/Ordinamento e H9 Empty State — Pag. 20-21, 37-38, 48-49 Ass. 1)
+   4. LOGICA PAGINA CATALOGO: FILTRI, RICERCA, EMPTY STATE E PERSISTENZA
    -------------------------------------------------------------------------- */
 function initCatalogPage() {
   const catalogGrid = document.getElementById('catalog-projects-grid');
@@ -394,9 +461,7 @@ function initCatalogPage() {
   const countSpan = document.getElementById('catalog-results-count');
   const resetBtn = document.getElementById('reset-filters-btn');
   const emptyResetBtn = document.getElementById('empty-reset-btn');
-  const testEmptyBtn = document.getElementById('test-empty-state-btn');
 
-  // Legge lo stato iniziale combinando eventuali parametri URL e il sessionStorage
   const params = new URLSearchParams(window.location.search);
   let state = {
     cat: params.get('cat') || sessionStorage.getItem('unito_cat_filter') || 'all',
@@ -406,13 +471,11 @@ function initCatalogPage() {
   };
 
   function updateCatalogUI() {
-    // 1. Salva stato in sessionStorage (così tornando indietro col browser non si resetta mai!)
     sessionStorage.setItem('unito_cat_filter', state.cat);
     sessionStorage.setItem('unito_status_filter', state.status);
     sessionStorage.setItem('unito_sort', state.sort);
     sessionStorage.setItem('unito_cat_query', state.query);
 
-    // 2. Aggiorna dinamicamente l'URL senza ricaricare la pagina (Come proposto a Pag. 21 Ass. 1)
     const urlParams = new URLSearchParams();
     if (state.cat !== 'all') urlParams.set('cat', state.cat);
     if (state.status !== 'all') urlParams.set('status', state.status);
@@ -423,13 +486,19 @@ function initCatalogPage() {
       : window.location.pathname;
     window.history.replaceState(state, '', newUrl);
 
-    // 3. Sincronizza stato visivo dei controlli
-    catButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter-cat') === state.cat));
-    statusButtons.forEach(b => b.classList.toggle('active', b.getAttribute('data-filter-status') === state.status));
+    catButtons.forEach(b => {
+      const isAct = b.getAttribute('data-filter-cat') === state.cat;
+      b.classList.toggle('active', isAct);
+      b.setAttribute('aria-pressed', isAct ? 'true' : 'false');
+    });
+    statusButtons.forEach(b => {
+      const isAct = b.getAttribute('data-filter-status') === state.status;
+      b.classList.toggle('active', isAct);
+      b.setAttribute('aria-pressed', isAct ? 'true' : 'false');
+    });
     if (sortSelect) sortSelect.value = state.sort;
     if (searchInput && searchInput.value !== state.query) searchInput.value = state.query;
 
-    // 4. Filtra le card
     const visibleCards = cards.filter(card => {
       const cCat = card.getAttribute('data-cat');
       const cStatus = card.getAttribute('data-status');
@@ -440,7 +509,6 @@ function initCatalogPage() {
       return matchCat && matchStatus && matchQuery;
     });
 
-    // 5. Ordina le card visibili
     visibleCards.sort((a, b) => {
       if (state.sort === 'raised') {
         return Number(b.getAttribute('data-raised')) - Number(a.getAttribute('data-raised'));
@@ -459,7 +527,6 @@ function initCatalogPage() {
 
     if (countSpan) countSpan.textContent = visibleCards.length;
 
-    // 6. Gestione Empty State costruttivo (Risolve H9 Pag. 48-49 Assignment 1)
     if (visibleCards.length === 0) {
       catalogGrid.style.display = 'none';
       emptyState.style.display = 'block';
@@ -510,41 +577,33 @@ function initCatalogPage() {
   if (resetBtn) resetBtn.addEventListener('click', resetAllFilters);
   if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAllFilters);
 
-  // Bottone di test per simulare la query "provaprovaababaab" dell'Assignment 1 (Pag. 48-49)
-  if (testEmptyBtn) {
-    testEmptyBtn.addEventListener('click', () => {
-      state.query = 'provaprovaababaab';
-      if (searchInput) searchInput.value = state.query;
-      updateCatalogUI();
-    });
-  }
-
   updateCatalogUI();
 }
 
 /* --------------------------------------------------------------------------
-   5. LOGICA SCHEDA PROGETTO (Switch Attivo/Concluso, Blocco Invio H4, Tab)
-   (Risolve H4 Gravità 4 Pag. 24-25: disabilita i form sui progetti conclusi)
+   5. LOGICA SCHEDA PROGETTO (Switch Attivo/Concluso, Tab WAI-ARIA, Ricompense)
    -------------------------------------------------------------------------- */
 function initProjectPage() {
   const projectPage = document.getElementById('project-detail-page');
   if (!projectPage) return;
 
-  // Gestione Tab navigabili
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-tab');
-      tabBtns.forEach(b => b.classList.remove('active'));
+      tabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
       tabPanels.forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       const panel = document.getElementById(target);
       if (panel) panel.classList.add('active');
     });
   });
 
-  // Switcher tra Progetti Attivi (MILK-ACT / SpeechMatE) e Progetto Concluso (BRIGHT)
   const switcherBtns = document.querySelectorAll('[data-switch-project]');
   const params = new URLSearchParams(window.location.search);
   const initialProj = params.get('proj') || sessionStorage.getItem('unito_current_proj') || 'milk-act';
@@ -553,7 +612,11 @@ function initProjectPage() {
     sessionStorage.setItem('unito_current_proj', projKey);
     window.history.replaceState({ proj: projKey }, '', `${window.location.pathname}?proj=${projKey}`);
 
-    switcherBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-switch-project') === projKey));
+    switcherBtns.forEach(b => {
+      const isAct = b.getAttribute('data-switch-project') === projKey;
+      b.classList.toggle('active', isAct);
+      b.setAttribute('aria-pressed', isAct ? 'true' : 'false');
+    });
 
     const isClosed = projKey === 'bright';
     const titleEl = document.getElementById('proj-title');
@@ -596,7 +659,6 @@ function initProjectPage() {
       daysEl.textContent = '⏳ Scade il 17/11/2026';
     }
 
-    // Risolve H4 Gravità 4 (Pag. 24-25 Ass. 1): disabilita uniformemente tutti i campi sui progetti conclusi
     if (isClosed) {
       statusBadge.className = 'badge badge-closed';
       statusBadge.textContent = '🔒 Campagna Conclusa — Raccolta Chiusa';
@@ -605,7 +667,7 @@ function initProjectPage() {
       customInput.disabled = true;
       customInput.setAttribute('disabled', 'disabled');
       customInput.value = '';
-      customInput.placeholder = 'Raccolta fondi terminata (Input disabilitato)';
+      customInput.placeholder = 'Raccolta fondi terminata';
       customBtn.disabled = true;
       customBtn.setAttribute('disabled', 'disabled');
       customBtn.textContent = '🔒 Campagna Conclusa';
@@ -650,7 +712,6 @@ function initProjectPage() {
     });
   });
 
-  // Prevenzione assoluta del bug "Invio -> Redirect alla Home" nel form Fai Tu (H4 Gravità 4)
   const customForm = document.getElementById('custom-donation-form');
   if (customForm) {
     customForm.addEventListener('submit', (e) => {
@@ -664,7 +725,6 @@ function initProjectPage() {
     });
   }
 
-  // Click sulle card ricompensa
   document.querySelectorAll('.reward-option').forEach(card => {
     card.addEventListener('click', () => {
       if (card.classList.contains('disabled')) return;
@@ -680,9 +740,7 @@ function initProjectPage() {
 }
 
 /* --------------------------------------------------------------------------
-   6. LOGICA CHECKOUT: INLINE VALIDATION DIAGNOSTICA E TOTALE DINAMICO
-   (Risolve H1 Totale Destra Pag. 10-11, H5 Inline Validation Gravità 3 Pag. 34-35,
-    H8 Monolingue Pag. 43 Assignment 1)
+   6. LOGICA CHECKOUT: VALIDAZIONE ACCESSIBILE CON ARIA-INVALID E TOTALE LIVE
    -------------------------------------------------------------------------- */
 function initCheckoutPage() {
   const checkoutForm = document.getElementById('checkout-form');
@@ -720,6 +778,7 @@ function initCheckoutPage() {
     if (!val || val < 5) {
       amountInput.classList.add('input-error');
       amountInput.classList.remove('input-valid');
+      amountInput.setAttribute('aria-invalid', 'true');
       fb.className = 'field-feedback error';
       fb.textContent = lang === 'en'
         ? '⚠️ Minimum donation amount is 5.00 €.'
@@ -728,6 +787,7 @@ function initCheckoutPage() {
     }
     amountInput.classList.remove('input-error');
     amountInput.classList.add('input-valid');
+    amountInput.setAttribute('aria-invalid', 'false');
     fb.className = 'field-feedback valid';
     fb.textContent = lang === 'en'
       ? '✓ Valid amount (€0.00 platform fees).'
@@ -742,14 +802,16 @@ function initCheckoutPage() {
     if (val.length < 3 || !val.includes(' ')) {
       nameInput.classList.add('input-error');
       nameInput.classList.remove('input-valid');
+      nameInput.setAttribute('aria-invalid', 'true');
       fb.className = 'field-feedback error';
       fb.textContent = lang === 'en'
-        ? '⚠️ Please enter both First and Last Name (e.g. Elena Rostagno).'
-        : '⚠️ Inserisci sia il Nome che il Cognome (es. Elena Rostagno).';
+        ? '⚠️ Please enter both First and Last Name (e.g. Mario Rossi).'
+        : '⚠️ Inserisci sia il Nome che il Cognome (es. Mario Rossi).';
       return false;
     }
     nameInput.classList.remove('input-error');
     nameInput.classList.add('input-valid');
+    nameInput.setAttribute('aria-invalid', 'false');
     fb.className = 'field-feedback valid';
     fb.textContent = lang === 'en'
       ? '✓ Full name verified for tax receipt.'
@@ -766,15 +828,17 @@ function initCheckoutPage() {
     if (!val.includes('@')) {
       emailInput.classList.add('input-error');
       emailInput.classList.remove('input-valid');
+      emailInput.setAttribute('aria-invalid', 'true');
       fb.className = 'field-feedback error';
       fb.textContent = lang === 'en'
         ? '⚠️ Invalid format: missing "@" symbol (e.g. name@domain.it).'
-        : '⚠️ Formato errato: manca il simbolo "@" (es. elena.rostagno@dominio.it).';
+        : '⚠️ Formato errato: manca il simbolo "@" (es. nome.cognome@dominio.it).';
       return false;
     }
     if (!emailRegex.test(val)) {
       emailInput.classList.add('input-error');
       emailInput.classList.remove('input-valid');
+      emailInput.setAttribute('aria-invalid', 'true');
       fb.className = 'field-feedback error';
       fb.textContent = lang === 'en'
         ? '⚠️ Incomplete domain after "@" (e.g. .it, .com, @unito.it).'
@@ -783,6 +847,7 @@ function initCheckoutPage() {
     }
     emailInput.classList.remove('input-error');
     emailInput.classList.add('input-valid');
+    emailInput.setAttribute('aria-invalid', 'false');
     fb.className = 'field-feedback valid';
     fb.textContent = lang === 'en'
       ? '✓ Valid email address for instant receipt delivery.'
@@ -806,19 +871,6 @@ function initCheckoutPage() {
   emailInput.addEventListener('blur', validateEmail);
   privacyCheck.addEventListener('change', checkOverallValidity);
 
-  // Bottone per simulare l'errore email "emailemail" dell'Assignment 1 (Pag. 34-35)
-  const testInvalidEmailBtn = document.getElementById('test-invalid-email-btn');
-  if (testInvalidEmailBtn) {
-    testInvalidEmailBtn.addEventListener('click', () => {
-      emailInput.value = 'emailemail';
-      nameInput.value = 'Elena Rostagno';
-      validateName();
-      validateEmail();
-      checkOverallValidity();
-      emailInput.focus();
-    });
-  }
-
   checkoutForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!validateAmount() || !validateName() || !validateEmail() || !privacyCheck.checked) return;
@@ -839,7 +891,6 @@ function initCheckoutPage() {
 
 /* --------------------------------------------------------------------------
    7. LOGICA PAGINA PROPONI PROGETTO: CALCOLATORE MATCH-FUNDING E CANDIDATURA
-   (Risolve H10 Pag. 51 Servizi vaghi e mostra il raddoppio fino a 10.000 €)
    -------------------------------------------------------------------------- */
 function initProponiPage() {
   const slider = document.getElementById('match-budget-slider');
@@ -851,7 +902,6 @@ function initProponiPage() {
 
   function updateCalculator() {
     const total = Number(slider.value);
-    // UniTo raddoppia fino a un massimo di 10.000 € di quota Ateneo (Pag. 7 Assignment 1)
     const unitoMatch = Math.min(total / 2, 10000);
     const communityNeeded = total - unitoMatch;
     if (totalOut) totalOut.textContent = `${total.toLocaleString('it-IT')} €`;
