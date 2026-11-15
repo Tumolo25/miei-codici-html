@@ -6,7 +6,7 @@
   <title>Esplora Progetti (Catalogo) | UniTo Crowd — Funds TOgether</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Stili specifici potenziati per il Catalogo V2 */
+    /* Stili specifici per il Catalogo Progetti */
     .catalog-status-strip {
       background-color: #f0f9ff;
       border: 1.5px solid #bae6fd;
@@ -64,16 +64,16 @@
 </head>
 <body>
 
-  <!-- Skip-link per accessibilità da tastiera (WCAG 2.1) -->
+  <!-- Skip-link per accessibilità da tastiera (WCAG 2.2 - 2.4.1) -->
   <a href="#main-content" class="skip-link" data-it="Salta al catalogo progetti" data-en="Skip to projects catalog">Salta al catalogo progetti</a>
 
-  <!-- 1. HEADER UNIFICATO STICKY (Risolve H4, H7, H8) -->
+  <!-- HEADER ISTITUZIONALE UNIFICATO STICKY -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home">
-        <span class="brand-badge">🏛️ UniTo</span>
+      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home Page">
+        <span class="brand-badge"><span aria-hidden="true">🏛️</span> UniTo</span>
         <div>
-          Funds TOgether!
+          <span lang="en">Funds TOgether!</span>
           <span class="brand-sub" data-it="Crowdfunding Ricerca & Innovazione" data-en="Research & Innovation Crowdfunding">Crowdfunding Ricerca & Innovazione</span>
         </div>
       </a>
@@ -81,34 +81,36 @@
       <nav class="main-nav" aria-label="Menu Principale">
         <ul>
           <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
-          <li><a href="catalogo.html" class="active" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+          <li><a href="catalogo.html" class="active" aria-current="page" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
           <li><a href="proponi.html" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
           <li><a href="partner.html" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <form id="header-search-form" class="header-search" role="search">
+        <form id="header-search-form" class="header-search" role="search" aria-label="Ricerca rapida progetti">
+          <label for="header-search-input" class="sr-only" data-it="Cerca progetti nel portale" data-en="Search projects in the portal">Cerca progetti nel portale</label>
           <input type="search" id="header-search-input"
                  placeholder="Cerca progetti..."
                  data-placeholder-it="Cerca progetti..."
-                 data-placeholder-en="Search projects..."
-                 aria-label="Cerca progetti">
-          <button type="submit" aria-label="Avvia ricerca">🔍</button>
+                 data-placeholder-en="Search projects...">
+          <button type="submit" aria-label="Avvia ricerca"><span aria-hidden="true">🔍</span></button>
         </form>
 
-        <div class="lang-switch" role="group" aria-label="Selettore lingua IT / EN">
-          <button type="button" class="lang-btn active" data-lang="it">IT</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <div class="lang-switch" role="group" aria-label="Selettore lingua / Language selector">
+          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true" aria-label="Lingua Italiana">IT</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English Language">EN</button>
         </div>
 
-        <button type="button" class="btn btn-secondary" data-open-login
-                data-it="👤 Accedi" data-en="👤 Sign In">👤 Accedi</button>
+        <button type="button" class="btn btn-secondary" data-open-login>
+          <span aria-hidden="true">👤</span>
+          <span data-it="Accedi" data-en="Sign In">Accedi</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 2. BREADCRUMBS STANDARDIZZATE IN SOLO TESTO (Risolve H1 e H4) -->
+  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS -->
   <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
     <div class="container breadcrumbs-inner">
       <ol class="breadcrumbs-list">
@@ -117,68 +119,71 @@
           Esplora Progetti (Catalogo Completo d'Ateneo)
         </li>
       </ol>
-      <span style="font-size:0.8rem; color:var(--text-muted); font-weight:600;"
-            data-it="✓ Paginazione fluida senza blocchi forzati (Euristica 7)"
-            data-en="✓ Smooth catalog view without forced scroll jumps (Heuristic 7)">
-        ✓ Paginazione fluida senza blocchi forzati (Euristica 7)
+      <span class="breadcrumbs-meta">
+        <span aria-hidden="true">🔬</span>
+        <span data-it="9 Campagne Scientifiche Verificate • Università degli Studi di Torino"
+              data-en="9 Verified Scientific Campaigns • University of Turin">
+          9 Campagne Scientifiche Verificate • Università degli Studi di Torino
+        </span>
       </span>
     </div>
   </nav>
 
-  <main id="main-content" class="section">
+  <main id="main-content" class="section" tabindex="-1">
     <div class="container">
 
-      <!-- INTESTAZIONE CATALOGO + BARRA DI VERIFICA RAPIDA EMPTY STATE (Task 2) -->
+      <!-- INTESTAZIONE CATALOGO -->
       <div class="section-header">
         <div>
           <h1 class="section-title" data-it="Catalogo Progetti di Ricerca UniTo" data-en="UniTo Scientific Research Catalog">
             Catalogo Progetti di Ricerca UniTo
           </h1>
           <p class="section-criteria">
-            <span class="criteria-pill" data-it="✓ Controllo & Efficienza (H3, H7)" data-en="✓ User Control & Efficiency (H3, H7)">
-              ✓ Controllo & Efficienza (H3, H7)
+            <span class="criteria-pill" data-it="Catalogo Ufficiale d'Ateneo" data-en="Official University Catalog">
+              Catalogo Ufficiale d'Ateneo
             </span>
-            <span data-it="Filtra per Dipartimento o Stato e confronta più schede: tornando indietro col browser ritroverai esattamente i tuoi filtri attivi."
-                  data-en="Filter by Department or Status and compare multiple projects: clicking browser Back preserves your exact active filters.">
-              Filtra per Dipartimento o Stato e confronta più schede: tornando indietro col browser ritroverai esattamente i tuoi filtri attivi.
+            <span data-it="Filtra per Area Tematica o Stato e confronta più schede progetto: tornando indietro col browser ritroverai esattamente i tuoi filtri attivi."
+                  data-en="Filter by Research Area or Status and compare multiple projects: clicking browser Back preserves your exact active filters.">
+              Filtra per Area Tematica o Stato e confronta più schede progetto: tornando indietro col browser ritroverai esattamente i tuoi filtri attivi.
             </span>
           </p>
         </div>
-
-        <!-- Bottone rapido per testare l'Empty State durante la valutazione (Risolve H9 Pag. 48-49) -->
-        <button type="button" id="test-empty-state-btn" class="btn btn-outline" style="font-size:0.85rem;"
-                data-it="🧪 Simula Ricerca Fallita (Test Empty State H9)"
-                data-en="🧪 Simulate Failed Search (Test Empty State H9)">
-          🧪 Simula Ricerca Fallita (Test Empty State H9)
-        </button>
       </div>
 
-      <!-- 3. TOOLBAR DI FILTRAGGIO MULTIDIMENSIONALE E ORDINAMENTO (Risolve H7 Pag. 37-38 e H8 Pag. 47) -->
-      <section class="catalog-toolbar" aria-label="Strumenti di filtraggio e ordinamento del catalogo">
+      <!-- TOOLBAR DI FILTRAGGIO MULTIDIMENSIONALE E ORDINAMENTO -->
+      <section class="catalog-toolbar" aria-labelledby="toolbar-heading">
+        <h2 id="toolbar-heading" class="sr-only" data-it="Strumenti di filtraggio, ricerca e ordinamento del catalogo" data-en="Catalog filtering, search, and sorting tools">
+          Strumenti di filtraggio, ricerca e ordinamento del catalogo
+        </h2>
+
         <div class="toolbar-row">
-          <!-- Filtro Area / Dipartimento con conteggio preventivo (Information Scent) -->
+          <!-- Filtro Area / Dipartimento -->
           <div class="filter-pills" role="group" aria-label="Filtra per area tematica o dipartimento">
             <span class="filter-label" data-it="Area Tematica:" data-en="Research Area:">Area Tematica:</span>
-            <button type="button" class="pill-btn active" data-filter-cat="all"
+            <button type="button" class="pill-btn active" data-filter-cat="all" aria-pressed="true"
                     data-it="Tutte le Aree (9)" data-en="All Areas (9)">Tutte le Aree (9)</button>
-            <button type="button" class="pill-btn" data-filter-cat="salute"
-                    data-it="🍼 Salute & Medicina (3)" data-en="🍼 Health & Medicine (3)">🍼 Salute & Medicina (3)</button>
-            <button type="button" class="pill-btn" data-filter-cat="tecnologia"
-                    data-it="💻 Tecnologia & Disabilità (2)" data-en="💻 Tech & Accessibility (2)">💻 Tecnologia & Disabilità (2)</button>
-            <button type="button" class="pill-btn" data-filter-cat="ambiente"
-                    data-it="🌿 Ambiente & Agraria (3)" data-en="🌿 Environment & Agri (3)">🌿 Ambiente & Agraria (3)</button>
-            <button type="button" class="pill-btn" data-filter-cat="cultura"
-                    data-it="🎭 Cultura & Patrimonio (1)" data-en="🎭 Culture & Heritage (1)">🎭 Cultura & Patrimonio (1)</button>
+            <button type="button" class="pill-btn" data-filter-cat="salute" aria-pressed="false">
+              <span aria-hidden="true">🍼</span> <span data-it="Salute & Medicina (3)" data-en="Health & Medicine (3)">Salute & Medicina (3)</span>
+            </button>
+            <button type="button" class="pill-btn" data-filter-cat="tecnologia" aria-pressed="false">
+              <span aria-hidden="true">💻</span> <span data-it="Tecnologia & Disabilità (2)" data-en="Tech & Accessibility (2)">Tecnologia & Disabilità (2)</span>
+            </button>
+            <button type="button" class="pill-btn" data-filter-cat="ambiente" aria-pressed="false">
+              <span aria-hidden="true">🌿</span> <span data-it="Ambiente & Agraria (3)" data-en="Environment & Agri (3)">Ambiente & Agraria (3)</span>
+            </button>
+            <button type="button" class="pill-btn" data-filter-cat="cultura" aria-pressed="false">
+              <span aria-hidden="true">🎭</span> <span data-it="Cultura & Patrimonio (1)" data-en="Culture & Heritage (1)">Cultura & Patrimonio (1)</span>
+            </button>
           </div>
 
-          <!-- Filtro Stato della Campagna (Evita la collisione CSS tra header "In corso" e "Conclusi" - H8) -->
+          <!-- Filtro Stato della Campagna -->
           <div class="filter-pills" role="group" aria-label="Filtra per stato della campagna">
             <span class="filter-label" data-it="Stato:" data-en="Status:">Stato:</span>
-            <button type="button" class="pill-btn active" data-filter-status="all"
+            <button type="button" class="pill-btn active" data-filter-status="all" aria-pressed="true"
                     data-it="Tutti (9)" data-en="All (9)">Tutti (9)</button>
-            <button type="button" class="pill-btn" data-filter-status="active"
+            <button type="button" class="pill-btn" data-filter-status="active" aria-pressed="false"
                     data-it="● In Corso — Sostenibili ora (4)" data-en="● Active — Support now (4)">● In Corso — Sostenibili ora (4)</button>
-            <button type="button" class="pill-btn" data-filter-status="closed"
+            <button type="button" class="pill-btn" data-filter-status="closed" aria-pressed="false"
                     data-it="✓ Conclusi — Obiettivo raggiunto (5)" data-en="✓ Completed — Goal reached (5)">✓ Conclusi — Obiettivo raggiunto (5)</button>
           </div>
         </div>
@@ -186,7 +191,9 @@
         <!-- Seconda riga Toolbar: Ricerca testuale live + Ordinamento -->
         <div class="toolbar-row" style="margin-top:16px; padding-top:16px; border-top:1px solid #e2e8f0;">
           <div class="toolbar-controls" style="flex-grow:1;">
-            <label for="catalog-search" class="filter-label" data-it="🔍 Ricerca rapida:" data-en="🔍 Quick search:">🔍 Ricerca rapida:</label>
+            <label for="catalog-search" class="filter-label">
+              <span aria-hidden="true">🔍</span> <span data-it="Ricerca rapida:" data-en="Quick search:">Ricerca rapida:</span>
+            </label>
             <input type="search" id="catalog-search" class="input-control" style="min-width:280px; flex-grow:1;"
                    placeholder="Digita titolo, parola chiave o dipartimento (es. MILK-ACT, latte, fNIRS, veterinaria)..."
                    data-placeholder-it="Digita titolo, parola chiave o dipartimento (es. MILK-ACT, latte, fNIRS, veterinaria)..."
@@ -208,11 +215,11 @@
         </div>
       </section>
 
-      <!-- 4. BARRA DI FEEDBACK STATO SISTEMA E PERSISTENZA SESSIONSTORAGE (Risolve H1 e H3 Gravità 4) -->
-      <div class="catalog-status-strip" role="status" aria-live="polite">
+      <!-- BARRA DI FEEDBACK STATO SISTEMA E PERSISTENZA FILTRI -->
+      <div class="catalog-status-strip" role="status" aria-live="polite" aria-atomic="true">
         <div class="status-left">
-          <span class="badge badge-active" data-it="💾 Stato Navigazione Salvato" data-en="💾 Navigation State Saved">
-            💾 Stato Navigazione Salvato
+          <span class="badge badge-active">
+            <span aria-hidden="true">💾</span> <span data-it="Filtri Attivi" data-en="Active Filters">Filtri Attivi</span>
           </span>
           <span id="active-filters-summary" class="status-summary-text"
                 data-it="Filtro attivo: Tutte le aree • Tutti gli stati (I filtri restano salvati tornando indietro da una scheda progetto)"
@@ -227,28 +234,28 @@
         </div>
       </div>
 
-      <!-- 5. EMPTY STATE V2 ILLUSTRATO CON SVG E CHIP DI RICERCA SUGGERITA (Risolve H9 Pag. 48-49 Assignment 1) -->
+      <!-- EMPTY STATE CON ILLUSTRAZIONE SVG E PAROLE CHIAVE SUGGERITE -->
       <div id="catalog-empty-state" class="empty-state-box" style="display:none;" role="status" aria-live="polite">
         <div class="empty-svg-wrapper" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             <line x1="8" y1="11" x2="14" y2="11"></line>
           </svg>
         </div>
 
-        <h3>
+        <h2 style="color:var(--unito-navy); font-size:1.4rem; margin-bottom:8px;">
           <span data-it="Spiacenti, non abbiamo trovato progetti per " data-en="Sorry, no projects found matching ">Spiacenti, non abbiamo trovato progetti per </span>
           "<span id="empty-query-text" style="color:var(--accent-orange);"></span>"
-        </h3>
+        </h2>
         <p style="color:var(--text-muted); max-width:540px; margin:0 auto;"
-           data-it="Nessun vicolo cieco! Il sistema ha intercettato la ricerca senza risultati e ti propone tre modi immediati per proseguire l'esplorazione (Euristica 9):"
-           data-en="No dead ends! The system caught the empty search result and offers immediate ways to continue exploring (Heuristic 9):">
-          Nessun vicolo cieco! Il sistema ha intercettato la ricerca senza risultati e ti propone tre modi immediati per proseguire l'esplorazione (Euristica 9):
+           data-it="La ricerca non ha restituito risultati con i parametri attuali. Ecco alcuni suggerimenti per trovare subito la campagna di tuo interesse:"
+           data-en="Your search returned no results with the current parameters. Here are some suggestions to quickly find the campaign you are looking for:">
+          La ricerca non ha restituito risultati con i parametri attuali. Ecco alcuni suggerimenti per trovare subito la campagna di tuo interesse:
         </p>
 
         <div class="empty-state-tips">
-          <strong data-it="💡 Come superare l'ostacolo:" data-en="💡 How to recover from this search:">💡 Come superare l'ostacolo:</strong>
+          <strong><span aria-hidden="true">💡</span> <span data-it="Consigli di ricerca:" data-en="Search tips:">Consigli di ricerca:</span></strong>
           <ul style="margin-top:6px; padding-left:20px;">
             <li data-it="Verifica l'ortografia della parola inserita nella barra di ricerca."
                 data-en="Check the spelling of the keyword typed in the search box.">
@@ -267,17 +274,16 @@
 
         <!-- Scorciatoie cliccabili per uscire immediatamente dall'Empty State -->
         <div class="empty-quick-tags">
-          <strong style="font-size:0.88rem; color:var(--unito-navy);"
-                  data-it="🔎 Prova subito con un clic una ricerca valida:"
-                  data-en="🔎 Try a valid search with one click:">
-            🔎 Prova subito con un clic una ricerca valida:
+          <strong style="font-size:0.88rem; color:var(--unito-navy);">
+            <span aria-hidden="true">🔎</span>
+            <span data-it="Ricerche frequenti nel portale:" data-en="Popular searches on the portal:">Ricerche frequenti nel portale:</span>
           </strong>
           <div class="filter-pills" style="justify-content:center; margin-top:10px;">
-            <button type="button" class="pill-btn" data-quick-query="latte">🍼 "latte materno"</button>
-            <button type="button" class="pill-btn" data-quick-query="disabilità">🎙️ "disabilità"</button>
-            <button type="button" class="pill-btn" data-quick-query="fNIRS">🧠 "fNIRS"</button>
-            <button type="button" class="pill-btn" data-quick-query="carne">🔬 "carne"</button>
-            <button type="button" class="pill-btn" data-quick-query="veterinaria">🐾 "veterinaria"</button>
+            <button type="button" class="pill-btn" data-quick-query="latte"><span aria-hidden="true">🍼</span> "latte materno"</button>
+            <button type="button" class="pill-btn" data-quick-query="disabilità"><span aria-hidden="true">🎙️</span> "disabilità"</button>
+            <button type="button" class="pill-btn" data-quick-query="fNIRS"><span aria-hidden="true">🧠</span> "fNIRS"</button>
+            <button type="button" class="pill-btn" data-quick-query="carne"><span aria-hidden="true">🔬</span> "carne"</button>
+            <button type="button" class="pill-btn" data-quick-query="veterinaria"><span aria-hidden="true">🐾</span> "veterinaria"</button>
           </div>
         </div>
 
@@ -290,426 +296,464 @@
         </div>
       </div>
 
-      <!-- 6. GRIGLIA COMPLETA A 9 PROGETTI UNITO (Senza tasto "Altri" da 4 card né scroll forzato - Risolve H7 Pag. 37) -->
-      <div id="catalog-projects-grid" class="projects-grid">
+      <!-- GRIGLIA COMPLETA A 9 PROGETTI UNITO (Con intestazione H2 per gerarchia WCAG 1.3.1 / 2.4.6) -->
+      <section aria-labelledby="catalog-grid-heading">
+        <h2 id="catalog-grid-heading" class="sr-only" data-it="Elenco delle campagne di ricerca dell'Università di Torino" data-en="List of University of Turin research campaigns">
+          Elenco delle campagne di ricerca dell'Università di Torino
+        </h2>
 
-        <!-- CARD 1: MILK-ACT (Attivo • Salute & Medicina — Scelta di Elena) -->
-        <article class="project-card" data-cat="salute" data-status="active" data-raised="14200" data-pct="88" data-order="9">
-          <div class="card-visual visual-med">
-            <div class="card-badges">
-              <span class="badge badge-active" data-it="● In Corso • Salute" data-en="● Active • Health">● In Corso • Salute</span>
-              <span class="badge badge-dept">VIRMOLAB UniTo</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🍼</div>
-              <span class="card-match-tag" data-it="🏛️ Raddoppio UniTo 8.000 €" data-en="🏛️ UniTo Match €8,000">🏛️ Raddoppio UniTo 8.000 €</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=milk-act"
-                 data-it="MILK-ACT: Proteggere i più piccoli dai virus di domani"
-                 data-en="MILK-ACT: Protecting Newborns from Tomorrow's Viruses">
-                MILK-ACT: Proteggere i più piccoli dai virus di domani
-              </a>
-            </h3>
-            <p class="card-author"
-               data-it="Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026"
-               data-en="Dept. Clinical & Biological Sciences • Ends 17/11/2026">
-              Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026
-            </p>
-            <p class="card-desc"
-               data-it="Studio decennale sulle proprietà antivirali del latte materno e sui componenti bioattivi per proteggere i neonati prematuri."
-               data-en="Decade-long study on the antiviral properties of human milk and bioactive components to protect premature infants.">
-              Studio decennale sulle proprietà antivirali del latte materno e sui componenti bioattivi per proteggere i neonati prematuri.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">14.200 € <small style="font-weight:500; color:var(--text-muted);">/ 16.000 €</small></span>
-                <strong style="color:var(--success-green);">88%</strong>
-              </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width:48%;"></div>
-                <div class="progress-bar-match" style="width:40%;"></div>
-              </div>
-              <div class="progress-legend">
-                <span><i class="dot dot-comm"></i>198 donatori</span>
-                <span><i class="dot dot-match"></i>O tutto o niente</span>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <a href="progetto.html?proj=milk-act" class="btn btn-outline" data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-            <a href="checkout.html?amount=50" class="btn btn-primary" data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
-          </div>
-        </article>
+        <div id="catalog-projects-grid" class="projects-grid">
 
-        <!-- CARD 2: SpeechMatE (Attivo • Tecnologia & Disabilità — Scelta di Lorenzo) -->
-        <article class="project-card" data-cat="tecnologia" data-status="active" data-raised="8450" data-pct="84" data-order="8">
-          <div class="card-visual visual-tech">
-            <div class="card-badges">
-              <span class="badge badge-active" data-it="● In Corso • Tecnologia" data-en="● Active • Tech">● In Corso • Tecnologia</span>
-              <span class="badge badge-dept">Dip. Matematica</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🎙️</div>
-              <span class="card-match-tag" data-it="🏛️ Raddoppio UniTo 5.000 €" data-en="🏛️ UniTo Match €5,000">🏛️ Raddoppio UniTo 5.000 €</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=speechmate"
-                 data-it="SpeechMatE: Editor Matematico Vocale per la Disabilità"
-                 data-en="SpeechMatE: Voice-Driven Math Editor for Accessibility">
-                SpeechMatE: Editor Matematico Vocale per la Disabilità
-              </a>
-            </h3>
-            <p class="card-author"
-               data-it="Laboratorio Integr-Abile UniTo • 19 giorni al termine"
-               data-en="Integr-Abile Lab UniTo • 19 days left">
-              Laboratorio Integr-Abile UniTo • 19 giorni al termine
-            </p>
-            <p class="card-desc"
-               data-it="Sviluppo della versione web italiana di SpeechMatE per consentire agli studenti con tetraplegia di scrivere formule con la voce."
-               data-en="Development of the web version of SpeechMatE allowing students with tetraplegia to write mathematical formulas by voice.">
-              Sviluppo della versione web italiana di SpeechMatE per consentire agli studenti con tetraplegia di scrivere formule con la voce.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">8.450 € <small style="font-weight:500; color:var(--text-muted);">/ 10.000 €</small></span>
-                <strong style="color:var(--success-green);">84%</strong>
+          <!-- CARD 1: MILK-ACT (Attivo • Salute & Medicina) -->
+          <article class="project-card" data-cat="salute" data-status="active" data-raised="14200" data-pct="88" data-order="9">
+            <div class="card-visual visual-med">
+              <div class="card-badges">
+                <span class="badge badge-active" data-it="● In Corso • Salute" data-en="● Active • Health">● In Corso • Salute</span>
+                <span class="badge badge-dept">VIRMOLAB UniTo</span>
               </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width:44%;"></div>
-                <div class="progress-bar-match" style="width:40%;"></div>
-              </div>
-              <div class="progress-legend">
-                <span><i class="dot dot-comm"></i>142 donatori</span>
-                <span><i class="dot dot-match"></i>Da 10 € (Hall of Fame)</span>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🍼</div>
+                <span class="card-match-tag"><span aria-hidden="true">🏛️</span> <span data-it="Raddoppio UniTo 8.000 €" data-en="UniTo Match €8,000">Raddoppio UniTo 8.000 €</span></span>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="progetto.html?proj=speechmate" class="btn btn-outline" data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-            <a href="checkout.html?amount=10" class="btn btn-primary" data-it="Dona da 10 € →" data-en="Donate €10 →">Dona da 10 € →</a>
-          </div>
-        </article>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=milk-act"
+                   data-it="MILK-ACT: Proteggere i più piccoli dai virus di domani"
+                   data-en="MILK-ACT: Protecting Newborns from Tomorrow's Viruses">
+                  MILK-ACT: Proteggere i più piccoli dai virus di domani
+                </a>
+              </h3>
+              <p class="card-author"
+                 data-it="Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026"
+                 data-en="Dept. Clinical & Biological Sciences • Ends 17/11/2026">
+                Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026
+              </p>
+              <p class="card-desc"
+                 data-it="Studio decennale sulle proprietà antivirali del latte materno e sui componenti bioattivi per proteggere i neonati prematuri."
+                 data-en="Decade-long study on the antiviral properties of human milk and bioactive components to protect premature infants.">
+                Studio decennale sulle proprietà antivirali del latte materno e sui componenti bioattivi per proteggere i neonati prematuri.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">14.200 € <small style="font-weight:500; color:var(--text-muted);">/ 16.000 €</small></span>
+                  <strong style="color:var(--success-green);">88%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta MILK-ACT: 88%">
+                  <div class="progress-bar-fill" style="width:48%;"></div>
+                  <div class="progress-bar-match" style="width:40%;"></div>
+                </div>
+                <div class="progress-legend">
+                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="198 donatori" data-en="198 backers">198 donatori</span></span>
+                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
+                 aria-label="Apri scheda del progetto MILK-ACT"
+                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
+              <a href="checkout.html?amount=50" class="btn btn-primary"
+                 aria-label="Dona ora per il progetto MILK-ACT"
+                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+            </div>
+          </article>
 
-        <!-- CARD 3: BeeAlpine (Attivo • Ambiente & Agraria — Ambito di Chiara) -->
-        <article class="project-card" data-cat="ambiente" data-status="active" data-raised="5600" data-pct="70" data-order="7">
-          <div class="card-visual visual-env">
-            <div class="card-badges">
-              <span class="badge badge-active" data-it="● In Corso • Ambiente" data-en="● Active • Environment">● In Corso • Ambiente</span>
-              <span class="badge badge-dept">DISAFA Agraria</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🐝</div>
-              <span class="card-match-tag" data-it="🏛️ Raddoppio UniTo 4.000 €" data-en="🏛️ UniTo Match €4,000">🏛️ Raddoppio UniTo 4.000 €</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=milk-act"
-                 data-it="BeeAlpine: Sensori Bioacustici per la Biodiversità"
-                 data-en="BeeAlpine: Bioacoustic Sensors for Alpine Biodiversity">
-                BeeAlpine: Sensori Bioacustici per la Biodiversità
-              </a>
-            </h3>
-            <p class="card-author"
-               data-it="Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine"
-               data-en="Dept. Agricultural, Forest & Food Sciences • 26 days left">
-              Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine
-            </p>
-            <p class="card-desc"
-               data-it="Monitoraggio acustico smart degli impollinatori alpini per prevenire il collasso degli ecosistemi montani piemontesi."
-               data-en="Smart acoustic monitoring of alpine pollinators to prevent the collapse of Piedmont mountain ecosystems.">
-              Monitoraggio acustico smart degli impollinatori alpini per prevenire il collasso degli ecosistemi montani piemontesi.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">5.600 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
-                <strong style="color:var(--success-green);">70%</strong>
+          <!-- CARD 2: SpeechMatE (Attivo • Tecnologia & Disabilità) -->
+          <article class="project-card" data-cat="tecnologia" data-status="active" data-raised="8450" data-pct="84" data-order="8">
+            <div class="card-visual visual-tech">
+              <div class="card-badges">
+                <span class="badge badge-active" data-it="● In Corso • Tecnologia" data-en="● Active • Tech">● In Corso • Tecnologia</span>
+                <span class="badge badge-dept">Dip. Matematica</span>
               </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width:40%;"></div>
-                <div class="progress-bar-match" style="width:30%;"></div>
-              </div>
-              <div class="progress-legend">
-                <span><i class="dot dot-comm"></i>89 donatori</span>
-                <span><i class="dot dot-match"></i>O tutto o niente</span>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🎙️</div>
+                <span class="card-match-tag"><span aria-hidden="true">🏛️</span> <span data-it="Raddoppio UniTo 5.000 €" data-en="UniTo Match €5,000">Raddoppio UniTo 5.000 €</span></span>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="progetto.html?proj=milk-act" class="btn btn-outline" data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-            <a href="checkout.html?amount=25" class="btn btn-primary" data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
-          </div>
-        </article>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=speechmate"
+                   data-it="SpeechMatE: Editor Matematico Vocale per la Disabilità"
+                   data-en="SpeechMatE: Voice-Driven Math Editor for Accessibility">
+                  <span lang="en">SpeechMatE</span>: Editor Matematico Vocale per la Disabilità
+                </a>
+              </h3>
+              <p class="card-author"
+                 data-it="Laboratorio Integr-Abile UniTo • 19 giorni al termine"
+                 data-en="Integr-Abile Lab UniTo • 19 days left">
+                Laboratorio Integr-Abile UniTo • 19 giorni al termine
+              </p>
+              <p class="card-desc"
+                 data-it="Sviluppo della versione web italiana di SpeechMatE per consentire agli studenti con tetraplegia di scrivere formule con la voce."
+                 data-en="Development of the web version of SpeechMatE allowing students with tetraplegia to write mathematical formulas by voice.">
+                Sviluppo della versione web italiana di <span lang="en">SpeechMatE</span> per consentire agli studenti con tetraplegia di scrivere formule con la voce.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">8.450 € <small style="font-weight:500; color:var(--text-muted);">/ 10.000 €</small></span>
+                  <strong style="color:var(--success-green);">84%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta SpeechMatE: 84%">
+                  <div class="progress-bar-fill" style="width:44%;"></div>
+                  <div class="progress-bar-match" style="width:40%;"></div>
+                </div>
+                <div class="progress-legend">
+                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="142 donatori" data-en="142 backers">142 donatori</span></span>
+                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="Da 10 € (Hall of Fame)" data-en="From €10 (Hall of Fame)">Da 10 € (<span lang="en">Hall of Fame</span>)</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="progetto.html?proj=speechmate" class="btn btn-outline"
+                 aria-label="Apri scheda del progetto SpeechMatE"
+                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
+              <a href="checkout.html?amount=10" class="btn btn-primary"
+                 aria-label="Dona da 10 euro per il progetto SpeechMatE"
+                 data-it="Dona da 10 € →" data-en="Donate €10 →">Dona da 10 € →</a>
+            </div>
+          </article>
 
-        <!-- CARD 4: Memorie in Scena (Attivo • Cultura & Patrimonio) -->
-        <article class="project-card" data-cat="cultura" data-status="active" data-raised="4900" data-pct="61" data-order="6">
-          <div class="card-visual visual-cult">
-            <div class="card-badges">
-              <span class="badge badge-active" data-it="● In Corso • Cultura" data-en="● Active • Culture">● In Corso • Cultura</span>
-              <span class="badge badge-dept">Studi Umanistici</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🎭</div>
-              <span class="card-match-tag" data-it="🏛️ Raddoppio UniTo 4.000 €" data-en="🏛️ UniTo Match €4,000">🏛️ Raddoppio UniTo 4.000 €</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=milk-act"
-                 data-it="Memorie in Scena: Digitalizzazione Archivi Teatrali"
-                 data-en="Stage Memories: Theatrical Archives Digitization">
-                Memorie in Scena: Digitalizzazione Archivi Teatrali
-              </a>
-            </h3>
-            <p class="card-author"
-               data-it="Dipartimento di Studi Umanistici • 29 giorni al termine"
-               data-en="Department of Humanities • 29 days left">
-              Dipartimento di Studi Umanistici • 29 giorni al termine
-            </p>
-            <p class="card-desc"
-               data-it="Restauro digitale e apertura gratuita online dei copioni storici e dei manifesti teatrali del Novecento conservati a Torino."
-               data-en="Digital restoration and open-access publication of 20th-century historical scripts preserved in Turin.">
-              Restauro digitale e apertura gratuita online dei copioni storici e dei manifesti teatrali del Novecento conservati a Torino.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">4.900 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
-                <strong style="color:var(--success-green);">61%</strong>
+          <!-- CARD 3: BeeAlpine (Attivo • Ambiente & Agraria) -->
+          <article class="project-card" data-cat="ambiente" data-status="active" data-raised="5600" data-pct="70" data-order="7">
+            <div class="card-visual visual-env">
+              <div class="card-badges">
+                <span class="badge badge-active" data-it="● In Corso • Ambiente" data-en="● Active • Environment">● In Corso • Ambiente</span>
+                <span class="badge badge-dept">DISAFA Agraria</span>
               </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" style="width:36%;"></div>
-                <div class="progress-bar-match" style="width:25%;"></div>
-              </div>
-              <div class="progress-legend">
-                <span><i class="dot dot-comm"></i>74 donatori</span>
-                <span><i class="dot dot-match"></i>Accesso Open Data</span>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🐝</div>
+                <span class="card-match-tag"><span aria-hidden="true">🏛️</span> <span data-it="Raddoppio UniTo 4.000 €" data-en="UniTo Match €4,000">Raddoppio UniTo 4.000 €</span></span>
               </div>
             </div>
-          </div>
-          <div class="card-footer">
-            <a href="progetto.html?proj=milk-act" class="btn btn-outline" data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-            <a href="checkout.html?amount=25" class="btn btn-primary" data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
-          </div>
-        </article>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=milk-act"
+                   data-it="BeeAlpine: Sensori Bioacustici per la Biodiversità"
+                   data-en="BeeAlpine: Bioacoustic Sensors for Alpine Biodiversity">
+                  <span lang="en">BeeAlpine</span>: Sensori Bioacustici per la Biodiversità
+                </a>
+              </h3>
+              <p class="card-author"
+                 data-it="Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine"
+                 data-en="Dept. Agricultural, Forest & Food Sciences • 26 days left">
+                Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine
+              </p>
+              <p class="card-desc"
+                 data-it="Monitoraggio acustico smart degli impollinatori alpini per prevenire il collasso degli ecosistemi montani piemontesi."
+                 data-en="Smart acoustic monitoring of alpine pollinators to prevent the collapse of Piedmont mountain ecosystems.">
+                Monitoraggio acustico smart degli impollinatori alpini per prevenire il collasso degli ecosistemi montani piemontesi.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">5.600 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
+                  <strong style="color:var(--success-green);">70%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta BeeAlpine: 70%">
+                  <div class="progress-bar-fill" style="width:40%;"></div>
+                  <div class="progress-bar-match" style="width:30%;"></div>
+                </div>
+                <div class="progress-legend">
+                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="89 donatori" data-en="89 backers">89 donatori</span></span>
+                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
+                 aria-label="Apri scheda del progetto BeeAlpine"
+                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
+              <a href="checkout.html?amount=25" class="btn btn-primary"
+                 aria-label="Dona ora per il progetto BeeAlpine"
+                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+            </div>
+          </article>
 
-        <!-- CARD 5: CultMeat (Concluso • Ambiente & Agraria — Da Pag. 20 Assignment 1) -->
-        <article class="project-card" data-cat="ambiente" data-status="closed" data-raised="62050" data-pct="620" data-order="5">
-          <div class="card-visual visual-env">
-            <div class="card-badges">
-              <span class="badge badge-closed" data-it="✓ Concluso (620%)" data-en="✓ Completed (620%)">✓ Concluso (620%)</span>
-              <span class="badge badge-dept">Dip. Veterinaria</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🔬</div>
-              <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=bright"
-                 data-it="CultMeat: Coltiviamo la carne per un futuro sostenibile"
-                 data-en="CultMeat: Cultivating Meat for a Sustainable Future">
-                CultMeat: Coltiviamo la carne per un futuro sostenibile
-              </a>
-            </h3>
-            <p class="card-author">Team CultMeat UniTo • 575 donatori</p>
-            <p class="card-desc"
-               data-it="Progetto di ricerca sull'agricoltura cellulare etica e sostenibile che ha raccolto oltre 6 volte l'obiettivo iniziale."
-               data-en="Cellular agriculture research project that raised more than 6 times its initial target thanks to citizens.">
-              Progetto di ricerca sull'agricoltura cellulare etica e sostenibile che ha raccolto oltre 6 volte l'obiettivo iniziale.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">62.050 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                <strong>620%</strong>
+          <!-- CARD 4: Memorie in Scena (Attivo • Cultura & Patrimonio) -->
+          <article class="project-card" data-cat="cultura" data-status="active" data-raised="4900" data-pct="61" data-order="6">
+            <div class="card-visual visual-cult">
+              <div class="card-badges">
+                <span class="badge badge-active" data-it="● In Corso • Cultura" data-en="● Active • Culture">● In Corso • Cultura</span>
+                <span class="badge badge-dept">Studi Umanistici</span>
               </div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
-                  data-it="🔒 Raccolta chiusa" data-en="🔒 Funding closed">🔒 Raccolta chiusa</span>
-            <a href="progetto.html?proj=bright" class="btn btn-outline" data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
-          </div>
-        </article>
-
-        <!-- CARD 6: BRIGHT (Concluso • Salute & Psicologia — Progetto seguito da Marc, Pag. 20 e 25 Assignment 1) -->
-        <article class="project-card" data-cat="salute" data-status="closed" data-raised="22182" data-pct="221" data-order="4">
-          <div class="card-visual visual-med">
-            <div class="card-badges">
-              <span class="badge badge-closed" data-it="✓ Concluso (221%)" data-en="✓ Completed (221%)">✓ Concluso (221%)</span>
-              <span class="badge badge-dept">Dip. Psicologia</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🧠</div>
-              <span class="card-match-tag" data-it="✓ Cuffie fNIRS acquistate" data-en="✓ fNIRS Headsets bought">✓ Cuffie fNIRS acquistate</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=bright">BRIGHT: Brain Research in Interactive Gaming</a>
-            </h3>
-            <p class="card-author">Department of Psychology UniTo • 111 donatori</p>
-            <p class="card-desc"
-               data-it="Acquisto di 2 cuffie fNIRS con canali corti (short-channels) per ridurre il rumore fisiologico durante gli esperimenti cognitivi."
-               data-en="Purchase of 2 fNIRS headsets with short-channels to reduce physiological noise during cognitive experiments.">
-              Acquisto di 2 cuffie fNIRS con canali corti (short-channels) per ridurre il rumore fisiologico durante gli esperimenti cognitivi.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">22.182 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                <strong>221%</strong>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🎭</div>
+                <span class="card-match-tag"><span aria-hidden="true">🏛️</span> <span data-it="Raddoppio UniTo 4.000 €" data-en="UniTo Match €4,000">Raddoppio UniTo 4.000 €</span></span>
               </div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
             </div>
-          </div>
-          <div class="card-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
-                  data-it="🔒 Raccolta chiusa" data-en="🔒 Funding closed">🔒 Raccolta chiusa</span>
-            <a href="progetto.html?proj=bright" class="btn btn-outline" data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
-          </div>
-        </article>
-
-        <!-- CARD 7: Salviamo il Lemure Cantante (Concluso • Ambiente — Da Pag. 21 Assignment 1) -->
-        <article class="project-card" data-cat="ambiente" data-status="closed" data-raised="27165" data-pct="301" data-order="3">
-          <div class="card-visual visual-env">
-            <div class="card-badges">
-              <span class="badge badge-closed" data-it="✓ Concluso (301%)" data-en="✓ Completed (301%)">✓ Concluso (301%)</span>
-              <span class="badge badge-dept">DBIOS Biologia</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🐒</div>
-              <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=bright"
-                 data-it="Salviamo il Lemure Cantante! Tutela Bioacustica"
-                 data-en="Save the Singing Lemur! Bioacoustic Conservation">
-                Salviamo il Lemure Cantante! Tutela Bioacustica
-              </a>
-            </h3>
-            <p class="card-author">Laboratorio di Zoologia e Biologia UniTo • 214 donatori</p>
-            <p class="card-desc"
-               data-it="Conservazione dell'Indri del Madagascar e monitoraggio forestale condotto dai ricercatori di Biologia dell'Università di Torino."
-               data-en="Conservation of the Indri lemur in Madagascar and forest monitoring led by University of Turin biology researchers.">
-              Conservazione dell'Indri del Madagascar e monitoraggio forestale condotto dai ricercatori di Biologia dell'Università di Torino.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">27.165 € <small style="font-weight:500; color:var(--text-muted);">su 9.000 €</small></span>
-                <strong>301%</strong>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=milk-act"
+                   data-it="Memorie in Scena: Digitalizzazione Archivi Teatrali"
+                   data-en="Stage Memories: Theatrical Archives Digitization">
+                  Memorie in Scena: Digitalizzazione Archivi Teatrali
+                </a>
+              </h3>
+              <p class="card-author"
+                 data-it="Dipartimento di Studi Umanistici • 29 giorni al termine"
+                 data-en="Department of Humanities • 29 days left">
+                Dipartimento di Studi Umanistici • 29 giorni al termine
+              </p>
+              <p class="card-desc"
+                 data-it="Restauro digitale e apertura gratuita online dei copioni storici e dei manifesti teatrali del Novecento conservati a Torino."
+                 data-en="Digital restoration and open-access publication of 20th-century historical scripts preserved in Turin.">
+                Restauro digitale e apertura gratuita online dei copioni storici e dei manifesti teatrali del Novecento conservati a Torino.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">4.900 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
+                  <strong style="color:var(--success-green);">61%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta Memorie in Scena: 61%">
+                  <div class="progress-bar-fill" style="width:36%;"></div>
+                  <div class="progress-bar-match" style="width:25%;"></div>
+                </div>
+                <div class="progress-legend">
+                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="74 donatori" data-en="74 backers">74 donatori</span></span>
+                  <span><i class="dot dot-match" aria-hidden="true"></i><span>Accesso <span lang="en">Open Data</span></span></span>
+                </div>
               </div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
             </div>
-          </div>
-          <div class="card-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
-                  data-it="🔒 Raccolta chiusa" data-en="🔒 Funding closed">🔒 Raccolta chiusa</span>
-            <a href="progetto.html?proj=bright" class="btn btn-outline" data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
-          </div>
-        </article>
+            <div class="card-footer">
+              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
+                 aria-label="Apri scheda del progetto Memorie in Scena"
+                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
+              <a href="checkout.html?amount=25" class="btn btn-primary"
+                 aria-label="Dona ora per il progetto Memorie in Scena"
+                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+            </div>
+          </article>
 
-        <!-- CARD 8: Citizen Salad (Concluso • Salute & Alimentazione — Da Pag. 20 Assignment 1) -->
-        <article class="project-card" data-cat="salute" data-status="closed" data-raised="21375" data-pct="267" data-order="2">
-          <div class="card-visual visual-med">
-            <div class="card-badges">
-              <span class="badge badge-closed" data-it="✓ Concluso (267%)" data-en="✓ Completed (267%)">✓ Concluso (267%)</span>
-              <span class="badge badge-dept">Citizen Salad</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🥗</div>
-              <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=bright"
-                 data-it="Citizen Salad: Chi vive sulle foglie che mangiamo?"
-                 data-en="Citizen Salad: Who Lives on the Leaves We Eat?">
-                Citizen Salad: Chi vive sulle foglie che mangiamo?
-              </a>
-            </h3>
-            <p class="card-author">Team Citizen Salad UniTo • 144 donatori</p>
-            <p class="card-desc"
-               data-it="Studio sul microbioma degli alimenti freschi per promuovere la sicurezza alimentare e la prevenzione sanitaria."
-               data-en="Study on fresh food microbiome to promote food safety, gut health, and public health prevention.">
-              Studio sul microbioma degli alimenti freschi per promuovere la sicurezza alimentare e la prevenzione sanitaria.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">21.375 € <small style="font-weight:500; color:var(--text-muted);">su 8.000 €</small></span>
-                <strong>267%</strong>
+          <!-- CARD 5: CultMeat (Concluso • Ambiente & Agraria) -->
+          <article class="project-card" data-cat="ambiente" data-status="closed" data-raised="62050" data-pct="620" data-order="5">
+            <div class="card-visual visual-env">
+              <div class="card-badges">
+                <span class="badge badge-closed" data-it="✓ Concluso (620%)" data-en="✓ Completed (620%)">✓ Concluso (620%)</span>
+                <span class="badge badge-dept">Dip. Veterinaria</span>
               </div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
-                  data-it="🔒 Raccolta chiusa" data-en="🔒 Funding closed">🔒 Raccolta chiusa</span>
-            <a href="progetto.html?proj=bright" class="btn btn-outline" data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
-          </div>
-        </article>
-
-        <!-- CARD 9: Virtual Vet Lab (Concluso • Tecnologia & Didattica 4.0 — Da Pag. 21 Assignment 1) -->
-        <article class="project-card" data-cat="tecnologia" data-status="closed" data-raised="14700" data-pct="210" data-order="1">
-          <div class="card-visual visual-tech">
-            <div class="card-badges">
-              <span class="badge badge-closed" data-it="✓ Concluso (210%)" data-en="✓ Completed (210%)">✓ Concluso (210%)</span>
-              <span class="badge badge-dept">Virtual Vet Lab</span>
-            </div>
-            <div class="card-visual-bottom">
-              <div class="card-visual-icon" aria-hidden="true">🥽</div>
-              <span class="card-match-tag" data-it="✓ Visori VR attivi" data-en="✓ VR Headsets active">✓ Visori VR attivi</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <a href="progetto.html?proj=bright"
-                 data-it="Virtual Vet Lab: Realtà Virtuale per una Didattica 4.0"
-                 data-en="Virtual Vet Lab: Virtual Reality for Education 4.0">
-                Virtual Vet Lab: Realtà Virtuale per una Didattica 4.0
-              </a>
-            </h3>
-            <p class="card-author">Dipartimento di Scienze Veterinarie UniTo • 134 donatori</p>
-            <p class="card-desc"
-               data-it="Simulazioni immersive in realtà virtuale 3D per formare gli studenti di Medicina Veterinaria riducendo l'impatto sugli animali."
-               data-en="Immersive 3D virtual reality simulations to train Veterinary Medicine students ethically and effectively.">
-              Simulazioni immersive in realtà virtuale 3D per formare gli studenti di Medicina Veterinaria riducendo l'impatto sugli animali.
-            </p>
-            <div class="progress-box">
-              <div class="progress-stats">
-                <span class="stat-raised">14.700 € <small style="font-weight:500; color:var(--text-muted);">su 7.000 €</small></span>
-                <strong>210%</strong>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🔬</div>
+                <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
               </div>
-              <div class="progress-bar-bg"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
             </div>
-          </div>
-          <div class="card-footer">
-            <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;"
-                  data-it="🔒 Raccolta chiusa" data-en="🔒 Funding closed">🔒 Raccolta chiusa</span>
-            <a href="progetto.html?proj=bright" class="btn btn-outline" data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
-          </div>
-        </article>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=bright"
+                   data-it="CultMeat: Coltiviamo la carne per un futuro sostenibile"
+                   data-en="CultMeat: Cultivating Meat for a Sustainable Future">
+                  <span lang="en">CultMeat</span>: Coltiviamo la carne per un futuro sostenibile
+                </a>
+              </h3>
+              <p class="card-author">Team <span lang="en">CultMeat</span> UniTo • 575 donatori</p>
+              <p class="card-desc"
+                 data-it="Progetto di ricerca sull'agricoltura cellulare etica e sostenibile che ha raccolto oltre 6 volte l'obiettivo iniziale."
+                 data-en="Cellular agriculture research project that raised more than 6 times its initial target thanks to citizens.">
+                Progetto di ricerca sull'agricoltura cellulare etica e sostenibile che ha raccolto oltre 6 volte l'obiettivo iniziale.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">62.050 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
+                  <strong>620%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna CultMeat conclusa al 620% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+                <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
+              </span>
+              <a href="progetto.html?proj=bright" class="btn btn-outline"
+                 aria-label="Vedi i risultati del progetto CultMeat"
+                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+            </div>
+          </article>
 
-      </div>
+          <!-- CARD 6: BRIGHT (Concluso • Salute & Psicologia) -->
+          <article class="project-card" data-cat="salute" data-status="closed" data-raised="22182" data-pct="221" data-order="4">
+            <div class="card-visual visual-med">
+              <div class="card-badges">
+                <span class="badge badge-closed" data-it="✓ Concluso (221%)" data-en="✓ Completed (221%)">✓ Concluso (221%)</span>
+                <span class="badge badge-dept">Dip. Psicologia</span>
+              </div>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🧠</div>
+                <span class="card-match-tag" data-it="✓ Cuffie fNIRS acquistate" data-en="✓ fNIRS Headsets bought">✓ Cuffie fNIRS acquistate</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=bright" lang="en">BRIGHT: Brain Research in Interactive Gaming</a>
+              </h3>
+              <p class="card-author">Dipartimento di Psicologia UniTo • 111 donatori</p>
+              <p class="card-desc"
+                 data-it="Acquisto di 2 cuffie fNIRS con canali corti (short-channels) per ridurre il rumore fisiologico durante gli esperimenti cognitivi."
+                 data-en="Purchase of 2 fNIRS headsets with short-channels to reduce physiological noise during cognitive experiments.">
+                Acquisto di 2 cuffie fNIRS con canali corti (<span lang="en">short-channels</span>) per ridurre il rumore fisiologico durante gli esperimenti cognitivi.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">22.182 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
+                  <strong>221%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna BRIGHT conclusa al 221% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+                <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
+              </span>
+              <a href="progetto.html?proj=bright" class="btn btn-outline"
+                 aria-label="Vedi i risultati del progetto BRIGHT"
+                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+            </div>
+          </article>
+
+          <!-- CARD 7: Salviamo il Lemure Cantante (Concluso • Ambiente) -->
+          <article class="project-card" data-cat="ambiente" data-status="closed" data-raised="27165" data-pct="301" data-order="3">
+            <div class="card-visual visual-env">
+              <div class="card-badges">
+                <span class="badge badge-closed" data-it="✓ Concluso (301%)" data-en="✓ Completed (301%)">✓ Concluso (301%)</span>
+                <span class="badge badge-dept">DBIOS Biologia</span>
+              </div>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🐒</div>
+                <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=bright"
+                   data-it="Salviamo il Lemure Cantante! Tutela Bioacustica"
+                   data-en="Save the Singing Lemur! Bioacoustic Conservation">
+                  Salviamo il Lemure Cantante! Tutela Bioacustica
+                </a>
+              </h3>
+              <p class="card-author">Laboratorio di Zoologia e Biologia UniTo • 214 donatori</p>
+              <p class="card-desc"
+                 data-it="Conservazione dell'Indri del Madagascar e monitoraggio forestale condotto dai ricercatori di Biologia dell'Università di Torino."
+                 data-en="Conservation of the Indri lemur in Madagascar and forest monitoring led by University of Turin biology researchers.">
+                Conservazione dell'Indri del Madagascar e monitoraggio forestale condotto dai ricercatori di Biologia dell'Università di Torino.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">27.165 € <small style="font-weight:500; color:var(--text-muted);">su 9.000 €</small></span>
+                  <strong>301%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Salviamo il Lemure Cantante conclusa al 301% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+                <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
+              </span>
+              <a href="progetto.html?proj=bright" class="btn btn-outline"
+                 aria-label="Vedi i risultati del progetto Salviamo il Lemure Cantante"
+                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+            </div>
+          </article>
+
+          <!-- CARD 8: Citizen Salad (Concluso • Salute & Alimentazione) -->
+          <article class="project-card" data-cat="salute" data-status="closed" data-raised="21375" data-pct="267" data-order="2">
+            <div class="card-visual visual-med">
+              <div class="card-badges">
+                <span class="badge badge-closed" data-it="✓ Concluso (267%)" data-en="✓ Completed (267%)">✓ Concluso (267%)</span>
+                <span class="badge badge-dept" lang="en">Citizen Salad</span>
+              </div>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🥗</div>
+                <span class="card-match-tag" data-it="✓ Obiettivo Raggiunto" data-en="✓ Goal Reached">✓ Obiettivo Raggiunto</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=bright"
+                   data-it="Citizen Salad: Chi vive sulle foglie che mangiamo?"
+                   data-en="Citizen Salad: Who Lives on the Leaves We Eat?">
+                  <span lang="en">Citizen Salad</span>: Chi vive sulle foglie che mangiamo?
+                </a>
+              </h3>
+              <p class="card-author">Team <span lang="en">Citizen Salad</span> UniTo • 144 donatori</p>
+              <p class="card-desc"
+                 data-it="Studio sul microbioma degli alimenti freschi per promuovere la sicurezza alimentare e la prevenzione sanitaria."
+                 data-en="Study on fresh food microbiome to promote food safety, gut health, and public health prevention.">
+                Studio sul microbioma degli alimenti freschi per promuovere la sicurezza alimentare e la prevenzione sanitaria.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">21.375 € <small style="font-weight:500; color:var(--text-muted);">su 8.000 €</small></span>
+                  <strong>267%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Citizen Salad conclusa al 267% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+                <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
+              </span>
+              <a href="progetto.html?proj=bright" class="btn btn-outline"
+                 aria-label="Vedi i risultati del progetto Citizen Salad"
+                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+            </div>
+          </article>
+
+          <!-- CARD 9: Virtual Vet Lab (Concluso • Tecnologia & Didattica 4.0) -->
+          <article class="project-card" data-cat="tecnologia" data-status="closed" data-raised="14700" data-pct="210" data-order="1">
+            <div class="card-visual visual-tech">
+              <div class="card-badges">
+                <span class="badge badge-closed" data-it="✓ Concluso (210%)" data-en="✓ Completed (210%)">✓ Concluso (210%)</span>
+                <span class="badge badge-dept" lang="en">Virtual Vet Lab</span>
+              </div>
+              <div class="card-visual-bottom">
+                <div class="card-visual-icon" aria-hidden="true">🥽</div>
+                <span class="card-match-tag" data-it="✓ Visori VR attivi" data-en="✓ VR Headsets active">✓ Visori VR attivi</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="progetto.html?proj=bright"
+                   data-it="Virtual Vet Lab: Realtà Virtuale per una Didattica 4.0"
+                   data-en="Virtual Vet Lab: Virtual Reality for Education 4.0">
+                  <span lang="en">Virtual Vet Lab</span>: Realtà Virtuale per una Didattica 4.0
+                </a>
+              </h3>
+              <p class="card-author">Dipartimento di Scienze Veterinarie UniTo • 134 donatori</p>
+              <p class="card-desc"
+                 data-it="Simulazioni immersive in realtà virtuale 3D per formare gli studenti di Medicina Veterinaria riducendo l'impatto sugli animali."
+                 data-en="Immersive 3D virtual reality simulations to train Veterinary Medicine students ethically and effectively.">
+                Simulazioni immersive in realtà virtuale 3D per formare gli studenti di Medicina Veterinaria riducendo l'impatto sugli animali.
+              </p>
+              <div class="progress-box">
+                <div class="progress-stats">
+                  <span class="stat-raised">14.700 € <small style="font-weight:500; color:var(--text-muted);">su 7.000 €</small></span>
+                  <strong>210%</strong>
+                </div>
+                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Virtual Vet Lab conclusa al 210% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+                <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
+              </span>
+              <a href="progetto.html?proj=bright" class="btn btn-outline"
+                 aria-label="Vedi i risultati del progetto Virtual Vet Lab"
+                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
     </div>
   </main>
 
-  <!-- 7. FOOTER ISTITUZIONALE COERENTE -->
+  <!-- FOOTER ISTITUZIONALE UNITO -->
   <footer class="site-footer">
     <div class="container">
+      <h2 class="sr-only" data-it="Informazioni istituzionali e collegamenti utili" data-en="Institutional information and useful links">Informazioni istituzionali e collegamenti utili</h2>
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);">🏛️ UniTo</span>
-            <span>Funds TOgether!</span>
+            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);"><span aria-hidden="true">🏛️</span> UniTo</span>
+            <span lang="en">Funds TOgether!</span>
           </div>
           <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
              data-it="Catalogo ufficiale delle campagne di ricerca e Terza Missione dell'Università degli Studi di Torino."
@@ -719,49 +763,65 @@
         </div>
 
         <div class="footer-col">
-          <h4 data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h4>
+          <h3 class="footer-heading" data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h3>
           <ul>
-            <li><a href="index.html">Home Page</a></li>
-            <li><a href="catalogo.html">Esplora Catalogo Progetti (9)</a></li>
-            <li><a href="proponi.html">Come Funziona & Bando Ricercatori</a></li>
-            <li><a href="partner.html">I Nostri Partner e Collaboratori</a></li>
+            <li><a href="index.html" data-it="Home Page" data-en="Home Page">Home Page</a></li>
+            <li><a href="catalogo.html" data-it="Esplora Catalogo Progetti (9)" data-en="Explore Projects Catalog (9)">Esplora Catalogo Progetti (9)</a></li>
+            <li><a href="proponi.html" data-it="Come Funziona & Bando Ricercatori" data-en="How It Works & Researchers Call">Come Funziona & Bando Ricercatori</a></li>
+            <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners & Network">I Nostri Partner e Collaboratori</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h4>
+          <h3 class="footer-heading" data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h3>
           <ul>
-            <li><a href="proponi.html#faq-section">Domande Frequenti (FAQ)</a></li>
-            <li><a href="#" data-open-privacy>Informativa Privacy & Condizioni (IT/EN)</a></li>
-            <li><a href="#" data-open-login>Accesso Area Progettisti / Partner</a></li>
+            <li><a href="proponi.html#faq-section" data-it="Domande Frequenti (FAQ)" data-en="Frequently Asked Questions (FAQ)">Domande Frequenti (FAQ)</a></li>
+            <li>
+              <button type="button" class="footer-link-btn" data-open-privacy
+                      data-it="Informativa Privacy & Condizioni (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
+                Informativa Privacy & Condizioni (IT/EN)
+              </button>
+            </li>
+            <li>
+              <button type="button" class="footer-link-btn" data-open-login
+                      data-it="Accesso Area Progettisti / Partner" data-en="Researcher / Partner Login">
+                Accesso Area Progettisti / Partner
+              </button>
+            </li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 data-it="Collegamenti Esterni" data-en="External Links">Collegamenti Esterni</h4>
+          <h3 class="footer-heading" data-it="Collegamenti Esterni" data-en="External Links">Collegamenti Esterni</h3>
           <ul>
-            <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it ↗ (sito esterno)</a></li>
-            <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger ↗ (sito esterno)</a></li>
+            <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it <span aria-hidden="true">↗</span> (sito esterno)</a></li>
+            <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger <span aria-hidden="true">↗</span> (sito esterno)</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Università degli Studi di Torino — Prototipo HCI Gruppo I (Stigliano Antonio, Tumolo Christian)</span>
+        <span>© 2026 Università degli Studi di Torino — Direzione Ricerca e Terza Missione (C.F. 80088230018)</span>
         <a href="index.html" style="color:#ffd166;" data-it="↑ Torna alla Home Page" data-en="↑ Back to Home Page">↑ Torna alla Home Page</a>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
-  <!-- Script di potenziamento V2 per Suggestion Chips dell'Empty State e Status Bar dinamica -->
+  <!-- Gestione Suggestion Chips dell'Empty State, aria-pressed sui filtri e Status Bar dinamica -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('catalog-search');
       const summaryEl = document.getElementById('active-filters-summary');
 
-      // Aggiorna la barra di stato della persistenza (Euristica 1 & 3)
+      function syncFilterAriaPressed() {
+        document.querySelectorAll('[data-filter-cat], [data-filter-status]').forEach(btn => {
+          btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
+        });
+      }
+
       function updateStatusSummary() {
+        syncFilterAriaPressed();
         const cat = sessionStorage.getItem('unito_cat_filter') || 'all';
         const status = sessionStorage.getItem('unito_status_filter') || 'all';
         const query = sessionStorage.getItem('unito_cat_query') || '';
@@ -774,18 +834,16 @@
 
         if (summaryEl) {
           if (lang === 'en') {
-            summaryEl.textContent = `Active filter: ${catNamesEN[cat] || cat} • ${statusNamesEN[status] || status}${query ? ` • Search: "${query}"` : ''} (State preserved in browser memory)`;
+            summaryEl.textContent = `Active filter: ${catNamesEN[cat] || cat} • ${statusNamesEN[status] || status}${query ? ` • Search: "${query}"` : ''} (Filters preserved during navigation)`;
           } else {
-            summaryEl.textContent = `Filtro attivo: ${catNamesIT[cat] || cat} • ${statusNamesIT[status] || status}${query ? ` • Ricerca: "${query}"` : ''} (Stato preservato in memoria)`;
+            summaryEl.textContent = `Filtro attivo: ${catNamesIT[cat] || cat} • ${statusNamesIT[status] || status}${query ? ` • Ricerca: "${query}"` : ''} (Filtri mantenuti durante la navigazione)`;
           }
         }
       }
 
-      // Attiva le Suggestion Chips nell'Empty State (Euristica 9)
       document.querySelectorAll('[data-quick-query]').forEach(chip => {
         chip.addEventListener('click', () => {
           const suggestedWord = chip.getAttribute('data-quick-query');
-          // Azzera eventuali filtri di categoria restrittivi prima di applicare il suggerimento
           const allCatBtn = document.querySelector('[data-filter-cat="all"]');
           const allStatusBtn = document.querySelector('[data-filter-status="all"]');
           if (allCatBtn) allCatBtn.click();
@@ -799,7 +857,7 @@
         });
       });
 
-      document.querySelectorAll('[data-filter-cat], [data-filter-status], #reset-filters-btn, #empty-reset-btn, #test-empty-state-btn, .lang-btn').forEach(el => {
+      document.querySelectorAll('[data-filter-cat], [data-filter-status], #reset-filters-btn, #empty-reset-btn, .lang-btn').forEach(el => {
         el.addEventListener('click', () => setTimeout(updateStatusSummary, 20));
       });
       if (searchInput) {
