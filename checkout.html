@@ -6,7 +6,7 @@
   <title>Checkout Donazione Sicura | UniTo Crowd — Funds TOgether</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Stili specifici potenziati per il Checkout V2 */
+    /* Stili specifici per il Checkout */
     .checkout-stepper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -17,6 +17,7 @@
       border-radius: var(--radius-md);
       padding: 16px 22px;
       box-shadow: var(--shadow-sm);
+      list-style: none;
     }
     .step-item {
       display: flex;
@@ -58,7 +59,7 @@
       box-shadow: 0 0 0 3px rgba(0, 43, 73, 0.15);
     }
 
-    /* Selettori rapidi importo (Acceleratori H7 & Legge di Fitts) */
+    /* Selettori rapidi importo */
     .quick-amounts-row {
       display: flex;
       flex-wrap: wrap;
@@ -69,7 +70,8 @@
       background: var(--bg-subtle);
       border: 1.5px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 7px 14px;
+      padding: 8px 14px;
+      min-height: 40px;
       font-weight: 700;
       font-size: 0.88rem;
       color: var(--unito-navy);
@@ -86,7 +88,19 @@
       border-color: var(--unito-navy);
     }
 
-    /* Metodi di pagamento con Progressive Disclosure */
+    /* Metodi di pagamento */
+    .pay-fieldset {
+      border: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+    }
+    .pay-legend {
+      display: block;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      color: var(--unito-navy);
+    }
     .pay-options-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -120,8 +134,22 @@
       margin-top: 8px;
       font-size: 0.88rem;
     }
+    .inline-link-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--unito-navy-light);
+      font-weight: 700;
+      font-size: inherit;
+      font-family: inherit;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .inline-link-btn:hover {
+      color: var(--accent-orange);
+    }
 
-    /* Riepilogo Sticky a destra (Euristica 1) */
+    /* Riepilogo Sticky a destra */
     .sticky-summary {
       position: sticky;
       top: 98px;
@@ -140,7 +168,7 @@
       font-weight: 700;
     }
     @media print {
-      .site-header, .breadcrumbs-bar, .demo-switcher-bar, .site-footer, .no-print {
+      .site-header, .breadcrumbs-bar, .site-footer, .no-print {
         display: none !important;
       }
       body { background: #ffffff; }
@@ -149,17 +177,17 @@
 </head>
 <body>
 
-  <!-- Skip-link per accessibilità da tastiera (WCAG 2.1) -->
+  <!-- Skip-link per accessibilità da tastiera (WCAG 2.2 - 2.4.1) -->
   <a href="#main-content" class="skip-link" data-it="Salta al modulo di Checkout" data-en="Skip to Checkout form">Salta al modulo di Checkout</a>
 
-  <!-- 1. HEADER UNIFICATO STICKY (Risolve H4, H7, H8) -->
+  <!-- HEADER ISTITUZIONALE UNIFICATO STICKY -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home">
-        <span class="brand-badge">🏛️ UniTo</span>
+      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home Page">
+        <span class="brand-badge"><span aria-hidden="true">🏛️</span> UniTo</span>
         <div>
-          Funds TOgether!
-          <span class="brand-sub" data-it="Checkout Sicuro & Monolingue" data-en="Secure Single-Language Checkout">Checkout Sicuro & Monolingue</span>
+          <span lang="en">Funds TOgether!</span>
+          <span class="brand-sub" data-it="Checkout Donazione Sicura" data-en="Secure Donation Checkout">Checkout Donazione Sicura</span>
         </div>
       </a>
 
@@ -173,19 +201,29 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Selettore Lingua Globale IT | EN (Risolve H2 e H8: elimina il testo bilingue duplicato nel Checkout) -->
-        <div class="lang-switch" role="group" aria-label="Selettore lingua IT / EN">
-          <button type="button" class="lang-btn active" data-lang="it">IT</button>
-          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <form id="header-search-form" class="header-search" role="search" aria-label="Ricerca rapida progetti">
+          <label for="header-search-input" class="sr-only" data-it="Cerca progetti nel portale" data-en="Search projects in the portal">Cerca progetti nel portale</label>
+          <input type="search" id="header-search-input"
+                 placeholder="Cerca progetti..."
+                 data-placeholder-it="Cerca progetti..."
+                 data-placeholder-en="Search projects...">
+          <button type="submit" aria-label="Avvia ricerca"><span aria-hidden="true">🔍</span></button>
+        </form>
+
+        <div class="lang-switch" role="group" aria-label="Selettore lingua / Language selector">
+          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true" aria-label="Lingua Italiana">IT</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English Language">EN</button>
         </div>
 
-        <button type="button" class="btn btn-secondary" data-open-login
-                data-it="👤 Accedi" data-en="👤 Sign In">👤 Accedi</button>
+        <button type="button" class="btn btn-secondary" data-open-login>
+          <span aria-hidden="true">👤</span>
+          <span data-it="Accedi" data-en="Sign In">Accedi</span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 2. BREADCRUMBS STANDARDIZZATE IN SOLO TESTO (Risolve H1 e H4) -->
+  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS -->
   <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
     <div class="container breadcrumbs-inner">
       <ol class="breadcrumbs-list">
@@ -194,91 +232,65 @@
         <li><a href="progetto.html" id="chk-breadcrumb-proj">Scheda Progetto</a></li>
         <li class="current" aria-current="page" data-it="Checkout Donazione" data-en="Donation Checkout">Checkout Donazione</li>
       </ol>
-      <span style="font-size:0.8rem; color:var(--success-green); font-weight:700;"
-            data-it="🔒 Connessione crittografata TLS • Zero commissioni per il donatore"
-            data-en="🔒 TLS Encrypted Connection • Zero fees for backers">
-        🔒 Connessione crittografata TLS • Zero commissioni per il donatore
+      <span style="font-size:0.8rem; color:var(--success-green); font-weight:700;">
+        <span aria-hidden="true">🔒</span>
+        <span data-it="Connessione crittografata TLS • Zero commissioni per il donatore"
+              data-en="TLS Encrypted Connection • Zero fees for backers">
+          Connessione crittografata TLS • Zero commissioni per il donatore
+        </span>
       </span>
     </div>
   </nav>
 
-  <main id="main-content" class="section">
+  <main id="main-content" class="section" tabindex="-1">
     <div class="container">
 
-      <!-- 3. BARRA DI VERIFICA PROTOTIPO (Test Inline Validation H5 + Scenari Personas Lorenzo ed Elena) -->
-      <div class="demo-switcher-bar" role="region" aria-label="Simulatore scenari di test per il Checkout">
-        <div>
-          <strong data-it="🧪 Barra di Verifica Checkout (Task 4 — Euristiche 1, 2, 5, 8):"
-                  data-en="🧪 Checkout Verification Bar (Task 4 — Heuristics 1, 2, 5, 8):">
-            🧪 Barra di Verifica Checkout (Task 4 — Euristiche 1, 2, 5, 8):
-          </strong>
-          <span data-it="Testa con un clic l'errore email dell'Assignment 1 oppure pre-compila gli scenari di Lorenzo ed Elena:"
-                data-en="Test with one click the email validation error from Assignment 1 or pre-fill Lorenzo and Elena's scenarios:">
-            Testa con un clic l'errore email dell'Assignment 1 oppure pre-compila gli scenari di Lorenzo ed Elena:
-          </span>
-        </div>
-        <div class="filter-pills">
-          <button type="button" id="test-invalid-email-btn" class="pill-btn" style="border-color:var(--error-red); color:var(--error-red);"
-                  data-it="⚠️ 1. Simula Errore 'emailemail' (Test H5)"
-                  data-en="⚠️ 1. Simulate 'emailemail' Error (Test H5)">
-            ⚠️ 1. Simula Errore "emailemail" (Test H5)
-          </button>
-          <button type="button" id="fill-lorenzo-btn" class="pill-btn"
-                  data-it="🎓 2. Scenario Lorenzo (10 € • Prepagata)"
-                  data-en="🎓 2. Lorenzo Scenario (€10 • Prepaid)">
-            🎓 2. Scenario Lorenzo (10 € • Prepagata)
-          </button>
-          <button type="button" id="fill-elena-btn" class="pill-btn"
-                  data-it="👩‍🏫 3. Scenario Elena (50 € • Detrazione)"
-                  data-en="👩‍🏫 3. Elena Scenario (€50 • Tax Receipt)">
-            👩‍🏫 3. Scenario Elena (50 € • Detrazione)
-          </button>
-        </div>
-      </div>
-
-      <!-- 4. STEPPER DI STATO DEL PERCORSO DI DONAZIONE (Euristica 1: Visibility of System Status) -->
-      <div class="checkout-stepper" aria-label="Stato di avanzamento della donazione">
-        <div class="step-item done" id="step-indicator-1">
-          <span class="step-circle">✓</span>
+      <!-- STEPPER DI STATO DEL PERCORSO DI DONAZIONE -->
+      <ol class="checkout-stepper" aria-label="Fasi del percorso di donazione">
+        <li class="step-item done" id="step-indicator-1">
+          <span class="step-circle" aria-hidden="true">✓</span>
           <div>
             <div data-it="Passo 1 • Completato" data-en="Step 1 • Completed" style="font-size:0.75rem; text-transform:uppercase;">Passo 1 • Completato</div>
             <div data-it="Scelta Progetto e Ricompensa" data-en="Project & Reward Selection">Scelta Progetto e Ricompensa</div>
           </div>
-        </div>
-        <div class="step-item current" id="step-indicator-2">
-          <span class="step-circle" id="step-circle-2">2</span>
+        </li>
+        <li class="step-item current" id="step-indicator-2" aria-current="step">
+          <span class="step-circle" id="step-circle-2" aria-hidden="true">2</span>
           <div>
             <div data-it="Passo 2 • In corso" data-en="Step 2 • Current step" style="font-size:0.75rem; text-transform:uppercase;">Passo 2 • In corso</div>
             <div data-it="Dati Sostenitore e Metodo di Pagamento" data-en="Backer Details & Payment Method">Dati Sostenitore e Metodo di Pagamento</div>
           </div>
-        </div>
-        <div class="step-item" id="step-indicator-3">
-          <span class="step-circle" id="step-circle-3">3</span>
+        </li>
+        <li class="step-item" id="step-indicator-3">
+          <span class="step-circle" id="step-circle-3" aria-hidden="true">3</span>
           <div>
             <div data-it="Passo 3 • Finale" data-en="Step 3 • Final" style="font-size:0.75rem; text-transform:uppercase;">Passo 3 • Finale</div>
             <div data-it="Conferma & Ricevuta Fiscale UniTo" data-en="Confirmation & Official Tax Receipt">Conferma & Ricevuta Fiscale UniTo</div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ol>
 
-      <!-- 5. GRIGLIA PRINCIPALE CHECKOUT (MONOLINGUE PULITA - Risolve H8 Pag. 43 Assignment 1) -->
+      <!-- GRIGLIA PRINCIPALE CHECKOUT -->
       <div id="checkout-main-grid" class="project-layout">
 
-        <!-- COLONNA SINISTRA: FORM CON INLINE VALIDATION GRANULARE -->
+        <!-- COLONNA SINISTRA: MODULO DI DONAZIONE ACCESSIBILE -->
         <section class="sidebar-card" aria-labelledby="checkout-heading">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
             <h1 id="checkout-heading" style="color:var(--unito-navy); font-size:1.6rem;"
                 data-it="Completa il tuo Sostegno" data-en="Complete Your Support">
               Completa il tuo Sostegno
             </h1>
-            <span class="badge badge-active" data-it="✓ Interfaccia Monolingue (H8)" data-en="✓ Single-Language UI (H8)">
-              ✓ Interfaccia Monolingue (H8)
+            <span class="badge badge-active">
+              <span aria-hidden="true">🔒</span>
+              <span data-it="Transazione Protetta UniTo" data-en="Protected UniTo Transaction">
+                Transazione Protetta UniTo
+              </span>
             </span>
           </div>
           <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:20px;"
-             data-it="I campi contrassegnati con (*) sono obbligatori e dotati di controllo errori in tempo reale (Inline Validation)."
-             data-en="Fields marked with (*) are mandatory and feature real-time Inline Validation.">
-            I campi contrassegnati con (*) sono obbligatori e dotati di controllo errori in tempo reale (Inline Validation).
+             data-it="I campi contrassegnati con (*) sono obbligatori per l'emissione dell'attestato e della ricevuta ufficiale dell'Università di Torino."
+             data-en="Fields marked with (*) are mandatory for issuing the official University of Turin certificate and tax receipt.">
+            I campi contrassegnati con (*) sono obbligatori per l'emissione dell'attestato e della ricevuta ufficiale dell'Università di Torino.
           </p>
 
           <form id="checkout-form" novalidate>
@@ -290,57 +302,60 @@
                 1. Scegli o modifica l'importo della tua donazione € (*)
               </label>
 
-              <!-- Acceleratori taglio donazione (Euristica 7) -->
               <div class="quick-amounts-row" role="group" aria-label="Tagli rapidi di donazione">
-                <button type="button" class="amt-chip" data-set-amt="10" data-set-rew="Hall of Fame Digitale + Attestato Sostenitore (10 €)">
+                <button type="button" class="amt-chip" data-set-amt="10" aria-pressed="false"
+                        data-set-rew="Hall of Fame Digitale + Attestato Sostenitore (10 €)">
                   10 € (Studenti)
                 </button>
-                <button type="button" class="amt-chip" data-set-amt="25" data-set-rew="Contributo Sostenitore + Attestato Ufficiale UniTo (25 €)">
+                <button type="button" class="amt-chip" data-set-amt="25" aria-pressed="false"
+                        data-set-rew="Contributo Sostenitore + Attestato Ufficiale UniTo (25 €)">
                   25 €
                 </button>
-                <button type="button" class="amt-chip active" data-set-amt="50" data-set-rew="Microguida Scientifica + Hall of Fame Digitale (50 €)">
+                <button type="button" class="amt-chip active" data-set-amt="50" aria-pressed="true"
+                        data-set-rew="Microguida Scientifica + Hall of Fame Digitale (50 €)">
                   50 € (Più scelto)
                 </button>
-                <button type="button" class="amt-chip" data-set-amt="100" data-set-rew="Visita Open Lab in Dipartimento UniTo + Report (100 €)">
-                  100 € (Open Lab)
+                <button type="button" class="amt-chip" data-set-amt="100" aria-pressed="false"
+                        data-set-rew="Visita Open Lab in Dipartimento UniTo + Report (100 €)">
+                  100 € (<span lang="en">Open Lab</span>)
                 </button>
               </div>
 
               <div style="display:grid; grid-template-columns: 180px 1fr; gap:14px; align-items:center;">
-                <input type="number" id="chk-amount" class="form-input input-valid" value="50" min="5" max="10000" step="1" required
-                       aria-describedby="fb-amount">
-                <div id="fb-amount" class="field-feedback valid" style="margin-top:0;">
+                <input type="number" id="chk-amount" class="form-input input-valid" value="50" min="5" max="10000" step="1"
+                       required aria-invalid="false" aria-describedby="fb-amount">
+                <div id="fb-amount" class="field-feedback valid" style="margin-top:0;" role="status" aria-live="polite">
                   ✓ Importo valido (0,00 € commissioni).
                 </div>
               </div>
             </div>
 
-            <!-- SEZIONE B: DATI ANAGRAFICI E CONTATTO CON INLINE VALIDATION (Risolve H5 Pag. 34-35) -->
+            <!-- SEZIONE B: DATI ANAGRAFICI E CONTATTO -->
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
               <!-- Nome e Cognome -->
               <div class="form-group">
                 <label for="chk-name" data-it="2. Nome e Cognome (*)" data-en="2. Full Name (*)">2. Nome e Cognome (*)</label>
-                <input type="text" id="chk-name" class="form-input"
-                       placeholder="Es. Elena Rostagno / Lorenzo Verdi"
-                       data-placeholder-it="Es. Elena Rostagno / Lorenzo Verdi"
-                       data-placeholder-en="E.g. Elena Rostagno / Lorenzo Verdi"
-                       required aria-describedby="fb-name">
-                <div id="fb-name" class="field-feedback"
+                <input type="text" id="chk-name" name="name" autocomplete="name" class="form-input"
+                       placeholder="Es. Mario Rossi"
+                       data-placeholder-it="Es. Mario Rossi"
+                       data-placeholder-en="E.g. Mario Rossi"
+                       required aria-invalid="false" aria-describedby="fb-name">
+                <div id="fb-name" class="field-feedback" role="status" aria-live="polite"
                      data-it="Inserisci nome e cognome per l'attestato."
                      data-en="Enter your first and last name for the certificate.">
                   Inserisci nome e cognome per l'attestato.
                 </div>
               </div>
 
-              <!-- Codice Fiscale / P.IVA Opzionale per Detrazione Fiscale (Bisogno di Elena e Marc) -->
+              <!-- Codice Fiscale / P.IVA Opzionale per Detrazione Fiscale -->
               <div class="form-group">
                 <label for="chk-taxid" data-it="Codice Fiscale o P.IVA (Opzionale per detrazione)"
                        data-en="Tax ID / VAT Number (Optional for tax deduction)">
                   Codice Fiscale o P.IVA (Opzionale per detrazione)
                 </label>
-                <input type="text" id="chk-taxid" class="form-input"
-                       placeholder="Es. RSTLNE68A41L219K (per ricevuta fiscale)"
-                       maxlength="16" style="text-transform:uppercase;">
+                <input type="text" id="chk-taxid" name="taxid" class="form-input"
+                       placeholder="Es. RSSMRA80A01L219K"
+                       maxlength="16" style="text-transform:uppercase;" aria-describedby="fb-taxid">
                 <div id="fb-taxid" class="field-feedback"
                      data-it="Utile per portare la donazione in detrazione fiscale (30%)."
                      data-en="Useful for tax-deductible corporate or personal receipts.">
@@ -355,10 +370,12 @@
                      data-en="3. Email Address for receipt & project updates (*)">
                 3. Indirizzo Email per invio ricevuta e aggiornamenti (*)
               </label>
-              <input type="email" id="chk-email" class="form-input"
-                     placeholder="nome.cognome@dominio.it (es. lorenzo.verdi@edu.unito.it)"
-                     required aria-describedby="fb-email">
-              <div id="fb-email" class="field-feedback"
+              <input type="email" id="chk-email" name="email" autocomplete="email" class="form-input"
+                     placeholder="nome.cognome@dominio.it"
+                     data-placeholder-it="nome.cognome@dominio.it"
+                     data-placeholder-en="firstname.lastname@domain.com"
+                     required aria-invalid="false" aria-describedby="fb-email">
+              <div id="fb-email" class="field-feedback" role="status" aria-live="polite"
                    data-it="Riceverai subito la ricevuta ufficiale dell'Università di Torino."
                    data-en="You will immediately receive the official University of Turin receipt.">
                 Riceverai subito la ricevuta ufficiale dell'Università di Torino.
@@ -367,13 +384,14 @@
 
             <!-- Opzione Anonimato Pubblico -->
             <div class="form-group" style="background:var(--bg-subtle); padding:12px 16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
-              <label style="display:flex; align-items:center; gap:10px; margin-bottom:0; cursor:pointer; font-weight:600;">
-                <input type="checkbox" id="chk-anon" style="width:18px; height:18px;">
-                <span data-it="Voglio restare un donatore anonimo (il tuo nome non comparirà nella lista pubblica dei sostenitori)"
-                      data-en="I want to remain an anonymous backer (your name will not appear on the public backers wall)">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <input type="checkbox" id="chk-anon" style="width:18px; height:18px; flex-shrink:0;">
+                <label for="chk-anon" style="margin-bottom:0; cursor:pointer; font-weight:600;"
+                       data-it="Voglio restare un donatore anonimo (il tuo nome non comparirà nella lista pubblica dei sostenitori)"
+                       data-en="I want to remain an anonymous backer (your name will not appear on the public backers wall)">
                   Voglio restare un donatore anonimo (il tuo nome non comparirà nella lista pubblica dei sostenitori)
-                </span>
-              </label>
+                </label>
+              </div>
             </div>
 
             <!-- Note aggiuntive per il team o per la ricompensa -->
@@ -386,63 +404,80 @@
                         placeholder="Spazio facoltativo per lasciare un messaggio di incoraggiamento al laboratorio UniTo o specificare dettagli per la ricompensa..."></textarea>
             </div>
 
-            <!-- SEZIONE C: SCELTA METODO DI PAGAMENTO CON PROGRESSIVE DISCLOSURE (Risolve H8 Pag. 43) -->
-            <div class="form-group">
-              <label data-it="4. Scegli il metodo di pagamento sicuro (*)" data-en="4. Select Secure Payment Method (*)">
+            <!-- SEZIONE C: SCELTA METODO DI PAGAMENTO CON FIELDSET E LEGEND (WCAG 1.3.1 / 3.3.2) -->
+            <fieldset class="pay-fieldset">
+              <legend class="pay-legend" data-it="4. Scegli il metodo di pagamento sicuro (*)" data-en="4. Select Secure Payment Method (*)">
                 4. Scegli il metodo di pagamento sicuro (*)
-              </label>
+              </legend>
 
-              <div class="pay-options-grid" role="radiogroup" aria-label="Metodi di pagamento">
-                <label class="pay-radio-card active" data-pay-card="card">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <input type="radio" name="pay_method" value="card" checked>
-                    <strong style="color:var(--unito-navy);" data-it="💳 Carta / Prepagata" data-en="💳 Credit / Prepaid Card">💳 Carta / Prepagata</strong>
-                  </div>
+              <div class="pay-options-grid">
+                <label for="pay-method-card" class="pay-radio-card active" data-pay-card="card">
+                  <span style="display:flex; align-items:center; gap:8px;">
+                    <input type="radio" id="pay-method-card" name="pay_method" value="card" checked>
+                    <strong style="color:var(--unito-navy);">
+                      <span aria-hidden="true">💳</span>
+                      <span data-it="Carta / Prepagata" data-en="Credit / Prepaid Card">Carta / Prepagata</span>
+                    </strong>
+                  </span>
                   <span style="font-size:0.78rem; color:var(--text-muted);" data-it="Visa, Mastercard, Postepay, Revolut (0 € commissioni)" data-en="Visa, Mastercard, Prepaid (0 € fees)">
                     Visa, Mastercard, Postepay, Revolut (0 € commissioni)
                   </span>
                 </label>
 
-                <label class="pay-radio-card" data-pay-card="paypal">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <input type="radio" name="pay_method" value="paypal">
-                    <strong style="color:var(--unito-navy);">🅿️ PayPal Express</strong>
-                  </div>
+                <label for="pay-method-paypal" class="pay-radio-card" data-pay-card="paypal">
+                  <span style="display:flex; align-items:center; gap:8px;">
+                    <input type="radio" id="pay-method-paypal" name="pay_method" value="paypal">
+                    <strong style="color:var(--unito-navy);"><span aria-hidden="true">🅿️</span> <span lang="en">PayPal Express</span></strong>
+                  </span>
                   <span style="font-size:0.78rem; color:var(--text-muted);" data-it="Checkout rapido in 1 clic con protezione acquisti" data-en="Fast 1-click checkout with buyer protection">
                     Checkout rapido in 1 clic con protezione acquisti
                   </span>
                 </label>
 
-                <label class="pay-radio-card" data-pay-card="bank">
-                  <div style="display:flex; align-items:center; gap:8px;">
-                    <input type="radio" name="pay_method" value="bank">
-                    <strong style="color:var(--unito-navy);" data-it="🏦 Bonifico Bancario" data-en="🏦 Bank Transfer (IBAN)">🏦 Bonifico Bancario</strong>
-                  </div>
+                <label for="pay-method-bank" class="pay-radio-card" data-pay-card="bank">
+                  <span style="display:flex; align-items:center; gap:8px;">
+                    <input type="radio" id="pay-method-bank" name="pay_method" value="bank">
+                    <strong style="color:var(--unito-navy);">
+                      <span aria-hidden="true">🏦</span>
+                      <span data-it="Bonifico Bancario" data-en="Bank Transfer (IBAN)">Bonifico Bancario</span>
+                    </strong>
+                  </span>
                   <span style="font-size:0.78rem; color:var(--text-muted);" data-it="Ideale per donazioni medie e aziende CSR" data-en="Ideal for citizens and CSR corporate gifts">
                     Ideale per donazioni medie e aziende CSR
                   </span>
                 </label>
               </div>
 
-              <!-- Pannello 1: Simulazione Carta / Prepagata (Attivo di default) -->
+              <!-- Pannello 1: Carta / Prepagata con Label esplicite per tutti i campi -->
               <div id="pay-panel-card" class="pay-method-details">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-                  <strong style="color:var(--unito-navy);" data-it="🔒 Dati Carta o Prepagata (Simulazione Prototipo — Nessun addebito reale)"
-                          data-en="🔒 Card Details (Prototype Simulation — No real charge)">
-                    🔒 Dati Carta o Prepagata (Simulazione Prototipo — Nessun addebito reale)
+                  <strong style="color:var(--unito-navy);">
+                    <span aria-hidden="true">🔒</span>
+                    <span data-it="Dati Carta di Credito o Prepagata" data-en="Credit or Prepaid Card Details">
+                      Dati Carta di Credito o Prepagata
+                    </span>
                   </strong>
-                  <span class="badge badge-active">3D Secure 2.0</span>
+                  <span class="badge badge-active" lang="en">3D Secure 2.0</span>
                 </div>
                 <div style="display:grid; grid-template-columns: 1.6fr 1fr 0.8fr; gap:10px;">
-                  <input type="text" class="form-input" value="4532 •••• •••• 8891" aria-label="Numero carta simulato" readonly style="background:#ffffff;">
-                  <input type="text" class="form-input" value="09 / 2028" aria-label="Scadenza carta simulata" readonly style="background:#ffffff;">
-                  <input type="text" class="form-input" value="•••" aria-label="CVV simulato" readonly style="background:#ffffff;">
+                  <div>
+                    <label for="cc-number" style="font-size:0.78rem; margin-bottom:3px;" data-it="Numero Carta" data-en="Card Number">Numero Carta</label>
+                    <input type="text" id="cc-number" autocomplete="cc-number" class="form-input" value="4532 •••• •••• 8891" readonly style="background:#ffffff;">
+                  </div>
+                  <div>
+                    <label for="cc-exp" style="font-size:0.78rem; margin-bottom:3px;" data-it="Scadenza (MM/AA)" data-en="Expiry (MM/YY)">Scadenza (MM/AA)</label>
+                    <input type="text" id="cc-exp" autocomplete="cc-exp" class="form-input" value="09 / 2028" readonly style="background:#ffffff;">
+                  </div>
+                  <div>
+                    <label for="cc-cvc" style="font-size:0.78rem; margin-bottom:3px;" data-it="Codice CVV" data-en="CVV Code">Codice CVV</label>
+                    <input type="text" id="cc-cvc" autocomplete="cc-csc" class="form-input" value="•••" readonly style="background:#ffffff;">
+                  </div>
                 </div>
               </div>
 
               <!-- Pannello 2: PayPal -->
               <div id="pay-panel-paypal" class="pay-method-details" style="display:none;">
-                <strong style="color:var(--unito-navy); display:block; margin-bottom:4px;">🅿️ PayPal One-Touch (Simulato)</strong>
+                <strong style="color:var(--unito-navy); display:block; margin-bottom:4px;"><span aria-hidden="true">🅿️</span> <span lang="en">PayPal One-Touch</span></strong>
                 <p style="color:var(--text-muted);" data-it="Cliccando su conferma, la donazione verrà autorizzata tramite il gateway PayPal istituzionale senza costi aggiuntivi."
                    data-en="Clicking confirm will authorize your donation via the official PayPal gateway with zero extra fees.">
                   Cliccando su conferma, la donazione verrà autorizzata tramite il gateway PayPal istituzionale senza costi aggiuntivi.
@@ -451,10 +486,12 @@
 
               <!-- Pannello 3: Bonifico Bancario Istituzionale -->
               <div id="pay-panel-bank" class="pay-method-details" style="display:none;">
-                <strong style="color:var(--unito-navy); display:block; margin-bottom:4px;"
-                        data-it="🏦 Coordinate IBAN Dedicate Università degli Studi di Torino:"
-                        data-en="🏦 Official University of Turin IBAN Coordinates:">
-                  🏦 Coordinate IBAN Dedicate Università degli Studi di Torino:
+                <strong style="color:var(--unito-navy); display:block; margin-bottom:4px;">
+                  <span aria-hidden="true">🏦</span>
+                  <span data-it="Coordinate IBAN Dedicate Università degli Studi di Torino:"
+                        data-en="Official University of Turin IBAN Coordinates:">
+                    Coordinate IBAN Dedicate Università degli Studi di Torino:
+                  </span>
                 </strong>
                 <p style="font-family:monospace; background:#ffffff; padding:8px 12px; border:1px solid var(--border-color); border-radius:4px; margin:6px 0;">
                   <strong>IBAN:</strong> IT60 X020 0801 0460 0010 2648 912 • <strong>Intestatario:</strong> Università degli Studi di Torino - Funds TOgether
@@ -465,22 +502,26 @@
                   Riceverai queste coordinate e la causale automatica anche nella ricevuta via email.
                 </span>
               </div>
-            </div>
+            </fieldset>
 
-            <!-- SEZIONE D: CONSENSO PRIVACY COERENTE CON LA LINGUA SELEZIONATA (Risolve H2 Pag. 12-13) -->
+            <!-- SEZIONE D: CONSENSO PRIVACY CON ASSOCIAZIONE ESPLICITA FOR/ID -->
             <div class="form-group" style="margin-top:18px;">
-              <label style="display:flex; align-items:flex-start; gap:10px; font-weight:500; cursor:pointer;">
-                <input type="checkbox" id="chk-privacy" checked style="width:18px; height:18px; margin-top:3px;" required>
-                <span>
-                  <span data-it="Dichiaro di aver letto e compreso le " data-en="I declare that I have read and understood the ">Dichiaro di aver letto e compreso le </span>
-                  <a href="#" data-open-privacy style="font-weight:700; text-decoration:underline;"
-                     data-it="Condizioni d'Uso e l'Informativa Privacy GDPR (Documento in Italiano)"
-                     data-en="Terms of Use and EU GDPR Privacy Policy (Official English Document)">
-                    Condizioni d'Uso e l'Informativa Privacy GDPR (Documento in Italiano)
-                  </a>
-                  (*)
-                </span>
-              </label>
+              <div style="display:flex; align-items:flex-start; gap:10px;">
+                <input type="checkbox" id="chk-privacy" checked style="width:18px; height:18px; margin-top:4px; flex-shrink:0;" required>
+                <div>
+                  <label for="chk-privacy" style="display:inline; font-weight:500; cursor:pointer;"
+                         data-it="Dichiaro di aver letto e compreso le Condizioni d'Uso e l'Informativa Privacy GDPR (*)"
+                         data-en="I declare that I have read and understood the Terms of Use and EU GDPR Privacy Policy (*)">
+                    Dichiaro di aver letto e compreso le Condizioni d'Uso e l'Informativa Privacy GDPR (*)
+                  </label>
+                  —
+                  <button type="button" class="inline-link-btn" data-open-privacy
+                          data-it="Leggi il documento completo (IT/EN)"
+                          data-en="Read the full legal document (IT/EN)">
+                    Leggi il documento completo (IT/EN)
+                  </button>
+                </div>
+              </div>
             </div>
 
             <button type="submit" id="chk-submit-btn" class="btn btn-primary" style="width:100%; padding:15px; font-size:1.05rem;" disabled>
@@ -489,16 +530,16 @@
           </form>
         </section>
 
-        <!-- COLONNA DESTRA: RIEPILOGO STICKY CON "TOTALE DA PAGARE" ESPLICITO E RADDOPPIO UNITO (Risolve H1 Pag. 10-11) -->
-        <aside class="sidebar-card sticky-summary" aria-label="Riepilogo in tempo reale della tua donazione">
+        <!-- COLONNA DESTRA: RIEPILOGO STICKY CON "TOTALE DA PAGARE" ESPLICITO E RADDOPPIO UNITO -->
+        <aside class="sidebar-card sticky-summary" aria-labelledby="summary-heading">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-            <span class="badge badge-active" data-it="✓ Riepilogo in Tempo Reale (H1)" data-en="✓ Real-Time Summary (H1)">
-              ✓ Riepilogo in Tempo Reale (H1)
+            <span class="badge badge-active" data-it="✓ Riepilogo Donazione" data-en="✓ Donation Summary">
+              ✓ Riepilogo Donazione
             </span>
             <a href="progetto.html" style="font-size:0.82rem; font-weight:700;" data-it="Cambia progetto" data-en="Change project">Cambia progetto</a>
           </div>
 
-          <h2 style="color:var(--unito-navy); font-size:1.15rem; margin-bottom:4px;"
+          <h2 id="summary-heading" style="color:var(--unito-navy); font-size:1.15rem; margin-bottom:4px;"
               data-it="Stai sostenendo il progetto:" data-en="You are supporting the project:">
             Stai sostenendo il progetto:
           </h2>
@@ -511,9 +552,9 @@
 
           <!-- Box Ricompensa Selezionata -->
           <div style="background:var(--bg-subtle); padding:14px; border-radius:var(--radius-sm); border:1px solid var(--border-color); margin-bottom:16px;">
-            <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;"
-                  data-it="🎁 Ricompensa inclusa:" data-en="🎁 Selected Reward:">
-              🎁 Ricompensa inclusa:
+            <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">
+              <span aria-hidden="true">🎁</span>
+              <span data-it="Ricompensa inclusa:" data-en="Selected Reward:">Ricompensa inclusa:</span>
             </span>
             <p id="summary-reward-title" style="font-weight:700; color:var(--unito-navy); margin-top:4px; font-size:0.94rem;">
               Microguida MILK-ACT + Hall of Fame Digitale
@@ -531,16 +572,16 @@
               <strong data-it="0,00 € (Coperte da UniTo)" data-en="€0.00 (Covered by UniTo)">0,00 € (Coperte da UniTo)</strong>
             </div>
             <div style="display:flex; justify-content:space-between; color:var(--match-teal);">
-              <span data-it="Quota Raddoppio UniTo (Match-Funding):" data-en="UniTo 2x Match-Funding Share:">Quota Raddoppio UniTo (Match-Funding):</span>
+              <span data-it="Quota Raddoppio UniTo (Match-Funding):" data-en="UniTo 2x Match-Funding Share:">Quota Raddoppio UniTo (<span lang="en">Match-Funding</span>):</span>
               <strong id="summary-match-share">+50,00 €</strong>
             </div>
           </div>
 
-          <!-- BOX TOTALE DA PAGARE IN EVIDENZA (Risolve H1 Pag. 10-11 Assignment 1) -->
-          <div class="summary-total-box" role="status" aria-live="polite">
+          <!-- BOX TOTALE DA PAGARE IN EVIDENZA -->
+          <div class="summary-total-box" role="status" aria-live="polite" aria-atomic="true">
             <div>
               <span style="display:block;" data-it="Totale Donato:" data-en="Total to Pay:">Totale Donato:</span>
-              <small style="font-size:0.75rem; font-weight:500; color:#cbd5e1;"
+              <small style="font-size:0.75rem; font-weight:500; color:#e2e8f0;"
                      data-it="Addebito unico (nessun abbonamento)" data-en="One-time charge (no subscription)">
                 Addebito unico (nessun abbonamento)
               </small>
@@ -550,14 +591,18 @@
 
           <!-- Banner Impatto Raddoppiato 2x -->
           <div class="summary-impact-banner">
-            <span data-it="🏛️ Impatto Totale per la Ricerca (2x):" data-en="🏛️ Total Research Impact (2x):">
-              🏛️ Impatto Totale per la Ricerca (2x):
+            <span>
+              <span aria-hidden="true">🏛️</span>
+              <span data-it="Impatto Totale per la Ricerca (2x):" data-en="Total Research Impact (2x):">
+                Impatto Totale per la Ricerca (2x):
+              </span>
             </span>
             <strong id="summary-doubled-val" style="font-size:1.08rem;">100,00 €</strong>
           </div>
 
           <div style="margin-top:16px; padding-top:12px; border-top:1px solid #e2e8f0; font-size:0.82rem; color:var(--text-muted);">
-            🛡️ <strong data-it="Garanzia 'O tutto o niente':" data-en="'All-or-Nothing' Guarantee:">Garanzia "O tutto o niente":</strong>
+            <span aria-hidden="true">🛡️</span>
+            <strong data-it="Garanzia 'O tutto o niente':" data-en="'All-or-Nothing' Guarantee:">Garanzia "O tutto o niente":</strong>
             <span data-it=" Se il progetto non raggiunge il 100% dell'obiettivo entro la scadenza, riceverai il rimborso automatico integrale."
                   data-en=" If the campaign does not reach 100% of its goal by the deadline, you receive a full automatic refund.">
               Se il progetto non raggiunge il 100% dell'obiettivo entro la scadenza, riceverai il rimborso automatico integrale.
@@ -566,15 +611,15 @@
         </aside>
       </div>
 
-      <!-- 6. SCHERMATA DI CONFERMA E RICEVUTA UFFICIALE STAMPABILE (Fase 6 degli User Journey di Lorenzo ed Elena) -->
-      <section id="checkout-receipt-box" class="sidebar-card" style="display:none; max-width:760px; margin:0 auto; text-align:center; padding:42px 32px;">
+      <!-- SCHERMATA DI CONFERMA E RICEVUTA UFFICIALE STAMPABILE -->
+      <section id="checkout-receipt-box" class="sidebar-card" style="display:none; max-width:760px; margin:0 auto; text-align:center; padding:42px 32px;" aria-labelledby="receipt-main-heading">
         <div style="font-size:3.5rem; margin-bottom:8px;" aria-hidden="true">🎉🏛️</div>
         <span class="badge badge-active" style="margin-bottom:10px;"
-              data-it="✓ Passo 3 Completato • Transazione Simulata Registrata"
-              data-en="✓ Step 3 Completed • Simulated Transaction Recorded">
-          ✓ Passo 3 Completato • Transazione Simulata Registrata
+              data-it="✓ Passo 3 Completato • Donazione Registrata"
+              data-en="✓ Step 3 Completed • Donation Recorded">
+          ✓ Passo 3 Completato • Donazione Registrata
         </span>
-        <h2 style="color:var(--unito-navy); font-size:1.85rem; margin-bottom:8px;"
+        <h2 id="receipt-main-heading" style="color:var(--unito-navy); font-size:1.85rem; margin-bottom:8px;"
             data-it="Grazie per aver sostenuto la ricerca dell'Università di Torino!"
             data-en="Thank you for supporting University of Turin Research!">
           Grazie per aver sostenuto la ricerca dell'Università di Torino!
@@ -582,12 +627,12 @@
         <p style="color:var(--text-muted); margin-bottom:24px;"
            data-it="La tua donazione è stata registrata con successo e ha attivato la corrispondente quota di cofinanziamento d'Ateneo (Match-Funding 2x)."
            data-en="Your donation has been successfully recorded and unlocked the corresponding University Match-Funding share (2x).">
-          La tua donazione è stata registrata con successo e ha attivato la corrispondente quota di cofinanziamento d'Ateneo (Match-Funding 2x).
+          La tua donazione è stata registrata con successo e ha attivato la corrispondente quota di cofinanziamento d'Ateneo (<span lang="en">Match-Funding</span> 2x).
         </p>
 
         <div style="background:var(--bg-subtle); border:1.5px solid var(--border-color); border-radius:var(--radius-md); padding:24px; text-align:left; margin-bottom:24px;">
           <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:12px; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
-            <h3 style="color:var(--unito-navy); font-size:1.1rem;">📄 Ricevuta Ufficiale #UNITO-2026-8492</h3>
+            <h3 style="color:var(--unito-navy); font-size:1.1rem;"><span aria-hidden="true">📄</span> Ricevuta Ufficiale #UNITO-2026-8492</h3>
             <span class="badge badge-active">Valida ai fini fiscali (Art. 83 D.Lgs. 117/2017)</span>
           </div>
           <p style="font-size:0.94rem; margin-bottom:8px;"><strong>Progetto Sostenuto:</strong> <span id="receipt-proj-name">MILK-ACT — Ricerca Scientifica UniTo</span></p>
@@ -599,9 +644,9 @@
         </div>
 
         <div class="no-print" style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
-          <button type="button" onclick="window.print();" class="btn btn-secondary"
-                  data-it="🖨️ Stampa / Salva Ricevuta in PDF" data-en="🖨️ Print / Save Receipt as PDF">
-            🖨️ Stampa / Salva Ricevuta in PDF
+          <button type="button" onclick="window.print();" class="btn btn-secondary">
+            <span aria-hidden="true">🖨️</span>
+            <span data-it="Stampa / Salva Ricevuta in PDF" data-en="Print / Save Receipt as PDF">Stampa / Salva Ricevuta in PDF</span>
           </button>
           <a href="progetto.html" class="btn btn-outline"
              data-it="← Torna alla Scheda Progetto" data-en="← Back to Project Page">
@@ -617,16 +662,17 @@
     </div>
   </main>
 
-  <!-- 7. FOOTER ISTITUZIONALE -->
+  <!-- FOOTER ISTITUZIONALE UNITO -->
   <footer class="site-footer">
     <div class="container">
+      <h2 class="sr-only" data-it="Informazioni istituzionali e collegamenti utili" data-en="Institutional information and useful links">Informazioni istituzionali e collegamenti utili</h2>
       <div class="footer-bottom" style="border-top:none; padding-top:0;">
-        <span>© 2026 Università degli Studi di Torino — Prototipo HCI Gruppo I (Stigliano Antonio, Tumolo Christian)</span>
-        <div>
-          <a href="#" data-open-privacy style="color:#ffd166; margin-right:16px;"
-             data-it="Informativa Privacy & Condizioni (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
+        <span>© 2026 Università degli Studi di Torino — Direzione Ricerca e Terza Missione (C.F. 80088230018)</span>
+        <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+          <button type="button" class="footer-link-btn" data-open-privacy style="color:#ffd166;"
+                  data-it="Informativa Privacy & Condizioni (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
             Informativa Privacy & Condizioni (IT/EN)
-          </a>
+          </button>
           <a href="progetto.html" style="color:#cbd5e1;" data-it="← Torna al Progetto" data-en="← Back to Project">← Torna al Progetto</a>
         </div>
       </div>
@@ -634,14 +680,12 @@
   </footer>
 
   <script src="script.js"></script>
-  <!-- Motore V2 specifico per checkout.html: sincronizza Quick Pills, Match-Funding 2x, Metodi di Pagamento, Stepper e Scenari Personas -->
+  <!-- Gestione importi rapidi, calcolo Match-Funding 2x, metodi di pagamento, aria-invalid e Stepper -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const amountInput = document.getElementById('chk-amount');
       const nameInput = document.getElementById('chk-name');
       const emailInput = document.getElementById('chk-email');
-      const taxInput = document.getElementById('chk-taxid');
-      const notesInput = document.getElementById('chk-notes');
       const submitBtn = document.getElementById('chk-submit-btn');
       const form = document.getElementById('checkout-form');
 
@@ -652,7 +696,7 @@
       const summaryDoubledVal = document.getElementById('summary-doubled-val');
       const breadcrumbProj = document.getElementById('chk-breadcrumb-proj');
 
-      // 1. Inizializza il progetto selezionato in base a sessionStorage (MILK-ACT o SpeechMatE)
+      // 1. Inizializza il progetto selezionato in base a sessionStorage
       const currentProj = sessionStorage.getItem('unito_current_proj') || 'milk-act';
       if (currentProj === 'speechmate') {
         summaryProjTitle.textContent = 'SpeechMatE: Matematica Vocale Senza Barriere';
@@ -664,20 +708,30 @@
         if (breadcrumbProj) breadcrumbProj.textContent = 'MILK-ACT';
       }
 
-      // 2. Aggiorna in tempo reale la quota Match-Funding UniTo e l'Impatto 2x
+      // 2. Sincronizza aria-invalid sui campi quando vengono validati
+      function syncAriaInvalid() {
+        [amountInput, nameInput, emailInput].forEach(inp => {
+          if (inp) {
+            inp.setAttribute('aria-invalid', inp.classList.contains('input-error') ? 'true' : 'false');
+          }
+        });
+      }
+
+      // 3. Aggiorna in tempo reale la quota Match-Funding UniTo, l'Impatto 2x e aria-pressed sui tagli rapidi
       function syncExtendedSummary() {
+        syncAriaInvalid();
         const val = Math.max(0, Number(amountInput.value) || 0);
         const validVal = val >= 5 ? val : 0;
         const doubled = validVal * 2;
         if (summaryMatchShare) summaryMatchShare.textContent = `+${validVal.toFixed(2).replace('.', ',')} €`;
         if (summaryDoubledVal) summaryDoubledVal.textContent = `${doubled.toFixed(2).replace('.', ',')} €`;
 
-        // Evidenzia il bottone taglio rapido corrispondente
         document.querySelectorAll('.amt-chip').forEach(chip => {
-          chip.classList.toggle('active', Number(chip.getAttribute('data-set-amt')) === val);
+          const isSelected = Number(chip.getAttribute('data-set-amt')) === val;
+          chip.classList.toggle('active', isSelected);
+          chip.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
         });
 
-        // Aggiorna etichetta del pulsante di conferma quando tutti i campi sono validi
         const lang = sessionStorage.getItem('unito_lang') || 'it';
         if (submitBtn) {
           if (!submitBtn.disabled) {
@@ -692,7 +746,7 @@
         }
       }
 
-      // 3. Click sui pulsanti taglio rapido (10€, 25€, 50€, 100€)
+      // 4. Click sui pulsanti taglio rapido (10€, 25€, 50€, 100€)
       document.querySelectorAll('.amt-chip').forEach(chip => {
         chip.addEventListener('click', () => {
           const amt = chip.getAttribute('data-set-amt');
@@ -706,7 +760,7 @@
         });
       });
 
-      // 4. Gestione Progressive Disclosure sui 3 Metodi di Pagamento
+      // 5. Gestione Progressive Disclosure sui 3 Metodi di Pagamento
       const payCards = document.querySelectorAll('[data-pay-card]');
       const panelCard = document.getElementById('pay-panel-card');
       const panelPaypal = document.getElementById('pay-panel-paypal');
@@ -717,7 +771,8 @@
           const method = card.getAttribute('data-pay-card');
           payCards.forEach(c => c.classList.remove('active'));
           card.classList.add('active');
-          card.querySelector('input[type="radio"]').checked = true;
+          const radio = card.querySelector('input[type="radio"]');
+          if (radio) radio.checked = true;
 
           panelCard.style.display = method === 'card' ? 'block' : 'none';
           panelPaypal.style.display = method === 'paypal' ? 'block' : 'none';
@@ -725,54 +780,20 @@
         });
       });
 
-      // 5. Bottoni di simulazione rapida per Lorenzo Verdi ed Elena Rostagno
-      const btnLorenzo = document.getElementById('fill-lorenzo-btn');
-      if (btnLorenzo) {
-        btnLorenzo.addEventListener('click', () => {
-          sessionStorage.setItem('unito_current_proj', 'speechmate');
-          summaryProjTitle.textContent = 'SpeechMatE: Matematica Vocale Senza Barriere';
-          summaryProjDept.textContent = 'Dipartimento di Matematica "Giuseppe Peano" — Lab Integr-Abile UniTo';
-          amountInput.value = '10';
-          summaryReward.textContent = 'Hall of Fame Digitale SpeechMatE + Attestato Sostenitore (10 €)';
-          nameInput.value = 'Lorenzo Verdi';
-          emailInput.value = 'lorenzo.verdi@edu.unito.it';
-          taxInput.value = '';
-          notesInput.value = 'Forza ragazzi, bellissimo progetto per la nostra comunità studentesca UniTo!';
-          amountInput.dispatchEvent(new Event('input'));
-          nameInput.dispatchEvent(new Event('input'));
-          emailInput.dispatchEvent(new Event('input'));
-          syncExtendedSummary();
-        });
-      }
-
-      const btnElena = document.getElementById('fill-elena-btn');
-      if (btnElena) {
-        btnElena.addEventListener('click', () => {
-          sessionStorage.setItem('unito_current_proj', 'milk-act');
-          summaryProjTitle.textContent = 'MILK-ACT: Proteggere i più piccoli dai virus di domani';
-          summaryProjDept.textContent = 'VIRMOLAB — Dipartimento di Scienze Cliniche e Biologiche UniTo';
-          amountInput.value = '50';
-          summaryReward.textContent = 'Microguida Scientifica MILK-ACT + Hall of Fame Digitale (50 €)';
-          nameInput.value = 'Elena Rostagno';
-          emailInput.value = 'elena.rostagno@istruzione.it';
-          taxInput.value = 'RSTLNE68A41L219K';
-          notesInput.value = 'Grazie per il vostro prezioso lavoro di ricerca per i neonati prematuri di Torino.';
-          amountInput.dispatchEvent(new Event('input'));
-          nameInput.dispatchEvent(new Event('input'));
-          emailInput.dispatchEvent(new Event('input'));
-          syncExtendedSummary();
-        });
-      }
-
       if (form) {
         form.addEventListener('input', () => setTimeout(syncExtendedSummary, 10));
         form.addEventListener('submit', () => {
           setTimeout(() => {
+            syncAriaInvalid();
             if (document.getElementById('checkout-receipt-box').style.display === 'block') {
-              // Aggiorna lo Stepper al Passo 3 Completato
-              document.getElementById('step-indicator-2').className = 'step-item done';
+              const step2 = document.getElementById('step-indicator-2');
+              const step3 = document.getElementById('step-indicator-3');
+              step2.className = 'step-item done';
+              step2.removeAttribute('aria-current');
               document.getElementById('step-circle-2').textContent = '✓';
-              document.getElementById('step-indicator-3').className = 'step-item current';
+              step3.className = 'step-item current';
+              step3.setAttribute('aria-current', 'step');
+
               const amt = Number(amountInput.value) || 50;
               document.getElementById('receipt-proj-name').textContent = summaryProjTitle.textContent;
               document.getElementById('receipt-doubled').textContent = `${(amt * 2).toFixed(2).replace('.', ',')} € (${amt} € tuoi + ${amt} € Cofinanziamento UniTo)`;
