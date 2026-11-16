@@ -90,7 +90,7 @@
 
       <nav class="main-nav" aria-label="Menu Principale">
         <ul>
-          <li><a href="index.html" class="active" aria-current="page" data-it="Home" data-en="Home">Home</a></li>
+          <li><a href="index.html#hero-main-title" class="active" aria-current="page" data-it="Home" data-en="Home">Home</a></li>
           <li><a href="catalogo.html" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
           <li><a href="proponi.html" data-it="Come Funziona &amp; Proponi" data-en="How It Works &amp; Apply">Come Funziona &amp; Proponi</a></li>
           <li><a href="partner.html" data-it="Partner &amp; Collaboratori" data-en="Partners &amp; Network">Partner &amp; Collaboratori</a></li>
@@ -98,7 +98,7 @@
       </nav>
 
       <div class="header-actions">
-        <form id="header-search-form" class="header-search" role="search">
+        <form id="header-search-form" class="header-search" action="catalogo.html" method="get">
           <label for="header-search-input" class="sr-only" data-it="Cerca progetti nel portale" data-en="Search projects in the portal">Cerca progetti nel portale</label>
           <input type="search" id="header-search-input" name="q" autocomplete="off"
                  placeholder="Cerca progetti..."
@@ -111,7 +111,7 @@
         </form>
 
         <!-- Selettore Lingua Globale IT | EN -->
-        <div class="lang-switch" role="group" aria-label="Lingua / Language">
+        <div class="lang-switch">
           <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true">
             IT<span class="sr-only"> (Italiano)</span>
           </button>
@@ -130,19 +130,21 @@
   </header>
 
   <!-- BARRA DI ORIENTAMENTO BREADCRUMBS -->
-  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
+  <div class="breadcrumbs-bar">
     <div class="container breadcrumbs-inner">
-      <ol class="breadcrumbs-list">
-        <li>
-          <a href="https://www.unito.it" target="_blank" rel="noopener" class="ext-link">
-            <span data-it="Portale Ateneo UniTo.it" data-en="UniTo.it Main Portal">Portale Ateneo UniTo.it</span>
-            <span class="ext-badge"><span aria-hidden="true">↗</span> <span data-it="sito esterno" data-en="external site">sito esterno</span></span>
-          </a>
-        </li>
-        <li><span data-it="Terza Missione &amp; Public Engagement" data-en="Third Mission &amp; Public Engagement">Terza Missione &amp; <span lang="en">Public Engagement</span></span></li>
-        <li class="current" aria-current="page" data-it="Funds TOgether (Home)" data-en="Funds TOgether (Home)"><span lang="en">Funds TOgether</span> (Home)</li>
-      </ol>
-      <span class="breadcrumbs-meta">
+      <nav aria-label="Percorso di navigazione">
+        <ol class="breadcrumbs-list">
+          <li>
+            <a href="https://www.unito.it" target="_blank" rel="noopener" class="ext-link">
+              <span data-it="Portale Ateneo UniTo.it" data-en="UniTo.it Main Portal">Portale Ateneo UniTo.it</span>
+              <span class="ext-badge"><span aria-hidden="true">↗</span> <span data-it="sito esterno" data-en="external site">sito esterno</span></span>
+            </a>
+          </li>
+          <li><span data-it="Terza Missione &amp; Public Engagement" data-en="Third Mission &amp; Public Engagement">Terza Missione &amp; <span lang="en">Public Engagement</span></span></li>
+          <li class="current" aria-current="page" data-it="Funds TOgether (Home)" data-en="Funds TOgether (Home)"><span lang="en">Funds TOgether</span> (Home)</li>
+        </ol>
+      </nav>
+      <span class="breadcrumbs-meta" role="status" aria-live="polite">
         <span aria-hidden="true">📍</span>
         <span data-it="Portale Ufficiale Crowdfunding dell'Università degli Studi di Torino"
               data-en="Official Crowdfunding Portal of the University of Turin">
@@ -150,12 +152,12 @@
         </span>
       </span>
     </div>
-  </nav>
+  </div>
 
   <main id="main-content" tabindex="-1">
 
     <!-- HERO SECTION CON EQUAZIONE VISUALE DEL RADDOPPIO FONDI UNITO -->
-    <section class="hero" aria-labelledby="hero-main-title">
+    <section class="hero">
       <div class="container hero-grid">
         <div>
           <span class="hero-tag">
@@ -181,7 +183,7 @@
                     data-tooltip="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
                     data-tooltip-it="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
                     data-tooltip-en="Civic crowdfunding: transparent online fundraising where citizens collectively back a scientific project verified by the University.">
-              <span data-it="crowdfunding civico" data-en="civic crowdfunding">crowdfunding civico</span>
+              <span data-it="crowdfunding civico" data-en="civic crowdfunding">crowdfunding civico</span><span class="sr-only">: </span>
               <span class="info-badge" aria-hidden="true">i</span>
             </button>.
             <span data-it="Al raggiungimento del 100% dell'obiettivo, l'Università di Torino attiva il "
@@ -192,7 +194,7 @@
                     data-tooltip="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
                     data-tooltip-it="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
                     data-tooltip-en="Match-Funding: the University of Turin doubles the funds donated by the community up to a maximum cap of €10,000 per project!">
-              <span lang="en" data-it="Match-Funding (Raddoppio 2x)" data-en="Match-Funding (2x Doubling)">Match-Funding (Raddoppio 2x)</span>
+              <span lang="en" data-it="Match-Funding (Raddoppio 2x)" data-en="Match-Funding (2x Doubling)">Match-Funding (Raddoppio 2x)</span><span class="sr-only">: </span>
               <span class="info-badge" aria-hidden="true">i</span>
             </button>
             <span data-it=" fino a 10.000 € per progetto!" data-en=" up to €10,000 per project!"> fino a 10.000 € per progetto!</span>
@@ -226,7 +228,7 @@
         </div>
 
         <!-- Card Destra: Equazione Visuale del Raddoppio UniTo -->
-        <aside class="hero-card" aria-labelledby="hero-card-heading">
+        <aside class="hero-card">
           <span class="badge badge-active"
                 data-it="Meccanismo Trasparente d'Ateneo" data-en="Transparent University Mechanism">
             Meccanismo Trasparente d'Ateneo
@@ -267,7 +269,7 @@
                       data-tooltip="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
                       data-tooltip-it="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
                       data-tooltip-en="'All-or-Nothing' rule: if the campaign does not reach its minimum goal by the deadline, no money is charged and you receive an automatic full refund.">
-                <span data-it="'O tutto o niente'" data-en="'All-or-Nothing'">'O tutto o niente'</span>
+                <span data-it="'O tutto o niente'" data-en="'All-or-Nothing'">'O tutto o niente'</span><span class="sr-only">: </span>
                 <span class="info-badge" aria-hidden="true">i</span>
               </button>
               <span data-it=" doni a partire da 5 € senza alcun rischio." data-en=" rule, you can donate from €5 risk-free."> doni a partire da 5 € senza alcun rischio.</span>
@@ -293,7 +295,7 @@
     </section>
 
     <!-- STRISCIA KPI D'IMPATTO CERTIFICATO -->
-    <section class="impact-kpi-bar" aria-labelledby="kpi-section-heading">
+    <section class="impact-kpi-bar">
       <h2 id="kpi-section-heading" class="sr-only" data-it="Risultati e indicatori di impatto di Funds TOgether" data-en="Funds TOgether impact metrics and results">
         Risultati e indicatori di impatto di Funds TOgether
       </h2>
@@ -330,10 +332,10 @@
     </section>
 
     <!-- SEZIONE 1: CAMPAGNE ATTIVE -->
-    <section class="section" aria-labelledby="active-campaigns-heading">
+    <section class="section">
       <div class="container">
 
-        <!-- Scorciatoie Dipartimentali con URL distinti (risolve WAVE Redundant Links) -->
+        <!-- Scorciatoie Dipartimentali con URL distinti -->
         <div class="quick-categories-bar">
           <div class="filter-pills">
             <span class="filter-label"><span aria-hidden="true">⚡</span> <span data-it="Esplora per Area:" data-en="Browse by Area:">Esplora per Area:</span></span>
@@ -555,7 +557,7 @@
     </section>
 
     <!-- SEZIONE 2: TRAGUARDI RAGGIUNTI E IMPATTO RENDICONTATO -->
-    <section class="section section-alt" aria-labelledby="completed-campaigns-heading">
+    <section class="section section-alt">
       <div class="container">
         <div class="section-header">
           <div>
@@ -571,7 +573,7 @@
                       data-tooltip="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
                       data-tooltip-it="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
                       data-tooltip-en="Overfunding: fundraising that exceeds 100% of the initial goal, allowing researchers to fund study extensions (stretch goals).">
-                <span lang="en">Overfunding</span> <span class="info-badge" aria-hidden="true">i</span>
+                <span lang="en">Overfunding</span><span class="sr-only">: </span> <span class="info-badge" aria-hidden="true">i</span>
               </button>
               <span data-it=" con rendicontazione pubblica degli acquisti di laboratorio e dei risultati scientifici."
                     data-en=" with public reporting of laboratory purchases and scientific results.">
@@ -695,7 +697,7 @@
     </section>
 
     <!-- SEZIONE CALLOUT PER I RICERCATORI DELL'ATENEO -->
-    <section class="section" aria-labelledby="researchers-callout-heading">
+    <section class="section">
       <div class="container">
         <div class="researcher-cta-banner">
           <div>
@@ -776,7 +778,7 @@
           <h3 class="footer-heading" data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h3>
           <ul>
             <li><a href="index.html#main-content" data-it="Home Page" data-en="Home Page">Home Page</a></li>
-            <li><a href="catalogo.html" data-it="Esplora Catalogo Progetti" data-en="Explore Projects Catalog">Esplora Catalogo Progetti</a></li>
+            <li><a href="catalogo.html" rel="sitemap" data-it="Esplora Catalogo Progetti (Mappa)" data-en="Explore Projects Catalog (Sitemap)">Esplora Catalogo Progetti (Mappa)</a></li>
             <li><a href="proponi.html" data-it="Come Funziona &amp; Bando Ricercatori" data-en="How It Works &amp; Researchers Call">Come Funziona &amp; Bando Ricercatori</a></li>
             <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners &amp; Network">I Nostri Partner e Collaboratori</a></li>
           </ul>
