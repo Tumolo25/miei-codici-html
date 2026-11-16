@@ -4,61 +4,117 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Esplora Progetti (Catalogo) | UniTo Crowd — Funds TOgether</title>
+  <meta name="description" content="Catalogo ufficiale dei 9 progetti di ricerca scientifica e Terza Missione dell'Università degli Studi di Torino (Funds TOgether). Filtra per dipartimento e stato.">
+  <link rel="canonical" href="https://tumolo25.github.io/miei-codici-html/catalogo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Esplora Progetti (Catalogo) | UniTo Crowd — Funds TOgether">
+  <meta property="og:description" content="Esplora, filtra e confronta le 9 campagne di ricerca dell'Università di Torino ammesse al raddoppio fondi Match-Funding 2x.">
+  <meta property="og:url" content="https://tumolo25.github.io/miei-codici-html/catalogo.html">
+  <meta property="og:updated_time" content="2026-11-16T09:00:00Z">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Stili specifici per il Catalogo Progetti */
+    /* Stili specifici per il Catalogo Progetti (senza var() per piena compatibilità MAUVE++ e W3C CSS) */
     .catalog-status-strip {
       background-color: #f0f9ff;
+      color: #002b49;
       border: 1.5px solid #bae6fd;
-      border-radius: var(--radius-md);
-      padding: 12px 18px;
-      margin-bottom: 24px;
+      border-radius: 12px;
+      padding: 0.75rem 1.125rem;
+      margin-bottom: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 0.75rem;
       font-size: 0.9rem;
+      line-height: 1.5;
     }
     .status-left {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0.625rem;
+      background-color: #f0f9ff;
+      color: #002b49;
     }
     .status-summary-text {
-      color: var(--unito-navy);
+      background-color: #f0f9ff;
+      color: #002b49;
       font-weight: 600;
+      line-height: 1.5;
     }
     .status-right {
       display: flex;
       align-items: center;
-      gap: 6px;
-      color: var(--text-muted);
+      gap: 0.375rem;
+      background-color: #f0f9ff;
+      color: #334155;
       font-weight: 600;
+      line-height: 1.5;
+    }
+    .status-right span {
+      background-color: #f0f9ff;
+      color: #334155;
     }
     .count-pill {
-      background-color: var(--unito-navy);
+      background-color: #002b49;
       color: #ffffff;
-      padding: 2px 10px;
+      padding: 0.15rem 0.65rem;
       border-radius: 14px;
       font-size: 0.92rem;
+      font-weight: 800;
+      line-height: 1.5;
     }
     .empty-svg-wrapper {
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 16px;
-      background-color: var(--unito-blue-soft);
+      min-width: 3.5em;
+      min-height: 3.5em;
+      width: 4.5rem;
+      height: 4.5rem;
+      margin: 0 auto 1rem;
+      background-color: #e0f2fe;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--unito-navy);
+      color: #002b49;
+      font-size: 2rem;
+      line-height: 1.5;
     }
     .empty-quick-tags {
-      margin: 18px 0 22px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border-color);
+      margin: 1.125rem 0 1.375rem;
+      padding-top: 1rem;
+      border-top: 1px solid #cbd5e1;
+      background-color: #ffffff;
+      color: #0f172a;
+    }
+    .empty-title-highlight {
+      background-color: #ffffff;
+      color: #b93800;
+    }
+    .empty-sub-desc {
+      background-color: #ffffff;
+      color: #334155;
+      max-width: 33.75rem;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .toolbar-second-row {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .search-input-grow {
+      min-width: 17.5rem;
+      flex-grow: 1;
+    }
+    .footer-top-anchor {
+      background-color: #002b49;
+      color: #fbbf24;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+    .footer-top-anchor:hover {
+      color: #ffffff;
     }
   </style>
 </head>
@@ -70,36 +126,43 @@
   <!-- HEADER ISTITUZIONALE UNIFICATO STICKY -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home Page">
+      <a href="index.html" class="brand-logo">
         <span class="brand-badge"><span aria-hidden="true">🏛️</span> UniTo</span>
-        <div>
+        <span>
           <span lang="en">Funds TOgether!</span>
-          <span class="brand-sub" data-it="Crowdfunding Ricerca & Innovazione" data-en="Research & Innovation Crowdfunding">Crowdfunding Ricerca & Innovazione</span>
-        </div>
+          <span class="brand-sub" data-it="Crowdfunding Ricerca &amp; Innovazione" data-en="Research &amp; Innovation Crowdfunding">Crowdfunding Ricerca &amp; Innovazione</span>
+        </span>
       </a>
 
       <nav class="main-nav" aria-label="Menu Principale">
         <ul>
-          <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
+          <li><a href="index.html#hero-main-title" data-it="Home" data-en="Home">Home</a></li>
           <li><a href="catalogo.html" class="active" aria-current="page" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
-          <li><a href="proponi.html" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
-          <li><a href="partner.html" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
+          <li><a href="proponi.html" data-it="Come Funziona &amp; Proponi" data-en="How It Works &amp; Apply">Come Funziona &amp; Proponi</a></li>
+          <li><a href="partner.html" data-it="Partner &amp; Collaboratori" data-en="Partners &amp; Network">Partner &amp; Collaboratori</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <form id="header-search-form" class="header-search" role="search" aria-label="Ricerca rapida progetti">
+        <form id="header-search-form" class="header-search" action="catalogo.html" method="get">
           <label for="header-search-input" class="sr-only" data-it="Cerca progetti nel portale" data-en="Search projects in the portal">Cerca progetti nel portale</label>
-          <input type="search" id="header-search-input"
+          <input type="search" id="header-search-input" name="q" autocomplete="off"
                  placeholder="Cerca progetti..."
                  data-placeholder-it="Cerca progetti..."
                  data-placeholder-en="Search projects...">
-          <button type="submit" aria-label="Avvia ricerca"><span aria-hidden="true">🔍</span></button>
+          <button type="submit">
+            <span aria-hidden="true">🔍</span>
+            <span class="sr-only" data-it="Avvia ricerca" data-en="Submit search">Avvia ricerca</span>
+          </button>
         </form>
 
-        <div class="lang-switch" role="group" aria-label="Selettore lingua / Language selector">
-          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true" aria-label="Lingua Italiana">IT</button>
-          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English Language">EN</button>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true">
+            IT<span class="sr-only"> (Italiano)</span>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">
+            EN<span class="sr-only"> (English)</span>
+          </button>
         </div>
 
         <button type="button" class="btn btn-secondary" data-open-login>
@@ -111,14 +174,16 @@
   </header>
 
   <!-- BARRA DI ORIENTAMENTO BREADCRUMBS -->
-  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
+  <div class="breadcrumbs-bar">
     <div class="container breadcrumbs-inner">
-      <ol class="breadcrumbs-list">
-        <li><a href="index.html" data-it="Home" data-en="Home">Home</a></li>
-        <li class="current" aria-current="page" data-it="Esplora Progetti (Catalogo Completo d'Ateneo)" data-en="Explore Projects (Full University Catalog)">
-          Esplora Progetti (Catalogo Completo d'Ateneo)
-        </li>
-      </ol>
+      <nav aria-label="Percorso di navigazione">
+        <ol class="breadcrumbs-list">
+          <li><a href="index.html#main-content" data-it="Home" data-en="Home">Home</a></li>
+          <li class="current" aria-current="page" data-it="Esplora Progetti (Catalogo Completo d'Ateneo)" data-en="Explore Projects (Full University Catalog)">
+            Esplora Progetti (Catalogo Completo d'Ateneo)
+          </li>
+        </ol>
+      </nav>
       <span class="breadcrumbs-meta">
         <span aria-hidden="true">🔬</span>
         <span data-it="9 Campagne Scientifiche Verificate • Università degli Studi di Torino"
@@ -127,7 +192,7 @@
         </span>
       </span>
     </div>
-  </nav>
+  </div>
 
   <main id="main-content" class="section" tabindex="-1">
     <div class="container">
@@ -151,33 +216,33 @@
       </div>
 
       <!-- TOOLBAR DI FILTRAGGIO MULTIDIMENSIONALE E ORDINAMENTO -->
-      <section class="catalog-toolbar" aria-labelledby="toolbar-heading">
+      <section class="catalog-toolbar">
         <h2 id="toolbar-heading" class="sr-only" data-it="Strumenti di filtraggio, ricerca e ordinamento del catalogo" data-en="Catalog filtering, search, and sorting tools">
           Strumenti di filtraggio, ricerca e ordinamento del catalogo
         </h2>
 
         <div class="toolbar-row">
           <!-- Filtro Area / Dipartimento -->
-          <div class="filter-pills" role="group" aria-label="Filtra per area tematica o dipartimento">
+          <div class="filter-pills">
             <span class="filter-label" data-it="Area Tematica:" data-en="Research Area:">Area Tematica:</span>
             <button type="button" class="pill-btn active" data-filter-cat="all" aria-pressed="true"
                     data-it="Tutte le Aree (9)" data-en="All Areas (9)">Tutte le Aree (9)</button>
             <button type="button" class="pill-btn" data-filter-cat="salute" aria-pressed="false">
-              <span aria-hidden="true">🍼</span> <span data-it="Salute & Medicina (3)" data-en="Health & Medicine (3)">Salute & Medicina (3)</span>
+              <span aria-hidden="true">🍼</span> <span data-it="Salute &amp; Medicina (3)" data-en="Health &amp; Medicine (3)">Salute &amp; Medicina (3)</span>
             </button>
             <button type="button" class="pill-btn" data-filter-cat="tecnologia" aria-pressed="false">
-              <span aria-hidden="true">💻</span> <span data-it="Tecnologia & Disabilità (2)" data-en="Tech & Accessibility (2)">Tecnologia & Disabilità (2)</span>
+              <span aria-hidden="true">💻</span> <span data-it="Tecnologia &amp; Disabilità (2)" data-en="Tech &amp; Accessibility (2)">Tecnologia &amp; Disabilità (2)</span>
             </button>
             <button type="button" class="pill-btn" data-filter-cat="ambiente" aria-pressed="false">
-              <span aria-hidden="true">🌿</span> <span data-it="Ambiente & Agraria (3)" data-en="Environment & Agri (3)">Ambiente & Agraria (3)</span>
+              <span aria-hidden="true">🌿</span> <span data-it="Ambiente &amp; Agraria (3)" data-en="Environment &amp; Agri (3)">Ambiente &amp; Agraria (3)</span>
             </button>
             <button type="button" class="pill-btn" data-filter-cat="cultura" aria-pressed="false">
-              <span aria-hidden="true">🎭</span> <span data-it="Cultura & Patrimonio (1)" data-en="Culture & Heritage (1)">Cultura & Patrimonio (1)</span>
+              <span aria-hidden="true">🎭</span> <span data-it="Cultura &amp; Patrimonio (1)" data-en="Culture &amp; Heritage (1)">Cultura &amp; Patrimonio (1)</span>
             </button>
           </div>
 
           <!-- Filtro Stato della Campagna -->
-          <div class="filter-pills" role="group" aria-label="Filtra per stato della campagna">
+          <div class="filter-pills">
             <span class="filter-label" data-it="Stato:" data-en="Status:">Stato:</span>
             <button type="button" class="pill-btn active" data-filter-status="all" aria-pressed="true"
                     data-it="Tutti (9)" data-en="All (9)">Tutti (9)</button>
@@ -189,24 +254,24 @@
         </div>
 
         <!-- Seconda riga Toolbar: Ricerca testuale live + Ordinamento -->
-        <div class="toolbar-row" style="margin-top:16px; padding-top:16px; border-top:1px solid #e2e8f0;">
+        <div class="toolbar-row toolbar-second-row">
           <div class="toolbar-controls" style="flex-grow:1;">
             <label for="catalog-search" class="filter-label">
               <span aria-hidden="true">🔍</span> <span data-it="Ricerca rapida:" data-en="Quick search:">Ricerca rapida:</span>
             </label>
-            <input type="search" id="catalog-search" class="input-control" style="min-width:280px; flex-grow:1;"
+            <input type="search" id="catalog-search" name="catalog_q" autocomplete="off" class="input-control search-input-grow"
                    placeholder="Digita titolo, parola chiave o dipartimento (es. MILK-ACT, latte, fNIRS, veterinaria)..."
                    data-placeholder-it="Digita titolo, parola chiave o dipartimento (es. MILK-ACT, latte, fNIRS, veterinaria)..."
                    data-placeholder-en="Type title, keyword or department (e.g. MILK-ACT, milk, fNIRS, veterinary)...">
-            <button type="button" id="reset-filters-btn" class="btn btn-outline" style="min-height:40px; padding:8px 14px; font-size:0.86rem;"
+            <button type="button" id="reset-filters-btn" class="btn btn-outline"
                     data-it="↺ Azzera Filtri" data-en="↺ Reset Filters">
               ↺ Azzera Filtri
             </button>
           </div>
 
           <div class="toolbar-controls">
-            <label for="catalog-sort" class="filter-label" data-it="Ordina per:" data-en="Sort by:">Ordina per:</label>
-            <select id="catalog-sort" class="select-control">
+            <label for="catalog-sort" class="filter-label" data-it="Ordina i progetti per:" data-en="Sort projects by:">Ordina i progetti per:</label>
+            <select id="catalog-sort" name="sort" autocomplete="off" class="select-control">
               <option value="goal" data-it="Più vicini all'obiettivo (%)" data-en="Closest to goal (%)">Più vicini all'obiettivo (%)</option>
               <option value="raised" data-it="Maggiori fondi raccolti (€)" data-en="Most funds raised (€)">Maggiori fondi raccolti (€)</option>
               <option value="recent" data-it="Più recenti / Scadenza" data-en="Most recent / Deadline">Più recenti / Scadenza</option>
@@ -234,21 +299,15 @@
         </div>
       </div>
 
-      <!-- EMPTY STATE CON ILLUSTRAZIONE SVG E PAROLE CHIAVE SUGGERITE -->
+      <!-- EMPTY STATE CON ICONA E PAROLE CHIAVE SUGGERITE -->
       <div id="catalog-empty-state" class="empty-state-box" style="display:none;" role="status" aria-live="polite">
-        <div class="empty-svg-wrapper" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            <line x1="8" y1="11" x2="14" y2="11"></line>
-          </svg>
-        </div>
+        <div class="empty-svg-wrapper" aria-hidden="true">🔎</div>
 
-        <h2 style="color:var(--unito-navy); font-size:1.4rem; margin-bottom:8px;">
+        <h2>
           <span data-it="Spiacenti, non abbiamo trovato progetti per " data-en="Sorry, no projects found matching ">Spiacenti, non abbiamo trovato progetti per </span>
-          "<span id="empty-query-text" style="color:var(--accent-orange);"></span>"
+          "<span id="empty-query-text" class="empty-title-highlight"></span>"
         </h2>
-        <p style="color:var(--text-muted); max-width:540px; margin:0 auto;"
+        <p class="empty-sub-desc"
            data-it="La ricerca non ha restituito risultati con i parametri attuali. Ecco alcuni suggerimenti per trovare subito la campagna di tuo interesse:"
            data-en="Your search returned no results with the current parameters. Here are some suggestions to quickly find the campaign you are looking for:">
           La ricerca non ha restituito risultati con i parametri attuali. Ecco alcuni suggerimenti per trovare subito la campagna di tuo interesse:
@@ -274,7 +333,7 @@
 
         <!-- Scorciatoie cliccabili per uscire immediatamente dall'Empty State -->
         <div class="empty-quick-tags">
-          <strong style="font-size:0.88rem; color:var(--unito-navy);">
+          <strong>
             <span aria-hidden="true">🔎</span>
             <span data-it="Ricerche frequenti nel portale:" data-en="Popular searches on the portal:">Ricerche frequenti nel portale:</span>
           </strong>
@@ -296,8 +355,8 @@
         </div>
       </div>
 
-      <!-- GRIGLIA COMPLETA A 9 PROGETTI UNITO (Con intestazione H2 per gerarchia WCAG 1.3.1 / 2.4.6) -->
-      <section aria-labelledby="catalog-grid-heading">
+      <!-- GRIGLIA COMPLETA A 9 PROGETTI UNITO -->
+      <section>
         <h2 id="catalog-grid-heading" class="sr-only" data-it="Elenco delle campagne di ricerca dell'Università di Torino" data-en="List of University of Turin research campaigns">
           Elenco delle campagne di ricerca dell'Università di Torino
         </h2>
@@ -326,7 +385,7 @@
               </h3>
               <p class="card-author"
                  data-it="Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026"
-                 data-en="Dept. Clinical & Biological Sciences • Ends 17/11/2026">
+                 data-en="Dept. Clinical &amp; Biological Sciences • Ends 17/11/2026">
                 Dip. Scienze Cliniche e Biologiche • Scade il 17/11/2026
               </p>
               <p class="card-desc"
@@ -336,26 +395,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">14.200 € <small style="font-weight:500; color:var(--text-muted);">/ 16.000 €</small></span>
-                  <strong style="color:var(--success-green);">88%</strong>
+                  <span class="stat-raised">14.200 € <small class="stat-goal">/ 16.000 €</small></span>
+                  <strong class="stat-pct">88%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta MILK-ACT: 88%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:48%;"></div>
                   <div class="progress-bar-match" style="width:40%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="198 donatori" data-en="198 backers">198 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="198 donatori" data-en="198 backers">198 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
-                 aria-label="Apri scheda del progetto MILK-ACT"
-                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-              <a href="checkout.html?amount=50" class="btn btn-primary"
-                 aria-label="Dona ora per il progetto MILK-ACT"
-                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+              <a href="progetto.html?proj=milk-act#tab-budget" class="btn btn-outline">
+                <span data-it="Apri Scheda" data-en="Open Project">Apri Scheda</span>
+                <span class="sr-only"> — MILK-ACT</span>
+              </a>
+              <a href="checkout.html?proj=milk-act&amp;amount=50" class="btn btn-primary">
+                <span data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</span>
+                <span class="sr-only"> MILK-ACT</span>
+              </a>
             </div>
           </article>
 
@@ -391,26 +452,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">8.450 € <small style="font-weight:500; color:var(--text-muted);">/ 10.000 €</small></span>
-                  <strong style="color:var(--success-green);">84%</strong>
+                  <span class="stat-raised">8.450 € <small class="stat-goal">/ 10.000 €</small></span>
+                  <strong class="stat-pct">84%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta SpeechMatE: 84%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:44%;"></div>
                   <div class="progress-bar-match" style="width:40%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="142 donatori" data-en="142 backers">142 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="Da 10 € (Hall of Fame)" data-en="From €10 (Hall of Fame)">Da 10 € (<span lang="en">Hall of Fame</span>)</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="142 donatori" data-en="142 backers">142 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="Da 10 € (Hall of Fame)" data-en="From €10 (Hall of Fame)">Da 10 € (<span lang="en">Hall of Fame</span>)</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=speechmate" class="btn btn-outline"
-                 aria-label="Apri scheda del progetto SpeechMatE"
-                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-              <a href="checkout.html?amount=10" class="btn btn-primary"
-                 aria-label="Dona da 10 euro per il progetto SpeechMatE"
-                 data-it="Dona da 10 € →" data-en="Donate €10 →">Dona da 10 € →</a>
+              <a href="progetto.html?proj=speechmate#tab-budget" class="btn btn-outline">
+                <span data-it="Apri Scheda" data-en="Open Project">Apri Scheda</span>
+                <span class="sr-only"> — SpeechMatE</span>
+              </a>
+              <a href="checkout.html?proj=speechmate&amp;amount=10" class="btn btn-primary">
+                <span data-it="Dona da 10 € →" data-en="Donate €10 →">Dona da 10 € →</span>
+                <span class="sr-only"> SpeechMatE</span>
+              </a>
             </div>
           </article>
 
@@ -428,7 +491,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=milk-act"
+                <a href="progetto.html?proj=milk-act&amp;ref=beealpine"
                    data-it="BeeAlpine: Sensori Bioacustici per la Biodiversità"
                    data-en="BeeAlpine: Bioacoustic Sensors for Alpine Biodiversity">
                   <span lang="en">BeeAlpine</span>: Sensori Bioacustici per la Biodiversità
@@ -436,7 +499,7 @@
               </h3>
               <p class="card-author"
                  data-it="Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine"
-                 data-en="Dept. Agricultural, Forest & Food Sciences • 26 days left">
+                 data-en="Dept. Agricultural, Forest &amp; Food Sciences • 26 days left">
                 Dip. Scienze Agrarie, Forestali e Alimentari • 26 giorni al termine
               </p>
               <p class="card-desc"
@@ -446,26 +509,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">5.600 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
-                  <strong style="color:var(--success-green);">70%</strong>
+                  <span class="stat-raised">5.600 € <small class="stat-goal">/ 8.000 €</small></span>
+                  <strong class="stat-pct">70%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta BeeAlpine: 70%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:40%;"></div>
                   <div class="progress-bar-match" style="width:30%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="89 donatori" data-en="89 backers">89 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="89 donatori" data-en="89 backers">89 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="O tutto o niente" data-en="All-or-nothing">O tutto o niente</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
-                 aria-label="Apri scheda del progetto BeeAlpine"
-                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-              <a href="checkout.html?amount=25" class="btn btn-primary"
-                 aria-label="Dona ora per il progetto BeeAlpine"
-                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+              <a href="progetto.html?proj=milk-act&amp;ref=beealpine#tab-budget" class="btn btn-outline">
+                <span data-it="Apri Scheda" data-en="Open Project">Apri Scheda</span>
+                <span class="sr-only"> — BeeAlpine</span>
+              </a>
+              <a href="checkout.html?proj=beealpine&amp;amount=25" class="btn btn-primary">
+                <span data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</span>
+                <span class="sr-only"> BeeAlpine</span>
+              </a>
             </div>
           </article>
 
@@ -483,7 +548,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=milk-act"
+                <a href="progetto.html?proj=milk-act&amp;ref=memorie"
                    data-it="Memorie in Scena: Digitalizzazione Archivi Teatrali"
                    data-en="Stage Memories: Theatrical Archives Digitization">
                   Memorie in Scena: Digitalizzazione Archivi Teatrali
@@ -501,26 +566,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">4.900 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
-                  <strong style="color:var(--success-green);">61%</strong>
+                  <span class="stat-raised">4.900 € <small class="stat-goal">/ 8.000 €</small></span>
+                  <strong class="stat-pct">61%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="61" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta Memorie in Scena: 61%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:36%;"></div>
                   <div class="progress-bar-match" style="width:25%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="74 donatori" data-en="74 backers">74 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span>Accesso <span lang="en">Open Data</span></span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="74 donatori" data-en="74 backers">74 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span>Accesso <span lang="en">Open Data</span></span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
-                 aria-label="Apri scheda del progetto Memorie in Scena"
-                 data-it="Apri Scheda" data-en="Open Project">Apri Scheda</a>
-              <a href="checkout.html?amount=25" class="btn btn-primary"
-                 aria-label="Dona ora per il progetto Memorie in Scena"
-                 data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</a>
+              <a href="progetto.html?proj=milk-act&amp;ref=memorie#tab-budget" class="btn btn-outline">
+                <span data-it="Apri Scheda" data-en="Open Project">Apri Scheda</span>
+                <span class="sr-only"> — Memorie in Scena</span>
+              </a>
+              <a href="checkout.html?proj=memorie&amp;amount=25" class="btn btn-primary">
+                <span data-it="Dona Ora →" data-en="Donate Now →">Dona Ora →</span>
+                <span class="sr-only"> Memorie in Scena</span>
+              </a>
             </div>
           </article>
 
@@ -538,7 +605,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=bright"
+                <a href="progetto.html?proj=bright&amp;ref=cultmeat"
                    data-it="CultMeat: Coltiviamo la carne per un futuro sostenibile"
                    data-en="CultMeat: Cultivating Meat for a Sustainable Future">
                   <span lang="en">CultMeat</span>: Coltiviamo la carne per un futuro sostenibile
@@ -552,19 +619,20 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">62.050 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                  <strong>620%</strong>
+                  <span class="stat-raised">62.050 € <small class="stat-goal">su 10.000 €</small></span>
+                  <strong class="stat-closed-goal">620%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna CultMeat conclusa al 620% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi i risultati del progetto CultMeat"
-                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+              <a href="progetto.html?proj=bright&amp;ref=cultmeat#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</span>
+                <span class="sr-only"> — CultMeat</span>
+              </a>
             </div>
           </article>
 
@@ -592,19 +660,20 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">22.182 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                  <strong>221%</strong>
+                  <span class="stat-raised">22.182 € <small class="stat-goal">su 10.000 €</small></span>
+                  <strong class="stat-closed-goal">221%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna BRIGHT conclusa al 221% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi i risultati del progetto BRIGHT"
-                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+              <a href="progetto.html?proj=bright#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</span>
+                <span class="sr-only"> — BRIGHT</span>
+              </a>
             </div>
           </article>
 
@@ -622,7 +691,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=bright"
+                <a href="progetto.html?proj=bright&amp;ref=lemure"
                    data-it="Salviamo il Lemure Cantante! Tutela Bioacustica"
                    data-en="Save the Singing Lemur! Bioacoustic Conservation">
                   Salviamo il Lemure Cantante! Tutela Bioacustica
@@ -636,19 +705,20 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">27.165 € <small style="font-weight:500; color:var(--text-muted);">su 9.000 €</small></span>
-                  <strong>301%</strong>
+                  <span class="stat-raised">27.165 € <small class="stat-goal">su 9.000 €</small></span>
+                  <strong class="stat-closed-goal">301%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Salviamo il Lemure Cantante conclusa al 301% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi i risultati del progetto Salviamo il Lemure Cantante"
-                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+              <a href="progetto.html?proj=bright&amp;ref=lemure#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</span>
+                <span class="sr-only"> — Salviamo il Lemure Cantante</span>
+              </a>
             </div>
           </article>
 
@@ -666,7 +736,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=bright"
+                <a href="progetto.html?proj=bright&amp;ref=citizensalad"
                    data-it="Citizen Salad: Chi vive sulle foglie che mangiamo?"
                    data-en="Citizen Salad: Who Lives on the Leaves We Eat?">
                   <span lang="en">Citizen Salad</span>: Chi vive sulle foglie che mangiamo?
@@ -680,19 +750,20 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">21.375 € <small style="font-weight:500; color:var(--text-muted);">su 8.000 €</small></span>
-                  <strong>267%</strong>
+                  <span class="stat-raised">21.375 € <small class="stat-goal">su 8.000 €</small></span>
+                  <strong class="stat-closed-goal">267%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Citizen Salad conclusa al 267% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi i risultati del progetto Citizen Salad"
-                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+              <a href="progetto.html?proj=bright&amp;ref=citizensalad#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</span>
+                <span class="sr-only"> — Citizen Salad</span>
+              </a>
             </div>
           </article>
 
@@ -710,7 +781,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=bright"
+                <a href="progetto.html?proj=bright&amp;ref=virtualvet"
                    data-it="Virtual Vet Lab: Realtà Virtuale per una Didattica 4.0"
                    data-en="Virtual Vet Lab: Virtual Reality for Education 4.0">
                   <span lang="en">Virtual Vet Lab</span>: Realtà Virtuale per una Didattica 4.0
@@ -724,19 +795,20 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">14.700 € <small style="font-weight:500; color:var(--text-muted);">su 7.000 €</small></span>
-                  <strong>210%</strong>
+                  <span class="stat-raised">14.700 € <small class="stat-goal">su 7.000 €</small></span>
+                  <strong class="stat-closed-goal">210%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Virtual Vet Lab conclusa al 210% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi i risultati del progetto Virtual Vet Lab"
-                 data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</a>
+              <a href="progetto.html?proj=bright&amp;ref=virtualvet#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati →" data-en="View Results →">Vedi Risultati →</span>
+                <span class="sr-only"> — Virtual Vet Lab</span>
+              </a>
             </div>
           </article>
 
@@ -752,10 +824,10 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);"><span aria-hidden="true">🏛️</span> UniTo</span>
+            <span class="brand-badge footer-badge-invert"><span aria-hidden="true">🏛️</span> UniTo</span>
             <span lang="en">Funds TOgether!</span>
           </div>
-          <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
+          <p class="footer-desc"
              data-it="Catalogo ufficiale delle campagne di ricerca e Terza Missione dell'Università degli Studi di Torino."
              data-en="Official catalog of scientific research and Third Mission campaigns of the University of Turin.">
             Catalogo ufficiale delle campagne di ricerca e Terza Missione dell'Università degli Studi di Torino.
@@ -765,21 +837,21 @@
         <div class="footer-col">
           <h3 class="footer-heading" data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h3>
           <ul>
-            <li><a href="index.html" data-it="Home Page" data-en="Home Page">Home Page</a></li>
-            <li><a href="catalogo.html" data-it="Esplora Catalogo Progetti (9)" data-en="Explore Projects Catalog (9)">Esplora Catalogo Progetti (9)</a></li>
-            <li><a href="proponi.html" data-it="Come Funziona & Bando Ricercatori" data-en="How It Works & Researchers Call">Come Funziona & Bando Ricercatori</a></li>
-            <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners & Network">I Nostri Partner e Collaboratori</a></li>
+            <li><a href="index.html#active-campaigns-heading" data-it="Home Page" data-en="Home Page">Home Page</a></li>
+            <li><a href="catalogo.html#catalog-projects-grid" rel="sitemap" data-it="Esplora Catalogo Progetti (9)" data-en="Explore Projects Catalog (9)">Esplora Catalogo Progetti (9)</a></li>
+            <li><a href="proponi.html" data-it="Come Funziona &amp; Bando Ricercatori" data-en="How It Works &amp; Researchers Call">Come Funziona &amp; Bando Ricercatori</a></li>
+            <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners &amp; Network">I Nostri Partner e Collaboratori</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h3 class="footer-heading" data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h3>
+          <h3 class="footer-heading" data-it="Supporto &amp; Trasparenza" data-en="Support &amp; Transparency">Supporto &amp; Trasparenza</h3>
           <ul>
             <li><a href="proponi.html#faq-section" data-it="Domande Frequenti (FAQ)" data-en="Frequently Asked Questions (FAQ)">Domande Frequenti (FAQ)</a></li>
             <li>
               <button type="button" class="footer-link-btn" data-open-privacy
-                      data-it="Informativa Privacy & Condizioni (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
-                Informativa Privacy & Condizioni (IT/EN)
+                      data-it="Informativa Privacy &amp; Condizioni (IT/EN)" data-en="Privacy Policy &amp; Terms of Use (IT/EN)">
+                Informativa Privacy &amp; Condizioni (IT/EN)
               </button>
             </li>
             <li>
@@ -802,7 +874,7 @@
 
       <div class="footer-bottom">
         <span>© 2026 Università degli Studi di Torino — Direzione Ricerca e Terza Missione (C.F. 80088230018)</span>
-        <a href="index.html" style="color:#ffd166;" data-it="↑ Torna alla Home Page" data-en="↑ Back to Home Page">↑ Torna alla Home Page</a>
+        <a href="#main-content" class="footer-top-anchor" data-it="↑ Torna all'inizio del Catalogo" data-en="↑ Back to top of Catalog">↑ Torna all'inizio del Catalogo</a>
       </div>
     </div>
   </footer>
