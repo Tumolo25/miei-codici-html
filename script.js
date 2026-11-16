@@ -98,27 +98,30 @@ function initGlobalModals() {
     <!-- MODALE UNIFICATA ACCEDI (Progettista / Partner CSR / Sostenitore) -->
     <div id="login-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="login-modal-title">
       <div class="modal-content">
-        <button type="button" class="modal-close" data-close-modal="login-modal" aria-label="Chiudi finestra di accesso">✕</button>
+        <button type="button" class="modal-close" data-close-modal="login-modal">
+          <span aria-hidden="true">✕</span>
+          <span class="sr-only" data-it="Chiudi finestra di accesso" data-en="Close sign-in dialog">Chiudi finestra di accesso</span>
+        </button>
 
         <!-- VISTA 1: FORM DI ACCESSO UNIFICATO -->
         <div id="login-view-form">
-          <span class="badge badge-active" style="margin-bottom:8px;"
+          <span class="badge badge-active"
                 data-it="✓ Autenticazione Istituzionale Unificata UniTo"
                 data-en="✓ Unified Institutional Authentication UniTo">
             ✓ Autenticazione Istituzionale Unificata UniTo
           </span>
-          <h2 id="login-modal-title" style="color:var(--unito-navy); margin-bottom:6px;"
+          <h2 id="login-modal-title"
               data-it="Accedi a UniTo Crowd — Funds TOgether"
               data-en="Sign in to UniTo Crowd — Funds TOgether">
             Accedi a UniTo Crowd — Funds TOgether
           </h2>
-          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:16px;"
+          <p class="modal-subtext"
              data-it="Punto di accesso unico al portale per Ricercatori Proponenti, Enti Partner CSR e Sostenitori dell'Università degli Studi di Torino."
              data-en="Single sign-in portal for Proposing Researchers, CSR Partners, and Backers of the University of Turin.">
              Punto di accesso unico al portale per Ricercatori Proponenti, Enti Partner CSR e Sostenitori dell'Università degli Studi di Torino.
           </p>
 
-          <div class="filter-pills" style="margin-bottom:18px;" id="login-role-pills" role="group" aria-label="Seleziona il profilo di accesso">
+          <div class="filter-pills" id="login-role-pills" role="group" aria-label="Profilo di accesso">
             <button type="button" class="pill-btn active" aria-pressed="true"
                     data-role-key="researcher"
                     data-role="Ricercatrice / Progettista UniTo"
@@ -142,7 +145,7 @@ function initGlobalModals() {
             </button>
           </div>
 
-          <form id="unified-login-form">
+          <form id="unified-login-form" style="margin-top:1rem;">
             <div class="form-group">
               <label for="login-email" data-it="Email Istituzionale (@unito.it) o Personale (*)"
                      data-en="Institutional (@unito.it) or Personal Email (*)">
@@ -151,9 +154,9 @@ function initGlobalModals() {
               <input type="email" id="login-email" name="username" autocomplete="username" class="form-input input-valid" value="chiara.ferrero@unito.it" required>
             </div>
             <div class="form-group">
-              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <div class="pass-label-row">
                 <label for="login-pass" style="margin-bottom:0;">Password (*)</label>
-                <button type="button" id="toggle-pass-visibility" class="footer-link-btn" style="color:var(--unito-navy-light); font-size:0.8rem; font-weight:700;"
+                <button type="button" id="toggle-pass-visibility" class="pass-toggle-btn"
                         aria-pressed="false" data-it="Mostra password" data-en="Show password">
                   Mostra password
                 </button>
@@ -162,46 +165,44 @@ function initGlobalModals() {
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;">
               <span data-it="Accedi come " data-en="Sign in as ">Accedi come </span>
-              <span id="selected-role-label" style="margin-left:4px;">Ricercatrice / Progettista UniTo</span> →
+              <span id="selected-role-label">Ricercatrice / Progettista UniTo</span>
             </button>
           </form>
         </div>
 
         <!-- VISTA 2: DASHBOARD AREA RISERVATA CON BARRA DI NAVIGAZIONE PERSISTENTE -->
         <div id="login-view-dashboard" style="display:none;">
-          <div style="background:var(--unito-navy); color:#ffffff; padding:12px 16px; border-radius:var(--radius-sm); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+          <div class="dash-topbar">
             <strong id="dash-header-badge">🏛️ Area Progettisti UniTo</strong>
             <nav aria-label="Navigazione rapida Area Riservata" style="display:flex; gap:14px; font-size:0.85rem; align-items:center;">
-              <a href="index.html" style="color:var(--accent-gold); font-weight:800; text-decoration:underline;">🏠 Torna alla Home</a>
-              <a href="catalogo.html" style="color:#ffffff;">Esplora Progetti</a>
-              <a href="proponi.html#faq-section" style="color:#ffffff;">FAQ & Guida</a>
-              <a href="partner.html" style="color:#ffffff;">Partner</a>
+              <a href="index.html#main-content" class="dash-home-link">🏠 Torna alla Home</a>
+              <a href="catalogo.html">Esplora Progetti</a>
+              <a href="proponi.html#faq-section">FAQ &amp; Guida</a>
+              <a href="partner.html">Partner</a>
             </nav>
           </div>
 
-          <span class="badge badge-active" style="margin-bottom:6px;"
+          <span class="badge badge-active"
                 data-it="✓ Sessione Istituzionale Attiva"
                 data-en="✓ Active Institutional Session">
             ✓ Sessione Istituzionale Attiva
           </span>
-          <h3 id="dash-welcome-title" style="color:var(--unito-navy); margin-bottom:6px;">
+          <h3 id="dash-welcome-title">
             Benvenuta, Dott.ssa Chiara Ferrero (DISAFA UniTo)
           </h3>
-          <p id="dash-welcome-sub" style="font-size:0.88rem; color:var(--text-muted); margin-bottom:16px;"
+          <p id="dash-welcome-sub" class="modal-subtext"
              data-it="Da questa bacheca puoi monitorare lo stato delle tue proposte, consultare la documentazione fiscale e navigare verso tutte le sezioni del portale."
              data-en="From this dashboard you can monitor your proposals, download tax documentation, and navigate across all portal sections.">
             Da questa bacheca puoi monitorare lo stato delle tue proposte, consultare la documentazione fiscale e navigare verso tutte le sezioni del portale.
           </p>
 
-          <div id="dash-card-content" style="border:1.5px solid var(--border-color); padding:16px; border-radius:var(--radius-sm); background:var(--bg-subtle); margin-bottom:18px;">
+          <div id="dash-card-content" class="dash-card-box">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
               <span class="badge badge-active">In Pre-Campagna • Step 3/4</span>
-              <span style="font-size:0.8rem; font-weight:700; color:var(--unito-navy);">Protocollo #CAND-UNITO-2026-19</span>
+              <span><strong>Protocollo #CAND-UNITO-2026-19</strong></span>
             </div>
-            <h4 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:4px;">
-              PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini
-            </h4>
-            <p style="font-size:0.86rem; color:var(--text-muted);">
+            <p><strong>PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini</strong></p>
+            <p style="font-size:0.86rem;">
               <strong>Budget:</strong> 8.000 € (4.000 € Community + 4.000 € Match-Funding UniTo) • <strong>Campaign Manager:</strong> Dott.ssa Flavia Dian
             </p>
           </div>
@@ -209,8 +210,8 @@ function initGlobalModals() {
           <div style="display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap;">
             <button type="button" class="btn btn-outline" id="back-to-login-btn">← Cambia Profilo / Esci</button>
             <div style="display:flex; gap:8px;">
-              <a href="index.html" class="btn btn-secondary">🏠 Vai alla Home</a>
-              <a href="proponi.html" id="dash-primary-action" class="btn btn-primary">Gestisci Proposta →</a>
+              <a href="index.html#main-content" class="btn btn-secondary">🏠 Vai alla Home</a>
+              <a href="proponi.html#candidatura-section" id="dash-primary-action" class="btn btn-primary">Gestisci Proposta →</a>
             </div>
           </div>
         </div>
@@ -220,40 +221,47 @@ function initGlobalModals() {
     <!-- MODALE INFORMATIVA PRIVACY & CONDIZIONI D'USO BILINGUE (IT / EN) -->
     <div id="privacy-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-heading">
       <div class="modal-content">
-        <button type="button" class="modal-close" data-close-modal="privacy-modal" aria-label="Chiudi informativa privacy">✕</button>
+        <button type="button" class="modal-close" data-close-modal="privacy-modal">
+          <span aria-hidden="true">✕</span>
+          <span class="sr-only" data-it="Chiudi informativa privacy" data-en="Close privacy policy">Chiudi informativa privacy</span>
+        </button>
 
         <!-- Versione Italiana -->
         <div id="privacy-content-it">
           <span class="badge badge-active">✓ Documento Ufficiale in Lingua Italiana (UE GDPR)</span>
-          <h2 id="privacy-modal-heading" style="color:var(--unito-navy); margin:8px 0;">
+          <h2 id="privacy-modal-heading">
             Informativa Privacy e Condizioni d'Uso (UE GDPR 2016/679)
           </h2>
-          <p style="font-size:0.9rem; margin-bottom:10px;">
-            <strong>1. Titolare del Trattamento:</strong> Università degli Studi di Torino (Via Verdi 8, 10124 Torino) in co-titolarità con il gestore tecnologico Ginger Crowdfunding S.r.l. Società Benefit, ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR).
-          </p>
-          <p style="font-size:0.9rem; margin-bottom:10px;">
-            <strong>2. Tutela del Donatore e Regola "O tutto o niente":</strong> I dati inseriti nel Checkout sono trattati esclusivamente per elaborare la transazione liberale, emettere la ricevuta fiscale detraibile e disporre il rimborso automatico integrale (100%) qualora la campagna non raggiunga l'obiettivo entro la scadenza.
-          </p>
-          <p style="font-size:0.84rem; color:var(--text-muted);">
-            <strong>3. Diritti degli Interessati e Accessibilità:</strong> Gli utenti possono esercitare in qualsiasi momento i diritti previsti dagli artt. 15–22 del GDPR scrivendo a <em>crowdfunding@unito.it</em>.
-          </p>
+          <ol class="modal-legal-list">
+            <li>
+              <strong>Titolare del Trattamento:</strong> Università degli Studi di Torino (Via Verdi 8, 10124 Torino) in co-titolarità con il gestore tecnologico Ginger Crowdfunding S.r.l. Società Benefit, ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR).
+            </li>
+            <li>
+              <strong>Tutela del Donatore e Regola "O tutto o niente":</strong> I dati inseriti nel Checkout sono trattati esclusivamente per elaborare la transazione liberale, emettere la ricevuta fiscale detraibile e disporre il rimborso automatico integrale (100%) qualora la campagna non raggiunga l'obiettivo entro la scadenza.
+            </li>
+            <li>
+              <strong>Diritti degli Interessati e Accessibilità:</strong> Gli utenti possono esercitare in qualsiasi momento i diritti previsti dagli artt. 15–22 del GDPR scrivendo a <em>crowdfunding@unito.it</em>.
+            </li>
+          </ol>
         </div>
 
         <!-- Versione Inglese Ufficiale -->
         <div id="privacy-content-en" style="display:none;" lang="en">
           <span class="badge badge-active">✓ Official English Legal Document (EU GDPR)</span>
-          <h2 style="color:var(--unito-navy); margin:8px 0;">
-            Privacy Policy & Terms of Use (EU GDPR Regulation 2016/679)
+          <h2>
+            Privacy Policy &amp; Terms of Use (EU GDPR Regulation 2016/679)
           </h2>
-          <p style="font-size:0.9rem; margin-bottom:10px;">
-            <strong>1. Data Controller:</strong> University of Turin (Università degli Studi di Torino, Via Verdi 8, 10124 Turin, Italy), acting in joint controllership with Ginger Crowdfunding S.r.l. Benefit Corporation under Art. 13 of EU Regulation 2016/679 (GDPR).
-          </p>
-          <p style="font-size:0.9rem; margin-bottom:10px;">
-            <strong>2. Backer Protection & "All-or-Nothing" Rule:</strong> Personal data provided during Checkout is processed strictly to execute your pledge, issue official tax-deductible receipts for citizens and CSR corporate partners, and guarantee a 100% automatic refund if the campaign does not reach its goal.
-          </p>
-          <p style="font-size:0.84rem; color:var(--text-muted);">
-            <strong>3. Data Subject Rights:</strong> International backers and corporate partners may exercise their rights under Articles 15–22 of the EU GDPR at any time by contacting <em>crowdfunding@unito.it</em>.
-          </p>
+          <ol class="modal-legal-list">
+            <li>
+              <strong>Data Controller:</strong> University of Turin (Università degli Studi di Torino, Via Verdi 8, 10124 Turin, Italy), acting in joint controllership with Ginger Crowdfunding S.r.l. Benefit Corporation under Art. 13 of EU Regulation 2016/679 (GDPR).
+            </li>
+            <li>
+              <strong>Backer Protection &amp; "All-or-Nothing" Rule:</strong> Personal data provided during Checkout is processed strictly to execute your pledge, issue official tax-deductible receipts for citizens and CSR corporate partners, and guarantee a 100% automatic refund if the campaign does not reach its goal.
+            </li>
+            <li>
+              <strong>Data Subject Rights:</strong> International backers and corporate partners may exercise their rights under Articles 15–22 of the EU GDPR at any time by contacting <em>crowdfunding@unito.it</em>.
+            </li>
+          </ol>
         </div>
 
         <div style="margin-top:18px; display:flex; justify-content:flex-end; gap:10px;">
@@ -395,10 +403,10 @@ function initGlobalModals() {
         dashCard.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <span class="badge badge-active">Partner CSR Accreditato • Bilancio ESG 2026</span>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--unito-navy);">Contributo: 15.000 €</span>
+            <span><strong>Contributo: 15.000 €</strong></span>
           </div>
-          <h4 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:4px;">Progetti Co-Finanziati: BRIGHT (221%) & MILK-ACT (88%)</h4>
-          <p style="font-size:0.86rem; color:var(--text-muted);">Rendicontazione fNIRS disponibile nella Timeline • Ricevute fiscali IT/EN pronte per il Board.</p>
+          <p><strong>Progetti Co-Finanziati: BRIGHT (221%) &amp; MILK-ACT (88%)</strong></p>
+          <p style="font-size:0.86rem;">Rendicontazione fNIRS disponibile nella Timeline • Ricevute fiscali IT/EN pronte per il Board.</p>
         `;
         dashAction.href = 'partner.html';
         dashAction.textContent = 'Vai alla Vetrina Partner →';
@@ -408,10 +416,10 @@ function initGlobalModals() {
         dashCard.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <span class="badge badge-active">Donazione Registrata #UNITO-2026-8492</span>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--success-green);">50,00 € (Impatto 2x: 100,00 €)</span>
+            <span><strong>50,00 € (Impatto 2x: 100,00 €)</strong></span>
           </div>
-          <h4 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:4px;">Progetto Sostenuto: MILK-ACT (VIRMOLAB Medicina)</h4>
-          <p style="font-size:0.86rem; color:var(--text-muted);">Ricompensa: Microguida MILK-ACT + Hall of Fame • Ricevuta detraibile disponibile.</p>
+          <p><strong>Progetto Sostenuto: MILK-ACT (VIRMOLAB Medicina)</strong></p>
+          <p style="font-size:0.86rem;">Ricompensa: Microguida MILK-ACT + Hall of Fame • Ricevuta detraibile disponibile.</p>
         `;
         dashAction.href = 'progetto.html?proj=milk-act';
         dashAction.textContent = 'Vai al Progetto Sostenuto →';
@@ -421,12 +429,12 @@ function initGlobalModals() {
         dashCard.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <span class="badge badge-active">In Pre-Campagna • Step 3/4</span>
-            <span style="font-size:0.8rem; font-weight:700; color:var(--unito-navy);">Protocollo #CAND-UNITO-2026-19</span>
+            <span><strong>Protocollo #CAND-UNITO-2026-19</strong></span>
           </div>
-          <h4 style="color:var(--unito-navy); font-size:1.05rem; margin-bottom:4px;">PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini</h4>
-          <p style="font-size:0.86rem; color:var(--text-muted);"><strong>Budget:</strong> 8.000 € (4.000 € Community + 4.000 € Match-Funding UniTo) • <strong>Campaign Manager:</strong> Dott.ssa Flavia Dian</p>
+          <p><strong>PolliNet: Monitoraggio Bioacustico degli Impollinatori Alpini</strong></p>
+          <p style="font-size:0.86rem;"><strong>Budget:</strong> 8.000 € (4.000 € Community + 4.000 € Match-Funding UniTo) • <strong>Campaign Manager:</strong> Dott.ssa Flavia Dian</p>
         `;
-        dashAction.href = 'proponi.html';
+        dashAction.href = 'proponi.html#candidatura-section';
         dashAction.textContent = 'Gestisci Proposta →';
       }
 
@@ -604,6 +612,13 @@ function initProjectPage() {
     });
   });
 
+  // Se l'URL contiene un'ancora tab (es. #tab-budget o #tab-aggiornamenti), attiva subito il tab corrispondente
+  if (window.location.hash) {
+    const hashTarget = window.location.hash.replace('#', '');
+    const matchingTabBtn = document.querySelector(`.tab-btn[data-tab="${hashTarget}"]`);
+    if (matchingTabBtn) matchingTabBtn.click();
+  }
+
   const switcherBtns = document.querySelectorAll('[data-switch-project]');
   const params = new URLSearchParams(window.location.search);
   const initialProj = params.get('proj') || sessionStorage.getItem('unito_current_proj') || 'milk-act';
@@ -758,6 +773,9 @@ function initCheckoutPage() {
   const summaryReward = document.getElementById('summary-reward-title');
 
   const params = new URLSearchParams(window.location.search);
+  if (params.get('proj')) {
+    sessionStorage.setItem('unito_current_proj', params.get('proj'));
+  }
   const savedAmt = params.get('amount') || sessionStorage.getItem('unito_checkout_amount') || '50';
   const savedReward = sessionStorage.getItem('unito_checkout_reward') || 'Microguida Scientifica MILK-ACT + Hall of Fame Digitale (50 €)';
 
