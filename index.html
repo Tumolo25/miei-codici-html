@@ -4,7 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UniTo Crowd — Funds TOgether | Portale Ufficiale Crowdfunding Università di Torino</title>
+  <meta name="description" content="Portale ufficiale di crowdfunding civico e scientifico dell'Università degli Studi di Torino (Funds TOgether). Sostieni la ricerca con il raddoppio fondi Match-Funding 2x fino a 10.000 euro.">
+  <link rel="canonical" href="https://tumolo25.github.io/miei-codici-html/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UniTo Crowd — Funds TOgether | Crowdfunding Università di Torino">
+  <meta property="og:description" content="Sostieni i progetti di ricerca dell'Università di Torino: al raggiungimento del 100%, l'Ateneo raddoppia i fondi raccolti fino a 10.000 €.">
+  <meta property="og:url" content="https://tumolo25.github.io/miei-codici-html/index.html">
+  <meta property="og:updated_time" content="2026-11-16T09:00:00Z">
+  <meta property="article:modified_time" content="2026-11-16T09:00:00Z">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://tumolo25.github.io/miei-codici-html/#organization",
+        "name": "Università degli Studi di Torino — Funds TOgether",
+        "url": "https://tumolo25.github.io/miei-codici-html/index.html",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Verdi 8",
+          "addressLocality": "Torino",
+          "postalCode": "10124",
+          "addressCountry": "IT"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "crowdfunding@unito.it",
+          "contactType": "customer support",
+          "availableLanguage": ["Italian", "English"]
+        },
+        "sameAs": [
+          "https://www.unito.it",
+          "https://www.ideaginger.it"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tumolo25.github.io/miei-codici-html/#website",
+        "url": "https://tumolo25.github.io/miei-codici-html/index.html",
+        "name": "UniTo Crowd — Funds TOgether",
+        "inLanguage": "it-IT",
+        "dateModified": "2026-11-16",
+        "publisher": {
+          "@id": "https://tumolo25.github.io/miei-codici-html/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Portale Ateneo UniTo.it",
+            "item": "https://www.unito.it"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Funds TOgether (Home)",
+            "item": "https://tumolo25.github.io/miei-codici-html/index.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -14,37 +80,44 @@
   <!-- HEADER ISTITUZIONALE UNIFICATO STICKY -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="UniTo Crowd Funds TOgether - Torna alla Home Page">
+      <a href="index.html" class="brand-logo">
         <span class="brand-badge"><span aria-hidden="true">🏛️</span> UniTo</span>
-        <div>
+        <span>
           <span lang="en">Funds TOgether!</span>
-          <span class="brand-sub" data-it="Crowdfunding Ricerca & Innovazione" data-en="Research & Innovation Crowdfunding">Crowdfunding Ricerca & Innovazione</span>
-        </div>
+          <span class="brand-sub" data-it="Crowdfunding Ricerca &amp; Innovazione" data-en="Research &amp; Innovation Crowdfunding">Crowdfunding Ricerca &amp; Innovazione</span>
+        </span>
       </a>
 
       <nav class="main-nav" aria-label="Menu Principale">
         <ul>
           <li><a href="index.html" class="active" aria-current="page" data-it="Home" data-en="Home">Home</a></li>
           <li><a href="catalogo.html" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
-          <li><a href="proponi.html" data-it="Come Funziona & Proponi" data-en="How It Works & Apply">Come Funziona & Proponi</a></li>
-          <li><a href="partner.html" data-it="Partner & Collaboratori" data-en="Partners & Network">Partner & Collaboratori</a></li>
+          <li><a href="proponi.html" data-it="Come Funziona &amp; Proponi" data-en="How It Works &amp; Apply">Come Funziona &amp; Proponi</a></li>
+          <li><a href="partner.html" data-it="Partner &amp; Collaboratori" data-en="Partners &amp; Network">Partner &amp; Collaboratori</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <form id="header-search-form" class="header-search" role="search" aria-label="Ricerca rapida progetti">
+        <form id="header-search-form" class="header-search" role="search">
           <label for="header-search-input" class="sr-only" data-it="Cerca progetti nel portale" data-en="Search projects in the portal">Cerca progetti nel portale</label>
-          <input type="search" id="header-search-input"
+          <input type="search" id="header-search-input" name="q" autocomplete="off"
                  placeholder="Cerca progetti..."
                  data-placeholder-it="Cerca progetti..."
                  data-placeholder-en="Search projects...">
-          <button type="submit" aria-label="Avvia ricerca"><span aria-hidden="true">🔍</span></button>
+          <button type="submit">
+            <span aria-hidden="true">🔍</span>
+            <span class="sr-only" data-it="Avvia ricerca" data-en="Submit search">Avvia ricerca</span>
+          </button>
         </form>
 
         <!-- Selettore Lingua Globale IT | EN -->
-        <div class="lang-switch" role="group" aria-label="Selettore lingua / Language selector">
-          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true" aria-label="Lingua Italiana">IT</button>
-          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English Language">EN</button>
+        <div class="lang-switch" role="group" aria-label="Lingua / Language">
+          <button type="button" class="lang-btn active" data-lang="it" aria-pressed="true">
+            IT<span class="sr-only"> (Italiano)</span>
+          </button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">
+            EN<span class="sr-only"> (English)</span>
+          </button>
         </div>
 
         <!-- Accesso Unificato -->
@@ -66,7 +139,7 @@
             <span class="ext-badge"><span aria-hidden="true">↗</span> <span data-it="sito esterno" data-en="external site">sito esterno</span></span>
           </a>
         </li>
-        <li><span data-it="Terza Missione & Public Engagement" data-en="Third Mission & Public Engagement">Terza Missione & <span lang="en">Public Engagement</span></span></li>
+        <li><span data-it="Terza Missione &amp; Public Engagement" data-en="Third Mission &amp; Public Engagement">Terza Missione &amp; <span lang="en">Public Engagement</span></span></li>
         <li class="current" aria-current="page" data-it="Funds TOgether (Home)" data-en="Funds TOgether (Home)"><span lang="en">Funds TOgether</span> (Home)</li>
       </ol>
       <span class="breadcrumbs-meta">
@@ -104,24 +177,24 @@
                   data-en=" UniTo laboratories open their doors to citizens, students, and companies through ">
               i laboratori di UniTo aprono le porte a cittadini, studenti e imprese attraverso il
             </span>
-            <span class="term-tooltip" tabindex="0" style="color:var(--accent-gold);"
-                  data-tooltip="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
-                  data-tooltip-it="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
-                  data-tooltip-en="Civic crowdfunding: transparent online fundraising where citizens collectively back a scientific project verified by the University.">
+            <button type="button" class="term-tooltip term-tooltip-gold"
+                    data-tooltip="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
+                    data-tooltip-it="Crowdfunding civico: raccolta fondi online trasparente in cui tante persone sostengono insieme un progetto scientifico verificato dall'Università."
+                    data-tooltip-en="Civic crowdfunding: transparent online fundraising where citizens collectively back a scientific project verified by the University.">
               <span data-it="crowdfunding civico" data-en="civic crowdfunding">crowdfunding civico</span>
-              <i class="info-badge" aria-hidden="true">i</i>
-            </span>.
+              <span class="info-badge" aria-hidden="true">i</span>
+            </button>.
             <span data-it="Al raggiungimento del 100% dell'obiettivo, l'Università di Torino attiva il "
                   data-en="Upon reaching 100% of the goal, the University of Turin activates ">
               Al raggiungimento del 100% dell'obiettivo, l'Università di Torino attiva il
             </span>
-            <span class="term-tooltip" tabindex="0" style="color:var(--accent-gold);"
-                  data-tooltip="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
-                  data-tooltip-it="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
-                  data-tooltip-en="Match-Funding: the University of Turin doubles the funds donated by the community up to a maximum cap of €10,000 per project!">
+            <button type="button" class="term-tooltip term-tooltip-gold"
+                    data-tooltip="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
+                    data-tooltip-it="Match-Funding (Cofinanziamento): l'Università di Torino raddoppia i fondi donati dalla comunità fino a un tetto massimo di 10.000 € per progetto!"
+                    data-tooltip-en="Match-Funding: the University of Turin doubles the funds donated by the community up to a maximum cap of €10,000 per project!">
               <span lang="en" data-it="Match-Funding (Raddoppio 2x)" data-en="Match-Funding (2x Doubling)">Match-Funding (Raddoppio 2x)</span>
-              <i class="info-badge" aria-hidden="true">i</i>
-            </span>
+              <span class="info-badge" aria-hidden="true">i</span>
+            </button>
             <span data-it=" fino a 10.000 € per progetto!" data-en=" up to €10,000 per project!"> fino a 10.000 € per progetto!</span>
           </p>
 
@@ -154,7 +227,7 @@
 
         <!-- Card Destra: Equazione Visuale del Raddoppio UniTo -->
         <aside class="hero-card" aria-labelledby="hero-card-heading">
-          <span class="badge badge-active" style="margin-bottom:8px;"
+          <span class="badge badge-active"
                 data-it="Meccanismo Trasparente d'Ateneo" data-en="Transparent University Mechanism">
             Meccanismo Trasparente d'Ateneo
           </span>
@@ -162,7 +235,7 @@
             Come funziona il Raddoppio Fondi UniTo?
           </h2>
 
-          <div class="match-formula-visual" role="group" aria-label="Formula del cofinanziamento: 50% Donatori Community più 50% Cofinanziamento UniTo uguale 100% impatto raddoppiato fino a 10.000 euro">
+          <div class="match-formula-visual">
             <div class="formula-step">
               <strong>50%</strong>
               <span data-it="Donatori Community" data-en="Community Backers">Donatori Community</span>
@@ -179,7 +252,7 @@
             </div>
           </div>
 
-          <ol style="padding-left:18px; font-size:0.9rem; display:flex; flex-direction:column; gap:10px; margin-bottom:18px;">
+          <ol class="hero-steps-list">
             <li>
               <strong data-it="Ricerca validata:" data-en="Validated research:">Ricerca validata:</strong>
               <span data-it=" Ogni campagna è selezionata da una commissione scientifica dell'Università di Torino."
@@ -190,13 +263,13 @@
             <li>
               <strong data-it="Tutela totale del donatore:" data-en="Full backer protection:">Tutela totale del donatore:</strong>
               <span data-it=" Con la formula " data-en=" Under the "> Con la formula </span>
-              <span class="term-tooltip" tabindex="0"
-                    data-tooltip="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
-                    data-tooltip-it="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
-                    data-tooltip-en="'All-or-Nothing' rule: if the campaign does not reach its minimum goal by the deadline, no money is charged and you receive an automatic full refund.">
+              <button type="button" class="term-tooltip"
+                      data-tooltip="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
+                      data-tooltip-it="Regola 'O tutto o niente': se la campagna non raggiunge l'obiettivo minimo entro la scadenza, nessun importo viene trattenuto e ricevi il rimborso automatico."
+                      data-tooltip-en="'All-or-Nothing' rule: if the campaign does not reach its minimum goal by the deadline, no money is charged and you receive an automatic full refund.">
                 <span data-it="'O tutto o niente'" data-en="'All-or-Nothing'">'O tutto o niente'</span>
-                <i class="info-badge" aria-hidden="true">i</i>
-              </span>
+                <span class="info-badge" aria-hidden="true">i</span>
+              </button>
               <span data-it=" doni a partire da 5 € senza alcun rischio." data-en=" rule, you can donate from €5 risk-free."> doni a partire da 5 € senza alcun rischio.</span>
             </li>
             <li>
@@ -208,9 +281,9 @@
             </li>
           </ol>
 
-          <div style="background:var(--bg-subtle); padding:10px 14px; border-radius:var(--radius-sm); font-size:0.84rem; display:flex; justify-content:space-between; align-items:center; border:1px solid var(--border-color);">
+          <div class="hero-call-box">
             <span><span aria-hidden="true">📄</span> <span data-it="Bando Ufficiale d'Ateneo" data-en="Official University Call">Bando Ufficiale d'Ateneo</span></span>
-            <a href="https://www.unito.it" target="_blank" rel="noopener" class="ext-link">
+            <a href="https://www.unito.it/ricerca" target="_blank" rel="noopener" class="ext-link">
               <span data-it="Guida su UniTo.it" data-en="Guide on UniTo.it">Guida su UniTo.it</span>
               <span class="ext-badge"><span aria-hidden="true">↗</span> <span data-it="sito esterno" data-en="external site">sito esterno</span></span>
             </a>
@@ -220,7 +293,10 @@
     </section>
 
     <!-- STRISCIA KPI D'IMPATTO CERTIFICATO -->
-    <section class="impact-kpi-bar" aria-label="Indicatori chiave di impatto di Funds TOgether">
+    <section class="impact-kpi-bar" aria-labelledby="kpi-section-heading">
+      <h2 id="kpi-section-heading" class="sr-only" data-it="Risultati e indicatori di impatto di Funds TOgether" data-en="Funds TOgether impact metrics and results">
+        Risultati e indicatori di impatto di Funds TOgether
+      </h2>
       <div class="container kpi-grid">
         <div class="kpi-item">
           <div class="kpi-icon" aria-hidden="true">💶</div>
@@ -247,7 +323,7 @@
           <div class="kpi-icon" aria-hidden="true">🤝</div>
           <div>
             <div class="kpi-value">3.450+</div>
-            <div class="kpi-label" data-it="Sostenitori tra cittadini, studenti ed enti" data-en="Backers among citizens, students & partners">Sostenitori tra cittadini, studenti ed enti</div>
+            <div class="kpi-label" data-it="Sostenitori tra cittadini, studenti ed enti" data-en="Backers among citizens, students &amp; partners">Sostenitori tra cittadini, studenti ed enti</div>
           </div>
         </div>
       </div>
@@ -257,27 +333,27 @@
     <section class="section" aria-labelledby="active-campaigns-heading">
       <div class="container">
 
-        <!-- Scorciatoie Dipartimentali -->
-        <div class="quick-categories-bar" role="region" aria-label="Filtra rapidamente i progetti per area di ricerca">
+        <!-- Scorciatoie Dipartimentali con URL distinti (risolve WAVE Redundant Links) -->
+        <div class="quick-categories-bar">
           <div class="filter-pills">
             <span class="filter-label"><span aria-hidden="true">⚡</span> <span data-it="Esplora per Area:" data-en="Browse by Area:">Esplora per Area:</span></span>
-            <a href="catalogo.html" onclick="sessionStorage.setItem('unito_cat_filter','all');" class="pill-btn active"
+            <a href="catalogo.html?cat=all" onclick="sessionStorage.setItem('unito_cat_filter','all');" class="pill-btn active"
                data-it="Tutte le Aree (9)" data-en="All Areas (9)">Tutte le Aree (9)</a>
-            <a href="catalogo.html" onclick="sessionStorage.setItem('unito_cat_filter','salute');" class="pill-btn">
-              <span aria-hidden="true">🍼</span> <span data-it="Salute & Medicina" data-en="Health & Medicine">Salute & Medicina</span>
+            <a href="catalogo.html?cat=salute" onclick="sessionStorage.setItem('unito_cat_filter','salute');" class="pill-btn">
+              <span aria-hidden="true">🍼</span> <span data-it="Salute &amp; Medicina" data-en="Health &amp; Medicine">Salute &amp; Medicina</span>
             </a>
-            <a href="catalogo.html" onclick="sessionStorage.setItem('unito_cat_filter','tecnologia');" class="pill-btn">
-              <span aria-hidden="true">💻</span> <span data-it="Tecnologia & Disabilità" data-en="Tech & Accessibility">Tecnologia & Disabilità</span>
+            <a href="catalogo.html?cat=tecnologia" onclick="sessionStorage.setItem('unito_cat_filter','tecnologia');" class="pill-btn">
+              <span aria-hidden="true">💻</span> <span data-it="Tecnologia &amp; Disabilità" data-en="Tech &amp; Accessibility">Tecnologia &amp; Disabilità</span>
             </a>
-            <a href="catalogo.html" onclick="sessionStorage.setItem('unito_cat_filter','ambiente');" class="pill-btn">
-              <span aria-hidden="true">🌿</span> <span data-it="Ambiente & Agraria" data-en="Environment & Agriculture">Ambiente & Agraria</span>
+            <a href="catalogo.html?cat=ambiente" onclick="sessionStorage.setItem('unito_cat_filter','ambiente');" class="pill-btn">
+              <span aria-hidden="true">🌿</span> <span data-it="Ambiente &amp; Agraria" data-en="Environment &amp; Agriculture">Ambiente &amp; Agraria</span>
             </a>
-            <a href="catalogo.html" onclick="sessionStorage.setItem('unito_cat_filter','cultura');" class="pill-btn">
-              <span aria-hidden="true">🎭</span> <span data-it="Cultura & Patrimonio" data-en="Culture & Heritage">Cultura & Patrimonio</span>
+            <a href="catalogo.html?cat=cultura" onclick="sessionStorage.setItem('unito_cat_filter','cultura');" class="pill-btn">
+              <span aria-hidden="true">🎭</span> <span data-it="Cultura &amp; Patrimonio" data-en="Culture &amp; Heritage">Cultura &amp; Patrimonio</span>
             </a>
           </div>
-          <a href="catalogo.html" style="font-size:0.88rem; font-weight:700;"
-             data-it="Ricerca avanzata e ordinamento →" data-en="Advanced search & sorting →">
+          <a href="catalogo.html?sort=goal" class="quick-adv-link"
+             data-it="Ricerca avanzata e ordinamento →" data-en="Advanced search &amp; sorting →">
             Ricerca avanzata e ordinamento →
           </a>
         </div>
@@ -297,7 +373,7 @@
               </span>
             </p>
           </div>
-          <a href="catalogo.html" class="btn btn-outline"
+          <a href="catalogo.html?status=active" class="btn btn-outline"
              data-it="Vedi tutti i 9 progetti in catalogo →" data-en="View all 9 projects in catalog →">
             Vedi tutti i 9 progetti in catalogo →
           </a>
@@ -336,26 +412,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">14.200 € <small style="font-weight:500; color:var(--text-muted);">/ 16.000 €</small></span>
-                  <strong style="color:var(--success-green);">88%</strong>
+                  <span class="stat-raised">14.200 € <small class="stat-goal">/ 16.000 €</small></span>
+                  <strong class="stat-pct">88%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta MILK-ACT: 88%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:48%;"></div>
                   <div class="progress-bar-match" style="width:40%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="198 donatori" data-en="198 backers">198 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="Mancano 1.800 € al 100%" data-en="€1,800 left to 100%">Mancano 1.800 € al 100%</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="198 donatori" data-en="198 backers">198 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="Mancano 1.800 € al 100%" data-en="€1,800 left to 100%">Mancano 1.800 € al 100%</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
-                 aria-label="Obiettivi e Budget del progetto MILK-ACT"
-                 data-it="Obiettivi & Budget" data-en="Goals & Budget">Obiettivi & Budget</a>
-              <a href="checkout.html?amount=50" class="btn btn-primary"
-                 aria-label="Sostieni ora il progetto MILK-ACT"
-                 data-it="Sostieni Ora →" data-en="Support Now →">Sostieni Ora →</a>
+              <a href="progetto.html?proj=milk-act#tab-budget" class="btn btn-outline">
+                <span data-it="Obiettivi &amp; Budget" data-en="Goals &amp; Budget">Obiettivi &amp; Budget</span>
+                <span class="sr-only"> — MILK-ACT</span>
+              </a>
+              <a href="checkout.html?proj=milk-act&amp;amount=50" class="btn btn-primary">
+                <span data-it="Sostieni Ora →" data-en="Support Now →">Sostieni Ora →</span>
+                <span class="sr-only"> MILK-ACT</span>
+              </a>
             </div>
           </article>
 
@@ -391,26 +469,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">8.450 € <small style="font-weight:500; color:var(--text-muted);">/ 10.000 €</small></span>
-                  <strong style="color:var(--success-green);">84%</strong>
+                  <span class="stat-raised">8.450 € <small class="stat-goal">/ 10.000 €</small></span>
+                  <strong class="stat-pct">84%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta SpeechMatE: 84%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:44%;"></div>
                   <div class="progress-bar-match" style="width:40%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="142 donatori (da 10 €)" data-en="142 backers (from €10)">142 donatori (da 10 €)</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="Hall of Fame attiva" data-en="Hall of Fame active"><span lang="en">Hall of Fame</span> attiva</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="142 donatori (da 10 €)" data-en="142 backers (from €10)">142 donatori (da 10 €)</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="Hall of Fame attiva" data-en="Hall of Fame active"><span lang="en">Hall of Fame</span> attiva</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=speechmate" class="btn btn-outline"
-                 aria-label="Obiettivi e Budget del progetto SpeechMatE"
-                 data-it="Obiettivi & Budget" data-en="Goals & Budget">Obiettivi & Budget</a>
-              <a href="checkout.html?amount=10" class="btn btn-primary"
-                 aria-label="Dona da 10 euro per il progetto SpeechMatE"
-                 data-it="Dona da 10 € →" data-en="Donate from €10 →">Dona da 10 € →</a>
+              <a href="progetto.html?proj=speechmate#tab-budget" class="btn btn-outline">
+                <span data-it="Obiettivi &amp; Budget" data-en="Goals &amp; Budget">Obiettivi &amp; Budget</span>
+                <span class="sr-only"> — SpeechMatE</span>
+              </a>
+              <a href="checkout.html?proj=speechmate&amp;amount=10" class="btn btn-primary">
+                <span data-it="Dona da 10 € →" data-en="Donate from €10 →">Dona da 10 € →</span>
+                <span class="sr-only"> SpeechMatE</span>
+              </a>
             </div>
           </article>
 
@@ -428,7 +508,7 @@
             </div>
             <div class="card-body">
               <h3 class="card-title">
-                <a href="progetto.html?proj=milk-act"
+                <a href="progetto.html?proj=milk-act&amp;ref=beealpine"
                    data-it="BeeAlpine: Sensori Bioacustici per la Biodiversità"
                    data-en="BeeAlpine: Bioacoustic Sensors for Alpine Biodiversity">
                   <span lang="en">BeeAlpine</span>: Sensori Bioacustici per la Biodiversità
@@ -446,26 +526,28 @@
               </p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">5.600 € <small style="font-weight:500; color:var(--text-muted);">/ 8.000 €</small></span>
-                  <strong style="color:var(--success-green);">70%</strong>
+                  <span class="stat-raised">5.600 € <small class="stat-goal">/ 8.000 €</small></span>
+                  <strong class="stat-pct">70%<span class="sr-only"> dell'obiettivo raggiunto</span></strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Avanzamento raccolta BeeAlpine: 70%">
+                <div class="progress-bar-bg" aria-hidden="true">
                   <div class="progress-bar-fill" style="width:40%;"></div>
                   <div class="progress-bar-match" style="width:30%;"></div>
                 </div>
                 <div class="progress-legend">
-                  <span><i class="dot dot-comm" aria-hidden="true"></i><span data-it="89 donatori" data-en="89 backers">89 donatori</span></span>
-                  <span><i class="dot dot-match" aria-hidden="true"></i><span data-it="Formula: O tutto o niente" data-en="Rule: All-or-nothing">Formula: O tutto o niente</span></span>
+                  <span><span class="dot dot-comm" aria-hidden="true"></span><span data-it="89 donatori" data-en="89 backers">89 donatori</span></span>
+                  <span><span class="dot dot-match" aria-hidden="true"></span><span data-it="Formula: O tutto o niente" data-en="Rule: All-or-nothing">Formula: O tutto o niente</span></span>
                 </div>
               </div>
             </div>
             <div class="card-footer">
-              <a href="progetto.html?proj=milk-act" class="btn btn-outline"
-                 aria-label="Obiettivi e Budget del progetto BeeAlpine"
-                 data-it="Obiettivi & Budget" data-en="Goals & Budget">Obiettivi & Budget</a>
-              <a href="checkout.html?amount=25" class="btn btn-primary"
-                 aria-label="Sostieni ora il progetto BeeAlpine"
-                 data-it="Sostieni Ora →" data-en="Support Now →">Sostieni Ora →</a>
+              <a href="progetto.html?proj=milk-act&amp;ref=beealpine#tab-budget" class="btn btn-outline">
+                <span data-it="Obiettivi &amp; Budget" data-en="Goals &amp; Budget">Obiettivi &amp; Budget</span>
+                <span class="sr-only"> — BeeAlpine</span>
+              </a>
+              <a href="checkout.html?proj=beealpine&amp;amount=25" class="btn btn-primary">
+                <span data-it="Sostieni Ora →" data-en="Support Now →">Sostieni Ora →</span>
+                <span class="sr-only"> BeeAlpine</span>
+              </a>
             </div>
           </article>
         </div>
@@ -485,21 +567,21 @@
                 Obiettivo superato (Overfunding)
               </span>
               <span data-it="Campagne concluse con successo in " data-en="Successfully completed campaigns in ">Campagne concluse con successo in </span>
-              <span class="term-tooltip" tabindex="0"
-                    data-tooltip="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
-                    data-tooltip-it="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
-                    data-tooltip-en="Overfunding: fundraising that exceeds 100% of the initial goal, allowing researchers to fund study extensions (stretch goals).">
-                <span lang="en">Overfunding</span> <i class="info-badge" aria-hidden="true">i</i>
-              </span>
+              <button type="button" class="term-tooltip"
+                      data-tooltip="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
+                      data-tooltip-it="Overfunding: raccolta fondi che supera il 100% dell'obiettivo iniziale, permettendo ai ricercatori di finanziare estensioni dello studio (stretch goals)."
+                      data-tooltip-en="Overfunding: fundraising that exceeds 100% of the initial goal, allowing researchers to fund study extensions (stretch goals).">
+                <span lang="en">Overfunding</span> <span class="info-badge" aria-hidden="true">i</span>
+              </button>
               <span data-it=" con rendicontazione pubblica degli acquisti di laboratorio e dei risultati scientifici."
                     data-en=" with public reporting of laboratory purchases and scientific results.">
                 con rendicontazione pubblica degli acquisti di laboratorio e dei risultati scientifici.
               </span>
             </p>
           </div>
-          <a href="partner.html" class="btn btn-secondary"
-             data-it="Esplora Partner & Bilancio CSR →" data-en="Explore Partners & CSR Impact →">
-            Esplora Partner & Bilancio CSR →
+          <a href="partner.html#cat-aziende" class="btn btn-secondary"
+             data-it="Esplora Partner &amp; Bilancio CSR →" data-en="Explore Partners &amp; CSR Impact →">
+            Esplora Partner &amp; Bilancio CSR →
           </a>
         </div>
 
@@ -517,24 +599,25 @@
               </div>
             </div>
             <div class="card-body">
-              <h3 class="card-title"><a href="progetto.html?proj=bright"><span lang="en">CultMeat</span>: Coltiviamo la carne sostenibile del futuro</a></h3>
+              <h3 class="card-title"><a href="progetto.html?proj=bright&amp;ref=cultmeat"><span lang="en">CultMeat</span>: Coltiviamo la carne sostenibile del futuro</a></h3>
               <p class="card-author">Dipartimento di Scienze Veterinarie • 575 donatori</p>
               <p class="card-desc">Prima ricerca universitaria italiana sull'agricoltura cellulare etica e a basso impatto ambientale.</p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">62.050 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                  <strong style="color:var(--unito-navy);">Obiettivo 620%</strong>
+                  <span class="stat-raised">62.050 € <small class="stat-goal">su 10.000 €</small></span>
+                  <strong class="stat-closed-goal">Obiettivo 620%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna CultMeat conclusa al 620% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi risultati e timeline del progetto CultMeat"
-                 data-it="Vedi Risultati & Timeline →" data-en="View Results & Timeline →">Vedi Risultati & Timeline →</a>
+              <a href="progetto.html?proj=bright&amp;ref=cultmeat#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati &amp; Timeline →" data-en="View Results &amp; Timeline →">Vedi Risultati &amp; Timeline →</span>
+                <span class="sr-only"> — CultMeat</span>
+              </a>
             </div>
           </article>
 
@@ -556,19 +639,20 @@
               <p class="card-desc">Acquisto di optodi fNIRS <span lang="en">short-channels</span> per studiare la riabilitazione cognitiva attraverso ambienti interattivi.</p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">22.182 € <small style="font-weight:500; color:var(--text-muted);">su 10.000 €</small></span>
-                  <strong style="color:var(--unito-navy);">Obiettivo 221%</strong>
+                  <span class="stat-raised">22.182 € <small class="stat-goal">su 10.000 €</small></span>
+                  <strong class="stat-closed-goal">Obiettivo 221%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna BRIGHT conclusa al 221% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi risultati e timeline del progetto BRIGHT"
-                 data-it="Vedi Risultati & Timeline →" data-en="View Results & Timeline →">Vedi Risultati & Timeline →</a>
+              <a href="progetto.html?proj=bright#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati &amp; Timeline →" data-en="View Results &amp; Timeline →">Vedi Risultati &amp; Timeline →</span>
+                <span class="sr-only"> — BRIGHT</span>
+              </a>
             </div>
           </article>
 
@@ -585,24 +669,25 @@
               </div>
             </div>
             <div class="card-body">
-              <h3 class="card-title"><a href="progetto.html?proj=bright"><span lang="en">Citizen Salad</span>: Chi vive sulle foglie che mangiamo?</a></h3>
+              <h3 class="card-title"><a href="progetto.html?proj=bright&amp;ref=citizensalad"><span lang="en">Citizen Salad</span>: Chi vive sulle foglie che mangiamo?</a></h3>
               <p class="card-author">Dipartimento di Scienze della Vita • 144 donatori</p>
               <p class="card-desc">Mappatura partecipata del microbioma vegetale insieme a cittadini e scuole superiori del Piemonte.</p>
               <div class="progress-box">
                 <div class="progress-stats">
-                  <span class="stat-raised">21.375 € <small style="font-weight:500; color:var(--text-muted);">su 8.000 €</small></span>
-                  <strong style="color:var(--unito-navy);">Obiettivo 267%</strong>
+                  <span class="stat-raised">21.375 € <small class="stat-goal">su 8.000 €</small></span>
+                  <strong class="stat-closed-goal">Obiettivo 267%</strong>
                 </div>
-                <div class="progress-bar-bg" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Campagna Citizen Salad conclusa al 267% dell'obiettivo"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
+                <div class="progress-bar-bg" aria-hidden="true"><div class="progress-bar-fill closed" style="width:100%;"></div></div>
               </div>
             </div>
             <div class="card-footer">
-              <span style="font-size:0.8rem; color:var(--text-muted); font-weight:700;">
+              <span class="closed-status-label">
                 <span aria-hidden="true">🔒</span> <span data-it="Raccolta chiusa" data-en="Funding closed">Raccolta chiusa</span>
               </span>
-              <a href="progetto.html?proj=bright" class="btn btn-outline"
-                 aria-label="Vedi risultati e timeline del progetto Citizen Salad"
-                 data-it="Vedi Risultati & Timeline →" data-en="View Results & Timeline →">Vedi Risultati & Timeline →</a>
+              <a href="progetto.html?proj=bright&amp;ref=citizensalad#tab-aggiornamenti" class="btn btn-outline">
+                <span data-it="Vedi Risultati &amp; Timeline →" data-en="View Results &amp; Timeline →">Vedi Risultati &amp; Timeline →</span>
+                <span class="sr-only"> — Citizen Salad</span>
+              </a>
             </div>
           </article>
         </div>
@@ -614,29 +699,29 @@
       <div class="container">
         <div class="researcher-cta-banner">
           <div>
-            <span class="hero-tag" style="margin-bottom:10px;">
+            <span class="hero-tag">
               <span aria-hidden="true">🎓</span>
               <span data-it="Per Docenti, Ricercatori, Assegnisti e Dottorandi UniTo"
-                    data-en="For UniTo Faculty, Researchers, Postdocs & PhD Students">
+                    data-en="For UniTo Faculty, Researchers, Postdocs &amp; PhD Students">
                 Per Docenti, Ricercatori, Assegnisti e Dottorandi UniTo
               </span>
             </span>
-            <h2 id="researchers-callout-heading" style="font-size:1.75rem; margin-bottom:12px;"
+            <h2 id="researchers-callout-heading" class="researcher-cta-title"
                 data-it="Hai un progetto di ricerca? UniTo ti forma e raddoppia i fondi raccolti."
                 data-en="Have a research project? UniTo trains your team and doubles the funds raised.">
               Hai un progetto di ricerca? UniTo ti forma e raddoppia i fondi raccolti.
             </h2>
-            <p style="color:#e2e8f0; font-size:0.98rem; margin-bottom:20px;"
+            <p class="researcher-cta-desc"
                data-it="Consulta in totale trasparenza tempistiche, servizi inclusi a costo zero per i Dipartimenti (0 €) e calcola subito la quota di cofinanziamento per la tua idea."
                data-en="Check timelines, zero-cost services included for Departments (€0), and calculate your match-funding share right away.">
               Consulta in totale trasparenza tempistiche, servizi inclusi a costo zero per i Dipartimenti (0 €) e calcola subito la quota di cofinanziamento per la tua idea.
             </p>
-            <div style="display:flex; gap:12px; flex-wrap:wrap;">
-              <a href="proponi.html" class="btn btn-primary">
+            <div class="hero-cta-group">
+              <a href="proponi.html#candidatura-section" class="btn btn-primary">
                 <span aria-hidden="true">🧮</span>
-                <span data-it="Calcola il Raddoppio & Invia Pre-Candidatura →"
-                      data-en="Calculate Match-Funding & Apply Now →">
-                  Calcola il Raddoppio & Invia Pre-Candidatura →
+                <span data-it="Calcola il Raddoppio &amp; Invia Pre-Candidatura →"
+                      data-en="Calculate Match-Funding &amp; Apply Now →">
+                  Calcola il Raddoppio &amp; Invia Pre-Candidatura →
                 </span>
               </a>
               <button type="button" class="btn btn-light" data-open-login>
@@ -646,24 +731,24 @@
             </div>
           </div>
 
-          <div class="researcher-steps-mini">
-            <div class="mini-step-box">
-              <strong data-it="1. Zero Costi Dipartimentali" data-en="1. Zero Department Costs">1. Zero Costi Dipartimentali</strong>
-              <span data-it="Formazione (12h), video e piattaforma 100% coperti da UniTo." data-en="Training (12h), video & platform 100% covered by UniTo.">Formazione (12h), video e piattaforma 100% coperti da UniTo.</span>
-            </div>
-            <div class="mini-step-box">
-              <strong data-it="2. Campaign Manager" data-en="2. Campaign Manager">2. <span lang="en">Campaign Manager</span></strong>
+          <ol class="researcher-steps-mini">
+            <li class="mini-step-box">
+              <strong data-it="Zero Costi Dipartimentali" data-en="Zero Department Costs">Zero Costi Dipartimentali</strong>
+              <span data-it="Formazione (12h), video e piattaforma 100% coperti da UniTo." data-en="Training (12h), video &amp; platform 100% covered by UniTo.">Formazione (12h), video e piattaforma 100% coperti da UniTo.</span>
+            </li>
+            <li class="mini-step-box">
+              <strong data-it="Campaign Manager" data-en="Campaign Manager"><span lang="en">Campaign Manager</span></strong>
               <span data-it="Consulente dedicato per 3–4 settimane di pre-campagna." data-en="Dedicated consultant for 3–4 weeks of pre-campaign.">Consulente dedicato per 3–4 settimane di pre-campagna.</span>
-            </div>
-            <div class="mini-step-box">
-              <strong data-it="3. Match-Funding fino a 10.000 €" data-en="3. Match-Funding up to €10,000">3. <span lang="en">Match-Funding</span> fino a 10.000 €</strong>
+            </li>
+            <li class="mini-step-box">
+              <strong data-it="Match-Funding fino a 10.000 €" data-en="Match-Funding up to €10,000"><span lang="en">Match-Funding</span> fino a 10.000 €</strong>
               <span data-it="L'Ateneo raddoppia l'importo al raggiungimento del 100%." data-en="The University doubles the amount once 100% is reached.">L'Ateneo raddoppia l'importo al raggiungimento del 100%.</span>
-            </div>
-            <div class="mini-step-box">
-              <strong data-it="4. Valore Terza Missione" data-en="4. Public Engagement">4. Valore Terza Missione</strong>
+            </li>
+            <li class="mini-step-box">
+              <strong data-it="Valore Terza Missione" data-en="Public Engagement">Valore Terza Missione</strong>
               <span data-it="Impatto sociale diretto e rendicontato sul territorio." data-en="Direct and accountable social impact on the territory.">Impatto sociale diretto e rendicontato sul territorio.</span>
-            </div>
-          </div>
+            </li>
+          </ol>
         </div>
       </div>
     </section>
@@ -677,10 +762,10 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand">
-            <span class="brand-badge" style="background:#ffffff; color:var(--unito-navy);"><span aria-hidden="true">🏛️</span> UniTo</span>
+            <span class="brand-badge footer-badge-invert"><span aria-hidden="true">🏛️</span> UniTo</span>
             <span lang="en">Funds TOgether!</span>
           </div>
-          <p style="font-size:0.88rem; color:#cbd5e1; margin-bottom:12px;"
+          <p class="footer-desc"
              data-it="Portale istituzionale di crowdfunding civico e scientifico dell'Università degli Studi di Torino — Direzione Ricerca, Innovazione e Terza Missione."
              data-en="Institutional civic and scientific crowdfunding portal of the University of Turin — Research, Innovation and Third Mission Directorate.">
             Portale istituzionale di crowdfunding civico e scientifico dell'Università degli Studi di Torino — Direzione Ricerca, Innovazione e Terza Missione.
@@ -690,21 +775,21 @@
         <div class="footer-col">
           <h3 class="footer-heading" data-it="Navigazione Portale" data-en="Portal Navigation">Navigazione Portale</h3>
           <ul>
-            <li><a href="index.html" data-it="Home Page" data-en="Home Page">Home Page</a></li>
+            <li><a href="index.html#main-content" data-it="Home Page" data-en="Home Page">Home Page</a></li>
             <li><a href="catalogo.html" data-it="Esplora Catalogo Progetti" data-en="Explore Projects Catalog">Esplora Catalogo Progetti</a></li>
-            <li><a href="proponi.html" data-it="Come Funziona & Bando Ricercatori" data-en="How It Works & Researchers Call">Come Funziona & Bando Ricercatori</a></li>
-            <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners & Network">I Nostri Partner e Collaboratori</a></li>
+            <li><a href="proponi.html" data-it="Come Funziona &amp; Bando Ricercatori" data-en="How It Works &amp; Researchers Call">Come Funziona &amp; Bando Ricercatori</a></li>
+            <li><a href="partner.html" data-it="I Nostri Partner e Collaboratori" data-en="Our Partners &amp; Network">I Nostri Partner e Collaboratori</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h3 class="footer-heading" data-it="Supporto & Trasparenza" data-en="Support & Transparency">Supporto & Trasparenza</h3>
+          <h3 class="footer-heading" data-it="Supporto &amp; Trasparenza" data-en="Support &amp; Transparency">Supporto &amp; Trasparenza</h3>
           <ul>
             <li><a href="proponi.html#faq-section" data-it="Domande Frequenti (FAQ)" data-en="Frequently Asked Questions (FAQ)">Domande Frequenti (FAQ)</a></li>
             <li>
               <button type="button" class="footer-link-btn" data-open-privacy
-                      data-it="Informativa Privacy & Condizioni (IT/EN)" data-en="Privacy Policy & Terms of Use (IT/EN)">
-                Informativa Privacy & Condizioni (IT/EN)
+                      data-it="Informativa Privacy &amp; Condizioni (IT/EN)" data-en="Privacy Policy &amp; Terms of Use (IT/EN)">
+                Informativa Privacy &amp; Condizioni (IT/EN)
               </button>
             </li>
             <li>
@@ -721,7 +806,7 @@
           <ul>
             <li><a href="https://www.unito.it" target="_blank" rel="noopener">Portale Ufficiale UniTo.it <span aria-hidden="true">↗</span> (sito esterno)</a></li>
             <li><a href="https://www.ideaginger.it" target="_blank" rel="noopener">Partner tecnologico Ginger <span aria-hidden="true">↗</span> (sito esterno)</a></li>
-            <li><span style="font-size:0.84rem; color:#cbd5e1;"><span aria-hidden="true">📍</span> Via Verdi 8, 10124 Torino — crowdfunding@unito.it</span></li>
+            <li><span class="footer-address"><span aria-hidden="true">📍</span> Via Verdi 8, 10124 Torino — crowdfunding@unito.it</span></li>
           </ul>
         </div>
       </div>
