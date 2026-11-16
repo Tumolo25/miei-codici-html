@@ -37,7 +37,7 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Esplora Progetti",
+            "name": "Esplora Catalogo Progetti",
             "item": "https://tumolo25.github.io/miei-codici-html/catalogo.html"
           },
           {
@@ -327,6 +327,27 @@
     .dot-navy { background-color: #002b49; }
     .dot-teal { background-color: #0f766e; }
     .dot-orange { background-color: #b93800; }
+    .table-caption-visible {
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #002b49;
+      background-color: #ffffff;
+      padding-bottom: 0.5rem;
+    }
+    .data-table tbody th {
+      background-color: #ffffff;
+      color: #002b49;
+      font-weight: 700;
+    }
+    .data-table tfoot th,
+    .data-table tfoot td {
+      background-color: #f1f5f9;
+      color: #002b49;
+      font-weight: 800;
+      border-top: 2px solid #002b49;
+    }
     .overfunding-note,
     .overfunding-note span {
       font-size: 0.85rem;
@@ -623,18 +644,18 @@
     </div>
   </header>
 
-  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS (Con URL distinti per WAVE 0 Redundant Links) -->
+  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS (Con URL e testi distinti per WAVE e AChecker) -->
   <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
     <div class="container breadcrumbs-inner">
       <ol class="breadcrumbs-list">
         <li><a href="index.html#main-content" data-it="Home" data-en="Home">Home</a></li>
-        <li><a href="catalogo.html#main-content" data-it="Esplora Progetti" data-en="Explore Projects">Esplora Progetti</a></li>
+        <li><a href="catalogo.html#catalog-projects-grid" data-it="Catalogo Completo" data-en="Full Catalog">Catalogo Completo</a></li>
         <li><a href="catalogo.html?cat=salute" id="proj-breadcrumb-cat" data-it="Salute &amp; Medicina" data-en="Health &amp; Medicine">Salute &amp; Medicina</a></li>
         <li class="current" id="proj-breadcrumb-name" aria-current="page">MILK-ACT</li>
       </ol>
-      <a href="catalogo.html#catalog-projects-grid" class="breadcrumbs-back-link"
-         data-it="← Torna al Catalogo (filtri mantenuti)" data-en="← Back to Catalog (filters preserved)">
-        ← Torna al Catalogo (filtri mantenuti)
+      <a href="catalogo.html?from=progetto" class="breadcrumbs-back-link"
+         data-it="← Ritorna al Catalogo Completo (filtri salvati)" data-en="← Return to Full Catalog (filters saved)">
+        ← Ritorna al Catalogo Completo (filtri salvati)
       </a>
     </div>
   </nav>
@@ -732,7 +753,7 @@
 
         <!-- COLONNA SINISTRA: CONTENUTI STRUTTURATI CON WAI-ARIA TAB PATTERN COMPLETO -->
         <div>
-          <div class="tabs-nav" role="tablist" aria-label="Dettagli della campagna di ricerca">
+          <div class="tabs-nav" role="tablist">
             <button type="button" id="btn-tab-obiettivi" class="tab-btn active" data-tab="tab-obiettivi"
                     role="tab" aria-selected="true" aria-controls="tab-obiettivi"
                     data-it="1. Obiettivi &amp; Impatto" data-en="1. Goals &amp; Impact">1. Obiettivi &amp; Impatto</button>
@@ -748,7 +769,7 @@
           </div>
 
           <!-- TAB 1: OBIETTIVI SCIENTIFICI E RICADUTA CONCRETA -->
-          <section id="tab-obiettivi" class="tab-panel active" role="tabpanel" aria-labelledby="btn-tab-obiettivi" tabindex="0">
+          <section id="tab-obiettivi" class="tab-panel active" role="tabpanel" tabindex="0">
             <h2 id="story-heading" class="tab-heading">
               Il Progetto: Proteggere i neonati prematuri grazie alla ricerca sul latte umano
             </h2>
@@ -777,8 +798,8 @@
             </div>
           </section>
 
-          <!-- TAB 2: BUDGET VISUALE E TABELLA DI RENDICONTAZIONE -->
-          <section id="tab-budget" class="tab-panel" role="tabpanel" aria-labelledby="btn-tab-budget" tabindex="0">
+          <!-- TAB 2: BUDGET VISUALE E TABELLA DI RENDICONTAZIONE (Completa di colgroup, thead, tbody, tfoot) -->
+          <section id="tab-budget" class="tab-panel" role="tabpanel" tabindex="0">
             <h2 class="tab-heading" data-it="Trasparenza Finanziaria: Come useremo i fondi raccolti" data-en="Financial Transparency: How we will use the funds raised">
               Trasparenza Finanziaria: Come useremo i fondi raccolti
             </h2>
@@ -806,9 +827,15 @@
             </div>
 
             <table class="data-table">
-              <caption class="sr-only" data-it="Prospetto analitico delle voci di spesa del budget di progetto" data-en="Analytical breakdown of project budget expenditure items">
+              <caption class="table-caption-visible" data-it="Prospetto analitico delle voci di spesa del budget di progetto" data-en="Analytical breakdown of project budget expenditure items">
                 Prospetto analitico delle voci di spesa del budget di progetto
               </caption>
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+              </colgroup>
               <thead>
                 <tr>
                   <th scope="col" data-it="Voce di Spesa" data-en="Budget Item">Voce di Spesa</th>
@@ -819,24 +846,33 @@
               </thead>
               <tbody id="budget-table-body">
                 <tr>
-                  <td><strong><span aria-hidden="true">🧪</span> Reagenti e Kit Antivirali</strong></td>
+                  <th scope="row"><span aria-hidden="true">🧪</span> Reagenti e Kit Antivirali</th>
                   <td>Materiali di consumo sterili, colture cellulari e kit ELISA per l'analisi dei campioni di latte</td>
                   <td><strong>45%</strong></td>
                   <td><strong>7.200 €</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><span aria-hidden="true">👩‍🔬</span> Borsa di Ricerca Dedicata</strong></td>
+                  <th scope="row"><span aria-hidden="true">👩‍🔬</span> Borsa di Ricerca Dedicata</th>
                   <td>Cofinanziamento semestrale per giovane assegnista presso il laboratorio VIRMOLAB UniTo</td>
                   <td><strong>40%</strong></td>
                   <td><strong>6.400 €</strong></td>
                 </tr>
                 <tr>
-                  <td><strong><span aria-hidden="true">📖</span> Microguida &amp; Open Access</strong></td>
+                  <th scope="row"><span aria-hidden="true">📖</span> Microguida &amp; Open Access</th>
                   <td>Stampa brochure divulgativa per le famiglie dei reparti TIN e pubblicazione scientifica aperta</td>
                   <td><strong>15%</strong></td>
                   <td><strong>2.400 €</strong></td>
                 </tr>
               </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colspan="2" data-it="Totale Budget Certificato d'Ateneo (Community + Match-Funding UniTo)" data-en="Total Certified University Budget (Community + UniTo Match-Funding)">
+                    Totale Budget Certificato d'Ateneo (Community + Match-Funding UniTo)
+                  </th>
+                  <td><strong>100%</strong></td>
+                  <td id="budget-total-cell"><strong>16.000 €</strong></td>
+                </tr>
+              </tfoot>
             </table>
 
             <p class="overfunding-note">
@@ -849,7 +885,7 @@
           </section>
 
           <!-- TAB 3: TIMELINE AGGIORNAMENTI STRUTTURATA -->
-          <section id="tab-aggiornamenti" class="tab-panel" role="tabpanel" aria-labelledby="btn-tab-aggiornamenti" tabindex="0">
+          <section id="tab-aggiornamenti" class="tab-panel" role="tabpanel" tabindex="0">
             <div class="timeline-top-row">
               <h2 class="tab-heading" style="margin-bottom:0;" data-it="Timeline Cronologica degli Aggiornamenti" data-en="Chronological Project Updates Timeline">
                 Timeline Cronologica degli Aggiornamenti
@@ -905,7 +941,7 @@
           </section>
 
           <!-- TAB 4: TEAM DI RICERCA UNITO -->
-          <section id="tab-team" class="tab-panel" role="tabpanel" aria-labelledby="btn-tab-team" tabindex="0">
+          <section id="tab-team" class="tab-panel" role="tabpanel" tabindex="0">
             <h2 class="tab-heading" data-it="Il Team di Ricerca Proponente (Università di Torino)" data-en="The Proposing Research Team (University of Turin)">
               Il Team di Ricerca Proponente (Università di Torino)
             </h2>
@@ -1003,20 +1039,20 @@
             </div>
           </div>
 
-          <!-- MODULO "FAI TU" CON CALCOLATORE LIVE DEL RADDOPPIO (Conforme a SC 1.3.5 e SC 1.4.10 Tech C38) -->
+          <!-- MODULO "FAI TU" CON CALCOLATORE LIVE DEL RADDOPPIO (Conforme a SC 1.3.5, SC 1.4.10 Tech C38 e SC 4.1.3 Tech ARIA19) -->
           <div class="custom-pledge-box">
             <form id="custom-donation-form">
               <label for="custom-donation-input" class="custom-pledge-label">
-                <span aria-hidden="true">✨</span> <span data-it="FAI TU — Contributo a importo libero (€)" data-en="CUSTOM PLEDGE — Choose your amount (€)">FAI TU — Contributo a importo libero (€)</span>
+                <span aria-hidden="true">✨</span> <span data-it="FAI TU — Contributo a importo libero in € (*)" data-en="CUSTOM PLEDGE — Choose your amount in € (*)">FAI TU — Contributo a importo libero in € (*)</span>
               </label>
-              <p class="custom-pledge-help"
-                 data-it="Ogni contributo conta! Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino."
-                 data-en="Every contribution counts! You will receive the official University of Turin donation certificate by email.">
-                Ogni contributo conta! Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino.
+              <p class="custom-pledge-help" role="alert" aria-live="assertive"
+                 data-it="Importo minimo obbligatorio: 5 €. Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino."
+                 data-en="Minimum required amount: €5. You will receive the official University of Turin donation certificate by email.">
+                Importo minimo obbligatorio: 5 €. Riceverai via email l'attestato ufficiale di donazione dell'Università di Torino.
               </p>
               <div class="custom-input-flex">
                 <input type="number" id="custom-donation-input" name="custom_amount" autocomplete="off"
-                       class="form-input custom-number-field" min="5" max="10000" step="1" value="25"
+                       class="form-input custom-number-field" min="5" max="10000" step="1" value="25" required aria-required="true"
                        placeholder="Importo € (min. 5€)" aria-describedby="live-match-preview">
                 <button type="submit" id="custom-donation-btn" class="btn btn-primary">Dona Ora →</button>
               </div>
@@ -1188,10 +1224,11 @@
           ],
           budgetBars: ['45%', '40%', '15%'],
           budgetLegs: ['Reagenti & Kit Antivirali (45%)', 'Borsa Giovane Ricercatrice (40%)', 'Microguida & Open Science (15%)'],
+          budgetTotal: '16.000 €',
           budgetRows: `
-            <tr><td><strong><span aria-hidden="true">🧪</span> Reagenti e Kit Antivirali</strong></td><td>Materiali di consumo sterili, colture cellulari e kit ELISA per l'analisi dei campioni di latte</td><td><strong>45%</strong></td><td><strong>7.200 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">👩‍🔬</span> Borsa di Ricerca Dedicata</strong></td><td>Cofinanziamento semestrale per giovane assegnista presso il laboratorio VIRMOLAB UniTo</td><td><strong>40%</strong></td><td><strong>6.400 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">📖</span> Microguida &amp; Open Access</strong></td><td>Stampa brochure divulgativa per le famiglie dei reparti TIN e pubblicazione scientifica aperta</td><td><strong>15%</strong></td><td><strong>2.400 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">🧪</span> Reagenti e Kit Antivirali</th><td>Materiali di consumo sterili, colture cellulari e kit ELISA per l'analisi dei campioni di latte</td><td><strong>45%</strong></td><td><strong>7.200 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">👩‍🔬</span> Borsa di Ricerca Dedicata</th><td>Cofinanziamento semestrale per giovane assegnista presso il laboratorio VIRMOLAB UniTo</td><td><strong>40%</strong></td><td><strong>6.400 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">📖</span> Microguida &amp; Open Access</th><td>Stampa brochure divulgativa per le famiglie dei reparti TIN e pubblicazione scientifica aperta</td><td><strong>15%</strong></td><td><strong>2.400 €</strong></td></tr>
           `,
           timelineHTML: `
             <article class="update-card">
@@ -1235,10 +1272,11 @@
           ],
           budgetBars: ['55%', '30%', '15%'],
           budgetLegs: ['Sviluppo Software & AI Vocale (55%)', 'Borsa Sviluppatore Junior (30%)', 'Server Cloud & Test Accessibilità (15%)'],
+          budgetTotal: '10.000 €',
           budgetRows: `
-            <tr><td><strong><span aria-hidden="true">💻</span> Sviluppo Motore Vocale &amp; UI</strong></td><td>Programmazione Web App accessibile e addestramento modello vocale per formule matematiche</td><td><strong>55%</strong></td><td><strong>5.500 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">👨‍💻</span> Borsa Giovane Informatico</strong></td><td>Contratto di collaborazione per laureando/neolaureato magistrale del Dip. di Informatica/Matematica</td><td><strong>30%</strong></td><td><strong>3.000 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">☁️</span> Infrastruttura Cloud &amp; User Test</strong></td><td>Hosting server ad alta disponibilità e sessioni di test assistivo con gli studenti</td><td><strong>15%</strong></td><td><strong>1.500 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">💻</span> Sviluppo Motore Vocale &amp; UI</th><td>Programmazione Web App accessibile e addestramento modello vocale per formule matematiche</td><td><strong>55%</strong></td><td><strong>5.500 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">👨‍💻</span> Borsa Giovane Informatico</th><td>Contratto di collaborazione per laureando/neolaureato magistrale del Dip. di Informatica/Matematica</td><td><strong>30%</strong></td><td><strong>3.000 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">☁️</span> Infrastruttura Cloud &amp; User Test</th><td>Hosting server ad alta disponibilità e sessioni di test assistivo con gli studenti</td><td><strong>15%</strong></td><td><strong>1.500 €</strong></td></tr>
           `,
           timelineHTML: `
             <article class="update-card">
@@ -1277,10 +1315,11 @@
           ],
           budgetBars: ['60%', '25%', '15%'],
           budgetLegs: ['Cuffie fNIRS & Optodi Short-Channels (60%)', 'Software Ambienti VR/Gaming (25%)', 'Evento Conference&Dragons (15%)'],
+          budgetTotal: '22.182 €',
           budgetRows: `
-            <tr><td><strong><span aria-hidden="true">🧠</span> 2 Cuffie fNIRS + Short-Channels</strong></td><td>Acquisto completato e collaudato: cuffie ergonomiche + 2 optodi <span lang="en">short-channels</span> anti-artefatti</td><td><strong>60%</strong></td><td><strong>13.300 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">🎮</span> Sviluppo Scenari Interattivi</strong></td><td>Licenze e ambienti di gioco cognitivo per protocolli sperimentali non invasivi</td><td><strong>25%</strong></td><td><strong>5.550 €</strong></td></tr>
-            <tr><td><strong><span aria-hidden="true">🎲</span> Evento Conference&amp;Dragons</strong></td><td>Giornata di divulgazione scientifica aperta a cittadini, donatori e aziende sostenitrici</td><td><strong>15%</strong></td><td><strong>3.332 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">🧠</span> 2 Cuffie fNIRS + Short-Channels</th><td>Acquisto completato e collaudato: cuffie ergonomiche + 2 optodi <span lang="en">short-channels</span> anti-artefatti</td><td><strong>60%</strong></td><td><strong>13.300 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">🎮</span> Sviluppo Scenari Interattivi</th><td>Licenze e ambienti di gioco cognitivo per protocolli sperimentali non invasivi</td><td><strong>25%</strong></td><td><strong>5.550 €</strong></td></tr>
+            <tr><th scope="row"><span aria-hidden="true">🎲</span> Evento Conference&amp;Dragons</th><td>Giornata di divulgazione scientifica aperta a cittadini, donatori e aziende sostenitrici</td><td><strong>15%</strong></td><td><strong>3.332 €</strong></td></tr>
           `,
           timelineHTML: `
             <article class="update-card">
@@ -1336,7 +1375,7 @@
         document.getElementById('story-p2').textContent = data.storyP2;
         document.getElementById('story-goals-list').innerHTML = data.goals.map(g => `<li>${g}</li>`).join('');
 
-        // Aggiorna grafico Budget e Tabella
+        // Aggiorna grafico Budget, Tabella e Totale tfoot
         document.getElementById('b-bar-1').style.width = data.budgetBars[0];
         document.getElementById('b-bar-1').textContent = data.budgetBars[0];
         document.getElementById('b-bar-2').style.width = data.budgetBars[1];
@@ -1347,6 +1386,8 @@
         document.getElementById('b-leg-2').textContent = data.budgetLegs[1];
         document.getElementById('b-leg-3').textContent = data.budgetLegs[2];
         document.getElementById('budget-table-body').innerHTML = data.budgetRows;
+        const totalCell = document.getElementById('budget-total-cell');
+        if (totalCell) totalCell.innerHTML = `<strong>${data.budgetTotal}</strong>`;
 
         // Aggiorna Timeline e Ricompense
         document.getElementById('timeline-container').innerHTML = data.timelineHTML;
