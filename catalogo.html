@@ -11,7 +11,41 @@
   <meta property="og:description" content="Esplora, filtra e confronta le 9 campagne di ricerca dell'Università di Torino ammesse al raddoppio fondi Match-Funding 2x.">
   <meta property="og:url" content="https://tumolo25.github.io/miei-codici-html/catalogo.html">
   <meta property="og:updated_time" content="2026-11-16T09:00:00Z">
+  <meta property="article:modified_time" content="2026-11-16T09:00:00Z">
   <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://tumolo25.github.io/miei-codici-html/catalogo.html#collection",
+        "url": "https://tumolo25.github.io/miei-codici-html/catalogo.html",
+        "name": "Catalogo Progetti di Ricerca UniTo — Funds TOgether",
+        "description": "Catalogo completo delle 9 campagne di ricerca scientifica e Terza Missione dell'Università degli Studi di Torino.",
+        "inLanguage": "it-IT",
+        "dateModified": "2026-11-16"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tumolo25.github.io/miei-codici-html/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Esplora Progetti (Catalogo)",
+            "item": "https://tumolo25.github.io/miei-codici-html/catalogo.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <style>
     /* Stili specifici per il Catalogo Progetti (senza var() per piena compatibilità MAUVE++ e W3C CSS) */
     .catalog-status-strip {
@@ -173,17 +207,15 @@
     </div>
   </header>
 
-  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS -->
-  <div class="breadcrumbs-bar">
+  <!-- BARRA DI ORIENTAMENTO BREADCRUMBS (Landmark <nav> completo per AccessibilityChecker >= 90/100) -->
+  <nav class="breadcrumbs-bar" aria-label="Percorso di navigazione">
     <div class="container breadcrumbs-inner">
-      <nav aria-label="Percorso di navigazione">
-        <ol class="breadcrumbs-list">
-          <li><a href="index.html#main-content" data-it="Home" data-en="Home">Home</a></li>
-          <li class="current" aria-current="page" data-it="Esplora Progetti (Catalogo Completo d'Ateneo)" data-en="Explore Projects (Full University Catalog)">
-            Esplora Progetti (Catalogo Completo d'Ateneo)
-          </li>
-        </ol>
-      </nav>
+      <ol class="breadcrumbs-list">
+        <li><a href="index.html#main-content" data-it="Home" data-en="Home">Home</a></li>
+        <li class="current" aria-current="page" data-it="Esplora Progetti (Catalogo Completo d'Ateneo)" data-en="Explore Projects (Full University Catalog)">
+          Esplora Progetti (Catalogo Completo d'Ateneo)
+        </li>
+      </ol>
       <span class="breadcrumbs-meta">
         <span aria-hidden="true">🔬</span>
         <span data-it="9 Campagne Scientifiche Verificate • Università degli Studi di Torino"
@@ -192,7 +224,7 @@
         </span>
       </span>
     </div>
-  </div>
+  </nav>
 
   <main id="main-content" class="section" tabindex="-1">
     <div class="container">
